@@ -49,10 +49,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Pixelization: 256
     - _ReflectionStrength: 3
-    - _WaterSpeed: 0.05
+    - _WaterSpeed: 0.1
     m_Colors:
-    - _WaterColor: {r: 1, g: 1, b: 1, a: 1}
+    - _WaterColor: {r: 0.7588109, g: 0.9245283, b: 0.9033136, a: 0.42745098}
   m_BuildTextureStacks: []
 --- !u!114 &6078362076602996784
 MonoBehaviour:
