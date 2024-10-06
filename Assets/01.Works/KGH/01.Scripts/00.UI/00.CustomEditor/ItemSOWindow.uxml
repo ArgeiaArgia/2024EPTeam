@@ -1,0 +1,24 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/01.Works/KGH/01.Scripts/00.UI/00.CustomEditor/ItemSOWindow.uss?fileID=7433441132597879392&amp;guid=aaf45c45519522e42a915b8b70111e97&amp;type=3#ItemSOWindow" />
+    <ui:VisualElement name="Container" style="flex-grow: 1; flex-direction: row;">
+        <ui:TreeView show-border="true" name="Items" />
+        <ui:ScrollView name="ItemAttributes" style="flex-grow: 1;">
+            <ui:VisualElement name="ImageContainer" style="flex-grow: 1; height: 125px; flex-direction: row;">
+                <ui:VisualElement name="Icon" style="flex-grow: 1;">
+                    <ui:VisualElement class="previewImage" style="flex-grow: 1;" />
+                    <uie:ObjectField label="Icon" type="UnityEngine.Sprite, UnityEngine.CoreModule" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Sprite" style="flex-grow: 1;">
+                    <ui:VisualElement class="previewImage" style="flex-grow: 1;" />
+                    <uie:ObjectField label="Sprite" type="UnityEngine.Sprite, UnityEngine.CoreModule" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:TextField picking-mode="Ignore" label="Name" value="Moo deng" name="NameField" />
+            <ui:TextField picking-mode="Ignore" label="Desc" name="Description" password="false" multiline="true" style="white-space: normal;" />
+            <uie:EnumFlagsField label="Item type" name="ItemType" />
+            <ui:Slider label="Fishing Probability" high-value="1" name="FishingProbability" />
+            <ui:IMGUIContainer name="MaetrialList" style="height: 100px;" />
+            <ui:IMGUIContainer name="Effect" style="height: 100px;" />
+        </ui:ScrollView>
+    </ui:VisualElement>
+</ui:UXML>
