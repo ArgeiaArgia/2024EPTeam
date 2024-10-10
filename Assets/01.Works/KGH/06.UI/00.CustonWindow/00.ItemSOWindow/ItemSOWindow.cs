@@ -2,16 +2,19 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class ItemSoWindow : EditorWindow
+public class ItemSOWindow : EditorWindow
 {
     [SerializeField]
     private VisualTreeAsset m_VisualTreeAsset = default;
 
-    [MenuItem("CustomWindows/ItemSOWindow")]
+    
+    
+    [MenuItem("CustomWindow/ItemSOWindow")]
     public static void ShowWindow()
     {
-        ItemSoWindow wnd = GetWindow<ItemSoWindow>();
+        ItemSOWindow wnd = GetWindow<ItemSOWindow>();
         wnd.titleContent = new GUIContent("ItemSOWindow");
+        wnd.minSize = new Vector2(600, 700);
     }
 
     public void CreateGUI()
@@ -19,10 +22,18 @@ public class ItemSoWindow : EditorWindow
         VisualElement root = rootVisualElement;
 
         VisualElement content = m_VisualTreeAsset.Instantiate();
+        content.style.flexGrow = 1;
         root.Add(content);
-        //
-        // ObjectField objectField = content.Q<ObjectField>();
-        // objectField.objectType = typeof(ItemSO);
-        // objectField.refere
+        
+        InitializeWindow();
+        CreateItemList();
     }
+    private void InitializeWindow()
+    {
+        
+    }
+    private void CreateItemList()
+    {
+    }
+
 }

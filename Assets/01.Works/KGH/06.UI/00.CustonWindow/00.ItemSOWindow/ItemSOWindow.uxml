@@ -1,0 +1,27 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/01.Works/KGH/06.UI/00.CustonWindow/00.ItemSOWindow/ItemSOWindow.uss?fileID=7433441132597879392&amp;guid=8b61e96bf6e804d41a6822a9200c11fe&amp;type=3#ItemSOWindow" />
+    <SplitView name="ItemView" fixed-pane-initial-dimension="200">
+        <ui:VisualElement name="LeftPanel" class="panel" style="min-width: 110px;">
+            <ui:ScrollView name="TotalItemList" style="text-overflow: ellipsis; -unity-text-align: middle-center; overflow: hidden; white-space: nowrap;">
+                <ui:Foldout text="About Tools" name="MaterialToolFoldout">
+                    <ui:Foldout text="Material" name="MaterialFoldout" />
+                    <ui:Foldout text="Tools" name="ToolFoldout" />
+                </ui:Foldout>
+                <ui:Foldout text="About Foods" name="IngredientFoodFoldout">
+                    <ui:Foldout text="Ingredient" name="IngredientFoldout" />
+                    <ui:Foldout text="Food" name="FoodFoldout" />
+                </ui:Foldout>
+            </ui:ScrollView>
+        </ui:VisualElement>
+        <ui:VisualElement name="RightPanel" class="panel" style="flex-grow: 1;">
+            <ui:VisualElement name="ItemInpector" style="flex-grow: 1;">
+                <ui:VisualElement name="ItemPreview" style="flex-direction: row;">
+                    <ui:VisualElement name="IconPreview" style="flex-grow: 1;">
+                        <ui:VisualElement name="IconImage" class="preview-image" />
+                        <uie:ObjectField label="Icon" type="UnityEngine.Sprite, UnityEngine.CoreModule" name="IconField" class="preview-field" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </SplitView>
+</ui:UXML>
