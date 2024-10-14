@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-direction: row;">
+        <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/00.ForEveryone/01.Sprites/fishing%20icons%2016x16.png?fileID=153654312&amp;guid=789301e609277f549b61e632456a6be2&amp;type=3#fishing icons 16x16_12&quot;); -unity-background-scale-mode: scale-to-fit;" />
+        <ui:ProgressBar value="22" style="flex-grow: 5;" />
+        <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" style="flex-basis: 15%;" />
+    </ui:VisualElement>
+</ui:UXML>
