@@ -14,7 +14,7 @@ public class ItemSOWindow : EditorWindow
     {
         ItemSOWindow wnd = GetWindow<ItemSOWindow>();
         wnd.titleContent = new GUIContent("ItemSOWindow");
-        wnd.minSize = new Vector2(600, 700);
+        wnd.minSize = new Vector2(400, 500);
     }
 
     public void CreateGUI()

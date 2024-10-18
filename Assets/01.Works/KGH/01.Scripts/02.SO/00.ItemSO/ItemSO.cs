@@ -1,18 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemSO : MonoBehaviour
+public abstract class ItemSO : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int itemNumber;
+    public string itemName;
+    public Sprite itemIcon;
+    public Sprite itemSprite;
+    public ItemType itemType;
+    public int itemCount = 0;
+    public float percentageOfCatch;
+    
+    public Dictionary<string, Action> ItemActions = new Dictionary<string, Action>();
+}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+public enum ItemType
+{
+    Fish,
+    Food,
+    Material,
+    Tool
 }
