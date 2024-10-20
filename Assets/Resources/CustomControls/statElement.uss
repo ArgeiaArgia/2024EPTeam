@@ -1,0 +1,4 @@
+.unity-progress-bar__container {
+    max-height: none;
+    height: 100%;
+}
