@@ -84,6 +84,7 @@ public class FoldableElement : VisualElement
     {
         isFolded = !isFolded;
         contentContainer.style.maxHeight = isFolded ? 0 : float.NaN;
+        contentContainer.style.opacity = isFolded ? 0 : 100;
         
         OnFoldableButtonClicked?.Invoke(isFolded);
     }

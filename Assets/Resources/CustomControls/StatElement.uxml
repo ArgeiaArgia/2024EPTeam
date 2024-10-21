@@ -1,8 +1,8 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Resources/CustomControls/statElement.uss?fileID=7433441132597879392&amp;guid=d44ead7c46f16fe449fbf34cfecadc0f&amp;type=3#statElement" />
-    <ui:VisualElement name="Container" style="background-color: rgb(0, 0, 0); flex-direction: row; flex-grow: 1;">
-        <ui:VisualElement name="Icon" style="background-image: url(&quot;project://database/Assets/00.ForEveryone/01.Sprites/fishing%20icons%2016x16.png?fileID=1245100770&amp;guid=789301e609277f549b61e632456a6be2&amp;type=3#fishing icons 16x16_39&quot;); -unity-background-scale-mode: scale-to-fit; flex-basis: 10%;" />
-        <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" />
-        <ui:ProgressBar value="22" title="22/100" style="flex-grow: 1; justify-content: center;" />
+    <ui:VisualElement name="Container" style="flex-direction: row; flex-grow: 1; overflow: hidden;">
+        <ui:VisualElement name="Icon" style="background-image: url(&quot;project://database/Assets/00.ForEveryone/01.Sprites/fishing%20icons%2016x16.png?fileID=1245100770&amp;guid=789301e609277f549b61e632456a6be2&amp;type=3#fishing icons 16x16_39&quot;); -unity-background-scale-mode: scale-to-fit; flex-basis: 15%;" />
+        <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Name" style="flex-basis: 20%; -unity-text-align: middle-left;" />
+        <ui:ProgressBar value="22" title="22/100" name="ProgressBar" style="flex-grow: 1; justify-content: center;" />
     </ui:VisualElement>
 </ui:UXML>
