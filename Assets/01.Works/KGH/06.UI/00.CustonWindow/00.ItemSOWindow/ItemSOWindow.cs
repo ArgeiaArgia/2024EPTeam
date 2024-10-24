@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -7,7 +9,9 @@ public class ItemSOWindow : EditorWindow
     [SerializeField]
     private VisualTreeAsset m_VisualTreeAsset = default;
 
-    
+    private ItemSO _currentItem;
+
+    private ItemInspector _itemInspector;
     
     [MenuItem("CustomWindow/ItemSOWindow")]
     public static void ShowWindow()
@@ -25,15 +29,21 @@ public class ItemSOWindow : EditorWindow
         content.style.flexGrow = 1;
         root.Add(content);
         
-        InitializeWindow();
+        InitializeWindow(content);
         CreateItemList();
     }
-    private void InitializeWindow()
+    private void InitializeWindow(VisualElement content)
     {
-        
+        _itemInspector = new ItemInspector(content, this);
     }
+
     private void CreateItemList()
     {
     }
+}
 
+[Serializable]
+public class DescList
+{
+    public List<string> descList;
 }

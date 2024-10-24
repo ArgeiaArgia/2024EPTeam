@@ -16,6 +16,7 @@
     padding-right: 2.5px;
     padding-bottom: 2.5px;
     padding-left: 2.5px;
+    justify-content: space-between;
 }
 
 .preview-image {
@@ -60,7 +61,7 @@
 }
 
 .desc-field {
-    flex-grow: 1;
+    flex-basis: 150px;
 }
 
 .desc-field > .unity-label {
@@ -75,4 +76,11 @@
 .desc-field .unity-text-element--inner-input-field-component {
     -unity-text-align: upper-left;
     white-space: normal;
+}
+
+.percentage-slider {
+}
+
+.percentage-slider > .unity-label {
+    min-width: 50px;
 }
