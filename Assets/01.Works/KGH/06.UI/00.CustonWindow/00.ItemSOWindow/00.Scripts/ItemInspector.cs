@@ -11,9 +11,7 @@ using Object = UnityEngine.Object;
 public class ItemInspector
 {
     private ItemSOWindow _itemSOWindow;
-    private readonly ItemSO _currentItem;
-
-    private readonly string _descPath;
+    private ItemSO _currentItem;
 
     private ScrollView _itemInspector;
 
@@ -56,8 +54,6 @@ public class ItemInspector
     {
         _itemSOWindow = itemSOWindow;
         _currentItem = null;
-
-        _descPath = Path.Combine(Application.dataPath, "ItemDescriptions.json");
 
         _itemInspector = content.Q<ScrollView>("ItemInspector");
         _itemInspector.style.display = DisplayStyle.None;
@@ -120,6 +116,7 @@ public class ItemInspector
         if (string.IsNullOrEmpty(_itemName.value.Trim())) return;
 
         string newName = _itemName.value;
+        _currentItem.itemName = newName;
         OnNameChange?.Invoke(_currentItem, newName);
     }
 
@@ -173,16 +170,8 @@ public class ItemInspector
     private void HandleChangeDescription(string evtNewValue)
     {
         if (_currentItem == null) return;
-        try
-        {
-            var descList = JsonUtility.FromJson<DescList>(_descPath);
-            descList.descList[_currentItem.itemNumber] = evtNewValue;
-            File.WriteAllText(_descPath, JsonUtility.ToJson(descList, true));
-        }
-        catch (Exception e)
-        {
-            Debug.LogError(e);
-        }
+        _currentItem.description = evtNewValue;
+        EditorUtility.SetDirty(_currentItem);
     }
 
     private void HandleMaterialListChanged(IList obj)
@@ -213,5 +202,62 @@ public class ItemInspector
         if (_currentItem == null || _currentItem.itemType != ItemType.Food || evtNewValue is not FoodType foodType) return;
         _currentItem.foodType = foodType;
         EditorUtility.SetDirty(_currentItem);
+    }
+    public void ChangeItem(ItemSO item)
+    {
+        _currentItem = item;
+        if (_currentItem == null)
+        {
+            _itemInspector.style.display = DisplayStyle.None;
+            return;
+        }
+        
+        _itemInspector.style.display = DisplayStyle.Flex;
+
+        _iconField.value = item.itemIcon;
+        _spriteField.value = item.itemSprite;
+        _itemName.SetValueWithoutNotify(item.itemName);
+        _itemType.SetValueWithoutNotify(item.itemType);
+        _percentSlider.SetValueWithoutNotify(item.percentageOfCatch);
+        _descField.SetValueWithoutNotify(item.description);
+
+        foreach (var list in item.materialList)
+        {
+            _materialList.AddList(list);
+        }
+        _toolType.SetValueWithoutNotify(item.toolType);
+        foreach (var effect in item.StatEffect)
+        {
+            _effectList.AddDictionaryItem(effect.Key, effect.Value);
+        }
+        _foodType.SetValueWithoutNotify(item.foodType);
+        
+        switch (item.itemType)
+        {
+            case ItemType.Trash:
+                _additionalContent.style.display = DisplayStyle.None;
+                break;
+            case ItemType.Tool:
+                _additionalContent.style.display = DisplayStyle.Flex;
+                _materialList.style.display = DisplayStyle.Flex;
+                _toolType.style.display = DisplayStyle.Flex;
+                _effectList.style.display = DisplayStyle.None;
+                _foodType.style.display = DisplayStyle.None;
+                break;
+            case ItemType.Ingredient:
+                _additionalContent.style.display = DisplayStyle.Flex;
+                _materialList.style.display = DisplayStyle.None;
+                _toolType.style.display = DisplayStyle.None;
+                _effectList.style.display = DisplayStyle.Flex;
+                _foodType.style.display = DisplayStyle.None;
+                break;
+            case ItemType.Food:
+                _additionalContent.style.display = DisplayStyle.Flex;
+                _materialList.style.display = DisplayStyle.Flex;
+                _toolType.style.display = DisplayStyle.None;
+                _effectList.style.display = DisplayStyle.Flex;
+                _foodType.style.display = DisplayStyle.Flex;
+                break;
+        }
     }
 }

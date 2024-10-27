@@ -147,7 +147,7 @@ public class EditorList : VisualElement
             objectField.label = i.ToString();
             objectField.RegisterValueChangedCallback(evt =>
             {
-                _list[i] = evt.newValue;
+                _list[i -1 ] = evt.newValue;
             });
             _objectFields.Add(objectField);
             
@@ -202,5 +202,13 @@ public class EditorList : VisualElement
             throw new InvalidCastException();
         }
         return (List<T>)_list;
+    }
+    
+    public void AddList(object item)
+    {
+        if(item.GetType() != _listType)
+            throw new InvalidCastException();
+        _list.Add(item);
+        _countField.SetValueWithoutNotify(_list.Count);
     }
 }

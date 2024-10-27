@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public abstract class ItemSO : ScriptableObject
+public class ItemSO : ScriptableObject
 {
     public int itemNumber; // 아이템 번호
     public string itemName; // 아이템 이름
@@ -17,6 +17,7 @@ public abstract class ItemSO : ScriptableObject
     public Dictionary<StatType, int> StatEffect = new Dictionary<StatType, int>(); //물고기, 요리
     public FoodType foodType; //요리
     public Dictionary<string, Action> ItemActions = new Dictionary<string, Action>();
+    public string description; // 설명
 }
 
 public enum ItemType

@@ -1,14 +1,11 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
-    <ui:Template name="ItemElement" src="project://database/Assets/01.Works/KGH/06.UI/00.CustonWindow/00.ItemSOWindow/01.UIDocument/ItemElement.uxml?fileID=9197481963319205126&amp;guid=f312e6d67e837ef49855b4bb39d9026b&amp;type=3#ItemElement" />
     <Style src="project://database/Assets/01.Works/KGH/06.UI/00.CustonWindow/00.ItemSOWindow/ItemSOWindow.uss?fileID=7433441132597879392&amp;guid=8b61e96bf6e804d41a6822a9200c11fe&amp;type=3#ItemSOWindow" />
     <SplitView name="ItemView" fixed-pane-initial-dimension="175">
         <ui:VisualElement name="LeftPanel" class="panel" style="min-width: 110px;">
             <ui:ScrollView name="TotalItemList" style="text-overflow: ellipsis; -unity-text-align: middle-center; overflow: hidden; white-space: nowrap;">
                 <ui:Foldout text="About Tools" name="MaterialToolFoldout">
                     <ui:Foldout text="Trash" name="TrashFoldout" />
-                    <ui:Foldout text="Tools" name="ToolFoldout">
-                        <ui:Instance template="ItemElement" name="ItemElement" />
-                    </ui:Foldout>
+                    <ui:Foldout text="Tools" name="ToolFoldout" />
                 </ui:Foldout>
                 <ui:Foldout text="About Foods" name="IngredientFoodFoldout">
                     <ui:Foldout text="Ingredient" name="IngredientFoldout" />
@@ -37,9 +34,9 @@
                 <ui:Slider label="Catch" high-value="1" name="Percentage" show-input-field="true" class="percentage-slider part" />
                 <ui:VisualElement name="Additional" style="flex-grow: 1; display: flex;">
                     <EditorList name="MaterialList" list-name="Material List" list-type="ItemSO, Assembly-CSharp" class="part" />
-                    <uie:EnumFlagsField label="ToolType" type="ToolType, Assembly-CSharp" name="ToolType" class="part" />
-                    <EditorDictionary name="StatEffectDictionary" class="part" />
-                    <ui:EnumField label="Enum" type="FoodType, Assembly-CSharp" name="FoodType" class="part" />
+                    <ui:EnumField label="Tool Type" type="ToolType, Assembly-CSharp" name="ToolType" class="part" />
+                    <EditorDictionary name="StatEffectDictionary" dictionary-name="Effects" class="part" />
+                    <ui:EnumField label="Food Type" type="FoodType, Assembly-CSharp" name="FoodType" class="part" />
                 </ui:VisualElement>
                 <ui:TextField picking-mode="Ignore" label="Desc" value="wer" name="Description" class="desc-field part" />
             </ui:ScrollView>

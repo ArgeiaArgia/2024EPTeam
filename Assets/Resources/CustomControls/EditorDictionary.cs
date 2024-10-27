@@ -57,7 +57,7 @@ public class EditorDictionary : VisualElement
     private IList _keys;
     private IList _values;
 
-    private List<VisualElement> _itemElements = new List<VisualElement>();
+    private readonly List<VisualElement> _itemElements = new List<VisualElement>();
 
     public Action<IDictionary> OnDictionaryChanged;
 
@@ -94,6 +94,10 @@ public class EditorDictionary : VisualElement
 
     public new class UxmlTraits : VisualElement.UxmlTraits
     {
+        UxmlStringAttributeDescription m_dictionaryName = new()
+        {
+            name = "dictionary-name", defaultValue = "Dictionary"
+        };
         readonly UxmlTypeAttributeDescription<Type> m_keyType = new()
         {
             name = "key-type", defaultValue = typeof
@@ -105,12 +109,12 @@ public class EditorDictionary : VisualElement
             name = "value-type", defaultValue = typeof
                 (string)
         };
-
         public override void Init(VisualElement ve, IUxmlAttributes bag, CreationContext cc)
         {
             base.Init(ve, bag, cc);
             var ate = ve as EditorDictionary;
 
+            ate.DictionaryName = m_dictionaryName.GetValueFromBag(bag, cc);
             ate.KeyType = m_keyType.GetValueFromBag(bag, cc);
             ate.ValueType = m_valueType.GetValueFromBag(bag, cc);
         }
@@ -331,5 +335,51 @@ public class EditorDictionary : VisualElement
         }
 
         return returnDictionary;
+    }
+
+    public void AddDictionaryItem<T1, T2>(T1 key, T2 value)
+    {
+        if(typeof(T1) != _keyType || typeof(T2) != _valueType)
+        {
+            Debug.LogError("Type mismatch");
+            return;
+        }
+        _keys.Add(key);
+        _values.Add(value);
+        AddElement();
+        _countField.SetValueWithoutNotify(_keys.Count);
+        if(_keyType.IsEnum)
+        {
+            _itemElements[_keys.Count - 1].Q<EnumField>().SetValueWithoutNotify(key as Enum);
+        }
+        else if(_keyType == typeof(string))
+        {
+            _itemElements[_keys.Count - 1].Q<TextField>().SetValueWithoutNotify(key as string);
+        }
+        else if(_keyType == typeof(int))
+        {
+            _itemElements[_keys.Count - 1].Q<IntegerField>().SetValueWithoutNotify((int)(object)key);
+        }
+        else
+        {
+            _itemElements[_keys.Count - 1].Q<ObjectField>().SetValueWithoutNotify(key as UnityEngine.Object);
+        }
+        
+        if(_valueType.IsEnum)
+        {
+            _itemElements[_keys.Count - 1].Q<EnumField>().SetValueWithoutNotify(value as Enum);
+        }
+        else if(_valueType == typeof(string))
+        {
+            _itemElements[_keys.Count - 1].Q<TextField>().SetValueWithoutNotify(value as string);
+        }
+        else if(_valueType == typeof(int))
+        {
+            _itemElements[_keys.Count - 1].Q<IntegerField>().SetValueWithoutNotify((int)(object)value);
+        }
+        else
+        {
+            _itemElements[_keys.Count - 1].Q<ObjectField>().SetValueWithoutNotify(value as UnityEngine.Object);
+        }
     }
 }
