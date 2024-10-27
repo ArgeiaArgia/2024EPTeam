@@ -8,9 +8,7 @@ using UnityEngine.UIElements;
 
 public class EditorDictionary : VisualElement
 {
-    public new class UxmlFactory : UxmlFactory<EditorDictionary, UxmlTraits>
-    {
-    }
+    public new class UxmlFactory : UxmlFactory<EditorDictionary, UxmlTraits> { }
 
     private Foldout _dictionaryFoldout;
     private IntegerField _countField;
@@ -19,7 +17,6 @@ public class EditorDictionary : VisualElement
     private VisualElement _dictionaryContainer;
 
     private Type _keyType = typeof(StatType);
-
     public Type KeyType
     {
         get => _keyType;
@@ -31,7 +28,6 @@ public class EditorDictionary : VisualElement
     }
 
     private Type _valueType = typeof(string);
-
     public Type ValueType
     {
         get => _valueType;
@@ -41,9 +37,7 @@ public class EditorDictionary : VisualElement
             ResetDictionary();
         }
     }
-
-    string _dictionaryName;
-
+    private string _dictionaryName;
     public string DictionaryName
     {
         get => _dictionaryName;
@@ -56,9 +50,7 @@ public class EditorDictionary : VisualElement
 
     private IList _keys;
     private IList _values;
-
     private readonly List<VisualElement> _itemElements = new List<VisualElement>();
-
     public Action<IDictionary> OnDictionaryChanged;
 
     public EditorDictionary()
@@ -94,21 +86,10 @@ public class EditorDictionary : VisualElement
 
     public new class UxmlTraits : VisualElement.UxmlTraits
     {
-        UxmlStringAttributeDescription m_dictionaryName = new()
-        {
-            name = "dictionary-name", defaultValue = "Dictionary"
-        };
-        readonly UxmlTypeAttributeDescription<Type> m_keyType = new()
-        {
-            name = "key-type", defaultValue = typeof
-                (StatType)
-        };
+        UxmlStringAttributeDescription m_dictionaryName = new() { name = "dictionary-name", defaultValue = "Dictionary" };
+        readonly UxmlTypeAttributeDescription<Type> m_keyType = new() { name = "key-type", defaultValue = typeof(StatType) };
 
-        readonly UxmlTypeAttributeDescription<Type> m_valueType = new()
-        {
-            name = "value-type", defaultValue = typeof
-                (string)
-        };
+        readonly UxmlTypeAttributeDescription<Type> m_valueType = new() { name = "value-type", defaultValue = typeof(string) };
         public override void Init(VisualElement ve, IUxmlAttributes bag, CreationContext cc)
         {
             base.Init(ve, bag, cc);
@@ -164,6 +145,7 @@ public class EditorDictionary : VisualElement
         var i = _itemElements.IndexOf(item);
         RemoveElement(i);
     }
+
     private void RemoveElement(int i)
     {
         _countField.SetValueWithoutNotify(_countField.value - 1);
@@ -172,12 +154,12 @@ public class EditorDictionary : VisualElement
         item.RemoveFromHierarchy();
         _keys.RemoveAt(i);
         _values.RemoveAt(i);
-        
-        for(var j = i; j < _itemElements.Count; j++)
+
+        for (var j = i; j < _itemElements.Count; j++)
         {
             _itemElements[j].Q<Label>().text = j.ToString();
         }
-        
+
         OnDictionaryChanged?.Invoke(GetDictionary());
     }
 
@@ -187,10 +169,7 @@ public class EditorDictionary : VisualElement
         var item = new VisualElement();
         _dictionaryContainer.Add(item);
         item.AddToClassList("object-item");
-        var index = new Label()
-        {
-            text = i.ToString()
-        };
+        var index = new Label() { text = i.ToString() };
         item.Add(index);
         var keyAndValue = new VisualElement();
         keyAndValue.AddToClassList("object-item");
@@ -243,10 +222,7 @@ public class EditorDictionary : VisualElement
         }
         else
         {
-            var keyField = new ObjectField("")
-            {
-                objectType = _keyType
-            };
+            var keyField = new ObjectField("") { objectType = _keyType };
             keyAndValue.Add(keyField);
             keyField.AddToClassList("key-value-field");
 
@@ -304,10 +280,7 @@ public class EditorDictionary : VisualElement
         }
         else
         {
-            var valueField = new ObjectField("")
-            {
-                objectType = _valueType
-            };
+            var valueField = new ObjectField("") { objectType = _valueType };
             keyAndValue.Add(valueField);
             valueField.AddToClassList("key-value-field");
 
@@ -325,8 +298,7 @@ public class EditorDictionary : VisualElement
 
     public IDictionary GetDictionary()
     {
-        var returnDictionary =
-            Activator.CreateInstance(typeof(Dictionary<,>).MakeGenericType(_keyType, _valueType)) as IDictionary;
+        var returnDictionary = Activator.CreateInstance(typeof(Dictionary<,>).MakeGenericType(_keyType, _valueType)) as IDictionary;
         for (var i = 0; i < _keys.Count; i++)
         {
             var key = _keys[i];
@@ -339,7 +311,7 @@ public class EditorDictionary : VisualElement
 
     public void AddDictionaryItem<T1, T2>(T1 key, T2 value)
     {
-        if(typeof(T1) != _keyType || typeof(T2) != _valueType)
+        if (typeof(T1) != _keyType || typeof(T2) != _valueType)
         {
             Debug.LogError("Type mismatch");
             return;
@@ -348,15 +320,17 @@ public class EditorDictionary : VisualElement
         _values.Add(value);
         AddElement();
         _countField.SetValueWithoutNotify(_keys.Count);
-        if(_keyType.IsEnum)
+
+        if (_keyType.IsEnum)
         {
+            var enumKey = key as Enum;
             _itemElements[_keys.Count - 1].Q<EnumField>().SetValueWithoutNotify(key as Enum);
         }
-        else if(_keyType == typeof(string))
+        else if (_keyType == typeof(string))
         {
             _itemElements[_keys.Count - 1].Q<TextField>().SetValueWithoutNotify(key as string);
         }
-        else if(_keyType == typeof(int))
+        else if (_keyType == typeof(int))
         {
             _itemElements[_keys.Count - 1].Q<IntegerField>().SetValueWithoutNotify((int)(object)key);
         }
@@ -364,16 +338,16 @@ public class EditorDictionary : VisualElement
         {
             _itemElements[_keys.Count - 1].Q<ObjectField>().SetValueWithoutNotify(key as UnityEngine.Object);
         }
-        
-        if(_valueType.IsEnum)
+
+        if (_valueType.IsEnum)
         {
             _itemElements[_keys.Count - 1].Q<EnumField>().SetValueWithoutNotify(value as Enum);
         }
-        else if(_valueType == typeof(string))
+        else if (_valueType == typeof(string))
         {
             _itemElements[_keys.Count - 1].Q<TextField>().SetValueWithoutNotify(value as string);
         }
-        else if(_valueType == typeof(int))
+        else if (_valueType == typeof(int))
         {
             _itemElements[_keys.Count - 1].Q<IntegerField>().SetValueWithoutNotify((int)(object)value);
         }

@@ -17,11 +17,11 @@
         <ui:VisualElement name="RightPanel" class="panel" style="flex-grow: 1;">
             <ui:ScrollView name="ItemInspector" style="flex-grow: 1; display: flex;">
                 <ui:VisualElement name="ItemPreview" class="part" style="flex-direction: row;">
-                    <ui:VisualElement name="IconPreview" style="flex-grow: 1;">
+                    <ui:VisualElement name="IconPreview" class="preview">
                         <ui:VisualElement name="IconImage" class="preview-image" />
                         <uie:ObjectField label="Icon" type="UnityEngine.Sprite, UnityEngine.CoreModule" name="IconField" class="preview-field" />
                     </ui:VisualElement>
-                    <ui:VisualElement name="SpritePreview" style="flex-grow: 1;">
+                    <ui:VisualElement name="SpritePreview" class="preview" style="flex-grow: 1;">
                         <ui:VisualElement name="SpriteImage" class="preview-image" />
                         <uie:ObjectField label="Sprite" type="UnityEngine.Sprite, UnityEngine.CoreModule" name="SpriteField" class="preview-field" />
                     </ui:VisualElement>

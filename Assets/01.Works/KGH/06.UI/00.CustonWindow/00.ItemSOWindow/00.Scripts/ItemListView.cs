@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -11,27 +9,14 @@ public class ItemListView
 {
     private ItemSOWindow _itemSOWindow;
     private ItemSO _currentItem;
-
-    private ItemSO CurrentItem
-    {
-        get => _currentItem;
-        set
-        {
-            _currentItem = value;
-            OnItemSelect?.Invoke(value);
-        }
-    }
+    private VisualTreeAsset m_itemElement = default;
+    private Dictionary<ItemSO, TemplateContainer> _itemElements = new Dictionary<ItemSO, TemplateContainer>();
 
     private readonly Foldout _trashFoldout;
     private readonly Foldout _toolsFoldout;
     private readonly Foldout _ingredientFoldout;
     private readonly Foldout _foodFoldout;
-
     private readonly Button _createButton;
-
-    private VisualTreeAsset m_itemElement = default;
-
-    private Dictionary<ItemSO, TemplateContainer> _itemElements = new Dictionary<ItemSO, TemplateContainer>();
 
     public event Action<ItemSO> OnItemSelect;
 
@@ -48,8 +33,6 @@ public class ItemListView
 
         _createButton = content.Q<Button>("CreateNewButton");
         _createButton.clicked += CreateItem;
-
-        
     }
 
     private void CreateItem()
@@ -89,13 +72,14 @@ public class ItemListView
         itemElement.Q<VisualElement>("ItemIcon").style.backgroundImage = new StyleBackground(item.itemIcon);
         itemElement.Q<Label>("ItemName").text = item.itemName;
         itemElement.Q<Button>("DeleteButton").clicked += () => HandleItemDeleted(item);
+        itemElement.Q<VisualElement>("ItemElement").RegisterCallback<ClickEvent>(e => CurrentItem = item);
 
         _itemElements.Add(item, itemElement);
     }
 
     private void HandleItemDeleted(ItemSO item)
     {
-        if(_currentItem == item)
+        if (_currentItem == item)
             CurrentItem = null;
         var itemElement = _itemElements[item];
         _itemElements.Remove(item);
@@ -105,7 +89,8 @@ public class ItemListView
         try
         {
             File.Delete(path);
-            File.Delete(path+".meta");
+            File.Delete(path + ".meta");
+            AssetDatabase.Refresh();
         }
         catch (Exception e)
         {
@@ -120,5 +105,27 @@ public class ItemListView
         _itemElements.Remove(item);
         itemElement.RemoveFromHierarchy();
         SetUpItem(item);
+    }
+
+    public void ChangeItemName(ItemSO item, string name)
+    {
+        var element = _itemElements[item];
+        element.Q<Label>("ItemName").text = name;
+    }
+
+    public void ChangeItemIcon(ItemSO item, Sprite icon)
+    {
+        var element = _itemElements[item];
+        element.Q<VisualElement>("ItemIcon").style.backgroundImage = new StyleBackground(icon);
+    }
+
+    private ItemSO CurrentItem
+    {
+        get => _currentItem;
+        set
+        {
+            _currentItem = value;
+            OnItemSelect?.Invoke(value);
+        }
     }
 }

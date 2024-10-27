@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 
 public class ItemSOWindow : EditorWindow
@@ -14,7 +13,6 @@ public class ItemSOWindow : EditorWindow
     [SerializeField] private VisualTreeAsset m_itemElement = default;
 
     private ItemSO _currentItem;
-
     private ItemInspector _itemInspector;
     private ItemListView _itemListView;
 
@@ -26,23 +24,14 @@ public class ItemSOWindow : EditorWindow
         wnd.minSize = new Vector2(400, 500);
     }
 
-    private void OnEnable()
-    {
-        
-    }
+    private void OnEnable() { }
 
     public void CreateGUI()
     {
-        Debug.Log("CreateGUI");
-        
-        
-        
         var root = rootVisualElement;
-
         VisualElement content = m_VisualTreeAsset.Instantiate();
         content.style.flexGrow = 1;
         root.Add(content);
-
         InitializeWindow(content);
     }
 
@@ -52,8 +41,9 @@ public class ItemSOWindow : EditorWindow
         _itemListView = new ItemListView(content, this, m_itemElement);
         _itemInspector.OnNameChange += ChangeItemName;
         _itemInspector.OnTypeChange += ChangeItemType;
+        _itemInspector.OnIconChange += (item, sprite) => _itemListView.ChangeItemIcon(item, sprite);
         _itemListView.OnItemSelect += SelectItem;
-        
+
         foreach (var item in GetItemList())
         {
             Debug.Log(item);
@@ -84,6 +74,7 @@ public class ItemSOWindow : EditorWindow
         targetItem.name = name;
         var path = AssetDatabase.GetAssetPath(targetItem);
         AssetDatabase.RenameAsset(path, name);
+        _itemListView.ChangeItemName(targetItem, name);
         UnityEditor.EditorUtility.SetDirty(targetItem);
     }
 
@@ -97,10 +88,4 @@ public class ItemSOWindow : EditorWindow
             return asset;
         }).ToList();
     }
-}
-
-[Serializable]
-public class DescList
-{
-    public List<string> descList;
 }

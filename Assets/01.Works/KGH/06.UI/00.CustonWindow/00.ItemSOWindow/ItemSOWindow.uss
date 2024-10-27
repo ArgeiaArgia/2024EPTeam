@@ -39,6 +39,7 @@
     margin-right: 5px;
     margin-bottom: 5px;
     margin-left: 5px;
+    flex-shrink: 0;
 }
 
 .preview-field {
@@ -83,4 +84,10 @@
 
 .percentage-slider > .unity-label {
     min-width: 50px;
+}
+
+.preview {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 50%;
 }

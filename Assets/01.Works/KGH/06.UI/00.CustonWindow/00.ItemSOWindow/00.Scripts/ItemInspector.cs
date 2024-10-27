@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -12,43 +11,27 @@ public class ItemInspector
 {
     private ItemSOWindow _itemSOWindow;
     private ItemSO _currentItem;
-
     private ScrollView _itemInspector;
 
     private readonly Button _confirmButton;
-
-    #region Preview
-
     private VisualElement _iconPreview;
     private VisualElement _spritePreview;
     private readonly ObjectField _iconField;
     private readonly ObjectField _spriteField;
-
-    #endregion
-
-    #region Name
-
     private readonly TextField _itemName;
     private readonly Button _changeNameButton;
-
-    #endregion
-
     private EnumField _itemType;
     private Slider _percentSlider;
     private TextField _descField;
-
-    #region Additional
-
     private readonly VisualElement _additionalContent;
     private readonly EditorList _materialList;
     private readonly EnumField _toolType;
     private readonly EditorDictionary _effectList;
     private readonly EnumField _foodType;
 
-    #endregion
-
     public event Action<ItemSO, string> OnNameChange;
     public event Action<ItemSO, ItemType> OnTypeChange;
+    public event Action<ItemSO, Sprite> OnIconChange;
 
     public ItemInspector(VisualElement content, ItemSOWindow itemSOWindow)
     {
@@ -62,8 +45,8 @@ public class ItemInspector
         _spritePreview = content.Q<VisualElement>("SpriteImage");
         _iconField = content.Q<ObjectField>("IconField");
         _spriteField = content.Q<ObjectField>("SpriteField");
-        _iconField.RegisterCallback<ChangeEvent<Object>>((e) => HandleChangePreview(e, _iconField, _iconPreview));
-        _spriteField.RegisterCallback<ChangeEvent<Object>>((e) => HandleChangePreview(e, _spriteField, _spritePreview));
+        _iconField.RegisterValueChangedCallback((e) => HandleChangePreview(e, _iconField, _iconPreview));
+        _spriteField.RegisterValueChangedCallback((e) => HandleChangePreview(e, _spriteField, _spritePreview));
 
         _itemName = content.Q<TextField>("NameField");
         _changeNameButton = content.Q<Button>("ChangeNameButton");
@@ -104,7 +87,11 @@ public class ItemInspector
             preview.style.backgroundImage = null;
         }
 
-        if (field == _iconField) _currentItem.itemIcon = newSprite;
+        if (field == _iconField)
+        {
+            _currentItem.itemIcon = newSprite;
+            OnIconChange?.Invoke(_currentItem, newSprite);
+        }
         else if (field == _spriteField) _currentItem.itemSprite = newSprite;
 
         EditorUtility.SetDirty(_currentItem);
@@ -203,6 +190,7 @@ public class ItemInspector
         _currentItem.foodType = foodType;
         EditorUtility.SetDirty(_currentItem);
     }
+
     public void ChangeItem(ItemSO item)
     {
         _currentItem = item;
@@ -211,7 +199,7 @@ public class ItemInspector
             _itemInspector.style.display = DisplayStyle.None;
             return;
         }
-        
+
         _itemInspector.style.display = DisplayStyle.Flex;
 
         _iconField.value = item.itemIcon;
@@ -231,7 +219,7 @@ public class ItemInspector
             _effectList.AddDictionaryItem(effect.Key, effect.Value);
         }
         _foodType.SetValueWithoutNotify(item.foodType);
-        
+
         switch (item.itemType)
         {
             case ItemType.Trash:
