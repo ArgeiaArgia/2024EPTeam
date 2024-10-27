@@ -165,6 +165,8 @@ public class EditorList : VisualElement
 
             deleteButton.clickable.clicked += ()=>HandleDeleteButton(int.Parse(objectField.label));
         }
+        
+        OnListChanged?.Invoke(_list);
     }
 
     private void HandleDeleteButton(int i)

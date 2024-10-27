@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public abstract class ItemSO : ScriptableObject
 {
@@ -20,9 +21,9 @@ public abstract class ItemSO : ScriptableObject
 
 public enum ItemType
 {
-    Fish,
+    Ingredient,
     Food,
-    Material,
+    Trash,
     Tool
 }
 public enum ToolType

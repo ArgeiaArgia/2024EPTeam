@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using Sirenix.OdinInspector.Editor;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -12,27 +11,27 @@ using Object = UnityEngine.Object;
 public class ItemInspector
 {
     private ItemSOWindow _itemSOWindow;
-    private ItemSO _currentItem;
+    private readonly ItemSO _currentItem;
 
-    private string _descPath;
+    private readonly string _descPath;
 
     private ScrollView _itemInspector;
 
-    private Button _confirmButton;
+    private readonly Button _confirmButton;
 
     #region Preview
 
     private VisualElement _iconPreview;
     private VisualElement _spritePreview;
-    private ObjectField _iconField;
-    private ObjectField _spriteField;
+    private readonly ObjectField _iconField;
+    private readonly ObjectField _spriteField;
 
     #endregion
 
     #region Name
 
-    private TextField _itemName;
-    private Button _changeNameButton;
+    private readonly TextField _itemName;
+    private readonly Button _changeNameButton;
 
     #endregion
 
@@ -42,21 +41,19 @@ public class ItemInspector
 
     #region Additional
 
-    private VisualElement _additionalContent;
-    private EditorList _materailList;
-    private EnumField _toolType;
-    private IMGUIContainer _effectList;
-    private EnumField _foodType;
+    private readonly VisualElement _additionalContent;
+    private readonly EditorList _materialList;
+    private readonly EnumField _toolType;
+    private readonly EditorDictionary _effectList;
+    private readonly EnumField _foodType;
 
     #endregion
 
     public event Action<ItemSO, string> OnNameChange;
     public event Action<ItemSO, ItemType> OnTypeChange;
-    public event Action<ItemSO> OnConfirm;
 
     public ItemInspector(VisualElement content, ItemSOWindow itemSOWindow)
     {
-        
         _itemSOWindow = itemSOWindow;
         _currentItem = null;
 
@@ -86,25 +83,15 @@ public class ItemInspector
         _descField.RegisterValueChangedCallback((e) => HandleChangeDescription(e.newValue));
 
         _additionalContent = content.Q<VisualElement>("Additional");
-        _materailList = content.Q<EditorList>("MaterialList");
+        _materialList = content.Q<EditorList>("MaterialList");
         _toolType = content.Q<EnumField>("ToolType");
-        _effectList = content.Q<IMGUIContainer>("StatEffectDictionary");
+        _effectList = content.Q<EditorDictionary>("StatEffectDictionary");
         _foodType = content.Q<EnumField>("FoodType");
-        
-        _materailList.OnListChanged += HandleMaterialListChanged;
-        _toolType.RegisterValueChangedCallback((e)=>HandleChangeToolType(e.newValue));
-        _effectList.onGUIHandler += HandleEffectGUI;
+
+        _materialList.OnListChanged += HandleMaterialListChanged;
+        _toolType.RegisterValueChangedCallback((e) => HandleChangeToolType(e.newValue));
+        _effectList.OnDictionaryChanged += HandleEffectDictionaryChanged;
         _foodType.RegisterCallback<ChangeEvent<Enum>>((e) => HandleChangeFoodType(e.newValue));
-        
-        _confirmButton = content.Q<Button>("ConfirmButton");
-        _confirmButton.style.display = DisplayStyle.None;
-        _confirmButton.clicked += () => OnConfirm?.Invoke(_currentItem);
-    }
-
-    
-
-    private void HandleEffectGUI()
-    {
     }
 
     private void HandleChangePreview(ChangeEvent<Object> evt, ObjectField field, VisualElement preview)
@@ -126,6 +113,7 @@ public class ItemInspector
 
         EditorUtility.SetDirty(_currentItem);
     }
+
     private void HandleChangeName()
     {
         if (_currentItem == null) return;
@@ -134,6 +122,7 @@ public class ItemInspector
         string newName = _itemName.value;
         OnNameChange?.Invoke(_currentItem, newName);
     }
+
     private void HandleChangeType(Enum evtNewValue)
     {
         if (_currentItem == null || evtNewValue is not ItemType type) return;
@@ -147,38 +136,40 @@ public class ItemInspector
         _currentItem.foodType = FoodType.FirstLevelFood;
         switch (type)
         {
-            case ItemType.Material:
+            case ItemType.Trash:
                 _additionalContent.style.display = DisplayStyle.None;
                 break;
             case ItemType.Tool:
                 _additionalContent.style.display = DisplayStyle.Flex;
-                _materailList.style.display = DisplayStyle.Flex;
+                _materialList.style.display = DisplayStyle.Flex;
                 _toolType.style.display = DisplayStyle.Flex;
                 _effectList.style.display = DisplayStyle.None;
                 _foodType.style.display = DisplayStyle.None;
                 break;
-            case ItemType.Fish:
+            case ItemType.Ingredient:
                 _additionalContent.style.display = DisplayStyle.Flex;
-                _materailList.style.display = DisplayStyle.None;
+                _materialList.style.display = DisplayStyle.None;
                 _toolType.style.display = DisplayStyle.None;
                 _effectList.style.display = DisplayStyle.Flex;
                 _foodType.style.display = DisplayStyle.None;
                 break;
             case ItemType.Food:
                 _additionalContent.style.display = DisplayStyle.Flex;
-                _materailList.style.display = DisplayStyle.Flex;
+                _materialList.style.display = DisplayStyle.Flex;
                 _toolType.style.display = DisplayStyle.None;
                 _effectList.style.display = DisplayStyle.Flex;
                 _foodType.style.display = DisplayStyle.Flex;
                 break;
         }
     }
+
     private void HandleChangePercentage(float evtNewValue)
     {
         if (_currentItem == null) return;
         _currentItem.percentageOfCatch = evtNewValue;
         EditorUtility.SetDirty(_currentItem);
     }
+
     private void HandleChangeDescription(string evtNewValue)
     {
         if (_currentItem == null) return;
@@ -193,24 +184,34 @@ public class ItemInspector
             Debug.LogError(e);
         }
     }
+
     private void HandleMaterialListChanged(IList obj)
     {
-        if (_currentItem == null) return;
+        if (_currentItem == null || (_currentItem.itemType != ItemType.Food && _currentItem.itemType != ItemType.Tool))
+            return;
         _currentItem.materialList = obj as List<ItemSO>;
         EditorUtility.SetDirty(_currentItem);
     }
+
     private void HandleChangeToolType(Enum evtNewValue)
     {
-        if (_currentItem == null || _currentItem.itemType != ItemType.Tool || evtNewValue is not ToolType) return;
-        _currentItem.toolType = (ToolType) evtNewValue;
-        EditorUtility.SetDirty(_currentItem);
-    }
-    
-    private void HandleChangeFoodType(Enum evtNewValue)
-    {
-        if(_currentItem == null || _currentItem.itemType != ItemType.Food || evtNewValue is not FoodType) return;
-        _currentItem.foodType = (FoodType) evtNewValue;
+        if (_currentItem == null || _currentItem.itemType != ItemType.Tool || evtNewValue is not ToolType toolType) return;
+        _currentItem.toolType = toolType;
         EditorUtility.SetDirty(_currentItem);
     }
 
+    private void HandleEffectDictionaryChanged(IDictionary obj)
+    {
+        if (_currentItem == null || (_currentItem.itemType != ItemType.Ingredient && _currentItem.itemType != ItemType.Trash) ||
+            obj is not Dictionary<StatType, int> dictionary) return;
+        _currentItem.StatEffect = dictionary;
+        EditorUtility.SetDirty(_currentItem);
+    }
+
+    private void HandleChangeFoodType(Enum evtNewValue)
+    {
+        if (_currentItem == null || _currentItem.itemType != ItemType.Food || evtNewValue is not FoodType foodType) return;
+        _currentItem.foodType = foodType;
+        EditorUtility.SetDirty(_currentItem);
+    }
 }

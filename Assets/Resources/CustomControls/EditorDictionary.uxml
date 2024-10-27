@@ -2,14 +2,7 @@
     <Style src="project://database/Assets/Resources/CustomControls/EditorDictionary.uss?fileID=7433441132597879392&amp;guid=9f9479557290a08479a34d98ed3751c4&amp;type=3#EditorDictionary" />
     <ui:Foldout text="Dictionary" name="DictionaryFoldout" style="flex-direction: column;">
         <ui:ScrollView name="DictionaryScroll">
-            <ui:VisualElement name="VisualElement" class="object-item">
-                <ui:Label tabindex="-1" text="111" parse-escape-sequences="true" display-tooltip-when-elided="true" enable-rich-text="false" class="index-number" />
-                <ui:VisualElement class="object-item" style="flex-grow: 1;">
-                    <uie:EnumFlagsField type="UnityEngine.UIElements.UsageHints, UnityEngine.UIElementsModule" value="DynamicTransform" class="key-value-field" />
-                    <ui:IntegerField value="42" class="key-value-field" />
-                </ui:VisualElement>
-                <ui:Button text="X" parse-escape-sequences="true" display-tooltip-when-elided="true" />
-            </ui:VisualElement>
+            <ui:VisualElement name="DictionaryContainer" style="flex-grow: 1;" />
         </ui:ScrollView>
         <ui:Button text="Add" parse-escape-sequences="true" display-tooltip-when-elided="true" name="AddButton" />
     </ui:Foldout>

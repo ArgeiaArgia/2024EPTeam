@@ -38,12 +38,11 @@
                 <ui:VisualElement name="Additional" style="flex-grow: 1; display: flex;">
                     <EditorList name="MaterialList" list-name="Material List" list-type="ItemSO, Assembly-CSharp" class="part" />
                     <uie:EnumFlagsField label="ToolType" type="ToolType, Assembly-CSharp" name="ToolType" class="part" />
-                    <ui:IMGUIContainer name="StatEffectDictionary" class="part" />
+                    <EditorDictionary name="StatEffectDictionary" class="part" />
                     <ui:EnumField label="Enum" type="FoodType, Assembly-CSharp" name="FoodType" class="part" />
                 </ui:VisualElement>
-                <ui:TextField picking-mode="Ignore" label="Desc" value="wer" name="Description" class="desc-field" />
+                <ui:TextField picking-mode="Ignore" label="Desc" value="wer" name="Description" class="desc-field part" />
             </ui:ScrollView>
-            <ui:Button text="Contirm!!" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ConfirmButton" />
         </ui:VisualElement>
     </SplitView>
 </ui:UXML>
