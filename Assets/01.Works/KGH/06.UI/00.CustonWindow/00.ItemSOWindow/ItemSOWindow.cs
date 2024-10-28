@@ -69,10 +69,10 @@ public class ItemSOWindow : EditorWindow
             return;
         }
 
-        targetItem.itemName = name;
-        targetItem.name = name;
         var path = AssetDatabase.GetAssetPath(targetItem);
         AssetDatabase.RenameAsset(path, name);
+        targetItem.itemName = name;
+        targetItem.name = name;
         _itemListView.ChangeItemName(targetItem, name);
         UnityEditor.EditorUtility.SetDirty(targetItem);
     }
