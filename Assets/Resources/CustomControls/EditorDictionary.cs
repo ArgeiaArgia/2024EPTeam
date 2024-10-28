@@ -8,7 +8,9 @@ using UnityEngine.UIElements;
 
 public class EditorDictionary : VisualElement
 {
-    public new class UxmlFactory : UxmlFactory<EditorDictionary, UxmlTraits> { }
+    public new class UxmlFactory : UxmlFactory<EditorDictionary, UxmlTraits>
+    {
+    }
 
     private Foldout _dictionaryFoldout;
     private IntegerField _countField;
@@ -17,6 +19,7 @@ public class EditorDictionary : VisualElement
     private VisualElement _dictionaryContainer;
 
     private Type _keyType = typeof(StatType);
+
     public Type KeyType
     {
         get => _keyType;
@@ -28,6 +31,7 @@ public class EditorDictionary : VisualElement
     }
 
     private Type _valueType = typeof(string);
+
     public Type ValueType
     {
         get => _valueType;
@@ -37,7 +41,9 @@ public class EditorDictionary : VisualElement
             ResetDictionary();
         }
     }
+
     private string _dictionaryName;
+
     public string DictionaryName
     {
         get => _dictionaryName;
@@ -86,10 +92,15 @@ public class EditorDictionary : VisualElement
 
     public new class UxmlTraits : VisualElement.UxmlTraits
     {
-        UxmlStringAttributeDescription m_dictionaryName = new() { name = "dictionary-name", defaultValue = "Dictionary" };
-        readonly UxmlTypeAttributeDescription<Type> m_keyType = new() { name = "key-type", defaultValue = typeof(StatType) };
+        UxmlStringAttributeDescription m_dictionaryName = new()
+            { name = "dictionary-name", defaultValue = "Dictionary" };
 
-        readonly UxmlTypeAttributeDescription<Type> m_valueType = new() { name = "value-type", defaultValue = typeof(string) };
+        readonly UxmlTypeAttributeDescription<Type> m_keyType = new()
+            { name = "key-type", defaultValue = typeof(StatType) };
+
+        readonly UxmlTypeAttributeDescription<Type> m_valueType = new()
+            { name = "value-type", defaultValue = typeof(int) };
+
         public override void Init(VisualElement ve, IUxmlAttributes bag, CreationContext cc)
         {
             base.Init(ve, bag, cc);
@@ -179,7 +190,34 @@ public class EditorDictionary : VisualElement
 
         if (_keyType.IsEnum)
         {
-            var defaultKey = Enum.GetValues(_keyType).GetValue(0) as Enum;
+            var enumLength = Enum.GetValues(_keyType).Length;
+            var a = -1;
+            for (int j = 0; j < enumLength; j++)
+            {
+                var isKeyExist = false;
+                foreach (var k in _keys)
+                {
+                    if (Enum.GetValues(_keyType).GetValue(j).Equals(k))
+                    {
+                        isKeyExist = true;
+                        break;
+                    }
+                }
+                if (!isKeyExist)
+                {
+                    a = j;
+                    break;
+                }
+            }
+            if(a == -1)
+            {
+                Debug.LogError("No more key available");
+                item.RemoveFromHierarchy();
+                _countField.SetValueWithoutNotify(_countField.value - 1);
+                return;
+            }
+
+            var defaultKey = Enum.GetValues(_keyType).GetValue(a) as Enum;
             var keyField = new EnumField("", defaultKey);
             keyAndValue.Add(keyField);
             keyField.AddToClassList("key-value-field");
@@ -294,16 +332,19 @@ public class EditorDictionary : VisualElement
         }
 
         _itemElements.Add(item);
+
+        OnDictionaryChanged?.Invoke(GetDictionary());
     }
 
     public IDictionary GetDictionary()
     {
-        var returnDictionary = Activator.CreateInstance(typeof(Dictionary<,>).MakeGenericType(_keyType, _valueType)) as IDictionary;
+        var returnDictionary =
+            Activator.CreateInstance(typeof(Dictionary<,>).MakeGenericType(_keyType, _valueType)) as IDictionary;
         for (var i = 0; i < _keys.Count; i++)
         {
-            var key = _keys[i];
-            var value = _values[i];
-            returnDictionary.Add(key, value);
+            var key = Convert.ChangeType(_keys[i], _keyType);
+            var value = Convert.ChangeType(_values[i], _valueType);
+            returnDictionary?.Add(key, value);
         }
 
         return returnDictionary;
@@ -316,9 +357,12 @@ public class EditorDictionary : VisualElement
             Debug.LogError("Type mismatch");
             return;
         }
-        _keys.Add(key);
-        _values.Add(value);
+
         AddElement();
+
+        if (_keys.Count >= 1) _keys[^1] = key;
+        if (_values.Count >= 1) _values[^1] = value;
+
         _countField.SetValueWithoutNotify(_keys.Count);
 
         if (_keyType.IsEnum)
@@ -355,5 +399,16 @@ public class EditorDictionary : VisualElement
         {
             _itemElements[_keys.Count - 1].Q<ObjectField>().SetValueWithoutNotify(value as UnityEngine.Object);
         }
+    }
+
+    public void ClearDictionary()
+    {
+        for (int i = _itemElements.Count - 1; i > -1; i--)
+        {
+            RemoveElement(i);
+        }
+
+        _keys.Clear();
+        _values.Clear();
     }
 }

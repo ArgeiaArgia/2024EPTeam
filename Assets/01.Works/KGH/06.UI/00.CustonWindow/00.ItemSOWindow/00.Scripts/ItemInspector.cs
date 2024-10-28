@@ -178,7 +178,7 @@ public class ItemInspector
 
     private void HandleEffectDictionaryChanged(IDictionary obj)
     {
-        if (_currentItem == null || (_currentItem.itemType != ItemType.Ingredient && _currentItem.itemType != ItemType.Trash) ||
+        if (_currentItem == null || (_currentItem.itemType != ItemType.Ingredient && _currentItem.itemType != ItemType.Food) ||
             obj is not Dictionary<StatType, int> dictionary) return;
         _currentItem.StatEffect = dictionary;
         EditorUtility.SetDirty(_currentItem);
@@ -194,6 +194,9 @@ public class ItemInspector
     public void ChangeItem(ItemSO item)
     {
         _currentItem = item;
+        
+        
+        
         if (_currentItem == null)
         {
             _itemInspector.style.display = DisplayStyle.None;
@@ -208,16 +211,7 @@ public class ItemInspector
         _itemType.SetValueWithoutNotify(item.itemType);
         _percentSlider.SetValueWithoutNotify(item.percentageOfCatch);
         _descField.SetValueWithoutNotify(item.description);
-
-        foreach (var list in item.materialList)
-        {
-            _materialList.AddList(list);
-        }
-        _toolType.SetValueWithoutNotify(item.toolType);
-        foreach (var effect in item.StatEffect)
-        {
-            _effectList.AddDictionaryItem(effect.Key, effect.Value);
-        }
+        
         _foodType.SetValueWithoutNotify(item.foodType);
 
         switch (item.itemType)
@@ -246,6 +240,17 @@ public class ItemInspector
                 _effectList.style.display = DisplayStyle.Flex;
                 _foodType.style.display = DisplayStyle.Flex;
                 break;
+        }
+        _materialList.ClearList();
+        _effectList.ClearDictionary();
+        foreach (var mat in item.materialList)
+        {
+            _materialList.AddList(mat);
+        }
+        
+        foreach (var eff in item.StatEffect)
+        {
+            _effectList.AddDictionaryItem(eff.Key, eff.Value);
         }
     }
 }

@@ -10,6 +10,7 @@
 
 .key-value-field {
     flex-basis: 40%;
+    flex-shrink: 0;
 }
 
 .index-number {

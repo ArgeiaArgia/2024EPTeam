@@ -46,7 +46,6 @@ public class ItemSOWindow : EditorWindow
 
         foreach (var item in GetItemList())
         {
-            Debug.Log(item);
             _itemListView.SetUpItem(item);
         }
     }

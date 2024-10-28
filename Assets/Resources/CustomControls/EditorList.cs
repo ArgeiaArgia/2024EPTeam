@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Object = UnityEngine.Object;
 
 public class EditorList : VisualElement
 {
@@ -108,18 +109,21 @@ public class EditorList : VisualElement
             {
                 obj.RemoveFromHierarchy();
             }
+
             foreach (var btn in _deleteButtons)
             {
                 btn.RemoveFromHierarchy();
             }
+
             foreach (var item in _objectItems)
             {
                 item.RemoveFromHierarchy();
             }
+
             _objectFields.Clear();
             _deleteButtons.Clear();
             _objectItems.Clear();
-            
+
             _list.Clear();
         }
 
@@ -129,11 +133,11 @@ public class EditorList : VisualElement
             var field = _objectFields[i];
             var deleteButton = _deleteButtons[i];
             var item = _objectItems[i];
-        
+
             _objectFields.RemoveAt(i);
             _deleteButtons.RemoveAt(i);
             _objectItems.RemoveAt(i);
-        
+
             field.RemoveFromHierarchy();
             deleteButton.RemoveFromHierarchy();
             item.RemoveFromHierarchy();
@@ -145,48 +149,45 @@ public class EditorList : VisualElement
             var objectField = new ObjectField();
             objectField.objectType = _listType;
             objectField.label = i.ToString();
-            objectField.RegisterValueChangedCallback(evt =>
-            {
-                _list[i -1 ] = evt.newValue;
-            });
+            objectField.RegisterValueChangedCallback(evt => { _list[i - 1] = evt.newValue; });
+            objectField.style.flexShrink = 0;
             _objectFields.Add(objectField);
-            
+
             VisualElement objectItem = new VisualElement();
             objectItem.AddToClassList("object-item");
             _objectItems.Add(objectItem);
-            
+
             Button deleteButton = new Button();
             deleteButton.text = "X";
             _deleteButtons.Add(deleteButton);
-            
+
             _listScrollView.Add(objectItem);
             objectItem.Add(objectField);
             objectItem.Add(deleteButton);
 
-            deleteButton.clickable.clicked += ()=>HandleDeleteButton(int.Parse(objectField.label));
+            deleteButton.clickable.clicked += () => HandleDeleteButton(int.Parse(objectField.label));
         }
-        
+
         OnListChanged?.Invoke(_list);
     }
 
     private void HandleDeleteButton(int i)
     {
         _countField.SetValueWithoutNotify(_countField.value - 1);
-        
-        Debug.Log(_list[i]);
+
         _list.RemoveAt(i);
         var field = _objectFields[i];
         var deleteButton = _deleteButtons[i];
         var item = _objectItems[i];
-        
+
         _objectFields.RemoveAt(i);
         _deleteButtons.RemoveAt(i);
         _objectItems.RemoveAt(i);
-        
+
         field.RemoveFromHierarchy();
         deleteButton.RemoveFromHierarchy();
         item.RemoveFromHierarchy();
-        
+
         for (var j = i; j < _objectFields.Count; j++)
         {
             _objectFields[j].label = j.ToString();
@@ -201,14 +202,66 @@ public class EditorList : VisualElement
         {
             throw new InvalidCastException();
         }
+
         return (List<T>)_list;
     }
-    
+
     public void AddList(object item)
     {
-        if(item.GetType() != _listType)
-            throw new InvalidCastException();
-        _list.Add(item);
+        if (item == null)
+            _list.Add(default);
+        else
+        {
+            if (item.GetType() != _listType)
+                throw new InvalidCastException();
+            _list.Add(item);
+        }
+
         _countField.SetValueWithoutNotify(_list.Count);
+
+        var i = _list.Count;
+
+        var objectField = new ObjectField();
+        objectField.objectType = _listType;
+        objectField.label = (i-1).ToString();
+        objectField.RegisterValueChangedCallback(evt => { _list[i - 1] = evt.newValue; });
+        objectField.SetValueWithoutNotify((Object)item);
+        _objectFields.Add(objectField);
+
+        VisualElement objectItem = new VisualElement();
+        objectItem.AddToClassList("object-item");
+        _objectItems.Add(objectItem);
+
+        Button deleteButton = new Button();
+        deleteButton.text = "X";
+        _deleteButtons.Add(deleteButton);
+
+        _listScrollView.Add(objectItem);
+        objectItem.Add(objectField);
+        objectItem.Add(deleteButton);
+
+        deleteButton.clickable.clicked += () => HandleDeleteButton(int.Parse(objectField.label));
+    }
+
+    public void ClearList()
+    {
+        for (int i = _objectItems.Count - 1; i > -1; i--)
+        {
+            var btn = _deleteButtons[i];
+            var obj = _objectItems[i];
+            var field = _objectFields[i];
+
+            _deleteButtons.RemoveAt(i);
+            _objectFields.RemoveAt(i);
+            _objectItems.RemoveAt(i);
+
+            btn.RemoveFromHierarchy();
+            obj.RemoveFromHierarchy();
+            field.RemoveFromHierarchy();
+        }
+
+        _countField.SetValueWithoutNotify(0);
+
+        _list.Clear();
     }
 }
