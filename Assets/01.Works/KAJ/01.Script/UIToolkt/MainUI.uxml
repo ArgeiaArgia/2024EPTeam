@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="StatProgress" src="project://database/Assets/KAJ/01.Script/UIToolkt/StatProgress.uxml?fileID=9197481963319205126&amp;guid=c27f309bea30c6243adbea2f8b5144fc&amp;type=3#StatProgress" />
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:VisualElement name="Stat" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/01.Works/KGH/02.Sprites/01.Parallax/00.Ocean/Ocean_5/1.png?fileID=21300000&amp;guid=1c34162ebd726334080d2c09a3856f2a&amp;type=3#1&quot;); padding-top: 80px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; flex-direction: column;">
+            <ui:Label tabindex="-1" text="Stats" parse-escape-sequences="true" display-tooltip-when-elided="true" style="position: absolute; top: 25px; left: 132px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; width: 100%; height: 0;" />
+            <ui:Instance template="StatProgress" name="StatProgress" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
