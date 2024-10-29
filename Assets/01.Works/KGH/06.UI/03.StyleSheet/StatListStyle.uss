@@ -1,19 +1,19 @@
 .stat {
     background-image: url("project://database/Assets/01.Works/KGH/02.Sprites/02.RoundBoxes/RoundBoxFill2.png?fileID=21300000&guid=f5267b9218c781041a57cd972ebe73fb&type=3#RoundBoxFill2");
-    -unity-font-definition: url("project://database/Assets/00.ForEveryone/03.Fonts/Sam3KRFont%20SDF.asset?fileID=11400000&guid=0f08d7a2ed3a7c846ad35575c8c0973d&type=2#Sam3KRFont SDF");
-    font-size: 145%;
-    padding-top: 2%;
-    padding-right: 2%;
-    padding-bottom: 2%;
-    padding-left: 2%;
+    -unity-font-definition: url("project://database/Assets/00.ForEveryone/03.Fonts/DOSIyagiBoldface%20SDF.asset?fileID=11400000&guid=da4a474443a24d84c9e07d9afee5a290&type=2#DOSIyagiBoldface SDF");
+    font-size: 150%;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
     color: rgb(244, 238, 238);
-    -unity-text-outline-width: 1px;
-    -unity-text-outline-color: rgba(0, 0, 0, 0.37);
-    -unity-font-style: bold;
-    margin-top: 2%;
-    margin-right: 2%;
-    margin-bottom: 2%;
-    margin-left: 2%;
+    -unity-text-outline-width: 10px;
+    -unity-text-outline-color: rgb(59, 73, 82);
+    -unity-font-style: normal;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
     -unity-background-image-tint-color: rgb(94, 117, 130);
     flex-grow: 1;
 }
@@ -24,11 +24,33 @@
     border-bottom-width: 0;
     border-left-width: 0;
     background-color: rgba(0, 0, 0, 0);
-    background-image: url("project://database/Assets/01.Works/KGH/02.Sprites/02.RoundBoxes/RoundBoxOutline2.png?fileID=21300000&guid=f7970c5c74679464fad4e27abdc77f88&type=3#RoundBoxOutline2");
+    background-image: url("project://database/Assets/01.Works/KGH/02.Sprites/02.RoundBoxes/RoundBoxOutline3.png?fileID=21300000&guid=db46e242f94beb240ba63e602e074ff3&type=3#RoundBoxOutline3");
+    -unity-background-image-tint-color: rgb(244, 238, 238);
+    color: rgb(55, 62, 66);
 }
 
 .stat .unity-progress-bar__progress {
-    background-image: url("project://database/Assets/01.Works/KGH/02.Sprites/02.RoundBoxes/RoundBoxFill2.png?fileID=21300000&guid=f5267b9218c781041a57cd972ebe73fb&type=3#RoundBoxFill2");
+    background-image: url("project://database/Assets/01.Works/KGH/02.Sprites/02.RoundBoxes/RoundBoxFill3.png?fileID=21300000&guid=070565248dcba064e9e254d8c8131926&type=3#RoundBoxFill3");
     background-color: rgba(0, 0, 0, 0);
     -unity-background-image-tint-color: rgb(194, 149, 91);
+}
+
+.tab-button {
+    background-image: url("project://database/Assets/01.Works/KGH/02.Sprites/02.RoundBoxes/RoundBoxFill3.png?fileID=21300000&guid=070565248dcba064e9e254d8c8131926&type=3#RoundBoxFill3");
+    -unity-background-image-tint-color: rgb(156, 82, 56);
+    color: rgb(55, 62, 66);
+    -unity-font-definition: url("project://database/Assets/00.ForEveryone/03.Fonts/DOSIyagiBoldface%20SDF.asset?fileID=11400000&guid=da4a474443a24d84c9e07d9afee5a290&type=2#DOSIyagiBoldface SDF");
+    font-size: 15px;
+    width: 200px;
+}
+
+.tab-button:hover {
+}
+
+.tab-button.clicked {
+    -unity-background-image-tint-color: rgb(194, 149, 91);
+}
+
+.progress-line {
+    -unity-background-image-tint-color: rgb(244, 238, 238);
 }

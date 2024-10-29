@@ -1,0 +1,27 @@
+.tab-button {
+    width: 160px;
+    height: 45px;
+    -unity-text-align: middle-right;
+    transition-timing-function: ease-out-bounce;
+    transition-duration: 0.5s;
+    background-image: url("project://database/Assets/01.Works/KGH/02.Sprites/02.RoundBoxes/RoundBoxFull3.png?fileID=21300000&guid=a4d84679bf90ba7499599b817fd1fcaa&type=3#RoundBoxFull3");
+    background-color: rgba(0, 0, 0, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    left: -70px;
+    font-size: 24px;
+}
+
+.tab-button:hover {
+    transition-timing-function: ease-out-bounce;
+    transition-duration: 0.5s;
+    -unity-font-style: normal;
+    left: -50px;
+}
+
+.tab-button.clicked {
+    -unity-font-style: bold;
+    left: -50px;
+}

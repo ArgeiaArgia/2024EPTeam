@@ -12,14 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12277ccfcc48b8a469a4d8bd467dbf4d, type: 3}
   m_Name: Pikmin
   m_EditorClassIdentifier: 
-  itemNumber: 0
   itemName: Pikmin
-  itemIcon: {fileID: 0}
-  itemSprite: {fileID: 0}
+  itemIcon: {fileID: -1322998005, guid: 6b026523e6264424998efa104bcd9e8c, type: 3}
+  itemSprite: {fileID: 1384644936, guid: 789301e609277f549b61e632456a6be2, type: 3}
   itemType: 0
   itemCount: 0
-  percentageOfCatch: 0
+  percentageOfCatch: 0.32
   materialList: []
   toolType: 1
   foodType: 0
-  description: 
+  description: 22q2q

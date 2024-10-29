@@ -12,6 +12,7 @@ public class StatElement : VisualElement
     private VisualElement _icon;
     private Label _titleLabel;
     private ProgressBar _progressBar;
+    private VisualElement _lineContainer;
 
     private string _iconName;
 
@@ -46,6 +47,17 @@ public class StatElement : VisualElement
         }
     }
 
+    private bool _isShowValue;
+    bool IsShowValue
+    {
+        get => _isShowValue;
+        set
+        {
+            _isShowValue = value;
+            _progressBar.title = value ? $"{Value}/{MaxValue}" : "";
+        }
+    }
+    
     public int Value
     {
         get => Mathf.RoundToInt(_progressBar.value);
@@ -68,6 +80,36 @@ public class StatElement : VisualElement
         set => _progressBar.lowValue = value;
     }
 
+    private bool _isShowLine;
+    public bool IsShowLine
+    {
+        get => _isShowLine;
+        set
+        {
+            _isShowLine = value;
+            _lineContainer.style.display = value ? DisplayStyle.Flex : DisplayStyle.None;
+        }
+    }
+
+    private int _lineCount;
+    public int LineCount
+    {
+        get => _lineCount;
+        set
+        {
+            _lineCount = value;
+            _lineContainer.Clear();
+            for (int i = 0; i < value; i++)
+            {
+                var line = new VisualElement();
+                line.AddToClassList("progress-line");
+                _lineContainer.Add(line);
+            }
+            var empty = new VisualElement();
+            empty.style.flexGrow = 1;
+            _lineContainer.Add(empty);
+        }
+    }
     public StatElement()
     {
         var visualTree = Resources.Load<VisualTreeAsset>("CustomControls/StatElement");
@@ -79,11 +121,19 @@ public class StatElement : VisualElement
         _icon = this.Q<VisualElement>("Icon");
         _titleLabel = this.Q<Label>("Name");
         _progressBar = this.Q<ProgressBar>("ProgressBar");
+        _lineContainer = new VisualElement();
+        _lineContainer.AddToClassList("line-container");
+        _progressBar.Q<VisualElement>(className:"unity-progress-bar__background").Add(_lineContainer);
+        
+        _lineContainer.PlaceBehind(_progressBar.Q<VisualElement>(className:"unity-progress-bar__title-container"));
     }
 
     private void ChangeValueText()
     {
-        _progressBar.title = $"{Value}/{MaxValue}";
+        if(_isShowValue)
+            _progressBar.title = $"{Value}/{MaxValue}";
+        else
+            _progressBar.title = "";
     }
 
     public new class UxmlTraits : VisualElement.UxmlTraits
@@ -93,7 +143,10 @@ public class StatElement : VisualElement
 
         UxmlStringAttributeDescription m_title = new()
             { name = "title", defaultValue = "Stat Element" };
-
+        
+        UxmlBoolAttributeDescription m_isShowValue = new()
+            { name = "is-show-value", defaultValue = true };
+        
         UxmlIntAttributeDescription m_value = new()
             { name = "value", defaultValue = 25 };
 
@@ -102,7 +155,13 @@ public class StatElement : VisualElement
 
         UxmlIntAttributeDescription m_minValue = new()
             { name = "min-value", defaultValue = 0 };
-
+        
+        UxmlBoolAttributeDescription m_isShowLine = new()
+            { name = "is-show-line", defaultValue = false };
+        
+        UxmlIntAttributeDescription m_lineCount = new()
+            { name = "line-count", defaultValue = 5 };
+        
         public override IEnumerable<UxmlChildElementDescription> uxmlChildElementsDescription
         {
             get { yield break; }
@@ -114,9 +173,12 @@ public class StatElement : VisualElement
             var ate = ve as StatElement;
             ate.IconName = m_iconName.GetValueFromBag(bag, cc);
             ate.Title = m_title.GetValueFromBag(bag, cc);
+            ate.IsShowValue = m_isShowValue.GetValueFromBag(bag, cc);
             ate.Value = m_value.GetValueFromBag(bag, cc);
             ate.MaxValue = m_maxValue.GetValueFromBag(bag, cc);
             ate.MinValue = m_minValue.GetValueFromBag(bag, cc);
+            ate.IsShowLine = m_isShowLine.GetValueFromBag(bag, cc);
+            ate.LineCount = m_lineCount.GetValueFromBag(bag, cc);
         }
     }
 }

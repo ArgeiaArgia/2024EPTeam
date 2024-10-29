@@ -9,7 +9,7 @@ public class StatManager : SerializedMonoBehaviour
 {
     [SerializeField] private InGameUI inGameUI;
     [OdinSerialize] private Dictionary<StatType, float> delay;
-    public Dictionary<StatType, int> statValues;
+    [HideInInspector] public Dictionary<StatType, int> statValues;
 
     private void Start()
     {
@@ -28,7 +28,7 @@ public class StatManager : SerializedMonoBehaviour
     {
         yield return new WaitForSeconds(time);
         statValues[type] -= 1;
-        inGameUI.ChangeValue(type, statValues[type]);
+        inGameUI.ChangeStatValue(type, statValues[type]);
         StartCoroutine(ReduceAsTime(type, time));
     }
 }

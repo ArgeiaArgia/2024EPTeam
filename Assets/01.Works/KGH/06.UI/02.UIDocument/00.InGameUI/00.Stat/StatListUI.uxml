@@ -1,12 +1,19 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/01.Works/KGH/06.UI/03.StyleSheet/StatListStyle.uss?fileID=7433441132597879392&amp;guid=9eb32d52ecff5b34f9a2c09801ff6e92&amp;type=3#StatListStyle" />
-    <FoldableElement foldable-name="상태 " header-color="#373E42FF" style="background-image: url(&quot;project://database/Assets/01.Works/KGH/02.Sprites/02.RoundBoxes/RoundBoxFill2.png?fileID=21300000&amp;guid=f5267b9218c781041a57cd972ebe73fb&amp;type=3#RoundBoxFill2&quot;); -unity-background-image-tint-color: rgb(194, 149, 91); -unity-font-definition: url(&quot;project://database/Assets/00.ForEveryone/03.Fonts/DOSIyagiBoldface%20SDF.asset?fileID=11400000&amp;guid=da4a474443a24d84c9e07d9afee5a290&amp;type=2#DOSIyagiBoldface SDF&quot;);">
-        <ui:VisualElement name="StatList" style="flex-grow: 1; justify-content: space-around;">
-            <StatElement value="100" title="배고픔" icon-name="test" name="HugerStat" class="stat" />
-            <StatElement value="100" title="목마름 " icon-name="test" name="ThirstStat" class="stat" />
-            <StatElement value="100" title="피로도 " icon-name="test" name="TiredStat" class="stat" />
-            <StatElement value="100" title="지루함" icon-name="test" name="BoredStat" class="stat" />
-            <StatElement value="100" title="건강함 " icon-name="test" name="HealthStat" class="stat" />
-        </ui:VisualElement>
+    <FoldableElement foldable-name="상태 " header-color="#373E42FF" style="-unity-font-definition: url(&quot;project://database/Assets/00.ForEveryone/03.Fonts/DOSIyagiBoldface%20SDF.asset?fileID=11400000&amp;guid=da4a474443a24d84c9e07d9afee5a290&amp;type=2#DOSIyagiBoldface SDF&quot;); font-size: 16px;">
+        <TabElement tab-count="2" tab-names="상태창,능력치,능력치" name="TabElement">
+            <ui:VisualElement name="StatList" style="flex-grow: 1; justify-content: space-around; background-image: url(&quot;project://database/Assets/01.Works/KGH/02.Sprites/02.RoundBoxes/HalfRoundBoxFull3.png?fileID=21300000&amp;guid=c69b41fb4d05e084aac59e8aee687e95&amp;type=3#HalfRoundBoxFull3&quot;); -unity-background-image-tint-color: rgb(194, 149, 91);">
+                <StatElement value="100" title="배고픔" icon-name="test" name="HugerStat" class="stat" />
+                <StatElement value="100" title="목마름 " icon-name="test" name="ThirstStat" class="stat" />
+                <StatElement value="100" title="피로도 " icon-name="test" name="TiredStat" class="stat" />
+                <StatElement value="100" title="지루함" icon-name="test" name="BoredStat" class="stat" />
+                <StatElement value="100" title="건강함 " icon-name="test" name="HealthStat" class="stat" />
+            </ui:VisualElement>
+            <ui:VisualElement name="AbilityList" style="flex-grow: 1; justify-content: space-around; background-image: url(&quot;project://database/Assets/01.Works/KGH/02.Sprites/02.RoundBoxes/HalfRoundBoxFull3.png?fileID=21300000&amp;guid=c69b41fb4d05e084aac59e8aee687e95&amp;type=3#HalfRoundBoxFull3&quot;); -unity-background-image-tint-color: rgb(194, 149, 91); display: none;">
+                <StatElement value="0" title="낚시" icon-name="test" name="FishingAbility" is-show-line="true" is-show-value="false" class="stat" />
+                <StatElement value="0" title="요리 " icon-name="test" name="CookingAbility" is-show-line="true" is-show-value="false" class="stat" />
+                <StatElement value="0" title="수리" icon-name="test" name="RepairAbility" is-show-line="true" is-show-value="false" class="stat" />
+            </ui:VisualElement>
+        </TabElement>
     </FoldableElement>
 </ui:UXML>

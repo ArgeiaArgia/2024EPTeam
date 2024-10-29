@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UIElements;
 
 public class ItemSO : ScriptableObject
 {
-    public int itemNumber; // 아이템 번호
     public string itemName; // 아이템 이름
     public Sprite itemIcon; // 아이템 아이콘
     public Sprite itemSprite; // 아이템 스프라이트
@@ -16,7 +16,7 @@ public class ItemSO : ScriptableObject
     public ToolType toolType; // 도구 타입(도구)
     public Dictionary<StatType, int> StatEffect = new Dictionary<StatType, int>(); //물고기, 요리
     public FoodType foodType; //요리
-    public Dictionary<string, Action> ItemActions = new Dictionary<string, Action>();
+    public Dictionary<string, UnityEvent> ItemEvents = new Dictionary<string, UnityEvent>();
     public string description; // 설명
 }
 
