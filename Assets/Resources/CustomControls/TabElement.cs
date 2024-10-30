@@ -12,6 +12,7 @@ public class TabElement : VisualElement
     }
 
     private VisualElement _tabButtonContainer;
+    private VisualElement _leftTabButtonContainer;
     private VisualElement _tabContentsContainer;
 
     //이름, 배경, 버튼 수
@@ -28,6 +29,35 @@ public class TabElement : VisualElement
             for (int i = 0; i < Mathf.Min(names.Length, _tabButtonList.Count); i++)
             {
                 _tabButtonList[i].text = names[i];
+            }
+        }
+    }
+
+    private bool _isTabLeft;
+
+    public bool IsTabLeft
+    {
+        get => _isTabLeft;
+        set
+        {
+            _isTabLeft = value;
+            if (_isTabLeft)
+            {
+                for (int i = _tabButtonContainer.childCount - 1; i > -1 ; i--)
+                {
+                    var btn = _tabButtonContainer.ElementAt(i);
+                    _leftTabButtonContainer.Add(btn);
+                    btn.AddToClassList("left");
+                }
+            }
+            else
+            {
+                for (int i = _leftTabButtonContainer.childCount - 1; i > -1; i--)
+                {
+                    var btn = _leftTabButtonContainer.ElementAt(i);
+                    _tabButtonContainer.Add(btn);
+                    btn.RemoveFromClassList("left");
+                }
             }
         }
     }
@@ -71,6 +101,7 @@ public class TabElement : VisualElement
 
         _tabButtonContainer = this.Q<VisualElement>("TabButtons");
         _tabContentsContainer = this.Q<VisualElement>("TabContents");
+        _leftTabButtonContainer = this.Q<VisualElement>("LeftTabButtons");
     }
 
     public new class UxmlTraits : VisualElement.UxmlTraits
@@ -78,6 +109,9 @@ public class TabElement : VisualElement
         UxmlStringAttributeDescription m_tabNames = new UxmlStringAttributeDescription
             { name = "tab-names", defaultValue = "Tab1,Tab2,Tab3" };
 
+        UxmlBoolAttributeDescription m_isTabLeft = new UxmlBoolAttributeDescription
+            { name = "is-tab-left", defaultValue = false };
+        
         UxmlIntAttributeDescription m_tabCount = new UxmlIntAttributeDescription
             { name = "tab-count", defaultValue = 3 };
 
@@ -91,9 +125,10 @@ public class TabElement : VisualElement
             base.Init(ve, bag, cc);
             TabElement ate = ve as TabElement;
             ate.TabNames = m_tabNames.GetValueFromBag(bag, cc);
+            ate.IsTabLeft = m_isTabLeft.GetValueFromBag(bag, cc);
             ate.TabCount = Mathf.Clamp(m_tabCount.GetValueFromBag(bag, cc), 0, 10);
             ate._tabContentsContainer = ate.contentContainer;
-            
+
             if (ate.TabCount > 0)
             {
                 ate.TabButtonClick(ate._tabButtonList[0]);
@@ -110,7 +145,15 @@ public class TabElement : VisualElement
         else
             tabButton.text = $"Tab{_tabButtonList.Count + 1}";
         tabButton.AddToClassList("tab-button");
-        _tabButtonContainer.Add(tabButton);
+        if (_isTabLeft)
+        {
+            _leftTabButtonContainer.Add(tabButton);
+            tabButton.AddToClassList("left");
+        }
+        else
+        {
+            _tabButtonContainer.Add(tabButton);
+        }
 
         tabButton.clickable.clicked += () => { TabButtonClick(tabButton); };
     }

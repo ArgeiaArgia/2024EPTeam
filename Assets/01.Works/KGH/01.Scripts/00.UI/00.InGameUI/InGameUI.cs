@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Sirenix.Serialization;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UIElements;
 
 public class InGameUI : ToolkitParents
@@ -12,6 +13,7 @@ public class InGameUI : ToolkitParents
     private Dictionary<StatType, StatUI> _statUIs;
     private Dictionary<AbilityType, AbilityUI> _abilityUIs;
 
+    public UnityEvent<AbilityType, int> OnChangeAbilityValue;
     protected override void Awake()
     {
         base.Awake();
@@ -33,7 +35,12 @@ public class InGameUI : ToolkitParents
         var abilityElements = root.Q<VisualElement>("AbilityList").Query<StatElement>().ToList();
         for (int i = 0; i < abilityElements.Count; i++)
         {
-            //asddasdfsfdf
+            var abilityElement = abilityElements[i];
+            var abilityType = (AbilityType)i;
+            var abilityUI = new AbilityUI(abilityElement);
+            _abilityUIs.Add(abilityType, abilityUI);
+            
+            abilityUI.OnChangeStatValue += value => OnChangeAbilityValue?.Invoke(abilityType, value);
         }
     }
 

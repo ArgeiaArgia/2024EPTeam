@@ -25,3 +25,20 @@
     -unity-font-style: bold;
     left: -50px;
 }
+
+.tab-button.left {
+    -unity-text-align: middle-left;
+    left: -100px;
+}
+
+.tab-button.left:hover {
+    transition-timing-function: ease-out-bounce;
+    transition-duration: 0.5s;
+    -unity-font-style: normal;
+    left: -120px;
+}
+
+.tab-button.left.clicked {
+    -unity-font-style: bold;
+    left: -120px;
+}
