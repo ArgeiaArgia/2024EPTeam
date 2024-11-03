@@ -1,9 +1,10 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="ShipInventory" src="project://database/Assets/01.Works/KGH/06.UI/02.UIDocument/00.InGameUI/02.Item/ShipInventory.uxml?fileID=9197481963319205126&amp;guid=9d4ccfd47a16ca24187c7a84b56f9eea&amp;type=3#ShipInventory" />
+    <Style src="project://database/Assets/01.Works/KGH/06.UI/03.StyleSheet/ItemWindowStyle.uss?fileID=7433441132597879392&amp;guid=8d1def4ce9e080445b4880f15b714720&amp;type=3#ItemWindowStyle" />
     <FoldableElement foldable-name="아이템 &amp; 제작" header-color="#373E42FF" style="-unity-font-definition: url(&quot;project://database/Assets/00.ForEveryone/03.Fonts/Sam3KRFont%20SDF.asset?fileID=11400000&amp;guid=0f08d7a2ed3a7c846ad35575c8c0973d&amp;type=2#Sam3KRFont SDF&quot;);">
         <TabElement is-tab-left="true" tab-count="2" tab-position-type="Bottom" name="TabElement" tab-names="아이템,제작 ">
             <TabElement tab-position-type="Left" name="ItemTab" tab-names="배" tab-count="1">
-                <ui:Instance template="ShipInventory" name="ShipInventory" />
+                <ui:Instance template="ShipInventory" name="ShipInventory" style="width: 550px; height: 500px;" />
             </TabElement>
             <TabElement tab-position-type="Left" name="CraftTab" style="display: none;">
                 <ui:VisualElement name="Item" style="flex-grow: 1;" />

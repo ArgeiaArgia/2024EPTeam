@@ -1,0 +1,8 @@
+.tab-button {
+    color: rgb(255, 255, 255);
+    -unity-background-image-tint-color: rgb(156, 82, 56);
+}
+
+.tab-button.clicked {
+    -unity-background-image-tint-color: rgb(194, 149, 91);
+}
