@@ -1,5 +1,5 @@
 .tab-button {
-    color: rgb(255, 255, 255);
+    color: rgb(55, 62, 66);
     -unity-background-image-tint-color: rgb(156, 82, 56);
 }
 
