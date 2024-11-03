@@ -11,8 +11,9 @@ public class TabElement : VisualElement
     {
     }
 
-    private VisualElement _tabButtonContainer;
-    private VisualElement _leftTabButtonContainer;
+    private readonly VisualElement _tabButtonContainer;
+    private readonly VisualElement _leftTabButtonContainer;
+    private readonly VisualElement _bottomTabButtonContainer;
     private VisualElement _tabContentsContainer;
 
     //이름, 배경, 버튼 수
@@ -24,6 +25,7 @@ public class TabElement : VisualElement
         set
         {
             _tabNames = value;
+            _tabNameList.Clear();
             var names = _tabNames.Split(',');
             _tabNameList.AddRange(names);
             for (int i = 0; i < Mathf.Min(names.Length, _tabButtonList.Count); i++)
@@ -33,31 +35,48 @@ public class TabElement : VisualElement
         }
     }
 
-    private bool _isTabLeft;
+    private TabPositionType _tabPositionType;
 
-    public bool IsTabLeft
+    public TabPositionType TabPositionType
     {
-        get => _isTabLeft;
+        get => _tabPositionType;
         set
         {
-            _isTabLeft = value;
-            if (_isTabLeft)
+            _tabPositionType = value;
+            switch (_tabPositionType)
             {
-                for (int i = _tabButtonContainer.childCount - 1; i > -1 ; i--)
-                {
-                    var btn = _tabButtonContainer.ElementAt(i);
-                    _leftTabButtonContainer.Add(btn);
-                    btn.AddToClassList("left");
-                }
-            }
-            else
-            {
-                for (int i = _leftTabButtonContainer.childCount - 1; i > -1; i--)
-                {
-                    var btn = _leftTabButtonContainer.ElementAt(i);
-                    _tabButtonContainer.Add(btn);
-                    btn.RemoveFromClassList("left");
-                }
+                case TabPositionType.Right:
+                    for (var i = _leftTabButtonContainer.childCount - 1; i > -1; i--)
+                    {
+                        var btn = _leftTabButtonContainer.ElementAt(i);
+                        _tabButtonContainer.Add(btn);
+                        btn.RemoveFromClassList("left");
+                        btn.RemoveFromClassList("bottom");
+                    }
+
+                    break;
+                case TabPositionType.Left:
+                    for (var i = _tabButtonContainer.childCount - 1; i > -1; i--)
+                    {
+                        var btn = _tabButtonContainer.ElementAt(i);
+                        _leftTabButtonContainer.Add(btn);
+                        btn.AddToClassList("left");
+                        btn.RemoveFromClassList("bottom");
+                    }
+
+                    break;
+                case TabPositionType.Bottom:
+                    for (var i = _tabButtonContainer.childCount - 1; i > -1; i--)
+                    {
+                        var btn = _tabButtonContainer.ElementAt(i);
+                        _bottomTabButtonContainer.Add(btn);
+                        btn.RemoveFromClassList("left");
+                        btn.AddToClassList("bottom");
+                    }
+
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
     }
@@ -69,22 +88,25 @@ public class TabElement : VisualElement
         get => _tabCount;
         set
         {
-            for (int i = _tabCount; i < value; i++)
-            {
-                AddTab();
-            }
-
-            for (int i = _tabCount - 1; i >= value; i--)
+            // Clear existing tabs and contents
+            for (int i = _tabButtonList.Count - 1; i >= 0; i--)
             {
                 RemoveTab(i);
             }
 
+            // Add new tabs
+            for (int i = 0; i < value; i++)
+            {
+                AddTab();
+            }
+
+            _tabCount = value;
+
+            // Select the first tab if available
             if (_tabCount > 0)
             {
                 TabButtonClick(_tabButtonList[0]);
             }
-
-            _tabCount = value;
         }
     }
 
@@ -102,6 +124,7 @@ public class TabElement : VisualElement
         _tabButtonContainer = this.Q<VisualElement>("TabButtons");
         _tabContentsContainer = this.Q<VisualElement>("TabContents");
         _leftTabButtonContainer = this.Q<VisualElement>("LeftTabButtons");
+        _bottomTabButtonContainer = this.Q<VisualElement>("BottomTabButtons");
     }
 
     public new class UxmlTraits : VisualElement.UxmlTraits
@@ -109,9 +132,10 @@ public class TabElement : VisualElement
         UxmlStringAttributeDescription m_tabNames = new UxmlStringAttributeDescription
             { name = "tab-names", defaultValue = "Tab1,Tab2,Tab3" };
 
-        UxmlBoolAttributeDescription m_isTabLeft = new UxmlBoolAttributeDescription
-            { name = "is-tab-left", defaultValue = false };
-        
+        UxmlEnumAttributeDescription<TabPositionType> m_tabPositionType =
+            new UxmlEnumAttributeDescription<TabPositionType>
+                { name = "tab-position-type", defaultValue = TabPositionType.Right };
+
         UxmlIntAttributeDescription m_tabCount = new UxmlIntAttributeDescription
             { name = "tab-count", defaultValue = 3 };
 
@@ -125,7 +149,7 @@ public class TabElement : VisualElement
             base.Init(ve, bag, cc);
             TabElement ate = ve as TabElement;
             ate.TabNames = m_tabNames.GetValueFromBag(bag, cc);
-            ate.IsTabLeft = m_isTabLeft.GetValueFromBag(bag, cc);
+            ate.TabPositionType = m_tabPositionType.GetValueFromBag(bag, cc);
             ate.TabCount = Mathf.Clamp(m_tabCount.GetValueFromBag(bag, cc), 0, 10);
             ate._tabContentsContainer = ate.contentContainer;
 
@@ -140,19 +164,25 @@ public class TabElement : VisualElement
     {
         var tabButton = new Button();
         _tabButtonList.Add(tabButton);
-        if (_tabButtonList.Count < _tabNameList.Count)
+        if (_tabButtonList.Count <= _tabNameList.Count)
             tabButton.text = _tabNameList[_tabButtonList.Count - 1];
         else
-            tabButton.text = $"Tab{_tabButtonList.Count + 1}";
+            tabButton.text = $"Tab{_tabButtonList.Count}";
         tabButton.AddToClassList("tab-button");
-        if (_isTabLeft)
+
+        switch (_tabPositionType)
         {
-            _leftTabButtonContainer.Add(tabButton);
-            tabButton.AddToClassList("left");
-        }
-        else
-        {
-            _tabButtonContainer.Add(tabButton);
+            case TabPositionType.Right:
+                _tabButtonContainer.Add(tabButton);
+                break;
+            case TabPositionType.Left:
+                _leftTabButtonContainer.Add(tabButton);
+                tabButton.AddToClassList("left");
+                break;
+            case TabPositionType.Bottom:
+                _bottomTabButtonContainer.Add(tabButton);
+                tabButton.AddToClassList("bottom");
+                break;
         }
 
         tabButton.clickable.clicked += () => { TabButtonClick(tabButton); };
@@ -203,4 +233,11 @@ public class TabElement : VisualElement
             return;
         }
     }
+}
+
+public enum TabPositionType
+{
+    Right,
+    Left,
+    Bottom
 }

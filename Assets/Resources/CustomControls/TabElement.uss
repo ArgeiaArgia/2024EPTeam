@@ -42,3 +42,21 @@
     -unity-font-style: bold;
     left: -120px;
 }
+
+.tab-button.bottom {
+    width: 45px;
+    height: 160px;
+    left: 0;
+    top: -70px;
+    -unity-text-align: lower-center;
+    white-space: normal;
+}
+
+.tab-button.bottom:hover {
+    top: -50px;
+}
+
+.tab-button.bottom.clicked {
+    top: -50px;
+    -unity-font-style: bold;
+}
