@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/Resources/CustomControls/EditorList.uss?fileID=7433441132597879392&amp;guid=fa5ebcfe5bba4c1469d93939443a7323&amp;type=3#EditorList" />
+    <ui:Foldout text="List" name="List" style="flex-direction: column;">
+        <ui:ScrollView name="ListScroll" />
+        <ui:Button text="Add" parse-escape-sequences="true" display-tooltip-when-elided="true" name="AddButton" />
+    </ui:Foldout>
+</ui:UXML>

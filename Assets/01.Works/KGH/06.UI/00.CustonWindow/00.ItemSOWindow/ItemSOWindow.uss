@@ -16,13 +16,13 @@
     padding-right: 2.5px;
     padding-bottom: 2.5px;
     padding-left: 2.5px;
+    justify-content: space-between;
 }
 
 .preview-image {
     flex-grow: 1;
-    background-image: url("project://database/Assets/00.ForEveryone/01.Sprites/fishing%20icons%2016x16.png?fileID=-973852878&guid=789301e609277f549b61e632456a6be2&type=3#fishing icons 16x16_8");
     -unity-background-scale-mode: scale-to-fit;
-    height: 75px;
+    height: 100px;
     border-top-width: 2px;
     border-right-width: 2px;
     border-bottom-width: 2px;
@@ -39,14 +39,55 @@
     margin-right: 5px;
     margin-bottom: 5px;
     margin-left: 5px;
-    padding-top: 5px;
-    padding-right: 5px;
-    padding-bottom: 5px;
-    padding-left: 5px;
+    flex-shrink: 0;
 }
 
 .preview-field {
 }
 
-.preview-field#Label {
+.preview-field > .unity-label {
+    flex-grow: 0;
+    min-width: 25px;
+}
+
+.name-field {
+}
+
+.name-field > .unity-label {
+    min-width: 70px;
+}
+
+.part {
+    margin-bottom: 10px;
+}
+
+.desc-field {
+    flex-basis: 150px;
+}
+
+.desc-field > .unity-label {
+    min-width: auto;
+    flex-shrink: 0;
+}
+
+.desc-field > .unity-base-field__input {
+    overflow: hidden;
+}
+
+.desc-field .unity-text-element--inner-input-field-component {
+    -unity-text-align: upper-left;
+    white-space: normal;
+}
+
+.percentage-slider {
+}
+
+.percentage-slider > .unity-label {
+    min-width: 50px;
+}
+
+.preview {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 50%;
 }

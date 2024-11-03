@@ -1,10 +1,10 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
     <Style src="project://database/Assets/01.Works/KGH/06.UI/00.CustonWindow/00.ItemSOWindow/ItemSOWindow.uss?fileID=7433441132597879392&amp;guid=8b61e96bf6e804d41a6822a9200c11fe&amp;type=3#ItemSOWindow" />
-    <SplitView name="ItemView" fixed-pane-initial-dimension="200">
+    <SplitView name="ItemView" fixed-pane-initial-dimension="175">
         <ui:VisualElement name="LeftPanel" class="panel" style="min-width: 110px;">
             <ui:ScrollView name="TotalItemList" style="text-overflow: ellipsis; -unity-text-align: middle-center; overflow: hidden; white-space: nowrap;">
                 <ui:Foldout text="About Tools" name="MaterialToolFoldout">
-                    <ui:Foldout text="Material" name="MaterialFoldout" />
+                    <ui:Foldout text="Trash" name="TrashFoldout" />
                     <ui:Foldout text="Tools" name="ToolFoldout" />
                 </ui:Foldout>
                 <ui:Foldout text="About Foods" name="IngredientFoodFoldout">
@@ -12,16 +12,34 @@
                     <ui:Foldout text="Food" name="FoodFoldout" />
                 </ui:Foldout>
             </ui:ScrollView>
+            <ui:Button text="Create New Item" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CreateNewButton" />
         </ui:VisualElement>
         <ui:VisualElement name="RightPanel" class="panel" style="flex-grow: 1;">
-            <ui:VisualElement name="ItemInpector" style="flex-grow: 1;">
-                <ui:VisualElement name="ItemPreview" style="flex-direction: row;">
-                    <ui:VisualElement name="IconPreview" style="flex-grow: 1;">
+            <ui:ScrollView name="ItemInspector" style="flex-grow: 1; display: flex;">
+                <ui:VisualElement name="ItemPreview" class="part" style="flex-direction: row;">
+                    <ui:VisualElement name="IconPreview" class="preview">
                         <ui:VisualElement name="IconImage" class="preview-image" />
                         <uie:ObjectField label="Icon" type="UnityEngine.Sprite, UnityEngine.CoreModule" name="IconField" class="preview-field" />
                     </ui:VisualElement>
+                    <ui:VisualElement name="SpritePreview" class="preview" style="flex-grow: 1;">
+                        <ui:VisualElement name="SpriteImage" class="preview-image" />
+                        <uie:ObjectField label="Sprite" type="UnityEngine.Sprite, UnityEngine.CoreModule" name="SpriteField" class="preview-field" />
+                    </ui:VisualElement>
                 </ui:VisualElement>
-            </ui:VisualElement>
+                <ui:VisualElement name="NameChange" class="part">
+                    <ui:TextField picking-mode="Ignore" label="Item Name" name="NameField" class="name-field" />
+                    <ui:Button text="Change Name" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ChangeNameButton" />
+                </ui:VisualElement>
+                <ui:EnumField label="Item Type" type="ItemType, Assembly-CSharp" name="ItemType" class="part" />
+                <ui:Slider label="Catch" high-value="1" name="Percentage" show-input-field="true" class="percentage-slider part" />
+                <ui:VisualElement name="Additional" style="flex-grow: 1; display: flex;">
+                    <EditorList name="MaterialList" list-name="Material List" list-type="ItemSO, Assembly-CSharp" class="part" />
+                    <ui:EnumField label="Tool Type" type="ToolType, Assembly-CSharp" name="ToolType" class="part" />
+                    <EditorDictionary name="StatEffectDictionary" dictionary-name="Effects" class="part" />
+                    <ui:EnumField label="Food Type" type="FoodType, Assembly-CSharp" name="FoodType" class="part" />
+                </ui:VisualElement>
+                <ui:TextField picking-mode="Ignore" label="Desc" value="wer" name="Description" class="desc-field part" />
+            </ui:ScrollView>
         </ui:VisualElement>
     </SplitView>
 </ui:UXML>
