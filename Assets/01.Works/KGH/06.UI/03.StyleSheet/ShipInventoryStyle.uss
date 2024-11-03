@@ -1,0 +1,20 @@
+.fence {
+    border-left-color: rgb(96, 131, 151);
+    border-right-color: rgb(96, 131, 151);
+    border-top-color: rgb(96, 131, 151);
+    border-bottom-color: rgb(96, 131, 151);
+}
+
+.outer {
+    border-left-color: rgb(194, 192, 91);
+    border-right-color: rgb(194, 192, 91);
+    border-top-color: rgb(194, 192, 91);
+    border-bottom-color: rgb(194, 192, 91);
+}
+
+.interior {
+    border-left-color: rgb(194, 91, 95);
+    border-right-color: rgb(194, 91, 95);
+    border-top-color: rgb(194, 91, 95);
+    border-bottom-color: rgb(194, 91, 95);
+}
