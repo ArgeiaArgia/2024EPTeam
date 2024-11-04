@@ -1,0 +1,59 @@
+.item-element {
+    flex-basis: 30px;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-left-color: rgb(89, 89, 89);
+    border-right-color: rgb(89, 89, 89);
+    border-top-color: rgb(89, 89, 89);
+    border-bottom-color: rgb(89, 89, 89);
+    margin-top: 1px;
+    margin-right: 1px;
+    margin-bottom: 1px;
+    margin-left: 1px;
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-bottom: 1px;
+    padding-left: 1px;
+    flex-direction: row;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    min-width: 60px;
+    min-height: 30px;
+    flex-shrink: 0;
+}
+
+.item-element:hover {
+    background-color: rgba(89, 89, 89, 0.5);
+}
+
+.item-element.selected {
+    background-color: rgb(89, 89, 89);
+}
+
+.label {
+    -unity-text-align: middle-left;
+    margin-top: 1px;
+    margin-right: 1px;
+    margin-bottom: 1px;
+    margin-left: 1px;
+    flex-grow: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex-basis: 180px;
+    overflow: hidden;
+    flex-shrink: 1;
+}
+
+.delete-button {
+    background-color: rgb(168, 40, 40);
+    flex-shrink: 0;
+    flex-basis: 26px;
+}
+
+.delete-button:hover {
+    background-color: rgb(218, 82, 49);
+}

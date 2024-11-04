@@ -1,0 +1,15 @@
+.count-field {
+    width: 50px;
+}
+
+.object-item {
+    flex-grow: 1;
+    flex-direction: row;
+    justify-content: space-between;
+    min-width: auto;
+    flex-shrink: 0;
+}
+
+.object-item .unity-label {
+    min-width: 0;
+}

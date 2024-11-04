@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/01.Works/KGH/06.UI/00.CustonWindow/00.ItemSOWindow/02.StyleSheet/ItemElement.uss?fileID=7433441132597879392&amp;guid=9d8a1f3062bea8243a3d7271b1f22d98&amp;type=3#ItemElement" />
+    <ui:VisualElement name="ItemElement" class="item-element" style="justify-content: space-between; overflow: hidden;">
+        <ui:VisualElement name="ItemIcon" style="flex-basis: 26px; flex-shrink: 0; background-color: rgba(255, 0, 0, 0); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; border-left-color: rgb(89, 89, 89); border-right-color: rgb(89, 89, 89); border-top-color: rgb(89, 89, 89); border-bottom-color: rgb(89, 89, 89); background-image: url(&quot;project://database/Assets/00.ForEveryone/01.Sprites/fishing%20icons%2016x16.png?fileID=-973852878&amp;guid=789301e609277f549b61e632456a6be2&amp;type=3#fishing icons 16x16_8&quot;); -unity-background-scale-mode: scale-to-fit;" />
+        <ui:Label tabindex="-1" text="dsofhsdhhgufdhgufdhghfdughfudhgdufhgdfhgdfhgdfhgoufdhgodfnfdnkgnlkfdnglfkdngklfdngdfnglkfdngldfngdfngkldfnglfnfkdlgf" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ItemName" class="label" style="flex-grow: 1;" />
+        <ui:Button text="X" parse-escape-sequences="true" display-tooltip-when-elided="true" name="DeleteButton" class="delete-button" />
+    </ui:VisualElement>
+</ui:UXML>

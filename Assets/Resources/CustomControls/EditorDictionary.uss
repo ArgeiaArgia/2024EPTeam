@@ -1,0 +1,18 @@
+.count-field {
+    width: 50px;
+}
+
+.object-item {
+    flex-grow: 1;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.key-value-field {
+    flex-basis: 40%;
+    flex-shrink: 0;
+}
+
+.index-number {
+    flex-basis: 20px;
+}
