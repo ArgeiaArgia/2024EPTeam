@@ -12,6 +12,7 @@ public class InGameUI : ToolkitParents
     [OdinSerialize] private Dictionary<AbilityType, Sprite> _abilityIcons;
     private Dictionary<StatType, StatUI> _statUIs;
     private Dictionary<AbilityType, AbilityUI> _abilityUIs;
+    private Inventory _inventory;
 
     public UnityEvent<AbilityType, int> OnChangeAbilityValue;
     protected override void Awake()
