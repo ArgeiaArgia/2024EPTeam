@@ -26,6 +26,7 @@ public class ItemInspector
     private readonly VisualElement _additionalContent;
     private readonly EditorList _materialList;
     private readonly EnumField _toolType;
+    private readonly SliderInt _slotSlider;
     private readonly EditorDictionary _effectList;
     private readonly EnumField _foodType;
 
@@ -61,16 +62,27 @@ public class ItemInspector
         _descField = content.Q<TextField>("Description");
         _descField.RegisterValueChangedCallback((e) => HandleChangeDescription(e.newValue));
 
+        _confirmButton = content.Q<Button>("ConfirmButton");
+        _confirmButton.clicked += ()=>EditorUtility.SetDirty(_currentItem);
+        
         _additionalContent = content.Q<VisualElement>("Additional");
         _materialList = content.Q<EditorList>("MaterialList");
         _toolType = content.Q<EnumField>("ToolType");
+        _slotSlider = content.Q<SliderInt>("SlotSlider");
         _effectList = content.Q<EditorDictionary>("StatEffectDictionary");
         _foodType = content.Q<EnumField>("FoodType");
-
+        
         _materialList.OnListChanged += HandleMaterialListChanged;
         _toolType.RegisterValueChangedCallback((e) => HandleChangeToolType(e.newValue));
+        _slotSlider.RegisterValueChangedCallback((e) => HandleChangeSlotCount(e.newValue));
         _effectList.OnDictionaryChanged += HandleEffectDictionaryChanged;
         _foodType.RegisterCallback<ChangeEvent<Enum>>((e) => HandleChangeFoodType(e.newValue));
+    }
+
+    private void HandleChangeSlotCount(float evtNewValue)
+    {
+        if (_currentItem == null || _currentItem.toolType != ToolType.Inventory) return;
+        _currentItem.slotCount = (int)evtNewValue;
     }
 
     private void HandleChangePreview(ChangeEvent<Object> evt, ObjectField field, VisualElement preview)
@@ -93,8 +105,6 @@ public class ItemInspector
             OnIconChange?.Invoke(_currentItem, newSprite);
         }
         else if (field == _spriteField) _currentItem.itemSprite = newSprite;
-
-        EditorUtility.SetDirty(_currentItem);
     }
 
     private void HandleChangeName()
@@ -118,47 +128,20 @@ public class ItemInspector
         _currentItem.StatEffect.Clear();
         _currentItem.toolType = ToolType.FishingRod;
         _currentItem.foodType = FoodType.FirstLevelFood;
-        switch (type)
-        {
-            case ItemType.Trash:
-                _additionalContent.style.display = DisplayStyle.None;
-                break;
-            case ItemType.Tool:
-                _additionalContent.style.display = DisplayStyle.Flex;
-                _materialList.style.display = DisplayStyle.Flex;
-                _toolType.style.display = DisplayStyle.Flex;
-                _effectList.style.display = DisplayStyle.None;
-                _foodType.style.display = DisplayStyle.None;
-                break;
-            case ItemType.Ingredient:
-                _additionalContent.style.display = DisplayStyle.Flex;
-                _materialList.style.display = DisplayStyle.None;
-                _toolType.style.display = DisplayStyle.None;
-                _effectList.style.display = DisplayStyle.Flex;
-                _foodType.style.display = DisplayStyle.None;
-                break;
-            case ItemType.Food:
-                _additionalContent.style.display = DisplayStyle.Flex;
-                _materialList.style.display = DisplayStyle.Flex;
-                _toolType.style.display = DisplayStyle.None;
-                _effectList.style.display = DisplayStyle.Flex;
-                _foodType.style.display = DisplayStyle.Flex;
-                break;
-        }
+        
+        ShowItemType(type);
     }
 
     private void HandleChangePercentage(float evtNewValue)
     {
         if (_currentItem == null) return;
         _currentItem.percentageOfCatch = evtNewValue;
-        EditorUtility.SetDirty(_currentItem);
     }
 
     private void HandleChangeDescription(string evtNewValue)
     {
         if (_currentItem == null) return;
         _currentItem.description = evtNewValue;
-        EditorUtility.SetDirty(_currentItem);
     }
 
     private void HandleMaterialListChanged(IList obj)
@@ -166,37 +149,40 @@ public class ItemInspector
         if (_currentItem == null || (_currentItem.itemType != ItemType.Food && _currentItem.itemType != ItemType.Tool))
             return;
         _currentItem.materialList = obj as List<ItemSO>;
-        EditorUtility.SetDirty(_currentItem);
     }
 
     private void HandleChangeToolType(Enum evtNewValue)
     {
-        if (_currentItem == null || _currentItem.itemType != ItemType.Tool || evtNewValue is not ToolType toolType) return;
+        if (_currentItem == null || _currentItem.itemType != ItemType.Tool ||
+            evtNewValue is not ToolType toolType) return;
         _currentItem.toolType = toolType;
-        EditorUtility.SetDirty(_currentItem);
+        ShowToolType(toolType);
     }
 
     private void HandleEffectDictionaryChanged(IDictionary obj)
     {
-        if (_currentItem == null || (_currentItem.itemType != ItemType.Ingredient && _currentItem.itemType != ItemType.Food) ||
+        if (_currentItem == null ||
+            !(_currentItem.itemType == ItemType.Ingredient || _currentItem.itemType == ItemType.Food) ||
             obj is not Dictionary<StatType, int> dictionary) return;
         _currentItem.StatEffect = dictionary;
-        EditorUtility.SetDirty(_currentItem);
     }
 
     private void HandleChangeFoodType(Enum evtNewValue)
     {
-        if (_currentItem == null || _currentItem.itemType != ItemType.Food || evtNewValue is not FoodType foodType) return;
+        if (_currentItem == null || _currentItem.itemType != ItemType.Food ||
+            evtNewValue is not FoodType foodType) return;
         _currentItem.foodType = foodType;
-        EditorUtility.SetDirty(_currentItem);
     }
 
     public void ChangeItem(ItemSO item)
     {
+        if (_currentItem != null && (_currentItem.itemType == ItemType.Ingredient || _currentItem.itemType == ItemType.Food))
+        {
+            _currentItem.StatEffect = (Dictionary<StatType, int>)_effectList.GetDictionary();
+        }
+
         _currentItem = item;
-        
-        
-        
+
         if (_currentItem == null)
         {
             _itemInspector.style.display = DisplayStyle.None;
@@ -210,11 +196,39 @@ public class ItemInspector
         _itemName.SetValueWithoutNotify(item.itemName);
         _itemType.SetValueWithoutNotify(item.itemType);
         _percentSlider.SetValueWithoutNotify(item.percentageOfCatch);
+        _toolType.SetValueWithoutNotify(item.toolType);
+        _slotSlider.SetValueWithoutNotify(item.slotCount);
         _descField.SetValueWithoutNotify(item.description);
-        
         _foodType.SetValueWithoutNotify(item.foodType);
+        
+        ShowItemType(item.itemType);
+        ShowToolType(item.toolType);
+        
+        switch (_currentItem.toolType)
+        {
+            case ToolType.Inventory:
+                _slotSlider.style.display = DisplayStyle.Flex;
+                break;
+            default:
+                _slotSlider.style.display = DisplayStyle.None;
+                break;
+        }
+        _materialList.ClearList();
+        _effectList.ClearDictionary();
+        foreach (var mat in item.materialList)
+        {
+            _materialList.AddList(mat);
+        }
 
-        switch (item.itemType)
+        foreach (var eff in item.StatEffect)
+        {
+            _effectList.AddDictionaryItem(eff.Key, eff.Value);
+        }
+    }
+
+    void ShowItemType(ItemType itemType)
+    {
+        switch (itemType)
         {
             case ItemType.Trash:
                 _additionalContent.style.display = DisplayStyle.None;
@@ -241,16 +255,18 @@ public class ItemInspector
                 _foodType.style.display = DisplayStyle.Flex;
                 break;
         }
-        _materialList.ClearList();
-        _effectList.ClearDictionary();
-        foreach (var mat in item.materialList)
+    }
+
+    void ShowToolType(ToolType toolType)
+    {
+        switch (toolType)
         {
-            _materialList.AddList(mat);
-        }
-        
-        foreach (var eff in item.StatEffect)
-        {
-            _effectList.AddDictionaryItem(eff.Key, eff.Value);
+            case ToolType.Inventory:
+                _slotSlider.style.display = DisplayStyle.Flex;
+                break;
+            default:
+                _slotSlider.style.display = DisplayStyle.None;
+                break;
         }
     }
 }

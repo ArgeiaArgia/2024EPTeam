@@ -21,5 +21,8 @@ MonoBehaviour:
   materialList:
   - {fileID: 11400000, guid: adbd3c73c77a07a47b0c18569b74045d, type: 2}
   toolType: 1
+  slotCount: 0
+  StatEffectKey: 000000000100000002000000
+  StatEffectValue: 0a0000000b00000000000000
   foodType: 2
   description: Pikmin soup

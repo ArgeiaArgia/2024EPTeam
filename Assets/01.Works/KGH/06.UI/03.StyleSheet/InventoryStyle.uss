@@ -37,3 +37,9 @@
     justify-content: center;
     align-items: center;
 }
+
+.item {
+    flex-grow: 1;
+    background-image: url("project://database/Assets/00.ForEveryone/01.Sprites/fishing%20icons%2016x16.png?fileID=892761583&guid=789301e609277f549b61e632456a6be2&type=3#fishing icons 16x16_49");
+    -unity-background-scale-mode: scale-to-fit;
+}

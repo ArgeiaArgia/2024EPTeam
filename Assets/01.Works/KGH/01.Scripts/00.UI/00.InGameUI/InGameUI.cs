@@ -18,6 +18,7 @@ public class InGameUI : ToolkitParents
     {
         base.Awake();
         _statUIs = new Dictionary<StatType, StatUI>();
+        _abilityUIs = new Dictionary<AbilityType, AbilityUI>();
     }
 
     protected override void OnEnable()

@@ -91,3 +91,10 @@
     flex-shrink: 0;
     flex-basis: 50%;
 }
+
+.inventory-count {
+}
+
+.inventory-count > .unity-label {
+    min-width: 60px;
+}

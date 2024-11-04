@@ -35,11 +35,13 @@
                 <ui:VisualElement name="Additional" style="flex-grow: 1; display: flex;">
                     <EditorList name="MaterialList" list-name="Material List" list-type="ItemSO, Assembly-CSharp" class="part" />
                     <ui:EnumField label="Tool Type" type="ToolType, Assembly-CSharp" name="ToolType" class="part" />
+                    <ui:SliderInt label="Slot" high-value="50" show-input-field="true" name="SlotSlider" class="inventory-count part" />
                     <EditorDictionary name="StatEffectDictionary" dictionary-name="Effects" class="part" />
                     <ui:EnumField label="Food Type" type="FoodType, Assembly-CSharp" name="FoodType" class="part" />
                 </ui:VisualElement>
                 <ui:TextField picking-mode="Ignore" label="Desc" value="wer" name="Description" class="desc-field part" />
             </ui:ScrollView>
+            <ui:Button text="Confirm" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ConfirmButton" />
         </ui:VisualElement>
     </SplitView>
 </ui:UXML>
