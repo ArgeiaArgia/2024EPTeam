@@ -1,0 +1,56 @@
+.unity-scroller__low-button {
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    background-image: url("project://database/Assets/01.Works/KGH/02.Sprites/arrow-up.png?fileID=21300000&guid=4735af44b20f96b4dae50379cd7c2469&type=3#arrow-up");
+    -unity-background-image-tint-color: rgb(55, 62, 66);
+    background-color: rgb(194, 149, 91);
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-slice-left: 1;
+    -unity-slice-top: 1;
+    -unity-slice-right: 1;
+    -unity-slice-bottom: 1;
+}
+
+.unity-scroller__high-button {
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    background-image: url("project://database/Assets/01.Works/KGH/02.Sprites/arrow-down.png?fileID=21300000&guid=554347bfc13f057428ece6cef6b48605&type=3#arrow-down");
+    -unity-background-image-tint-color: rgb(55, 62, 66);
+    background-color: rgb(194, 149, 91);
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-slice-left: 1;
+    -unity-slice-top: 1;
+    -unity-slice-right: 1;
+    -unity-slice-bottom: 1;
+}
+
+#unity-drag-container {
+    height: 385px;
+    top: -10px;
+    position: relative;
+    align-items: center;
+}
+
+#unity-tracker {
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("project://database/Assets/01.Works/KGH/02.Sprites/01.RoundBoxes/RoundBoxOutline3.png?fileID=21300000&guid=db46e242f94beb240ba63e602e074ff3&type=3#RoundBoxOutline3");
+    -unity-background-image-tint-color: rgb(194, 149, 91);
+}
+
+#unity-dragger {
+    background-image: url("project://database/Assets/01.Works/KGH/02.Sprites/01.RoundBoxes/RoundBoxFill3.png?fileID=21300000&guid=070565248dcba064e9e254d8c8131926&type=3#RoundBoxFill3");
+    background-color: rgba(0, 0, 0, 0);
+    -unity-background-image-tint-color: rgb(194, 149, 91);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+}

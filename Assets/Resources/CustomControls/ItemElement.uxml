@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Resources/CustomControls/ItemElement.uss?fileID=7433441132597879392&amp;guid=73fb1fdd36f2022418a76644bd6ee506&amp;type=3#ItemElement" />
-    <ui:VisualElement name="ItemBackground" class="item-backgorund" style="-unity-text-align: middle-left;">
+    <ui:VisualElement name="ItemBackground" class="item-background">
         <ui:VisualElement name="Icon" class="item-icon" />
         <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" class="item-name item-label" />
         <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" class="item-category item-label" />

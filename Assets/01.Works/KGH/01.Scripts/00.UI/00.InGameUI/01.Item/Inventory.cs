@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Inventory
+public abstract class Inventory
 {
-    
-    public Inventory(VisualElement root)
+    public Inventory(VisualElement root, InventoryManager inventoryManager)
     {
-        var itemTab = root.Q<TabElement>("ItemTab");
-        var craftTab = root.Q<TabElement>("CraftTab");
+        inventoryManager.OnInventoryChanged += UpdateInventory;
     }
+
+    protected abstract void UpdateInventory(List<InventoryItem> obj);
 }

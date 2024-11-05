@@ -1,0 +1,14 @@
+.item-background {
+}
+
+.item-element {
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    transition-timing-function: ease-out-cubic;
+    transition-duration: 0.5s;
+}
+
+.item-element:hover {
+    translate: -10px 0;
+}

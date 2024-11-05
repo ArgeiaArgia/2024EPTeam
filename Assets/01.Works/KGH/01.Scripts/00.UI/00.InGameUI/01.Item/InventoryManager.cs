@@ -2,27 +2,36 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    private int[,] _inventory;
+    public List<InventoryItem> inventoryItems { get; private set; }
 
-    private void OnEnable()
+    public event Action<List<InventoryItem>> OnInventoryChanged;
+
+    public void AddItem(ItemSO item, int count)
     {
+        inventoryItems.Add(new InventoryItem(item, count));
+        OnInventoryChanged?.Invoke(inventoryItems);
     }
 
-    public void AddItem(ItemSO item, int count, Vector2Int position)
+    public void RemoveItem(ItemSO item)
     {
+        var itemIndex = inventoryItems.FindIndex(x => x.item == item);
+        inventoryItems.RemoveAt(itemIndex);
+        OnInventoryChanged?.Invoke(inventoryItems);
     }
 
-    public void RemoveItem(ItemSO item, int count)
+    public void MoveItem(ItemSO item, ItemSO parentItem)
     {
-    }
+        var itemIndex = inventoryItems.FindIndex(x => x.item == item);
+        var parentItemIndex = inventoryItems.FindIndex(x => x.item == parentItem);
 
-    public void MoveItem(ItemSO item, Vector2Int position)
-    {
+        inventoryItems[parentItemIndex].itemsKey.Add(item);
+        inventoryItems[parentItemIndex].itemsValue.Add(inventoryItems[itemIndex].count);
+        inventoryItems.RemoveAt(itemIndex);
+        OnInventoryChanged?.Invoke(inventoryItems);
     }
 }
 
@@ -61,7 +70,7 @@ public class InventoryItem
     [HideInInspector] public List<ItemSO> itemsKey;
     [HideInInspector] public List<int> itemsValue;
 
-    public InventoryItem(ItemSO item, int count, Vector2Int position)
+    public InventoryItem(ItemSO item, int count)
     {
         this.item = item;
         this.count = count;
