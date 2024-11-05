@@ -98,3 +98,10 @@
 .inventory-count > .unity-label {
     min-width: 60px;
 }
+
+.weight {
+}
+
+.weight > .unity-label {
+    min-width: 50px;
+}
