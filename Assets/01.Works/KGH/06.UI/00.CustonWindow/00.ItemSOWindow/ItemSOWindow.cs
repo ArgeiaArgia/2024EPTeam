@@ -24,8 +24,6 @@ public class ItemSOWindow : EditorWindow
         wnd.minSize = new Vector2(400, 500);
     }
 
-    private void OnEnable() { }
-
     public void CreateGUI()
     {
         var root = rootVisualElement;

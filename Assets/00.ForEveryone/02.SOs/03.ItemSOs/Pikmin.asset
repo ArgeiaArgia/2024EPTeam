@@ -16,9 +16,12 @@ MonoBehaviour:
   itemIcon: {fileID: -1322998005, guid: 6b026523e6264424998efa104bcd9e8c, type: 3}
   itemSprite: {fileID: 1384644936, guid: 789301e609277f549b61e632456a6be2, type: 3}
   itemType: 0
-  itemCount: 0
-  percentageOfCatch: 0.32
+  percentageOfCatch: 54
+  weight: 14.1
   materialList: []
   toolType: 1
+  slotCount: 0
+  StatEffectKey: 
+  StatEffectValue: 
   foodType: 0
   description: 22q2q

@@ -22,6 +22,7 @@ public class ItemInspector
     private readonly Button _changeNameButton;
     private EnumField _itemType;
     private Slider _percentSlider;
+    private Slider _weightSlider;
     private TextField _descField;
     private readonly VisualElement _additionalContent;
     private readonly EditorList _materialList;
@@ -59,6 +60,9 @@ public class ItemInspector
         _percentSlider = content.Q<Slider>("Percentage");
         _percentSlider.RegisterValueChangedCallback((e) => HandleChangePercentage(e.newValue));
 
+        _weightSlider = content.Q<Slider>("Weight");
+        _weightSlider.RegisterValueChangedCallback((e) => HandleChangeWeight(e.newValue));
+        
         _descField = content.Q<TextField>("Description");
         _descField.RegisterValueChangedCallback((e) => HandleChangeDescription(e.newValue));
 
@@ -77,6 +81,12 @@ public class ItemInspector
         _slotSlider.RegisterValueChangedCallback((e) => HandleChangeSlotCount(e.newValue));
         _effectList.OnDictionaryChanged += HandleEffectDictionaryChanged;
         _foodType.RegisterCallback<ChangeEvent<Enum>>((e) => HandleChangeFoodType(e.newValue));
+    }
+
+    private void HandleChangeWeight(float evtNewValue)
+    {
+        if (_currentItem == null) return;
+        _currentItem.weight = evtNewValue;
     }
 
     private void HandleChangeSlotCount(float evtNewValue)
@@ -196,6 +206,7 @@ public class ItemInspector
         _itemName.SetValueWithoutNotify(item.itemName);
         _itemType.SetValueWithoutNotify(item.itemType);
         _percentSlider.SetValueWithoutNotify(item.percentageOfCatch);
+        _weightSlider.SetValueWithoutNotify(item.weight);
         _toolType.SetValueWithoutNotify(item.toolType);
         _slotSlider.SetValueWithoutNotify(item.slotCount);
         _descField.SetValueWithoutNotify(item.description);
