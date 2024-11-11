@@ -1,78 +1,87 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 using UnityEngine;
 
-public class InventoryManager : MonoBehaviour
+public class InventoryManager : SerializedMonoBehaviour
 {
-    public List<InventoryItem> inventoryItems { get; private set; }
+    [OdinSerialize]public Dictionary<ToolType, string> ToolNames;
+    [field: SerializeField] public List<DefaultItemInventory> DefaultItemInventories { get; private set; }
+    public List<InventoryItem> InventoryItems { get; private set; } = new List<InventoryItem>();
+    [field: SerializeField] public List<string> Inventories { get; private set; }
 
-    public event Action<List<InventoryItem>> OnInventoryChanged;
-
-    public void AddItem(ItemSO item, int count)
+    public event Action<string> OnInventoryChanged;
+    public event Action<List<DefaultItemInventory>> OnInventoryInitialized;
+    private void Start()
     {
-        inventoryItems.Add(new InventoryItem(item, count));
-        OnInventoryChanged?.Invoke(inventoryItems);
+        OnInventoryInitialized?.Invoke(DefaultItemInventories);
+    }
+
+    public void AddItem(ItemSO item, int count, string location, bool isSeparated = false)
+    {
+        var inventoryItem = InventoryItems.Find(x => x.item == item);
+        InventoryParents parentItem = InventoryItems.Find(x => x.item.itemName == location);
+        if (parentItem == null)
+        {
+            parentItem = DefaultItemInventories.Find(x => x.name == location);
+        }
+
+        if (inventoryItem != null && !isSeparated)
+        {
+            inventoryItem.count += count;
+        }
+        else
+        {
+            inventoryItem = new InventoryItem(item, count, location);
+            InventoryItems.Add(inventoryItem);
+            if (item.toolType == ToolType.Inventory)
+            {
+                Inventories.Add(item.name);
+            }
+            parentItem?.itemsIn.Add(inventoryItem);
+        }
+
+        OnInventoryChanged?.Invoke(location);
     }
 
     public void RemoveItem(ItemSO item)
     {
-        var itemIndex = inventoryItems.FindIndex(x => x.item == item);
-        inventoryItems.RemoveAt(itemIndex);
-        OnInventoryChanged?.Invoke(inventoryItems);
+        var inventoryItem = InventoryItems.Find(x => x.item == item);
+        if (inventoryItem == null) return;
+        
+        InventoryParents parentItem = InventoryItems.Find(x => x.item.itemName == inventoryItem.loction);
+        if (parentItem == null)
+        {
+            parentItem = DefaultItemInventories.Find(x => x.name == inventoryItem.loction);
+        }
+
+        InventoryItems.Remove(inventoryItem);
+        if (item.toolType == ToolType.Inventory)
+        {
+            Inventories.Remove(item.name);
+        }
+        parentItem?.itemsIn.Remove(inventoryItem);
+
+        OnInventoryChanged?.Invoke(inventoryItem.loction);
     }
 
-    public void MoveItem(ItemSO item, ItemSO parentItem)
+    public void MoveItem(ItemSO item, string location)
     {
-        var itemIndex = inventoryItems.FindIndex(x => x.item == item);
-        var parentItemIndex = inventoryItems.FindIndex(x => x.item == parentItem);
+        var inventoryItem = InventoryItems.Find(x => x.item == item);
+        if (inventoryItem == null) return;
 
-        inventoryItems[parentItemIndex].itemsKey.Add(item);
-        inventoryItems[parentItemIndex].itemsValue.Add(inventoryItems[itemIndex].count);
-        inventoryItems.RemoveAt(itemIndex);
-        OnInventoryChanged?.Invoke(inventoryItems);
+        InventoryParents parentItem = InventoryItems.Find(x => x.item.itemName == inventoryItem.loction);
+        if (parentItem == null)
+        {
+            parentItem = DefaultItemInventories.Find(x => x.name == inventoryItem.loction);
+        }
+        
+        inventoryItem.loction = location;
+        parentItem?.itemsIn.Remove(inventoryItem);
+
+        if (parentItem != null) OnInventoryChanged?.Invoke(parentItem.name);
+        OnInventoryChanged?.Invoke(location);
     }
 }
 
-[Serializable]
-public class InventoryItem
-{
-    public ItemSO item;
-    public int count;
-
-    [ShowIf("item.toolType", ToolType.Inventory)]
-    public Dictionary<ItemSO, int> itemsIn
-    {
-        get
-        {
-            var returnDic = new Dictionary<ItemSO, int>();
-            for (var i = 0; i < itemsKey.Count; i++)
-            {
-                returnDic.Add(itemsKey[i], itemsValue[i]);
-            }
-
-            return returnDic;
-        }
-        set
-        {
-            itemsKey.Clear();
-            itemsValue.Clear();
-
-            foreach (var item in value)
-            {
-                itemsKey.Add(item.Key);
-                itemsValue.Add(item.Value);
-            }
-        }
-    }
-
-    [HideInInspector] public List<ItemSO> itemsKey;
-    [HideInInspector] public List<int> itemsValue;
-
-    public InventoryItem(ItemSO item, int count)
-    {
-        this.item = item;
-        this.count = count;
-    }
-}

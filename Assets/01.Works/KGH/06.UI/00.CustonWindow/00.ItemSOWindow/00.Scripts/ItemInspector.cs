@@ -27,7 +27,7 @@ public class ItemInspector
     private readonly VisualElement _additionalContent;
     private readonly EditorList _materialList;
     private readonly EnumField _toolType;
-    private readonly SliderInt _slotSlider;
+    private readonly Slider _holdableWeight;
     private readonly EditorDictionary _effectList;
     private readonly EnumField _foodType;
 
@@ -72,15 +72,21 @@ public class ItemInspector
         _additionalContent = content.Q<VisualElement>("Additional");
         _materialList = content.Q<EditorList>("MaterialList");
         _toolType = content.Q<EnumField>("ToolType");
-        _slotSlider = content.Q<SliderInt>("SlotSlider");
+        _holdableWeight = content.Q<Slider>("HoldableWeight");
         _effectList = content.Q<EditorDictionary>("StatEffectDictionary");
         _foodType = content.Q<EnumField>("FoodType");
         
         _materialList.OnListChanged += HandleMaterialListChanged;
         _toolType.RegisterValueChangedCallback((e) => HandleChangeToolType(e.newValue));
-        _slotSlider.RegisterValueChangedCallback((e) => HandleChangeSlotCount(e.newValue));
+        _holdableWeight.RegisterValueChangedCallback((e) => HandleChangeHoldableWeight(e.newValue));
         _effectList.OnDictionaryChanged += HandleEffectDictionaryChanged;
         _foodType.RegisterCallback<ChangeEvent<Enum>>((e) => HandleChangeFoodType(e.newValue));
+    }
+
+    private void HandleChangeHoldableWeight(float evtNewValue)
+    {
+        if(_currentItem == null || _currentItem.toolType != ToolType.Inventory) return;
+        _currentItem.holdableWeight = evtNewValue;
     }
 
     private void HandleChangeWeight(float evtNewValue)
@@ -88,13 +94,6 @@ public class ItemInspector
         if (_currentItem == null) return;
         _currentItem.weight = evtNewValue;
     }
-
-    private void HandleChangeSlotCount(float evtNewValue)
-    {
-        if (_currentItem == null || _currentItem.toolType != ToolType.Inventory) return;
-        _currentItem.slotCount = (int)evtNewValue;
-    }
-
     private void HandleChangePreview(ChangeEvent<Object> evt, ObjectField field, VisualElement preview)
     {
         if (_currentItem == null) return;
@@ -138,6 +137,7 @@ public class ItemInspector
         _currentItem.StatEffect.Clear();
         _currentItem.toolType = ToolType.FishingRod;
         _currentItem.foodType = FoodType.FirstLevelFood;
+        _currentItem.holdableWeight = 0;
         
         ShowItemType(type);
     }
@@ -208,22 +208,13 @@ public class ItemInspector
         _percentSlider.SetValueWithoutNotify(item.percentageOfCatch);
         _weightSlider.SetValueWithoutNotify(item.weight);
         _toolType.SetValueWithoutNotify(item.toolType);
-        _slotSlider.SetValueWithoutNotify(item.slotCount);
         _descField.SetValueWithoutNotify(item.description);
         _foodType.SetValueWithoutNotify(item.foodType);
+        _holdableWeight.SetValueWithoutNotify(item.holdableWeight);
         
         ShowItemType(item.itemType);
         ShowToolType(item.toolType);
         
-        switch (_currentItem.toolType)
-        {
-            case ToolType.Inventory:
-                _slotSlider.style.display = DisplayStyle.Flex;
-                break;
-            default:
-                _slotSlider.style.display = DisplayStyle.None;
-                break;
-        }
         _materialList.ClearList();
         _effectList.ClearDictionary();
         foreach (var mat in item.materialList)
@@ -273,10 +264,10 @@ public class ItemInspector
         switch (toolType)
         {
             case ToolType.Inventory:
-                _slotSlider.style.display = DisplayStyle.Flex;
+                _holdableWeight.style.display = DisplayStyle.Flex;
                 break;
             default:
-                _slotSlider.style.display = DisplayStyle.None;
+                _holdableWeight.style.display = DisplayStyle.None;
                 break;
         }
     }

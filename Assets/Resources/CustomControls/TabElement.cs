@@ -88,18 +88,21 @@ public class TabElement : VisualElement
         get => _tabCount;
         set
         {
-            // Clear existing tabs and contents
-            for (int i = _tabButtonList.Count - 1; i >= 0; i--)
+            if (value < _tabCount)
             {
-                RemoveTab(i);
+                for (int i = _tabCount - 1; i >= value; i--)
+                {
+                    RemoveTab(i);
+                }
             }
-
-            // Add new tabs
-            for (int i = 0; i < value; i++)
+            else if (value > _tabCount)
             {
-                AddTab();
+                for (int i = _tabCount; i < value; i++)
+                {
+                    AddTab();
+                }
             }
-
+            
             _tabCount = value;
 
             // Select the first tab if available

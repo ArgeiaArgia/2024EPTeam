@@ -3,12 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public abstract class Inventory
+public class Inventory
 {
-    public Inventory(VisualElement root, InventoryManager inventoryManager)
-    {
-        inventoryManager.OnInventoryChanged += UpdateInventory;
-    }
+    private InGameUI _inGameUI;
+    private VisualElement _root;
+    private InventoryManager _inventoryManager;
+    private VisualTreeAsset _itemListTemplate;
+    private TabElement _itemTab;
+    private TabElement _craftTab;
 
-    protected abstract void UpdateInventory(List<InventoryItem> obj);
+    private ItemInventory _itemInventory;
+    
+    public Inventory(VisualElement root, InventoryManager inventoryManager, VisualTreeAsset itemListTemplate, InGameUI inGameUI)
+    {
+        _root = root;
+        _inventoryManager = inventoryManager;
+        _itemListTemplate = itemListTemplate;
+        _itemTab = _root.Q<TabElement>("ItemTab");
+        _craftTab = _root.Q<TabElement>("CraftTab");
+        _inGameUI = inGameUI;
+        
+        _itemInventory = new ItemInventory(_itemTab, itemListTemplate, inventoryManager, inGameUI);
+    }
 }

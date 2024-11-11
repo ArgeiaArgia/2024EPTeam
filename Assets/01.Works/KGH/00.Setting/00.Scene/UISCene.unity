@@ -270,6 +270,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1115266974}
   - component: {fileID: 1115266973}
+  - component: {fileID: 1115266975}
+  - component: {fileID: 1115266976}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -403,6 +405,123 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1115266975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115266972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3e95edc2e864934da1741e80e5cde0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: ToolNames
+      Entry: 7
+      Data: 0|Unity.VisualScripting.FlexibleDictionary`2[[ToolType, Assembly-CSharp],[System.String,
+        mscorlib]], Unity.VisualScripting.Core
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[ToolType, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 1
+      Data: "\uC7AC\uB8CC"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 1
+      Data: "\uB09A\uC2DC\uB300"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 1
+      Data: "\uB77C\uB514\uC624"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 1
+      Data: "\uBCF4\uAD00\uD568"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  <DefaultItemInventories>k__BackingField:
+  - _name: "\uC2E4\uB0B4"
+    _holdableWeight: 60
+  - _name: "\uAC11\uD310"
+    _holdableWeight: 100
+  - _name: "\uC678\uACFD"
+    _holdableWeight: 30
+  <Inventories>k__BackingField: []
+--- !u!114 &1115266976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115266972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f0249a1cadd4e34b9da78cd1769838d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryManager: {fileID: 1115266975}
+  item: {fileID: 11400000, guid: e60877d1953b2a04c91485e6667b93f6, type: 2}
 --- !u!1 &1353631938
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,6 +686,8 @@ MonoBehaviour:
     - Name: _abilityIcons
       Entry: 6
       Data: 
+  _inventoryManager: {fileID: 1115266975}
+  _itemListTemplate: {fileID: 9197481963319205126, guid: e0d32bd80e71c5747bdaa44aa6d0e12e, type: 3}
   OnChangeAbilityValue:
     m_PersistentCalls:
       m_Calls: []

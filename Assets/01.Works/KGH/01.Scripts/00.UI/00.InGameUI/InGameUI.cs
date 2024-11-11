@@ -8,8 +8,13 @@ using UnityEngine.UIElements;
 
 public class InGameUI : ToolkitParents
 {
+    [SerializeField] private InventoryManager _inventoryManager;
+    [SerializeField] private VisualTreeAsset _itemListTemplate;
     [OdinSerialize] private Dictionary<StatType, StatIcon> _statIcons;
     [OdinSerialize] private Dictionary<AbilityType, Sprite> _abilityIcons;
+
+    private Inventory _inventory;
+    
     private Dictionary<StatType, StatUI> _statUIs;
     private Dictionary<AbilityType, AbilityUI> _abilityUIs;
 
@@ -43,10 +48,12 @@ public class InGameUI : ToolkitParents
             
             abilityUI.OnChangeStatValue += value => OnChangeAbilityValue?.Invoke(abilityType, value);
         }
+        _inventory = new Inventory(root, _inventoryManager, _itemListTemplate, this);
     }
 
     public void ChangeStatValue(StatType statType, int value) => _statUIs[statType].ChangeStatUI(value);
     public void AddAbilityValue(AbilityType abilityType, int value) => _abilityUIs[abilityType].AddAbility(value);
+    public void CoroutineHelper(IEnumerator coroutine) => StartCoroutine(coroutine);
 }
 
 public enum StatType

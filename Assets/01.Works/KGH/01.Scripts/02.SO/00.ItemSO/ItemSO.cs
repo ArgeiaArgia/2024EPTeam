@@ -14,7 +14,7 @@ public class ItemSO : ScriptableObject
     public float weight; // 무게
     public List<ItemSO> materialList = new List<ItemSO>(); //재료 리스트(도구, 요리)
     public ToolType toolType; // 도구 타입(도구)
-    public int slotCount; // 슬롯 개수(도구)
+    public float holdableWeight; // 슬롯 개수(도구)
     public Dictionary<StatType, int> StatEffect
     {
         get

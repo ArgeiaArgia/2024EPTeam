@@ -16,11 +16,11 @@ MonoBehaviour:
   itemIcon: {fileID: 0}
   itemSprite: {fileID: 0}
   itemType: 3
-  itemCount: 0
   percentageOfCatch: 0
+  weight: 19.9
   materialList: []
   toolType: 3
-  slotCount: 30
+  holdableWeight: 0
   StatEffectKey: 
   StatEffectValue: 
   foodType: 0

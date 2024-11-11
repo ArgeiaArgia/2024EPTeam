@@ -36,7 +36,7 @@
                 <ui:VisualElement name="Additional" style="flex-grow: 1; display: flex;">
                     <EditorList name="MaterialList" list-name="Material List" list-type="ItemSO, Assembly-CSharp" class="part" />
                     <ui:EnumField label="Tool Type" type="ToolType, Assembly-CSharp" name="ToolType" class="part" />
-                    <ui:SliderInt label="Slot" high-value="50" show-input-field="true" name="SlotSlider" class="inventory-count part" />
+                    <ui:Slider label="Holdable Weight" high-value="100" name="HoldableWeight" show-input-field="true" class="part" />
                     <EditorDictionary name="StatEffectDictionary" dictionary-name="Effects" class="part" />
                     <ui:EnumField label="Food Type" type="FoodType, Assembly-CSharp" name="FoodType" class="part" />
                 </ui:VisualElement>
