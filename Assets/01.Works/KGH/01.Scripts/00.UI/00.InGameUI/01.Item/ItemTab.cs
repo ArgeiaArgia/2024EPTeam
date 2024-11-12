@@ -17,9 +17,10 @@ public class ItemTab
     private Label _weightLabel;
 
     private InGameUI _inGameUI;
+    private VisualElement _root;
 
     public ItemTab(VisualElement itemList, InventoryParents parentItem, ItemInventory itemInventory,
-        Dictionary<ToolType, string> toolNames, InGameUI inGameUI)
+        Dictionary<ToolType, string> toolNames, InGameUI inGameUI, VisualElement root)
     {
         _itemInventory = itemInventory;
 
@@ -32,6 +33,7 @@ public class ItemTab
         _weightLabel.text = $"{0} / {_parentItem.holdableWeight}";
         _toolNames = toolNames;
         _inGameUI = inGameUI;
+        _root = root;
     }
 
 
@@ -78,7 +80,7 @@ public class ItemTab
             _itemScrollView.Add(itemElement);
             _itemElements.Add(item, itemElement);
 
-            _itemElementInteracts.Add(itemElement, new ItemElementInteract(itemElement, _itemList, _inGameUI));
+            _itemElementInteracts.Add(itemElement, new ItemElementInteract(itemElement, _root, _inGameUI));
 
             if (item.item.toolType == ToolType.Inventory)
                 itemElement.RegisterCallback<MouseDownEvent>(evt => { _itemInventory.AddItemTab(item); });

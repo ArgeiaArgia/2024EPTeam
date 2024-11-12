@@ -8,13 +8,14 @@ public class ItemInventory
     private TabElement _itemTab;
     private VisualElement _tabContent;
     private VisualTreeAsset _itemListTemplate;
+    private VisualElement _root;
     private InventoryManager _inventoryManager;
     private Dictionary<VisualElement, ItemTab> _itemTabs;
     private Dictionary<string, VisualElement> _itemTabElements;
 
     private InGameUI _inGameUI;
     
-    public ItemInventory(TabElement itemTab,VisualTreeAsset itemListTemplate, InventoryManager inventoryManager, InGameUI inGameUI)
+    public ItemInventory(TabElement itemTab,VisualTreeAsset itemListTemplate, InventoryManager inventoryManager, InGameUI inGameUI, VisualElement root)
     {
         _itemTab = itemTab;
         _inventoryManager = inventoryManager;
@@ -28,6 +29,8 @@ public class ItemInventory
 
         _tabContent = _itemTab.Q<VisualElement>("TabContents");
         _inGameUI = inGameUI;
+        
+        _root = root;
     }
 
     private void HandleInventoryInitialized(List<DefaultItemInventory> defaultItemInventories)
@@ -58,7 +61,7 @@ public class ItemInventory
         
         _tabContent.Add(tab);
         _itemTabElements.Add(parentItem.name, tab);
-        _itemTabs.Add(tab, new ItemTab(tab, parentItem, this, _inventoryManager.ToolNames, _inGameUI));
+        _itemTabs.Add(tab, new ItemTab(tab, parentItem, this, _inventoryManager.ToolNames, _inGameUI, _root));
         
         _itemTabs[tab].UpdateItemTab();
     }

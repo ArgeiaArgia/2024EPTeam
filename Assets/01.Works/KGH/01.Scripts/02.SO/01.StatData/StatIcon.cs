@@ -5,15 +5,15 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "SO/UI/StatIcon")]
 public class StatIcon : ScriptableObject
 {
-    [SerializeField] private string _bestIcon;
-    [SerializeField] private string _goodIcon;
-    [SerializeField] private string _normalIcon;
-    [SerializeField] private string _badIcon;
-    [SerializeField] private string _worstIcon;
+    [SerializeField] private int _bestIcon;
+    [SerializeField] private int _goodIcon;
+    [SerializeField] private int _normalIcon;
+    [SerializeField] private int _badIcon;
+    [SerializeField] private int _worstIcon;
     
-    public string GetIcon(int value)
+    public int GetIcon(int value)
     {
-        string result = string.Empty;
+        int result = 0;
         if (value >= 80)
         {
             result = _bestIcon;
@@ -34,6 +34,7 @@ public class StatIcon : ScriptableObject
         {
             result = _worstIcon;
         }
-        return $"StatIcon/{result}";
+
+        return result;
     }
 }

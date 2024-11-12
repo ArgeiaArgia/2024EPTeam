@@ -17,6 +17,7 @@ public class StatManager : SerializedMonoBehaviour
         foreach (StatType type in Enum.GetValues(typeof(StatType)))
         {
             statValues.Add(type, 100);
+            inGameUI.ChangeStatValue(type, 100);
         }
         foreach (var d in delay)
         {

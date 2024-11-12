@@ -23,6 +23,6 @@ public class Inventory
         _craftTab = _root.Q<TabElement>("CraftTab");
         _inGameUI = inGameUI;
         
-        _itemInventory = new ItemInventory(_itemTab, itemListTemplate, inventoryManager, inGameUI);
+        _itemInventory = new ItemInventory(_itemTab, itemListTemplate, inventoryManager, inGameUI, root);
     }
 }

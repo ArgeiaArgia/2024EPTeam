@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6044cae3be304de4ebb84cbd19f8b174, type: 3}
   m_Name: HungerIcon
   m_EditorClassIdentifier: 
-  _bestIcon: test
-  _goodIcon: test
-  _normalIcon: test
-  _badIcon: test
-  _worstIcon: test
+  _bestIcon: 0
+  _goodIcon: 1
+  _normalIcon: 2
+  _badIcon: 3
+  _worstIcon: 4

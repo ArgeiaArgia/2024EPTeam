@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6044cae3be304de4ebb84cbd19f8b174, type: 3}
   m_Name: ThirstIcon
   m_EditorClassIdentifier: 
-  _bestIcon: test
-  _goodIcon: test
-  _normalIcon: test
-  _badIcon: test
-  _worstIcon: test
+  _bestIcon: 5
+  _goodIcon: 6
+  _normalIcon: 7
+  _badIcon: 8
+  _worstIcon: 9
