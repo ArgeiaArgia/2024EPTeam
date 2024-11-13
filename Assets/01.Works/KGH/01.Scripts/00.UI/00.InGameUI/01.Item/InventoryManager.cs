@@ -26,7 +26,9 @@ public class InventoryManager : SerializedMonoBehaviour
         {
             parentItem = DefaultItemInventories.Find(x => x.name == location);
         }
-
+        
+        if(item.toolType == ToolType.Inventory) isSeparated = true;
+        
         if (inventoryItem != null && !isSeparated)
         {
             inventoryItem.count += count;

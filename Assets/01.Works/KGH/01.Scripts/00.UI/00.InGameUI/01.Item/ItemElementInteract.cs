@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.InputSystem;
@@ -34,11 +35,21 @@ public class ItemElementInteract
             _itemElement.style.top = localMousePos.y - _itemElement.layout.height / 2;
             yield return null;
         }
-
+        var itemUpper = _originalParent.Children().ToList()[0];
+        foreach(var item in _originalParent.Children())
+        {
+            if (item.layout.position.y <= _originalParent.WorldToLocal(_itemElement.layout.position).y)
+            {
+                itemUpper = item;
+            }
+        }
         
         _originalParent.Add(_itemElement);
+        
         _itemElement.style.position = Position.Relative;
         _itemElement.style.left = 0;
         _itemElement.style.top = 0;
+        
+        _itemElement.PlaceInFront(itemUpper);
     }
 }
