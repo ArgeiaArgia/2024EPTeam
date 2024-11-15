@@ -1,0 +1,10 @@
+.item-desc-label {
+    margin-bottom: 5px;
+}
+
+.positive-effect {
+    color: rgb(130, 194, 91);
+}
+
+.negative-effect {
+}

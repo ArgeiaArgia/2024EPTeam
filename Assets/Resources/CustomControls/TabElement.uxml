@@ -2,7 +2,7 @@
     <Style src="project://database/Assets/Resources/CustomControls/TabElement.uss?fileID=7433441132597879392&amp;guid=2d9cec25c77015d4fbe946a53005a219&amp;type=3#TabElement" />
     <ui:VisualElement name="TabContainer" style="flex-grow: 1; flex-direction: row-reverse;">
         <ui:VisualElement name="TabButtons" />
-        <ui:VisualElement name="LeftTabButtons" style="position: absolute; left: 0;" />
+        <ui:ScrollView horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" mode="Vertical" picking-mode="Ignore" name="LeftTabButtons" style="position: absolute; left: -170px; height: 100%; overflow: visible; width: 230px;" />
         <ui:VisualElement name="BottomTabButtons" style="flex-grow: 0; width: 100%; height: 0; position: absolute; top: 100%; flex-direction: row;" />
         <ui:VisualElement name="TabContents" style="flex-shrink: 0; background-color: rgba(0, 0, 0, 0); flex-grow: 1; flex-basis: 100%;" />
     </ui:VisualElement>

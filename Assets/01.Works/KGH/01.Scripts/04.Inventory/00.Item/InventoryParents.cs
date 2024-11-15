@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class InventoryParents
 {
-    public abstract string name { get;}
+    public abstract string name { get; set; }
     public abstract List<InventoryItem> itemsIn { get; set; }
     public abstract float holdableWeight { get; } 
 }

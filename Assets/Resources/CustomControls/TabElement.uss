@@ -4,7 +4,7 @@
     -unity-text-align: middle-right;
     transition-timing-function: ease-out-bounce;
     transition-duration: 0.5s;
-    background-image: url("project://database/Assets/01.Works/KGH/02.Sprites/02.RoundBoxes/RoundBoxFull3.png?fileID=21300000&guid=a4d84679bf90ba7499599b817fd1fcaa&type=3#RoundBoxFull3");
+    background-image: url("project://database/Assets/01.Works/KGH/02.Sprites/01.RoundBoxes/RoundBoxFull3.png?fileID=21300000&guid=a4d84679bf90ba7499599b817fd1fcaa&type=3#RoundBoxFull3");
     background-color: rgba(0, 0, 0, 0);
     border-top-width: 0;
     border-right-width: 0;
@@ -28,19 +28,19 @@
 
 .tab-button.left {
     -unity-text-align: middle-left;
-    left: -100px;
+    left: 70px;
 }
 
 .tab-button.left:hover {
     transition-timing-function: ease-out-bounce;
     transition-duration: 0.5s;
     -unity-font-style: normal;
-    left: -120px;
+    left: 50px;
 }
 
 .tab-button.left.clicked {
     -unity-font-style: bold;
-    left: -120px;
+    left: 50px;
 }
 
 .tab-button.bottom {

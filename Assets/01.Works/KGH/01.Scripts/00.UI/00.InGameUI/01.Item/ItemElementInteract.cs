@@ -6,27 +6,47 @@ using UnityEngine.InputSystem;
 
 public class ItemElementInteract
 {
-    private ItemElement _itemElement;
-    private VisualElement _root;
-    private VisualElement _originalParent;
-    
+    private readonly ItemElement _itemElement;
+    private readonly InventoryItem _item;
+
+    private readonly VisualElement _root;
+    private readonly VisualElement _originalParent;
+    private readonly Label _itemNameLabel;
+
+    private readonly ItemTab _itemTab;
+    private readonly InventoryManager _inventoryManager;
+
     private bool _isHolding;
-    
-    public ItemElementInteract(ItemElement itemElement, VisualElement root,InGameUI inGameUI)
+
+    public ItemElementInteract(ItemElement itemElement, InventoryItem item, VisualElement root, InGameUI inGameUI,
+        ItemTab
+            itemTab, InventoryManager inventoryManager)
     {
         _itemElement = itemElement;
-        _itemElement.RegisterCallback<MouseDownEvent>(e=> inGameUI.CoroutineHelper(ItemHolding()));
-        _itemElement.RegisterCallback<MouseUpEvent>(e=>_isHolding = false);
+        _item = item;
+
+        _itemElement.RegisterCallback<MouseDownEvent>(e => inGameUI.CoroutineHelper(ItemHolding()));
+        _itemElement.RegisterCallback<MouseUpEvent>(e => _isHolding = false);
+
+
         _originalParent = _itemElement.parent;
         _root = root;
+        _itemTab = itemTab;
+        _inventoryManager = inventoryManager;
+
+        _itemNameLabel = _itemElement.Q<Label>("NameLabel");
+        _itemNameLabel.RegisterCallback<MouseOverEvent>(e => _itemTab.ItemHover(item));
+        _itemNameLabel.RegisterCallback<MouseOutEvent>(e => _itemTab.ItemHover(null));
     }
+
     private IEnumerator ItemHolding()
     {
         _isHolding = true;
-        
+        _itemNameLabel.pickingMode = PickingMode.Ignore;
+
         _root.Add(_itemElement);
         _itemElement.style.position = Position.Absolute;
-        
+
         while (_isHolding)
         {
             var mousePos = Mouse.current.position.ReadValue();
@@ -35,21 +55,41 @@ public class ItemElementInteract
             _itemElement.style.top = localMousePos.y - _itemElement.layout.height / 2;
             yield return null;
         }
-        var itemUpper = _originalParent.Children().ToList()[0];
-        foreach(var item in _originalParent.Children())
+
+        VisualElement itemUpper = null;
+        VisualElement itemOverlapped = null;
+        foreach (var item in _originalParent.Children())
         {
-            if (item.layout.position.y <= _originalParent.WorldToLocal(_itemElement.layout.position).y)
+            var itemLayout = item.layout.position;
+            var itemElementLayout = _originalParent.WorldToLocal(_itemElement.layout.position);
+            if (itemLayout.y <= itemElementLayout.y)
             {
                 itemUpper = item;
             }
+
+            if (Vector2.Distance(itemLayout, itemElementLayout) < item.layout.height && _itemTab
+                    .CheckItemIsInventory(item))
+            {
+                itemOverlapped = item;
+            }
         }
-        
+
         _originalParent.Add(_itemElement);
-        
+
         _itemElement.style.position = Position.Relative;
         _itemElement.style.left = 0;
         _itemElement.style.top = 0;
-        
-        _itemElement.PlaceInFront(itemUpper);
+
+        if (itemOverlapped == null)
+        {
+            _itemNameLabel.pickingMode = PickingMode.Position;
+            if (itemUpper == null) _itemElement.SendToBack();
+            else _itemElement.PlaceInFront(itemUpper);
+        }
+        else
+        {
+            var itemOverlappedName = _itemTab.GetItemName(itemOverlapped);
+            _inventoryManager.MoveItem(_item, itemOverlappedName);
+        }
     }
 }

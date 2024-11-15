@@ -16,6 +16,7 @@ public class TabElement : VisualElement
     private readonly VisualElement _bottomTabButtonContainer;
     private VisualElement _tabContentsContainer;
 
+    public Button CurrentTabButton { get; private set; }
     //이름, 배경, 버튼 수
     private string _tabNames;
 
@@ -191,7 +192,7 @@ public class TabElement : VisualElement
         tabButton.clickable.clicked += () => { TabButtonClick(tabButton); };
     }
 
-    private void TabButtonClick(Button tab)
+    public void TabButtonClick(Button tab)
     {
         foreach (var contents in _tabContentsContainer.Children())
         {
@@ -215,6 +216,8 @@ public class TabElement : VisualElement
         {
             return;
         }
+        
+        CurrentTabButton = tab;
     }
 
     private void RemoveTab(int index)

@@ -426,6 +426,9 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
+    - Name: ItemEvents
+      Entry: 6
+      Data: 
     - Name: ToolNames
       Entry: 7
       Data: 0|Unity.VisualScripting.FlexibleDictionary`2[[ToolType, Assembly-CSharp],[System.String,

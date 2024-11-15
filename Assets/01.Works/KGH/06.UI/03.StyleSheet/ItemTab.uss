@@ -13,3 +13,9 @@
 .item-element:hover {
     translate: -10px 0;
 }
+
+.item-desc {
+    font-size: 24px;
+    -unity-font-definition: url("project://database/Assets/00.ForEveryone/03.Fonts/Sam3KRFont%20SDF.asset?fileID=11400000&guid=0f08d7a2ed3a7c846ad35575c8c0973d&type=2#Sam3KRFont SDF");
+    color: rgb(255, 255, 255);
+}

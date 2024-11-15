@@ -5,15 +5,15 @@ using UnityEngine.UIElements;
 
 public class ItemInventory
 {
-    private TabElement _itemTab;
-    private VisualElement _tabContent;
-    private VisualTreeAsset _itemListTemplate;
-    private VisualElement _root;
-    private InventoryManager _inventoryManager;
-    private Dictionary<VisualElement, ItemTab> _itemTabs;
-    private Dictionary<string, VisualElement> _itemTabElements;
+    private readonly TabElement _itemTab;
+    private readonly VisualElement _tabContent;
+    private readonly VisualTreeAsset _itemListTemplate;
+    private readonly VisualElement _root;
+    private readonly InventoryManager _inventoryManager;
+    private readonly Dictionary<VisualElement, ItemTab> _itemTabs;
+    private readonly Dictionary<string, VisualElement> _itemTabElements;
 
-    private InGameUI _inGameUI;
+    private readonly InGameUI _inGameUI;
     
     public ItemInventory(TabElement itemTab,VisualTreeAsset itemListTemplate, InventoryManager inventoryManager, InGameUI inGameUI, VisualElement root)
     {
@@ -51,6 +51,7 @@ public class ItemInventory
     }
     public void AddItemTab(InventoryParents parentItem)
     {
+        var currentTab = _itemTab.CurrentTabButton;
         if(_itemTabElements.ContainsKey(parentItem.name)) return;
         
         _itemTab.TabNames += $"{parentItem.name},";
@@ -61,8 +62,11 @@ public class ItemInventory
         
         _tabContent.Add(tab);
         _itemTabElements.Add(parentItem.name, tab);
-        _itemTabs.Add(tab, new ItemTab(tab, parentItem, this, _inventoryManager.ToolNames, _inGameUI, _root));
+        _itemTabs.Add(tab, new ItemTab(tab, parentItem, this, _inventoryManager.ToolNames, _inGameUI, _root, _inventoryManager));
+        
+        tab.style.display = DisplayStyle.None;
         
         _itemTabs[tab].UpdateItemTab();
+        _itemTab.TabButtonClick(currentTab);
     }
 }

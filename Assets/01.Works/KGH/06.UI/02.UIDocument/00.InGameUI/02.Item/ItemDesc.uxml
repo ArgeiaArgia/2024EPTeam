@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/01.Works/KGH/06.UI/03.StyleSheet/ItemDesc.uss?fileID=7433441132597879392&amp;guid=423370a904fb4c341be19ace89ec7a46&amp;type=3#ItemDesc" />
+    <ui:VisualElement name="Container" style="background-image: url(&quot;project://database/Assets/01.Works/KGH/02.Sprites/01.RoundBoxes/RoundBoxFull3.png?fileID=21300000&amp;guid=a4d84679bf90ba7499599b817fd1fcaa&amp;type=3#RoundBoxFull3&quot;); -unity-background-image-tint-color: rgba(55, 62, 66, 0.49); padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;">
+        <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TitleLabel" />
+        <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ItemCategory" class="item-desc-label" style="opacity: 0.5; font-size: 16px; margin-top: 0; margin-right: 0; margin-left: 0; padding-right: 0; padding-left: 0; padding-top: 0;" />
+        <ui:VisualElement name="EffectList" class="item-desc-label" style="flex-grow: 1; flex-direction: row; justify-content: space-between;">
+            <ui:VisualElement name="EffectName" style="flex-basis: 50%;">
+                <ui:Label tabindex="-1" text="qweqweqweqwewqeqw" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" />
+            </ui:VisualElement>
+            <ui:VisualElement name="EffectValue" style="flex-basis: 50%; -unity-text-align: upper-right;">
+                <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" class="positive-effect" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Description" />
+    </ui:VisualElement>
+</ui:UXML>

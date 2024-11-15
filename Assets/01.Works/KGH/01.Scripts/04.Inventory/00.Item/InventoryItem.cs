@@ -21,5 +21,11 @@ public class InventoryItem : InventoryParents
         this.loction = loction;
     }
 
-    public override string name => item.itemName;
+    private string _additionalName;
+
+    public override string name
+    {
+        get => item.itemName + _additionalName;
+        set => _additionalName = value.Remove(0, item.itemName.Length);
+    }
 }
