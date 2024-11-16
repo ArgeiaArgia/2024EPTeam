@@ -1,6 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="StatListUI" src="project://database/Assets/01.Works/KGH/06.UI/02.UIDocument/00.InGameUI/00.Stat/StatListUI.uxml?fileID=9197481963319205126&amp;guid=c649c98c99e761d47b4488a6a77ac76e&amp;type=3#StatListUI" />
     <ui:Template name="ItemWindow" src="project://database/Assets/01.Works/KGH/06.UI/02.UIDocument/00.InGameUI/02.Item/ItemWindow.uxml?fileID=9197481963319205126&amp;guid=05fd2a3eba28e3d4386fb968224abf2e&amp;type=3#ItemWindow" />
+    <ui:Template name="ItemInteractions" src="project://database/Assets/01.Works/KGH/06.UI/02.UIDocument/00.InGameUI/02.Item/ItemInteractions.uxml?fileID=9197481963319205126&amp;guid=c238af97c6545dd4f8c8e231ed615e32&amp;type=3#ItemInteractions" />
     <Style src="project://database/Assets/01.Works/KGH/06.UI/03.StyleSheet/InGameUI.uss?fileID=7433441132597879392&amp;guid=363f84408d5a00f4f99f86aee5aee722&amp;type=3#InGameUI" />
     <ui:VisualElement name="Container" picking-mode="Ignore" style="flex-grow: 1;">
         <ui:VisualElement name="UpperSide" picking-mode="Ignore" style="flex-grow: 1; flex-direction: row; justify-content: space-between; flex-shrink: 1; flex-basis: 50%;">
@@ -9,4 +10,5 @@
         </ui:VisualElement>
         <ui:VisualElement name="LowerSider" picking-mode="Ignore" style="flex-grow: 1; flex-shrink: 1; flex-basis: 50%;" />
     </ui:VisualElement>
+    <ui:Instance template="ItemInteractions" name="ItemInteractions" style="position: absolute; display: none;" />
 </ui:UXML>

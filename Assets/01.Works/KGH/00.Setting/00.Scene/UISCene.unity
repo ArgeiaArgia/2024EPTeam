@@ -420,22 +420,143 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: adbd3c73c77a07a47b0c18569b74045d, type: 2}
+    - {fileID: 1115266976}
+    - {fileID: 0}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
     - Name: ItemEvents
-      Entry: 6
+      Entry: 7
+      Data: 0|UnityEngine.Rendering.SerializedDictionary`2[[ItemSO, Assembly-CSharp],[System.Collections.Generic.List`1[[InteractEvent,
+        Assembly-CSharp]], mscorlib]], Unity.RenderPipelines.Core.Runtime
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[ItemSO, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 0
+    - Name: $v
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[InteractEvent, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 3|InteractEvent, Assembly-CSharp
+    - Name: EventName
+      Entry: 1
+      Data: "\uBA39\uAE30"
+    - Name: OnInteract
+      Entry: 7
+      Data: 4|UnityEngine.Events.UnityEvent, UnityEngine.CoreModule
+    - Name: m_PersistentCalls
+      Entry: 7
+      Data: 5|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
+    - Name: m_Calls
+      Entry: 7
+      Data: 6|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
+        UnityEngine.CoreModule]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 7|UnityEngine.Events.PersistentCall, UnityEngine.CoreModule
+    - Name: m_Target
+      Entry: 10
+      Data: 1
+    - Name: m_TargetAssemblyTypeName
+      Entry: 1
+      Data: NewBehaviourScript, Assembly-CSharp
+    - Name: m_MethodName
+      Entry: 1
+      Data: Eat
+    - Name: m_Mode
+      Entry: 3
+      Data: 1
+    - Name: m_Arguments
+      Entry: 7
+      Data: 8|UnityEngine.Events.ArgumentCache, UnityEngine.CoreModule
+    - Name: m_ObjectArgument
+      Entry: 10
+      Data: 2
+    - Name: m_ObjectArgumentAssemblyTypeName
+      Entry: 1
+      Data: UnityEngine.Object, UnityEngine
+    - Name: m_IntArgument
+      Entry: 3
+      Data: 0
+    - Name: m_FloatArgument
+      Entry: 4
+      Data: 0
+    - Name: m_StringArgument
+      Entry: 1
+      Data: 
+    - Name: m_BoolArgument
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: m_CallState
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
     - Name: ToolNames
       Entry: 7
-      Data: 0|Unity.VisualScripting.FlexibleDictionary`2[[ToolType, Assembly-CSharp],[System.String,
+      Data: 9|Unity.VisualScripting.FlexibleDictionary`2[[ToolType, Assembly-CSharp],[System.String,
         mscorlib]], Unity.VisualScripting.Core
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[ToolType, Assembly-CSharp]],
+      Data: 10|System.Collections.Generic.EnumEqualityComparer`1[[ToolType, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
@@ -524,7 +645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryManager: {fileID: 1115266975}
-  item: {fileID: 11400000, guid: e60877d1953b2a04c91485e6667b93f6, type: 2}
+  item: {fileID: 11400000, guid: adbd3c73c77a07a47b0c18569b74045d, type: 2}
 --- !u!1 &1353631938
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,6 +810,7 @@ MonoBehaviour:
     - Name: _abilityIcons
       Entry: 6
       Data: 
+  _inputReader: {fileID: 11400000, guid: 3d98378fbe214b748a2d14c534822162, type: 2}
   _inventoryManager: {fileID: 1115266975}
   _itemListTemplate: {fileID: 9197481963319205126, guid: e0d32bd80e71c5747bdaa44aa6d0e12e, type: 3}
   OnChangeAbilityValue:

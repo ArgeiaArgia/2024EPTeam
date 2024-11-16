@@ -31,6 +31,15 @@ public class ItemInventory
         _inGameUI = inGameUI;
         
         _root = root;
+        _inGameUI.OnInteracting += HandleInteracting;
+    }
+
+    private void HandleInteracting(bool obj)
+    {
+        foreach (var itemTab in _itemTabs)
+        {
+            itemTab.Value.SetPickingMode(obj);
+        }
     }
 
     private void HandleInventoryInitialized(List<DefaultItemInventory> defaultItemInventories)

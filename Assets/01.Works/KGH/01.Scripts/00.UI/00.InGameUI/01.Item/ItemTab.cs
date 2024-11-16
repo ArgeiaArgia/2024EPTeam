@@ -33,12 +33,10 @@ public class ItemTab
     private readonly Label _hoverDescription;
 
     #endregion
+    
+    private readonly Dictionary<ItemSO, List<InteractEvent>> _itemEvents;
 
-    #region ItemInteractions
-
-    public Dictionary<ItemSO, UnityEvent<ItemSO>> ItemEvents;
-
-    #endregion
+    
     public ItemTab(VisualElement itemList, InventoryParents parentItem, ItemInventory itemInventory,
         Dictionary<ToolType, string> toolNames, InGameUI inGameUI, VisualElement root, InventoryManager inventoryManager)
     {
@@ -203,8 +201,17 @@ public class ItemTab
         }
     }
 
-    private void ShowInteractions(ItemSO item)
+    public void ShowInteractions(ItemSO item)
     {
-        var events = ItemEvents[item];
+        _inGameUI.ShowInteractions(_inventoryManager.ItemEvents[item]);
+        ItemHover(null);
+    }
+
+    public void SetPickingMode(bool isIgnore)
+    {
+        foreach (var element in _itemElementInteracts)
+        {
+            element.Value.ChangePickingMode(isIgnore? PickingMode.Ignore : PickingMode.Position);
+        }
     }
 }

@@ -12,19 +12,23 @@ public class InputReader : ScriptableObject, IPlayerActionActions
     public Action<Vector2> OnMoveDownEvent;
     public Action<Vector2> OnMovePressEvent;
     public Action<Vector2> OnMoveUpEvent;
+
     private void OnEnable()
     {
-        if (_inputController == null)
-        {
-            _inputController = new InputController();
-            _inputController.PlayerAction.SetCallbacks(this);
-        }
+        _inputController ??= new InputController();
+
+        _inputController.PlayerAction.SetCallbacks(this);
         _inputController.PlayerAction.Enable();
+    }
+    
+    private void OnDisable()
+    {
+        _inputController.PlayerAction.Disable();
     }
 
     public void OnMouse(InputAction.CallbackContext context)
     {
-        Vector2 value = context.ReadValue<Vector2>();
+        var value = Mouse.current.position.ReadValue();
         if (context.performed)
         {
             OnMovePressEvent?.Invoke(value);

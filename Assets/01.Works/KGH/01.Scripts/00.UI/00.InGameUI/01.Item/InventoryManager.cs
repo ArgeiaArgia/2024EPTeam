@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 public class InventoryManager : SerializedMonoBehaviour
 {
-    [OdinSerialize] public Dictionary<ItemSO, UnityEvent<ItemSO>> ItemEvents;
+    [OdinSerialize] public Dictionary<ItemSO, List<InteractEvent>> ItemEvents;
     [OdinSerialize] public Dictionary<ToolType, string> ToolNames;
     [field: SerializeField] public List<DefaultItemInventory> DefaultItemInventories { get; private set; }
     public List<InventoryItem> InventoryItems { get; private set; } = new List<InventoryItem>();
@@ -90,4 +90,11 @@ public class InventoryManager : SerializedMonoBehaviour
         if (preParentItem != null) OnInventoryChanged?.Invoke(preParentItem.name);
         OnInventoryChanged?.Invoke(location);
     }
+}
+
+[Serializable]
+public class InteractEvent
+{
+    public string EventName;
+    public UnityEvent OnInteract;
 }

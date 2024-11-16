@@ -25,7 +25,17 @@ public class ItemElementInteract
         _itemElement = itemElement;
         _item = item;
 
-        _itemElement.RegisterCallback<MouseDownEvent>(e => inGameUI.CoroutineHelper(ItemHolding()));
+        _itemElement.RegisterCallback<MouseDownEvent>(e =>
+        {
+            if (e.button == 1)
+            {
+                itemTab.ShowInteractions(item.item);
+            }
+            else
+            {
+                inGameUI.CoroutineHelper(ItemHolding());
+            }
+        });
         _itemElement.RegisterCallback<MouseUpEvent>(e => _isHolding = false);
 
 
@@ -91,5 +101,10 @@ public class ItemElementInteract
             var itemOverlappedName = _itemTab.GetItemName(itemOverlapped);
             _inventoryManager.MoveItem(_item, itemOverlappedName);
         }
+    }
+    public void ChangePickingMode(PickingMode pickingMode)
+    {
+        _itemElement.pickingMode = pickingMode;
+        _itemNameLabel.pickingMode = pickingMode;
     }
 }

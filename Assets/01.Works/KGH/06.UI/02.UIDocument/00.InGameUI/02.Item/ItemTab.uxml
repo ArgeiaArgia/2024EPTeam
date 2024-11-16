@@ -1,5 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="ItemDesc" src="project://database/Assets/01.Works/KGH/06.UI/02.UIDocument/00.InGameUI/02.Item/ItemDesc.uxml?fileID=9197481963319205126&amp;guid=2617fb366ef6b6443af3b26e23bb0847&amp;type=3#ItemDesc" />
+    <ui:Template name="ItemInteractions" src="project://database/Assets/01.Works/KGH/06.UI/02.UIDocument/00.InGameUI/02.Item/ItemInteractions.uxml?fileID=9197481963319205126&amp;guid=c238af97c6545dd4f8c8e231ed615e32&amp;type=3#ItemInteractions" />
     <Style src="project://database/Assets/01.Works/KGH/06.UI/03.StyleSheet/ItemTab.uss?fileID=7433441132597879392&amp;guid=23518a6400f899e44a21461039b2f773&amp;type=3#ItemTab" />
     <Style src="project://database/Assets/01.Works/KGH/06.UI/03.StyleSheet/CustomScroller.uss?fileID=7433441132597879392&amp;guid=697f1cbcd9219c340917137ca3628131&amp;type=3#CustomScroller" />
     <ui:VisualElement name="Container" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/01.Works/KGH/02.Sprites/01.RoundBoxes/HalfRoundBoxFull3.png?fileID=21300000&amp;guid=c69b41fb4d05e084aac59e8aee687e95&amp;type=3#HalfRoundBoxFull3&quot;); -unity-background-image-tint-color: rgb(94, 117, 130); padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; width: 100%; height: 470px;">
@@ -7,4 +8,5 @@
         <ui:ScrollView name="ItemContainer" />
     </ui:VisualElement>
     <ui:Instance template="ItemDesc" name="ItemDesc" class="item-desc" style="position: absolute; display: none;" />
+    <ui:Instance template="ItemInteractions" name="ItemInteractions" style="position: absolute; display: none;" />
 </ui:UXML>

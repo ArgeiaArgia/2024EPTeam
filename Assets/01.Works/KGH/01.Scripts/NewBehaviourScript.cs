@@ -17,4 +17,9 @@ public class NewBehaviourScript : MonoBehaviour
     {
         inventoryManager.AddItem(item, 1, "갑판");
     }
+
+    public void Eat()
+    {
+        Debug.Log("냠냠 ");
+    }
 }
