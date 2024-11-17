@@ -12,9 +12,35 @@ public class ItemSO : ScriptableObject
     public ItemType itemType; // 아이템 타입
     public float percentageOfCatch; // 잡을 확률
     public float weight; // 무게
-    public List<ItemSO> materialList = new List<ItemSO>(); //재료 리스트(도구, 요리)
     public ToolType toolType; // 도구 타입(도구)
     public float holdableWeight; // 슬롯 개수(도구)
+
+    public Dictionary<ItemSO, int> materialList
+    {
+        get
+        {
+            var returnDic = new Dictionary<ItemSO, int>();
+            for (var i = 0; i < StatEffectKey.Count; i++)
+            {
+                returnDic.Add(materialKey[i], (int)materialValue[i]);
+            }
+
+            return returnDic;
+        }
+        set
+        {
+            materialKey.Clear();
+            materialValue.Clear();
+            
+            foreach (var statEffect in value)
+            {
+                materialKey.Add(statEffect.Key);
+                materialValue.Add(statEffect.Value);
+            }
+        }
+    } 
+    public List<ItemSO> materialKey = new List<ItemSO>();
+    public List<int> materialValue = new List<int>(); 
     public Dictionary<StatType, int> StatEffect
     {
         get

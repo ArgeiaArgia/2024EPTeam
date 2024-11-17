@@ -25,7 +25,7 @@ public class ItemInspector
     private Slider _weightSlider;
     private TextField _descField;
     private readonly VisualElement _additionalContent;
-    private readonly EditorList _materialList;
+    private readonly EditorDictionary _materialList;
     private readonly EnumField _toolType;
     private readonly Slider _holdableWeight;
     private readonly EditorDictionary _effectList;
@@ -70,13 +70,13 @@ public class ItemInspector
         _confirmButton.clicked += ()=>EditorUtility.SetDirty(_currentItem);
         
         _additionalContent = content.Q<VisualElement>("Additional");
-        _materialList = content.Q<EditorList>("MaterialList");
+        _materialList = content.Q<EditorDictionary>("MaterialList");
         _toolType = content.Q<EnumField>("ToolType");
         _holdableWeight = content.Q<Slider>("HoldableWeight");
         _effectList = content.Q<EditorDictionary>("StatEffectDictionary");
         _foodType = content.Q<EnumField>("FoodType");
         
-        _materialList.OnListChanged += HandleMaterialListChanged;
+        _materialList.OnDictionaryChanged += HandleMaterialListChanged;
         _toolType.RegisterValueChangedCallback((e) => HandleChangeToolType(e.newValue));
         _holdableWeight.RegisterValueChangedCallback((e) => HandleChangeHoldableWeight(e.newValue));
         _effectList.OnDictionaryChanged += HandleEffectDictionaryChanged;
@@ -154,11 +154,11 @@ public class ItemInspector
         _currentItem.description = evtNewValue;
     }
 
-    private void HandleMaterialListChanged(IList obj)
+    private void HandleMaterialListChanged(IDictionary obj)
     {
         if (_currentItem == null || (_currentItem.itemType != ItemType.Food && _currentItem.itemType != ItemType.Tool))
             return;
-        _currentItem.materialList = obj as List<ItemSO>;
+        _currentItem.materialList = obj as Dictionary<ItemSO, int>;
     }
 
     private void HandleChangeToolType(Enum evtNewValue)
@@ -215,11 +215,11 @@ public class ItemInspector
         ShowItemType(item.itemType);
         ShowToolType(item.toolType);
         
-        _materialList.ClearList();
+        _materialList.ClearDictionary();
         _effectList.ClearDictionary();
         foreach (var mat in item.materialList)
         {
-            _materialList.AddList(mat);
+            _materialList.AddDictionaryItem(mat.Key, mat.Value);
         }
 
         foreach (var eff in item.StatEffect)

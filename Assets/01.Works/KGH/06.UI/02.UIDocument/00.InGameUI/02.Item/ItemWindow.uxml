@@ -3,10 +3,7 @@
     <FoldableElement foldable-name="아이템 &amp; 제작" header-color="#373E42FF" style="-unity-font-definition: url(&quot;project://database/Assets/00.ForEveryone/03.Fonts/Sam3KRFont%20SDF.asset?fileID=11400000&amp;guid=0f08d7a2ed3a7c846ad35575c8c0973d&amp;type=2#Sam3KRFont SDF&quot;); font-size: 16px;">
         <TabElement is-tab-left="true" tab-count="2" tab-position-type="Bottom" name="TabElement" tab-names="아이템,제작 ">
             <TabElement tab-position-type="Left" name="ItemTab" tab-count="-11" />
-            <TabElement tab-position-type="Left" name="CraftTab" style="display: none;">
-                <ui:VisualElement name="Item" style="flex-grow: 1;" />
-                <ui:VisualElement style="flex-grow: 1; height: 550px;" />
-            </TabElement>
+            <TabElement tab-position-type="Left" name="CraftTab" style="display: none;" />
         </TabElement>
     </FoldableElement>
 </ui:UXML>

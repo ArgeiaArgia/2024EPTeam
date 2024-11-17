@@ -2,7 +2,9 @@
     <Style src="project://database/Assets/Resources/CustomControls/ItemElement.uss?fileID=7433441132597879392&amp;guid=73fb1fdd36f2022418a76644bd6ee506&amp;type=3#ItemElement" />
     <ui:VisualElement name="ItemBackground" class="item-background">
         <ui:VisualElement name="Icon" class="item-icon" />
-        <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="NameLabel" class="item-name item-label" />
-        <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CategoryLabel" class="item-category item-label" />
+        <ui:VisualElement name="Labels" style="flex-grow: 1; flex-direction: row;">
+            <ui:Label tabindex="-1" text="s" parse-escape-sequences="true" display-tooltip-when-elided="true" name="NameLabel" class="item-name item-label" />
+            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CategoryLabel" class="item-category item-label" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
