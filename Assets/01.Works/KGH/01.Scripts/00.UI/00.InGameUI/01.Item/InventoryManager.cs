@@ -10,7 +10,7 @@ public class InventoryManager : SerializedMonoBehaviour
     [OdinSerialize] public Dictionary<ItemSO, List<InteractEvent>> ItemEvents;
     [OdinSerialize] public Dictionary<ToolType, string> ToolNames;
     [field: SerializeField] public List<DefaultItemInventory> DefaultItemInventories { get; private set; }
-    public List<InventoryItem> InventoryItems { get; private set; } = new List<InventoryItem>();
+    private List<InventoryItem> InventoryItems { get; set; } = new List<InventoryItem>();
     [field: SerializeField] public List<string> Inventories { get; private set; }
 
     public event Action<string> OnInventoryChanged;
@@ -37,7 +37,7 @@ public class InventoryManager : SerializedMonoBehaviour
         else
         {
             InventoryItem inventoryItem;
-            if (isSeparated && InventoryItems.Find(x => x.name == item.name && x.loction == location) != null && item
+            if (isSeparated && InventoryItems.Find(x => x.name == item.name) != null && item
                     .toolType == ToolType.Inventory)
             {
                 var itemCount = InventoryItems.FindAll(x => x.item.itemName == item.itemName).Count;
@@ -54,7 +54,7 @@ public class InventoryManager : SerializedMonoBehaviour
             InventoryItems.Add(inventoryItem);
             if (item.toolType == ToolType.Inventory)
             {
-                Inventories.Add(item.name);
+                Inventories.Add(inventoryItem.name);
             }
 
             parentItem?.itemsIn.Add(inventoryItem);
@@ -63,29 +63,53 @@ public class InventoryManager : SerializedMonoBehaviour
         OnInventoryChanged?.Invoke(location);
     }
 
-    public void RemoveItem(InventoryItem inventoryItem)
+    private void AddItem(InventoryItem item, string location, bool isSeparated = false)
     {
-        var parentItem = InventoryItems.Find(x => x.item.itemName == inventoryItem.loction) ??
-                         (InventoryParents)DefaultItemInventories.Find(x => x.name == inventoryItem.loction);
+        var inventoryItems = InventoryItems.FindAll(x => x.item == item.item);
+        var parentItem = InventoryItems.Find(x => x.name == location) ??
+                         (InventoryParents)DefaultItemInventories.Find(x => x.name == location);
 
+        if (item.item.toolType == ToolType.Inventory) isSeparated = true;
+
+        item.loction = location;
+        
+        var itemInInventory = inventoryItems.Find(x => x.loction == location);
+        if (inventoryItems.Count > 0 && !isSeparated && itemInInventory != null)
+        {
+            inventoryItems.Find(x => x.loction == location).count += item.count;
+        }
+        else
+        {
+            InventoryItems.Add(item);
+            parentItem?.itemsIn.Add(item);
+            if (item.item.toolType == ToolType.Inventory && parentItem.GetType() == typeof(DefaultItemInventory))
+            {
+                Inventories.Add(item.name);
+            }
+        }
+
+        OnInventoryChanged?.Invoke(location);
+    }
+
+    private void RemoveItem(InventoryItem inventoryItem)
+    {
         InventoryItems.Remove(inventoryItem);
+        var parentItem = InventoryItems.Find(x => x.name == inventoryItem.loction) ??
+                         (InventoryParents)DefaultItemInventories.Find(x => x.name == inventoryItem.loction);
+        parentItem?.itemsIn.Remove(inventoryItem);
         if (inventoryItem.item.toolType == ToolType.Inventory)
         {
             Inventories.Remove(inventoryItem.name);
         }
-
-        parentItem?.itemsIn.Remove(inventoryItem);
-
-        OnInventoryChanged?.Invoke(inventoryItem.loction);
     }
 
     public void MoveItem(InventoryItem inventoryItem, string location)
     {
-        var preParentItem = InventoryItems.Find(x => x.item.itemName == inventoryItem.loction) ??
+        var preParentItem = InventoryItems.Find(x => x.name == inventoryItem.loction) ??
                             (InventoryParents)DefaultItemInventories.Find(x => x.name == inventoryItem.loction);
 
         RemoveItem(inventoryItem);
-        AddItem(inventoryItem.item, inventoryItem.count, location);
+        AddItem(inventoryItem, location);
 
         if (preParentItem != null) OnInventoryChanged?.Invoke(preParentItem.name);
         OnInventoryChanged?.Invoke(location);

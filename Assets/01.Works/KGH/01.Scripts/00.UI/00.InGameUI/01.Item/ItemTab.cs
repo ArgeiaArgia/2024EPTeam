@@ -15,7 +15,7 @@ public class ItemTab
     private readonly ScrollView _itemScrollView;
     private readonly Dictionary<InventoryItem, ItemElement> _itemElements;
     private readonly Dictionary<ToolType, string> _toolNames;
-    private Dictionary<ItemElement, ItemElementInteract> _itemElementInteracts;
+    private readonly Dictionary<ItemElement, ItemElementInteract> _itemElementInteracts;
     private readonly InventoryParents _parentItem;
     private readonly Label _weightLabel;
 
@@ -23,7 +23,7 @@ public class ItemTab
     private readonly VisualElement _root;
 
     #region HoverDescription
-    
+
     private InventoryItem _hoverItem;
     private readonly VisualElement _itemDesc;
     private readonly Label _hoverName;
@@ -33,12 +33,13 @@ public class ItemTab
     private readonly Label _hoverDescription;
 
     #endregion
-    
+
     private readonly Dictionary<ItemSO, List<InteractEvent>> _itemEvents;
 
-    
+
     public ItemTab(VisualElement itemList, InventoryParents parentItem, ItemInventory itemInventory,
-        Dictionary<ToolType, string> toolNames, InGameUI inGameUI, VisualElement root, InventoryManager inventoryManager)
+        Dictionary<ToolType, string> toolNames, InGameUI inGameUI, VisualElement root,
+        InventoryManager inventoryManager)
     {
         _itemInventory = itemInventory;
 
@@ -53,7 +54,7 @@ public class ItemTab
         _inGameUI = inGameUI;
         _root = root;
         _inventoryManager = inventoryManager;
-        
+
         _itemDesc = _itemList.Q("ItemDesc");
         _hoverName = _itemDesc.Q<Label>("TitleLabel");
         _hoverCategory = _itemDesc.Q<Label>("ItemCategory");
@@ -65,14 +66,16 @@ public class ItemTab
 
     public void UpdateItemTab()
     {
-        for(var i = _itemElements.Count - 1; i >= 0 ; i--)
+        for (var i = _itemElements.Count - 1; i >= 0; i--)
         {
             var item = _itemElements.ElementAt(i).Key;
             var element = _itemElements.ElementAt(i).Value;
-         
+
             if (_parentItem.itemsIn.Contains(item)) continue;
             element.RemoveFromHierarchy();
             _itemElements.Remove(item);
+            if (item.item.toolType == ToolType.Inventory && _parentItem.GetType() == typeof(DefaultItemInventory))
+                _itemInventory.RemoveItemTab(item.name);
         }
 
         foreach (var item in _parentItem.itemsIn)
@@ -104,26 +107,33 @@ public class ItemTab
             _itemScrollView.Add(itemElement);
             _itemElements.Add(item, itemElement);
 
-            _itemElementInteracts.Add(itemElement, new ItemElementInteract(itemElement, item, _root, _inGameUI, 
-                this, 
-                _inventoryManager));
+            _itemElementInteracts.Add(itemElement, new ItemElementInteract(itemElement, item, _root, _inGameUI,
+                this, _inventoryManager));
 
-            if (item.item.toolType == ToolType.Inventory)
+            if (item.item.toolType == ToolType.Inventory && _parentItem.GetType() == typeof(DefaultItemInventory))
                 _itemInventory.AddItemTab(item);
+            else if (item.item.toolType == ToolType.Inventory && _parentItem.GetType() != typeof(DefaultItemInventory))
+                _itemInventory.RemoveItemTab(item.name);
         }
 
         var currentWeight = _parentItem.itemsIn.Sum(x => x.item.weight * x.count);
         _weightLabel.text = $"{currentWeight} / {_parentItem.holdableWeight}";
     }
+
+    public bool CheckItemIsInventory(VisualElement itemElement)=> _itemElements.Any(x => x.Value == itemElement);
     
-    public bool CheckItemIsInventory(VisualElement itemElement)
-    {
-        return _itemElements.Any(x => x.Value == itemElement);
-    }
-    
+
     public string GetItemName(VisualElement itemElement)
     {
         return _itemElements.FirstOrDefault(x => x.Value == itemElement).Key.name;
+    }
+    public InventoryItem GetItem(VisualElement itemElement)
+    {
+        return _itemElements.FirstOrDefault(x => x.Value == itemElement).Key;
+    }
+    public bool IsInventory(string loction)
+    {
+        return _inventoryManager.Inventories.Contains(loction);
     }
 
     public void ItemHover(InventoryItem item)
@@ -134,8 +144,9 @@ public class ItemTab
             _itemDesc.style.display = DisplayStyle.None;
             return;
         }
+
         _itemDesc.style.display = DisplayStyle.Flex;
-        
+
         _hoverName.text = item.name;
         _hoverCategory.text = item.item.itemType switch
         {
@@ -150,20 +161,20 @@ public class ItemTab
 
         _effectName.Clear();
         _effectValue.Clear();
-        
-        var weightName = new Label {text = "무게 : "};
-        var weightValue = new Label {text = item.item.weight.ToString()};
+
+        var weightName = new Label { text = "무게 : " };
+        var weightValue = new Label { text = item.item.weight.ToString() };
         _effectName.Add(weightName);
         _effectValue.Add(weightValue);
-        
-        if(item.count > 1)
+
+        if (item.count > 1)
         {
-            var countName = new Label {text = "총 무게"};
-            var countValue = new Label {text = (item.count * item.item.weight).ToString()};
+            var countName = new Label { text = "총 무게" };
+            var countValue = new Label { text = (item.count * item.item.weight).ToString() };
             _effectName.Add(countName);
             _effectValue.Add(countValue);
         }
-        
+
         foreach (var effect in item.item.StatEffect)
         {
             var effectText = effect.Key switch
@@ -175,15 +186,15 @@ public class ItemTab
                 StatType.Health => "건강함",
                 _ => effect.Key.ToString()
             };
-            
-            var effectName = new Label {text = $"{effectText} : "};
-            var effectValue = new Label {text = effect.Value.ToString()};
+
+            var effectName = new Label { text = $"{effectText} : " };
+            var effectValue = new Label { text = effect.Value.ToString() };
             effectValue.AddToClassList(effect.Value > 0 ? "positive-effect" : "negative-effect");
-            
+
             _effectName.Add(effectName);
             _effectValue.Add(effectValue);
         }
-        
+
         _inGameUI.CoroutineHelper(DescriptionFollowingMouse());
     }
 
@@ -211,7 +222,11 @@ public class ItemTab
     {
         foreach (var element in _itemElementInteracts)
         {
-            element.Value.ChangePickingMode(isIgnore? PickingMode.Ignore : PickingMode.Position);
+            element.Value.ChangePickingMode(isIgnore ? PickingMode.Ignore : PickingMode.Position);
         }
     }
+
+    public string OverlappedTabButton(InventoryItem item) => _itemInventory.OverlappedTabButton(item);
+
+    
 }

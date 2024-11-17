@@ -116,6 +116,7 @@ public class TabElement : VisualElement
 
     private readonly List<string> _tabNameList = new List<string>();
     private readonly List<Button> _tabButtonList = new List<Button>();
+    public Button[] TabButtons => _tabButtonList.ToArray();
     public override VisualElement contentContainer => _tabContentsContainer;
 
     public TabElement()
