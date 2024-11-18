@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c4da5b6a69261b94da859a1e635ed9b7
+guid: 71e50e7fa3614f344a325683787d1efe
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -45,7 +45,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
@@ -101,69 +101,6 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 972
-        width: 576
-        height: 324
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aea0578b7a937fe46aa37107e6ab752a
-      internalID: -1787532651
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1background-Sheet_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 648
-        width: 576
-        height: 324
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a15c94bcb6d9364449fca4bfd0d9e356
-      internalID: 1917915568
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1background-Sheet_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 324
-        width: 576
-        height: 324
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5da68565cf8aeae4a9914799392bef83
-      internalID: 982777508
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1background-Sheet_3
-      rect:
-        serializedVersion: 2
-        x: 0
         y: 0
         width: 576
         height: 324
@@ -174,8 +111,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ed6b5977b27af140af5e870079b88a6
-      internalID: -1881443375
+      spriteID: ec9f08674ce559e4d9f2e6cd9d1e8f9c
+      internalID: 1335074546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1background-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 576
+        height: 324
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c0a444d08612304aab00cf15b05206f
+      internalID: -1938108988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1background-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 0
+        width: 576
+        height: 324
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70a819ac51352b8448ccd74600307d8f
+      internalID: 1491615306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1background-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 0
+        width: 576
+        height: 324
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4af74a0eb2fe8274190c66483d410b00
+      internalID: 1932037417
       vertices: []
       indices: 
       edges: []
@@ -191,10 +191,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      1background-Sheet_0: -1787532651
-      1background-Sheet_1: 1917915568
-      1background-Sheet_2: 982777508
-      1background-Sheet_3: -1881443375
+      1background-Sheet_0: 1335074546
+      1background-Sheet_1: -1938108988
+      1background-Sheet_2: 1491615306
+      1background-Sheet_3: 1932037417
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
