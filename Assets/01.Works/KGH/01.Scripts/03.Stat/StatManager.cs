@@ -7,29 +7,29 @@ using UnityEngine;
 
 public class StatManager : SerializedMonoBehaviour
 {
-    [SerializeField] private InGameUI inGameUI;
-    [OdinSerialize] private Dictionary<StatType, float> delay;
-    [HideInInspector] public Dictionary<StatType, int> statValues;
+    [OdinSerialize] private Dictionary<StatType, float> _delay;
+    [HideInInspector] public Dictionary<StatType, int> StatValues;
 
+    [HideInInspector] public Action<StatType, int> OnStatChanged;
     private void Start()
     {
-        statValues = new Dictionary<StatType, int>();
+        StatValues = new Dictionary<StatType, int>();
         foreach (StatType type in Enum.GetValues(typeof(StatType)))
         {
-            statValues.Add(type, 100);
-            inGameUI.ChangeStatValue(type, 100);
+            StatValues.Add(type, 100);
+            OnStatChanged?.Invoke(type, 100);
         }
-        foreach (var d in delay)
+        foreach (var d in _delay)
         {
             StartCoroutine(ReduceAsTime(d.Key, d.Value));
         }
     }
 
-    IEnumerator ReduceAsTime(StatType type, float time)
+    private IEnumerator ReduceAsTime(StatType type, float time)
     {
         yield return new WaitForSeconds(time);
-        statValues[type] -= 1;
-        inGameUI.ChangeStatValue(type, statValues[type]);
+        StatValues[type] -= 1;
+        OnStatChanged?.Invoke(type, StatValues[type]);
         StartCoroutine(ReduceAsTime(type, time));
     }
 }

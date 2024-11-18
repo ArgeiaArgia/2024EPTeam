@@ -40,6 +40,7 @@ public class CraftTab
                     if (element.IngredientItems.ContainsKey(unmakeable))
                         element.IngredientItems[unmakeable].AddToClassList("lack");
                 }
+                element.Q<Button>("CraftButton").pickingMode = PickingMode.Ignore;
             }
 
             element.OnCreateItem += _inventoryManager.CraftItem;

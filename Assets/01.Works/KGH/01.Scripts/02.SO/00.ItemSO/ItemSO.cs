@@ -20,7 +20,7 @@ public class ItemSO : ScriptableObject
         get
         {
             var returnDic = new Dictionary<ItemSO, int>();
-            for (var i = 0; i < StatEffectKey.Count; i++)
+            for (var i = 0; i < materialKey.Count; i++)
             {
                 returnDic.Add(materialKey[i], (int)materialValue[i]);
             }
@@ -31,16 +31,21 @@ public class ItemSO : ScriptableObject
         {
             materialKey.Clear();
             materialValue.Clear();
-            
+
+            if (value == null) return;
             foreach (var statEffect in value)
             {
+                if (statEffect.Key == null) return;
                 materialKey.Add(statEffect.Key);
                 materialValue.Add(statEffect.Value);
             }
+
         }
-    } 
+    }
+
     public List<ItemSO> materialKey = new List<ItemSO>();
-    public List<int> materialValue = new List<int>(); 
+    public List<int> materialValue = new List<int>();
+
     public Dictionary<StatType, int> StatEffect
     {
         get
@@ -57,7 +62,7 @@ public class ItemSO : ScriptableObject
         {
             StatEffectKey.Clear();
             StatEffectValue.Clear();
-            
+
             foreach (var statEffect in value)
             {
                 StatEffectKey.Add(statEffect.Key);
@@ -65,6 +70,7 @@ public class ItemSO : ScriptableObject
             }
         }
     } //물고기, 요리
+
     public List<StatType> StatEffectKey = new List<StatType>(); //물고기, 요리
     public List<int> StatEffectValue = new List<int>(); //물고기, 요리
     public FoodType foodType; //요리
@@ -79,6 +85,7 @@ public enum ItemType
     Trash,
     Tool
 }
+
 public enum ToolType
 {
     Material,
@@ -86,6 +93,7 @@ public enum ToolType
     Radio,
     Inventory
 }
+
 public enum FoodType
 {
     FirstLevelFood,

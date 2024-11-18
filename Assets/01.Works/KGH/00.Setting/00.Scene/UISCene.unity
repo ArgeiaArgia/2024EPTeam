@@ -300,96 +300,15 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: delay
-      Entry: 7
-      Data: 0|Unity.VisualScripting.FlexibleDictionary`2[[StatType, Assembly-CSharp],[System.Single,
-        mscorlib]], Unity.VisualScripting.Core
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[StatType, Assembly-CSharp]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 5
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 0
-    - Name: $v
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 1
-    - Name: $v
-      Entry: 4
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 2
-    - Name: $v
-      Entry: 4
-      Data: 3
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 3
-    - Name: $v
-      Entry: 4
-      Data: 4
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 4
-    - Name: $v
-      Entry: 4
-      Data: 5
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: statValues
+    - Name: _delay
       Entry: 6
       Data: 
-  inGameUI: {fileID: 1353631941}
+    - Name: StatValues
+      Entry: 6
+      Data: 
+    - Name: OnStatChanged
+      Entry: 6
+      Data: 
 --- !u!4 &1115266974
 Transform:
   m_ObjectHideFlags: 0
@@ -811,10 +730,11 @@ MonoBehaviour:
     - Name: _abilityIcons
       Entry: 6
       Data: 
-  _inputReader: {fileID: 11400000, guid: 3d98378fbe214b748a2d14c534822162, type: 2}
-  _inventoryManager: {fileID: 1115266975}
-  _itemListTemplate: {fileID: 9197481963319205126, guid: e0d32bd80e71c5747bdaa44aa6d0e12e, type: 3}
-  _craftListTemplate: {fileID: 9197481963319205126, guid: 403b5317f09a31347aaaf58d57ff7399, type: 3}
+  inputReader: {fileID: 11400000, guid: 3d98378fbe214b748a2d14c534822162, type: 2}
+  inventoryManager: {fileID: 1115266975}
+  statManager: {fileID: 1115266973}
+  itemListTemplate: {fileID: 9197481963319205126, guid: e0d32bd80e71c5747bdaa44aa6d0e12e, type: 3}
+  craftListTemplate: {fileID: 9197481963319205126, guid: 403b5317f09a31347aaaf58d57ff7399, type: 3}
   OnChangeAbilityValue:
     m_PersistentCalls:
       m_Calls: []
