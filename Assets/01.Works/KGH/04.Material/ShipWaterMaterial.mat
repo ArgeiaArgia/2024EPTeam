@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WaterMaterial
+  m_Name: ShipWaterMaterial
   m_Shader: {fileID: -6465566751694194690, guid: 426de6337cd34e84db41798978b9d9cf, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -28,7 +28,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RenderTex:
-        m_Texture: {fileID: 8400000, guid: 7b56276454b2d0d4baf12e2377ea662e, type: 2}
+        m_Texture: {fileID: 8400000, guid: 136030d76bdf03a40b385a7ccca9ce56, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _WaterTex:
