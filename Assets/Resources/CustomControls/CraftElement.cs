@@ -65,8 +65,8 @@ public class CraftElement : VisualElement
             var ingredientIcon = new VisualElement();
             ingredientIcon.style.backgroundImage = new StyleBackground(material.Key.itemIcon);
             ingredientIcon.AddToClassList("required-icon");
-            var ingredientCount = new Label(material.Value.ToString());
-            ingredientCount.AddToClassList("ingredient-text");
+            var ingredientCount = new Label($"x{material.Value}");
+            ingredientCount.AddToClassList("required-text");
             ingredientElement.Add(ingredientIcon);
             ingredientElement.Add(ingredientCount);
             _ingredientList.Add(ingredientElement);

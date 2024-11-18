@@ -123,21 +123,20 @@ public class InventoryManager : SerializedMonoBehaviour
 
     #region craft
 
-    public bool CheckIfMakeable(ItemSO item, out List<ItemSO> cannotBeMade)
+    public bool CheckIfMakeable(ItemSO item, out List<ItemSO> lackItems)
     {
         var craftItems = item.materialList;
-        cannotBeMade = (from craftItem in craftItems
+        lackItems = (from craftItem in craftItems
             let inventoryItem = InventoryItems.Find(x => x.item == craftItem.Key && x.count >= craftItem.Value)
             where inventoryItem == null
             select craftItem.Key).ToList();
 
-        Debug.Log(cannotBeMade);
-        return cannotBeMade.Count <= 0;
+        return lackItems.Count <= 0;
     }
 
     public void CraftItem(ItemSO item)
     {
-        if (CheckIfMakeable(item, out var cannotBeMade))
+        if (CheckIfMakeable(item, out var lackItems))
         {
             foreach (var craftItem in item.materialList)
             {
@@ -148,7 +147,7 @@ public class InventoryManager : SerializedMonoBehaviour
                     RemoveItem(inventoryItem);
                 }
             }
-            AddItem(item, 1, "Inventory");
+            AddItem(item, 1, "갑판");
         }
     }
     #endregion

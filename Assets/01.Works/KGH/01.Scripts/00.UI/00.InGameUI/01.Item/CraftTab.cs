@@ -32,14 +32,15 @@ public class CraftTab
                 CurrentItem = item
             };
 
-            if (!_inventoryManager.CheckIfMakeable(item, out var unmakeableItems))
+            if (!_inventoryManager.CheckIfMakeable(item, out var lackItems))
             {
-                element.AddToClassList("lack");
-                foreach (var unmakeable in unmakeableItems)
+                element.Q<Button>("CraftItem").AddToClassList("lack");
+                foreach (var itemSo in lackItems)
                 {
-                    if (element.IngredientItems.ContainsKey(unmakeable))
-                        element.IngredientItems[unmakeable].AddToClassList("lack");
+                    element.Q<VisualElement>(className:"required-icon").AddToClassList("lack");
+                    element.Q<Label>(className:"required-text").AddToClassList("lack");
                 }
+
                 element.Q<Button>("CraftButton").pickingMode = PickingMode.Ignore;
             }
 

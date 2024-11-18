@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12277ccfcc48b8a469a4d8bd467dbf4d, type: 3}
   m_Name: "\uACE0\uCCA0"
   m_EditorClassIdentifier: 
-  itemName: f1997d5568c39d443b30d6b56d43a16e
-  itemIcon: {fileID: 0}
+  itemName: "\uACE0\uCCA0"
+  itemIcon: {fileID: -1285698864, guid: a8d109b49de5d9c4892d8d388f42760b, type: 3}
   itemSprite: {fileID: 0}
   itemType: 2
   percentageOfCatch: 0

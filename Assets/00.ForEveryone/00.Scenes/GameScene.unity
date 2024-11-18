@@ -970,10 +970,10 @@ MonoBehaviour:
       Entry: 8
       Data: 
   <DefaultItemInventories>k__BackingField:
-  - _name: "\uC2E4\uB0B4"
-    _holdableWeight: 60
   - _name: "\uAC11\uD310"
     _holdableWeight: 100
+  - _name: "\uC2E4\uB0B4"
+    _holdableWeight: 60
   - _name: "\uC678\uACFD"
     _holdableWeight: 30
   <Inventories>k__BackingField: []

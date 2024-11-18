@@ -20,8 +20,9 @@ MonoBehaviour:
   weight: 10
   toolType: 2
   holdableWeight: 0
-  materialKey: []
-  materialValue: 
+  materialKey:
+  - {fileID: 11400000, guid: 07fccfd0daf3eaa408baf55ebc067416, type: 2}
+  materialValue: 0a000000
   StatEffectKey: 
   StatEffectValue: 
   foodType: 0
