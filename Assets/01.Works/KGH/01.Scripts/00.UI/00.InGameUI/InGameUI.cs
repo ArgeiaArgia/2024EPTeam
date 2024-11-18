@@ -38,7 +38,7 @@ public class InGameUI : ToolkitParents
         base.Awake();
         _statUIs = new Dictionary<StatType, StatUI>();
         _abilityUIs = new Dictionary<AbilityType, AbilityUI>();
-        
+
         _inputReader.OnMovePressEvent += OnMovePress;
     }
 
@@ -67,8 +67,8 @@ public class InGameUI : ToolkitParents
             abilityUI.OnChangeStatValue += value => OnChangeAbilityValue?.Invoke(abilityType, value);
         }
 
-        _inventory = new Inventory(root, _inventoryManager, _itemListTemplate, this);
-        
+        _inventory = new Inventory(root, _inventoryManager, _itemListTemplate, _craftListTemplate, this);
+
         _itemInteractions = root.Q<TemplateContainer>("ItemInteractions");
         _itemInteractions.RegisterCallback<MouseOverEvent>(evt => _isMouseOverInteract = true);
         _itemInteractions.RegisterCallback<MouseOutEvent>(evt => _isMouseOverInteract = false);
@@ -86,6 +86,7 @@ public class InGameUI : ToolkitParents
             _itemInteractions.style.display = DisplayStyle.None;
             return;
         }
+
         OnInteracting?.Invoke(true);
         _itemInteractions.style.display = DisplayStyle.Flex;
 
@@ -94,7 +95,7 @@ public class InGameUI : ToolkitParents
         {
             var interactButton = new Button { text = interactEvent.EventName };
             interactButton.AddToClassList("interact-button");
-            interactButton.clicked += ()=>
+            interactButton.clicked += () =>
             {
                 interactEvent.OnInteract.Invoke();
                 ShowInteractions(null);
@@ -112,8 +113,8 @@ public class InGameUI : ToolkitParents
     {
         if (_isMouseOverInteract) return;
         ShowInteractions(null);
-        
     }
+
     public void CoroutineHelper(IEnumerator coroutine) => StartCoroutine(coroutine);
 }
 

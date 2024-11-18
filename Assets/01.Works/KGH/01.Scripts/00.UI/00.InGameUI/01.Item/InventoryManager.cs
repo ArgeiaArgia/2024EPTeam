@@ -13,6 +13,7 @@ public class InventoryManager : SerializedMonoBehaviour
     [field: SerializeField] public List<DefaultItemInventory> DefaultItemInventories { get; private set; }
     private List<InventoryItem> InventoryItems { get; set; } = new List<InventoryItem>();
     [field: SerializeField] public List<string> Inventories { get; private set; }
+    [field: SerializeField] public ItemListSO ItemListSO { get; private set; }
 
     public event Action<string> OnInventoryChanged;
     public event Action<List<DefaultItemInventory>> OnInventoryInitialized;
@@ -130,6 +131,7 @@ public class InventoryManager : SerializedMonoBehaviour
             where inventoryItem == null
             select craftItem.Key).ToList();
 
+        Debug.Log(cannotBeMade);
         return cannotBeMade.Count <= 0;
     }
 

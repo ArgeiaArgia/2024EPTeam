@@ -36,10 +36,10 @@ public class CraftElement : VisualElement
         styleSheets.Add(styleSheet);
 
         var craftItem = this.Q<Button>("CraftItem");
-        _itemIcon = this.Q<VisualElement>("ItemIcon");
+        _itemIcon = this.Q<VisualElement>("Icon");
         _itemName = this.Q<Label>("ItemName");
         var ingredientContainer = this.Q<VisualElement>("Ingredients");
-        _ingredientList = this.Q<VisualElement>("IngredientList");
+        _ingredientList = this.Q<VisualElement>("ItemList");
         var craftButton = this.Q<Button>("CraftButton");
         
         craftItem.clickable.clicked += () =>

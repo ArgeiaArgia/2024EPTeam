@@ -13,9 +13,7 @@
         </ui:VisualElement>
         <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="CraftItem" class="craft-item" style="font-size: 16px;">
             <ui:VisualElement name="Icon" style="-unity-background-scale-mode: scale-to-fit; width: 35px; background-image: url(&quot;project://database/Assets/00.ForEveryone/01.Sprites/ability.png?fileID=-244340599&amp;guid=84414fdc76f2d974f91e42cc4e31acad&amp;type=3#ability_1&quot;); margin-right: 10px;" />
-            <ui:VisualElement name="NameAndType" style="flex-direction: row; -unity-font-definition: url(&quot;project://database/Assets/00.ForEveryone/03.Fonts/Sam3KRFont%20SDF.asset?fileID=11400000&amp;guid=0f08d7a2ed3a7c846ad35575c8c0973d&amp;type=2#Sam3KRFont SDF&quot;);">
-                <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ItemName" style="flex-direction: row; font-size: 24px;" />
-            </ui:VisualElement>
+            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ItemName" style="flex-direction: row; font-size: 24px; color: rgb(55, 62, 66); -unity-font-definition: url(&quot;project://database/Assets/00.ForEveryone/03.Fonts/Sam3KRFont%20SDF.asset?fileID=11400000&amp;guid=0f08d7a2ed3a7c846ad35575c8c0973d&amp;type=2#Sam3KRFont SDF&quot;);" />
         </ui:Button>
     </ui:VisualElement>
 </ui:UXML>

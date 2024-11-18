@@ -6,20 +6,29 @@ using UnityEngine.UIElements;
 
 public class CraftInventory
 {
-    private TabElement _craftTab;
-    private VisualTreeAsset _craftListTemplate;
     private InventoryManager _inventoryManager;
-    
-    private Dictionary<ToolType, CraftTab> _craftTabs;
-    
+
+    private Dictionary<ToolType, CraftTab> _craftTabs = new Dictionary<ToolType, CraftTab>();
+
     public CraftInventory(TabElement craftTab, VisualTreeAsset craftListTemplate, InventoryManager inventoryManager)
     {
-        _craftTab = craftTab;
-        _craftListTemplate = craftListTemplate;
+        var craftItems = inventoryManager.ItemListSO.ItemList;
+        var craftTabContainer = craftTab.Q<VisualElement>("TabContents");
+        var typeName = inventoryManager.ToolNames;
         _inventoryManager = inventoryManager;
 
-        foreach (var type in Enum.GetValues(typeof(ToolType)))
+        craftTab.TabNames = "";
+        var enumCount = Enum.GetValues(typeof(ToolType)).Length;
+        for (var i = 0; i < enumCount; i++)
         {
+            var tab = craftListTemplate.CloneTree();
+            var items = craftItems.FindAll(x => (x.itemType == ItemType.Tool) && (x.toolType == (ToolType)i));
+            var craft = new CraftTab(items, tab.Q<ScrollView>(), inventoryManager);
+            _craftTabs.Add((ToolType)i, craft);
+            craftTab.TabNames += typeName[(ToolType)i] + ", ";
+            craftTabContainer.Add(tab);
         }
+
+        craftTab.TabCount = enumCount;
     }
 }

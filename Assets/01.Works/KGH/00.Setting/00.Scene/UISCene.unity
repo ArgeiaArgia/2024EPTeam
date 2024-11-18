@@ -632,6 +632,7 @@ MonoBehaviour:
   - _name: "\uC678\uACFD"
     _holdableWeight: 30
   <Inventories>k__BackingField: []
+  <ItemListSO>k__BackingField: {fileID: 11400000, guid: 75844a52dd7b7694c803e66d8a8a0926, type: 2}
 --- !u!114 &1115266976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -813,6 +814,7 @@ MonoBehaviour:
   _inputReader: {fileID: 11400000, guid: 3d98378fbe214b748a2d14c534822162, type: 2}
   _inventoryManager: {fileID: 1115266975}
   _itemListTemplate: {fileID: 9197481963319205126, guid: e0d32bd80e71c5747bdaa44aa6d0e12e, type: 3}
+  _craftListTemplate: {fileID: 9197481963319205126, guid: 403b5317f09a31347aaaf58d57ff7399, type: 3}
   OnChangeAbilityValue:
     m_PersistentCalls:
       m_Calls: []
