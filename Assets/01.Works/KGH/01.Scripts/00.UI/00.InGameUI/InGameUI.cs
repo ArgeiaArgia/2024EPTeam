@@ -12,6 +12,7 @@ public class InGameUI : ToolkitParents
     [SerializeField] private InputReader _inputReader;
     [SerializeField] private InventoryManager _inventoryManager;
     [SerializeField] private VisualTreeAsset _itemListTemplate;
+    [SerializeField] private VisualTreeAsset _craftListTemplate;
     [OdinSerialize] private Dictionary<StatType, StatIcon> _statIcons;
     [OdinSerialize] private Dictionary<AbilityType, Sprite> _abilityIcons;
 

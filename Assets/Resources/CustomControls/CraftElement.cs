@@ -13,6 +13,7 @@ public class CraftElement : VisualElement
     private readonly VisualElement _ingredientList;
 
     private ItemSO _currentItem;
+
     public ItemSO CurrentItem
     {
         get => _currentItem;
@@ -23,7 +24,8 @@ public class CraftElement : VisualElement
         }
     }
 
-    private Dictionary<ItemSO, Label> _ingredientCountLabels = new Dictionary<ItemSO, Label>();
+    public Dictionary<ItemSO, VisualElement> IngredientItems { get; private set; } = new Dictionary<ItemSO, VisualElement>();
+
     public event Action<ItemSO> OnCreateItem;
     public CraftElement()
     {
@@ -49,12 +51,13 @@ public class CraftElement : VisualElement
             OnCreateItem?.Invoke(_currentItem);
         };
     }
+
     private void InitializeCraftItem()
     {
         _itemIcon.style.backgroundImage = new StyleBackground(_currentItem.itemIcon);
         _itemName.text = _currentItem.itemName;
         _ingredientList.Clear();
-        _ingredientCountLabels.Clear();
+        IngredientItems.Clear();
         foreach (var material in _currentItem.materialList)
         {
             var ingredientElement = new VisualElement();
@@ -64,10 +67,10 @@ public class CraftElement : VisualElement
             ingredientIcon.AddToClassList("required-icon");
             var ingredientCount = new Label(material.Value.ToString());
             ingredientCount.AddToClassList("ingredient-text");
-            _ingredientCountLabels.Add(material.Key, ingredientCount);
             ingredientElement.Add(ingredientIcon);
             ingredientElement.Add(ingredientCount);
             _ingredientList.Add(ingredientElement);
+            IngredientItems.Add(material.Key, ingredientElement);
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
@@ -20,6 +21,8 @@ public class InventoryManager : SerializedMonoBehaviour
     {
         OnInventoryInitialized?.Invoke(DefaultItemInventories);
     }
+
+    #region item
 
     public void AddItem(ItemSO item, int count, string location, bool isSeparated = false)
     {
@@ -72,7 +75,7 @@ public class InventoryManager : SerializedMonoBehaviour
         if (item.item.toolType == ToolType.Inventory) isSeparated = true;
 
         item.loction = location;
-        
+
         var itemInInventory = inventoryItems.Find(x => x.loction == location);
         if (inventoryItems.Count > 0 && !isSeparated && itemInInventory != null)
         {
@@ -114,6 +117,40 @@ public class InventoryManager : SerializedMonoBehaviour
         if (preParentItem != null) OnInventoryChanged?.Invoke(preParentItem.name);
         OnInventoryChanged?.Invoke(location);
     }
+
+    #endregion
+
+    #region craft
+
+    public bool CheckIfMakeable(ItemSO item, out List<ItemSO> cannotBeMade)
+    {
+        var craftItems = item.materialList;
+        cannotBeMade = (from craftItem in craftItems
+            let inventoryItem = InventoryItems.Find(x => x.item == craftItem.Key && x.count >= craftItem.Value)
+            where inventoryItem == null
+            select craftItem.Key).ToList();
+
+        return cannotBeMade.Count <= 0;
+    }
+
+    public void CraftItem(ItemSO item)
+    {
+        if (CheckIfMakeable(item, out var cannotBeMade))
+        {
+            foreach (var craftItem in item.materialList)
+            {
+                var inventoryItem = InventoryItems.Find(x => x.item == craftItem.Key && x.count >= craftItem.Value);
+                inventoryItem.count -= craftItem.Value;
+                if (inventoryItem.count <= 0)
+                {
+                    RemoveItem(inventoryItem);
+                }
+            }
+            AddItem(item, 1, "Inventory");
+        }
+    }
+    #endregion
+
 }
 
 [Serializable]

@@ -11,6 +11,7 @@ public class ItemSOWindow : EditorWindow
     public string SOPath = "00.ForEveryone/02.SOs/03.ItemSOs";
     [SerializeField] private VisualTreeAsset m_VisualTreeAsset = default;
     [SerializeField] private VisualTreeAsset m_itemElement = default;
+    [SerializeField] private ItemListSO m_itemList = default;
 
     private ItemSO _currentItem;
     private ItemInspector _itemInspector;
@@ -36,7 +37,7 @@ public class ItemSOWindow : EditorWindow
     private void InitializeWindow(VisualElement content)
     {
         _itemInspector = new ItemInspector(content, this);
-        _itemListView = new ItemListView(content, this, m_itemElement);
+        _itemListView = new ItemListView(content, this, m_itemElement, m_itemList);
         _itemInspector.OnNameChange += ChangeItemName;
         _itemInspector.OnTypeChange += ChangeItemType;
         _itemInspector.OnIconChange += (item, sprite) => _itemListView.ChangeItemIcon(item, sprite);
