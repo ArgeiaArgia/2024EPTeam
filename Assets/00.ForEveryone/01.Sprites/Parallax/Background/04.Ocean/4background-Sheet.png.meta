@@ -45,7 +45,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
@@ -101,69 +101,6 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 972
-        width: 576
-        height: 324
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: addce45c9b9751941a8d79181fbb2b3e
-      internalID: 448815303
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 4background-Sheet_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 648
-        width: 576
-        height: 324
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ec2ed01b18d53e9448a6dfe0ec1f3151
-      internalID: -1391693043
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 4background-Sheet_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 324
-        width: 576
-        height: 324
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d93656e248e3068438f37d527e959572
-      internalID: -2136153867
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 4background-Sheet_3
-      rect:
-        serializedVersion: 2
-        x: 0
         y: 0
         width: 576
         height: 324
@@ -174,8 +111,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04ac179f5d5b62443a3e935cd3eaa205
-      internalID: 1434056247
+      spriteID: 80141e5bc3238cd4089da78399befeeb
+      internalID: 2061622381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4background-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 576
+        height: 324
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c13f486135142845a7b4e52334e53d9
+      internalID: 719713390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4background-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 0
+        width: 576
+        height: 324
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b8b7943675514945937112e5474b508
+      internalID: 824049241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4background-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 0
+        width: 576
+        height: 324
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3b88fbdc39d4bb468ff7baa761a35fd
+      internalID: -1250904730
       vertices: []
       indices: 
       edges: []
@@ -191,10 +191,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      4background-Sheet_0: 448815303
-      4background-Sheet_1: -1391693043
-      4background-Sheet_2: -2136153867
-      4background-Sheet_3: 1434056247
+      4background-Sheet_0: 2061622381
+      4background-Sheet_1: 719713390
+      4background-Sheet_2: 824049241
+      4background-Sheet_3: -1250904730
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

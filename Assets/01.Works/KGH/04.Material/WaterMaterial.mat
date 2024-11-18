@@ -51,7 +51,7 @@ Material:
     m_Floats:
     - _NoiseScale: 28.8
     - _Pixelization: 339
-    - _ReflectionStrength: -0.9
+    - _ReflectionStrength: -2.35
     - _WaterSpeed: 0.125
     m_Colors:
     - _WaterColor: {r: 1, g: 1, b: 1, a: 0.49019608}
