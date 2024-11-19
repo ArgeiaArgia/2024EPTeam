@@ -18,9 +18,10 @@ MonoBehaviour:
   itemType: 3
   percentageOfCatch: 0
   weight: 19.9
-  materialList: []
   toolType: 3
   holdableWeight: 0
+  materialKey: []
+  materialValue: 
   StatEffectKey: 
   StatEffectValue: 
   foodType: 0

@@ -18,9 +18,10 @@ public class ItemListView
     private readonly Foldout _foodFoldout;
     private readonly Button _createButton;
 
+    private ItemListSO _itemList;
     public event Action<ItemSO> OnItemSelect;
 
-    public ItemListView(VisualElement content, ItemSOWindow itemSOWindow, VisualTreeAsset itemElement)
+    public ItemListView(VisualElement content, ItemSOWindow itemSOWindow, VisualTreeAsset itemElement, ItemListSO itemList)
     {
         _itemSOWindow = itemSOWindow;
         _currentItem = null;
@@ -33,6 +34,8 @@ public class ItemListView
 
         _createButton = content.Q<Button>("CreateNewButton");
         _createButton.clicked += CreateItem;
+        
+        _itemList = itemList;
     }
 
     private void CreateItem()
@@ -46,6 +49,7 @@ public class ItemListView
         AssetDatabase.SaveAssets();
         SetUpItem(item);
         CurrentItem = item;
+        _itemList.ItemList.Add(item);
     }
 
     public void SetUpItem(ItemSO item)
@@ -91,6 +95,7 @@ public class ItemListView
             File.Delete(path);
             File.Delete(path + ".meta");
             AssetDatabase.Refresh();
+            _itemList.ItemList.Remove(item);
         }
         catch (Exception e)
         {

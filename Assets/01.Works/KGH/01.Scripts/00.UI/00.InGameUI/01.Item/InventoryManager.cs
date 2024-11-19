@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class InventoryManager : SerializedMonoBehaviour
     [field: SerializeField] public List<DefaultItemInventory> DefaultItemInventories { get; private set; }
     private List<InventoryItem> InventoryItems { get; set; } = new List<InventoryItem>();
     [field: SerializeField] public List<string> Inventories { get; private set; }
+    [field: SerializeField] public ItemListSO ItemListSO { get; private set; }
 
     public event Action<string> OnInventoryChanged;
     public event Action<List<DefaultItemInventory>> OnInventoryInitialized;
@@ -20,6 +22,8 @@ public class InventoryManager : SerializedMonoBehaviour
     {
         OnInventoryInitialized?.Invoke(DefaultItemInventories);
     }
+
+    #region item
 
     public void AddItem(ItemSO item, int count, string location, bool isSeparated = false)
     {
@@ -72,7 +76,7 @@ public class InventoryManager : SerializedMonoBehaviour
         if (item.item.toolType == ToolType.Inventory) isSeparated = true;
 
         item.loction = location;
-        
+
         var itemInInventory = inventoryItems.Find(x => x.loction == location);
         if (inventoryItems.Count > 0 && !isSeparated && itemInInventory != null)
         {
@@ -114,6 +118,40 @@ public class InventoryManager : SerializedMonoBehaviour
         if (preParentItem != null) OnInventoryChanged?.Invoke(preParentItem.name);
         OnInventoryChanged?.Invoke(location);
     }
+
+    #endregion
+
+    #region craft
+
+    public bool CheckIfMakeable(ItemSO item, out List<ItemSO> lackItems)
+    {
+        var craftItems = item.materialList;
+        lackItems = (from craftItem in craftItems
+            let inventoryItem = InventoryItems.Find(x => x.item == craftItem.Key && x.count >= craftItem.Value)
+            where inventoryItem == null
+            select craftItem.Key).ToList();
+
+        return lackItems.Count <= 0;
+    }
+
+    public void CraftItem(ItemSO item)
+    {
+        if (CheckIfMakeable(item, out var lackItems))
+        {
+            foreach (var craftItem in item.materialList)
+            {
+                var inventoryItem = InventoryItems.Find(x => x.item == craftItem.Key && x.count >= craftItem.Value);
+                inventoryItem.count -= craftItem.Value;
+                if (inventoryItem.count <= 0)
+                {
+                    RemoveItem(inventoryItem);
+                }
+            }
+            AddItem(item, 1, "갑판");
+        }
+    }
+    #endregion
+
 }
 
 [Serializable]

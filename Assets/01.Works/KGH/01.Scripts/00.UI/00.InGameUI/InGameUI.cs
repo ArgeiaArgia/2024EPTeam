@@ -5,13 +5,16 @@ using Sirenix.Serialization;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 
 public class InGameUI : ToolkitParents
 {
-    [SerializeField] private InputReader _inputReader;
-    [SerializeField] private InventoryManager _inventoryManager;
-    [SerializeField] private VisualTreeAsset _itemListTemplate;
+    [FormerlySerializedAs("_inputReader")] [SerializeField] private InputReader inputReader;
+    [FormerlySerializedAs("_inventoryManager")] [SerializeField] private InventoryManager inventoryManager;
+    [FormerlySerializedAs("_statManager")] [SerializeField] private StatManager statManager;
+    [FormerlySerializedAs("_itemListTemplate")] [SerializeField] private VisualTreeAsset itemListTemplate;
+    [FormerlySerializedAs("_craftListTemplate")] [SerializeField] private VisualTreeAsset craftListTemplate;
     [OdinSerialize] private Dictionary<StatType, StatIcon> _statIcons;
     [OdinSerialize] private Dictionary<AbilityType, Sprite> _abilityIcons;
 
@@ -22,8 +25,6 @@ public class InGameUI : ToolkitParents
     private bool _isMouseOverInteract;
 
     #endregion
-
-    private Inventory _inventory;
 
     private Dictionary<StatType, StatUI> _statUIs;
     private Dictionary<AbilityType, AbilityUI> _abilityUIs;
@@ -37,8 +38,9 @@ public class InGameUI : ToolkitParents
         base.Awake();
         _statUIs = new Dictionary<StatType, StatUI>();
         _abilityUIs = new Dictionary<AbilityType, AbilityUI>();
-        
-        _inputReader.OnMovePressEvent += OnMovePress;
+
+        inputReader.OnMovePressEvent += OnMovePress;
+        statManager.OnStatChanged += ChangeStatValue;
     }
 
 
@@ -66,15 +68,15 @@ public class InGameUI : ToolkitParents
             abilityUI.OnChangeStatValue += value => OnChangeAbilityValue?.Invoke(abilityType, value);
         }
 
-        _inventory = new Inventory(root, _inventoryManager, _itemListTemplate, this);
-        
+        var inventory = new Inventory(root, inventoryManager, itemListTemplate, craftListTemplate, this);
+
         _itemInteractions = root.Q<TemplateContainer>("ItemInteractions");
-        _itemInteractions.RegisterCallback<MouseOverEvent>(evt => _isMouseOverInteract = true);
-        _itemInteractions.RegisterCallback<MouseOutEvent>(evt => _isMouseOverInteract = false);
+        _itemInteractions.RegisterCallback<MouseOverEvent>(_ => _isMouseOverInteract = true);
+        _itemInteractions.RegisterCallback<MouseOutEvent>(_ => _isMouseOverInteract = false);
         _itemInteractContainer = _itemInteractions.Q<VisualElement>("Container");
     }
 
-    public void ChangeStatValue(StatType statType, int value) => _statUIs[statType].ChangeStatUI(value);
+    private void ChangeStatValue(StatType statType, int value) => _statUIs[statType].ChangeStatUI(value);
     public void AddAbilityValue(AbilityType abilityType, int value) => _abilityUIs[abilityType].AddAbility(value);
 
     public void ShowInteractions(List<InteractEvent> events)
@@ -85,6 +87,7 @@ public class InGameUI : ToolkitParents
             _itemInteractions.style.display = DisplayStyle.None;
             return;
         }
+
         OnInteracting?.Invoke(true);
         _itemInteractions.style.display = DisplayStyle.Flex;
 
@@ -93,7 +96,7 @@ public class InGameUI : ToolkitParents
         {
             var interactButton = new Button { text = interactEvent.EventName };
             interactButton.AddToClassList("interact-button");
-            interactButton.clicked += ()=>
+            interactButton.clicked += () =>
             {
                 interactEvent.OnInteract.Invoke();
                 ShowInteractions(null);
@@ -111,8 +114,8 @@ public class InGameUI : ToolkitParents
     {
         if (_isMouseOverInteract) return;
         ShowInteractions(null);
-        
     }
+
     public void CoroutineHelper(IEnumerator coroutine) => StartCoroutine(coroutine);
 }
 
