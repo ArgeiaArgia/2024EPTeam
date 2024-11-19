@@ -136,19 +136,17 @@ public class InventoryManager : SerializedMonoBehaviour
 
     public void CraftItem(ItemSO item)
     {
-        if (CheckIfMakeable(item, out var lackItems))
+        if (!CheckIfMakeable(item, out var lackItems)) return;
+        foreach (var craftItem in item.materialList)
         {
-            foreach (var craftItem in item.materialList)
+            var inventoryItem = InventoryItems.Find(x => x.item == craftItem.Key && x.count >= craftItem.Value);
+            inventoryItem.count -= craftItem.Value;
+            if (inventoryItem.count <= 0)
             {
-                var inventoryItem = InventoryItems.Find(x => x.item == craftItem.Key && x.count >= craftItem.Value);
-                inventoryItem.count -= craftItem.Value;
-                if (inventoryItem.count <= 0)
-                {
-                    RemoveItem(inventoryItem);
-                }
+                RemoveItem(inventoryItem);
             }
-            AddItem(item, 1, "갑판");
         }
+        AddItem(item, 1, "갑판");
     }
     #endregion
 
