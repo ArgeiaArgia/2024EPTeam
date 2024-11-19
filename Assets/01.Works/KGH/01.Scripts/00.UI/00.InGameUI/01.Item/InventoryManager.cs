@@ -95,13 +95,13 @@ public class InventoryManager : SerializedMonoBehaviour
         OnInventoryChanged?.Invoke(location);
     }
 
-    private void RemoveItem(InventoryItem inventoryItem)
+    private void RemoveItem(InventoryItem inventoryItem, bool isMoving = false)
     {
         InventoryItems.Remove(inventoryItem);
         var parentItem = InventoryItems.Find(x => x.name == inventoryItem.loction) ??
                          (InventoryParents)DefaultItemInventories.Find(x => x.name == inventoryItem.loction);
         parentItem?.itemsIn.Remove(inventoryItem);
-        if (inventoryItem.item.toolType == ToolType.Inventory)
+        if (inventoryItem.item.toolType == ToolType.Inventory && !isMoving)
         {
             Inventories.Remove(inventoryItem.name);
         }
@@ -112,7 +112,7 @@ public class InventoryManager : SerializedMonoBehaviour
         var preParentItem = InventoryItems.Find(x => x.name == inventoryItem.loction) ??
                             (InventoryParents)DefaultItemInventories.Find(x => x.name == inventoryItem.loction);
 
-        RemoveItem(inventoryItem);
+        RemoveItem(inventoryItem, true);
         AddItem(inventoryItem, location);
 
         if (preParentItem != null) OnInventoryChanged?.Invoke(preParentItem.name);

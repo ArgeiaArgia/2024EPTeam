@@ -88,6 +88,7 @@ public class ItemInventory
     {
         var currentTab = _itemTab.CurrentTabButton;
         if (!_itemTabElements.ContainsKey(tabName)) return;
+        Debug.Log("remove tab");
 
         _itemTab.TabNames = _itemTab.TabNames.Replace($"{tabName},", "");
         _itemTab.TabCount--;
@@ -95,9 +96,9 @@ public class ItemInventory
         var tab = _itemTabElements[tabName];
         _itemTabs.Remove(tab);
         _itemTabElements.Remove(tabName);
-        
+
         tab.RemoveFromHierarchy();
-        
+
         if (string.Equals(_itemTab.CurrentTabButton.text, tabName))
         {
             Debug.Log($"{_itemTab.CurrentTabButton.text} and {tabName} are same");
@@ -108,7 +109,7 @@ public class ItemInventory
             _itemTab.TabButtonClick(currentTab);
         }
     }
-    
+
     public bool IsInventory(string item)
     {
         return _inventoryManager.Inventories.Contains(item);

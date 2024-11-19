@@ -32,6 +32,7 @@ public class InGameUI : ToolkitParents
     public UnityEvent<AbilityType, int> OnChangeAbilityValue;
     public event Action<bool> OnInteracting;
 
+    private bool _isInteracting;
 
     protected override void Awake()
     {
@@ -110,9 +111,39 @@ public class InGameUI : ToolkitParents
         _itemInteractions.style.top = localMousePos.y + 25;
     }
 
+    public void ShowInteractions(List<InteractEvent> events, Vector2 pos)
+    {
+        if (events == null)
+        {
+            OnInteracting?.Invoke(false);
+            _itemInteractions.style.display = DisplayStyle.None;
+            return;
+        }
+
+        OnInteracting?.Invoke(true);
+        _itemInteractions.style.display = DisplayStyle.Flex;
+
+        _itemInteractContainer.Clear();
+        foreach (var interactEvent in events)
+        {
+            var interactButton = new Button { text = interactEvent.EventName };
+            interactButton.AddToClassList("interact-button");
+            interactButton.clicked += () =>
+            {
+                interactEvent.OnInteract.Invoke();
+                ShowInteractions(null);
+            };
+            _itemInteractContainer.Add(interactButton);
+        }
+
+        var localMousePos = root.WorldToLocal(new Vector2(pos.x, Screen.height - pos.y));
+        _itemInteractions.style.left = localMousePos.x + 25;
+        _itemInteractions.style.top = localMousePos.y + 25;
+    }
+    
     private void OnMovePress(Vector2 obj)
     {
-        if (_isMouseOverInteract) return;
+        if (_isMouseOverInteract || !_isInteracting) return;
         ShowInteractions(null);
     }
 

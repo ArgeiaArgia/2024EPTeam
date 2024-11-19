@@ -35,6 +35,15 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MouseInteract"",
+                    ""type"": ""Button"",
+                    ""id"": ""8e827ee9-cb47-4b21-a1ed-873c482e9bb9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -48,6 +57,28 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                     ""action"": ""Mouse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""26e782d3-22e4-4186-bd86-0d79a9fdd3bc"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseInteract"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c0b40f04-e601-4e9b-a423-6b00c9ed6497"",
+                    ""path"": ""<Mouse>/press"",
+                    ""interactions"": ""MultiTap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseInteract"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -57,6 +88,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
         // PlayerAction
         m_PlayerAction = asset.FindActionMap("PlayerAction", throwIfNotFound: true);
         m_PlayerAction_Mouse = m_PlayerAction.FindAction("Mouse", throwIfNotFound: true);
+        m_PlayerAction_MouseInteract = m_PlayerAction.FindAction("MouseInteract", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -119,11 +151,13 @@ public partial class @InputController: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerAction;
     private List<IPlayerActionActions> m_PlayerActionActionsCallbackInterfaces = new List<IPlayerActionActions>();
     private readonly InputAction m_PlayerAction_Mouse;
+    private readonly InputAction m_PlayerAction_MouseInteract;
     public struct PlayerActionActions
     {
         private @InputController m_Wrapper;
         public PlayerActionActions(@InputController wrapper) { m_Wrapper = wrapper; }
         public InputAction @Mouse => m_Wrapper.m_PlayerAction_Mouse;
+        public InputAction @MouseInteract => m_Wrapper.m_PlayerAction_MouseInteract;
         public InputActionMap Get() { return m_Wrapper.m_PlayerAction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -136,6 +170,9 @@ public partial class @InputController: IInputActionCollection2, IDisposable
             @Mouse.started += instance.OnMouse;
             @Mouse.performed += instance.OnMouse;
             @Mouse.canceled += instance.OnMouse;
+            @MouseInteract.started += instance.OnMouseInteract;
+            @MouseInteract.performed += instance.OnMouseInteract;
+            @MouseInteract.canceled += instance.OnMouseInteract;
         }
 
         private void UnregisterCallbacks(IPlayerActionActions instance)
@@ -143,6 +180,9 @@ public partial class @InputController: IInputActionCollection2, IDisposable
             @Mouse.started -= instance.OnMouse;
             @Mouse.performed -= instance.OnMouse;
             @Mouse.canceled -= instance.OnMouse;
+            @MouseInteract.started -= instance.OnMouseInteract;
+            @MouseInteract.performed -= instance.OnMouseInteract;
+            @MouseInteract.canceled -= instance.OnMouseInteract;
         }
 
         public void RemoveCallbacks(IPlayerActionActions instance)
@@ -163,5 +203,6 @@ public partial class @InputController: IInputActionCollection2, IDisposable
     public interface IPlayerActionActions
     {
         void OnMouse(InputAction.CallbackContext context);
+        void OnMouseInteract(InputAction.CallbackContext context);
     }
 }

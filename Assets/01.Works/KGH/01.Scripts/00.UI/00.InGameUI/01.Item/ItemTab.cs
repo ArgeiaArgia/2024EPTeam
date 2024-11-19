@@ -74,8 +74,12 @@ public class ItemTab
             if (_parentItem.itemsIn.Contains(item)) continue;
             element.RemoveFromHierarchy();
             _itemElements.Remove(item);
-            if (item.item.toolType == ToolType.Inventory && _parentItem.GetType() == typeof(DefaultItemInventory))
-                _itemInventory.RemoveItemTab(item.name);
+
+            // if (item.item.toolType == ToolType.Inventory && _parentItem.GetType() != typeof(DefaultItemInventory))
+            // {
+            //     Debug.Log("Item is in the item");
+            //     _itemInventory.RemoveItemTab(item.name);
+            // }
         }
 
         foreach (var item in _parentItem.itemsIn)
@@ -110,27 +114,35 @@ public class ItemTab
             _itemElementInteracts.Add(itemElement, new ItemElementInteract(itemElement, item, _root, _inGameUI,
                 this, _inventoryManager));
 
+            Debug.Log(
+                $"can be tab? : {item.item.toolType == ToolType.Inventory && _parentItem.GetType() == typeof(DefaultItemInventory)}");
             if (item.item.toolType == ToolType.Inventory && _parentItem.GetType() == typeof(DefaultItemInventory))
+            {
                 _itemInventory.AddItemTab(item);
+            }
             else if (item.item.toolType == ToolType.Inventory && _parentItem.GetType() != typeof(DefaultItemInventory))
+            {
                 _itemInventory.RemoveItemTab(item.name);
+            }
         }
 
         var currentWeight = _parentItem.itemsIn.Sum(x => x.item.weight * x.count);
         _weightLabel.text = $"{currentWeight} / {_parentItem.holdableWeight}";
     }
 
-    public bool CheckItemIsInventory(VisualElement itemElement)=> _itemElements.Any(x => x.Value == itemElement);
-    
+    public bool CheckItemIsInventory(VisualElement itemElement) => _itemElements.Any(x => x.Value == itemElement);
+
 
     public string GetItemName(VisualElement itemElement)
     {
         return _itemElements.FirstOrDefault(x => x.Value == itemElement).Key.name;
     }
+
     public InventoryItem GetItem(VisualElement itemElement)
     {
         return _itemElements.FirstOrDefault(x => x.Value == itemElement).Key;
     }
+
     public bool IsInventory(string loction)
     {
         return _inventoryManager.Inventories.Contains(loction);
@@ -227,6 +239,4 @@ public class ItemTab
     }
 
     public string OverlappedTabButton(InventoryItem item) => _itemInventory.OverlappedTabButton(item);
-
-    
 }

@@ -692,6 +692,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 471450773}
+  - component: {fileID: 471450774}
   m_Layer: 6
   m_Name: Ship
   m_TagString: Untagged
@@ -717,6 +718,110 @@ Transform:
   - {fileID: 2042817716}
   m_Father: {fileID: 1418930348}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &471450774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471450772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0e1cd158faa1c8479a8dcac8f48b4e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputReader: {fileID: 11400000, guid: 3d98378fbe214b748a2d14c534822162, type: 2}
+  onInteractEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 318389662}
+        m_TargetAssemblyTypeName: InGameUI, Assembly-CSharp
+        m_MethodName: ShowInteractions
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  shipFront:
+    serializedVersion: 2
+    x: 1.45
+    y: -2
+    width: 3.5
+    height: 1.37
+  shipMiddle:
+    serializedVersion: 2
+    x: -2.05
+    y: -2
+    width: 3.5
+    height: 0.89
+  shipBack:
+    serializedVersion: 2
+    x: -5.55
+    y: -2
+    width: 3.5
+    height: 0.89
+  shipInside:
+    serializedVersion: 2
+    x: -4.05
+    y: -1.11
+    width: 3.83
+    height: 2.13
+  frontInteracts:
+  - EventName: "\uB09A\uC2DC\uD558\uAE30"
+    OnInteract:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1253206784}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: SetTargetStateToFishState
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  middleInteracts:
+  - EventName: "\uB09A\uC2DC\uD558\uAE30"
+    OnInteract:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1253206784}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: SetTargetStateToFishState
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  backInteracts:
+  - EventName: "\uB09A\uC2DC\uD558\uAE30"
+    OnInteract:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1253206784}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: SetTargetStateToFishState
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  insideInteracts: []
 --- !u!1 &566391484
 GameObject:
   m_ObjectHideFlags: 0
@@ -1503,6 +1608,8 @@ GameObject:
   - component: {fileID: 1253206781}
   - component: {fileID: 1253206783}
   - component: {fileID: 1253206782}
+  - component: {fileID: 1253206784}
+  - component: {fileID: 1253206785}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -1519,7 +1626,7 @@ Transform:
   m_GameObject: {fileID: 1253206780}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.005806591, w: 0.99998313}
-  m_LocalPosition: {x: 0.39900002, y: -0.207, z: 0}
+  m_LocalPosition: {x: 0.029, y: -0.2, z: 0}
   m_LocalScale: {x: 0.625, y: 0.625, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1598,6 +1705,49 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 2
   m_SpriteSortPoint: 0
+--- !u!114 &1253206784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253206780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2adcfdab4f5fad544b72624887dd9c2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boatSize: {x: 4.375, y: 1.5}
+  boatCenter: {x: -1.75, y: -0.75}
+  playerSpeed: 2.5
+  <InputReader>k__BackingField: {fileID: 11400000, guid: 3d98378fbe214b748a2d14c534822162, type: 2}
+--- !u!50 &1253206785
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253206780}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 6
 --- !u!1 &1418930346
 GameObject:
   m_ObjectHideFlags: 0
@@ -1623,7 +1773,7 @@ Transform:
   m_GameObject: {fileID: 1418930346}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.12, y: -0.25, z: 0}
+  m_LocalPosition: {x: -1.375, y: -0.25, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1642,7 +1792,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1606699520}
   - component: {fileID: 1606699523}
-  - component: {fileID: 1606699522}
   - component: {fileID: 1606699521}
   m_Layer: 6
   m_Name: ShipCamera
@@ -1710,14 +1859,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!81 &1606699522
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1606699519}
-  m_Enabled: 1
 --- !u!20 &1606699523
 Camera:
   m_ObjectHideFlags: 0
