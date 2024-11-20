@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Vector2 boatCenter;
     [Header("Player Setting")] public float playerSpeed;
+    [SerializeField] private Transform shipTransform;
+    public UnityEvent OnMiniGameStartEvent;
+    public UnityEvent OnMiniGameEndEvent;
     [field: SerializeField] public InputReader InputReader { get; private set; }
     private Camera _mainCamera;
 
@@ -24,7 +28,9 @@ public class Player : MonoBehaviour
         set
         {
             _targetPosition =
-                new Vector2(Mathf.Clamp(value.x, -boatSize.x + boatCenter.x, boatSize.x + boatCenter.x), -0.2f);
+                new Vector2(
+                    Mathf.Clamp(value.x, -boatSize.x + boatCenter.x + shipTransform.position.x,
+                        boatSize.x + boatCenter.x + shipTransform.position.x), -0.2f);
         }
     }
 
@@ -62,9 +68,9 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         _stateMachine.CurrentState.FixedUpdate();
-        if(RigidbodyComponent.velocity.x > 0)
+        if (RigidbodyComponent.velocity.x > 0)
             transform.rotation = Quaternion.Euler(0, 0, 0);
-        else if(RigidbodyComponent.velocity.x < 0)
+        else if (RigidbodyComponent.velocity.x < 0)
             transform.rotation = Quaternion.Euler(0, 180, 0);
     }
 
@@ -72,6 +78,7 @@ public class Player : MonoBehaviour
     {
         _stateMachine.SetTargetState<FishState>();
     }
+
     public void SetTargetStateToCookState()
     {
         _stateMachine.SetTargetState<CookState>();
@@ -81,7 +88,7 @@ public class Player : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(boatCenter, boatSize * 2);
+        Gizmos.DrawWireCube(boatCenter + (Vector2)shipTransform.position, boatSize * 2);
     }
 #endif
 }

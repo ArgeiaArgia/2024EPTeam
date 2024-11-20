@@ -72,7 +72,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c0b40f04-e601-4e9b-a423-6b00c9ed6497"",
-                    ""path"": ""<Mouse>/press"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": ""MultiTap"",
                     ""processors"": """",
                     ""groups"": """",

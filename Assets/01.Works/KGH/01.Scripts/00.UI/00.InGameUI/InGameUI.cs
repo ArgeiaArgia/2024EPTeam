@@ -89,6 +89,7 @@ public class InGameUI : ToolkitParents
             return;
         }
 
+        _isInteracting = true;
         OnInteracting?.Invoke(true);
         _itemInteractions.style.display = DisplayStyle.Flex;
 
@@ -120,6 +121,7 @@ public class InGameUI : ToolkitParents
             return;
         }
 
+        _isInteracting = true;
         OnInteracting?.Invoke(true);
         _itemInteractions.style.display = DisplayStyle.Flex;
 

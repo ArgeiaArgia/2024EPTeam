@@ -8,7 +8,7 @@ public class FishState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        Player.RigidbodyComponent.velocity = Vector2.zero;
+        Player.OnMiniGameStartEvent?.Invoke();
         Debug.Log("I AM JUST A FISH");
     }
 }
