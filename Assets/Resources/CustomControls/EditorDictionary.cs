@@ -30,7 +30,7 @@ public class EditorDictionary : VisualElement
         }
     }
 
-    private Type _valueType = typeof(string);
+    private Type _valueType = typeof(int);
 
     public Type ValueType
     {
@@ -51,6 +51,17 @@ public class EditorDictionary : VisualElement
         {
             _dictionaryName = value;
             _dictionaryFoldout.text = value;
+        }
+    }
+
+    private bool isKeyItemSo;
+    public bool IsKeyItemSo
+    {
+        get => isKeyItemSo;
+        set
+        {
+            isKeyItemSo = value;
+            KeyType = value ? typeof(ItemSO) : typeof(StatType);
         }
     }
 
@@ -95,11 +106,14 @@ public class EditorDictionary : VisualElement
         UxmlStringAttributeDescription m_dictionaryName = new()
             { name = "dictionary-name", defaultValue = "Dictionary" };
 
-        readonly UxmlTypeAttributeDescription<Type> m_keyType = new()
-            { name = "key-type", defaultValue = typeof(StatType) };
-
-        readonly UxmlTypeAttributeDescription<Type> m_valueType = new()
-            { name = "value-type", defaultValue = typeof(int) };
+        UxmlBoolAttributeDescription m_isKeyItemSo = new()
+            { name = "is-key-item-so", defaultValue = false };
+        //
+        // readonly UxmlTypeAttributeDescription<Type> m_keyType = new()
+        //     { name = "key-type", defaultValue = typeof(StatType) };
+        //
+        // readonly UxmlTypeAttributeDescription<Type> m_valueType = new()
+        //     { name = "value-type", defaultValue = typeof(int) };
 
         public override void Init(VisualElement ve, IUxmlAttributes bag, CreationContext cc)
         {
@@ -107,8 +121,9 @@ public class EditorDictionary : VisualElement
             var ate = ve as EditorDictionary;
 
             ate.DictionaryName = m_dictionaryName.GetValueFromBag(bag, cc);
-            ate.KeyType = m_keyType.GetValueFromBag(bag, cc);
-            ate.ValueType = m_valueType.GetValueFromBag(bag, cc);
+            ate.IsKeyItemSo = m_isKeyItemSo.GetValueFromBag(bag, cc);
+            // ate.KeyType = m_keyType.GetValueFromBag(bag, cc);
+            // ate.ValueType = m_valueType.GetValueFromBag(bag, cc);
         }
     }
 
@@ -344,6 +359,7 @@ public class EditorDictionary : VisualElement
         {
             var key = Convert.ChangeType(_keys[i], _keyType);
             var value = Convert.ChangeType(_values[i], _valueType);
+            if (key == null || value == null) continue;
             returnDictionary?.Add(key, value);
         }
 

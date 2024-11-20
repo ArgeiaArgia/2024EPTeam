@@ -16,6 +16,7 @@ public class TabElement : VisualElement
     private readonly VisualElement _bottomTabButtonContainer;
     private VisualElement _tabContentsContainer;
 
+    public Button CurrentTabButton { get; private set; }
     //이름, 배경, 버튼 수
     private string _tabNames;
 
@@ -88,18 +89,21 @@ public class TabElement : VisualElement
         get => _tabCount;
         set
         {
-            // Clear existing tabs and contents
-            for (int i = _tabButtonList.Count - 1; i >= 0; i--)
+            if (value < _tabCount)
             {
-                RemoveTab(i);
+                for (int i = _tabCount - 1; i >= value; i--)
+                {
+                    RemoveTab(i);
+                }
             }
-
-            // Add new tabs
-            for (int i = 0; i < value; i++)
+            else if (value > _tabCount)
             {
-                AddTab();
+                for (int i = _tabCount; i < value; i++)
+                {
+                    AddTab();
+                }
             }
-
+            
             _tabCount = value;
 
             // Select the first tab if available
@@ -112,6 +116,7 @@ public class TabElement : VisualElement
 
     private readonly List<string> _tabNameList = new List<string>();
     private readonly List<Button> _tabButtonList = new List<Button>();
+    public Button[] TabButtons => _tabButtonList.ToArray();
     public override VisualElement contentContainer => _tabContentsContainer;
 
     public TabElement()
@@ -188,7 +193,7 @@ public class TabElement : VisualElement
         tabButton.clickable.clicked += () => { TabButtonClick(tabButton); };
     }
 
-    private void TabButtonClick(Button tab)
+    public void TabButtonClick(Button tab)
     {
         foreach (var contents in _tabContentsContainer.Children())
         {
@@ -212,6 +217,8 @@ public class TabElement : VisualElement
         {
             return;
         }
+        
+        CurrentTabButton = tab;
     }
 
     private void RemoveTab(int index)

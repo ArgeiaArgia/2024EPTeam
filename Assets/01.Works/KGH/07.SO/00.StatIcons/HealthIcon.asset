@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6044cae3be304de4ebb84cbd19f8b174, type: 3}
   m_Name: HealthIcon
   m_EditorClassIdentifier: 
-  _bestIcon: test
-  _goodIcon: test
-  _normalIcon: test
-  _badIcon: test
-  _worstIcon: test
+  _bestIcon: 20
+  _goodIcon: 21
+  _normalIcon: 22
+  _badIcon: 23
+  _worstIcon: 24

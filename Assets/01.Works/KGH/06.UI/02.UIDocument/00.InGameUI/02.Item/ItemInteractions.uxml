@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/01.Works/KGH/06.UI/03.StyleSheet/ItemInteractions.uss?fileID=7433441132597879392&amp;guid=6f706eac49560f648917a54fbf30cf95&amp;type=3#ItemInteractions" />
+    <ui:VisualElement name="Container" style="background-image: url(&quot;project://database/Assets/01.Works/KGH/02.Sprites/01.RoundBoxes/RoundBoxFull3.png?fileID=21300000&amp;guid=a4d84679bf90ba7499599b817fd1fcaa&amp;type=3#RoundBoxFull3&quot;); -unity-background-image-tint-color: rgb(55, 62, 66); padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;" />
+</ui:UXML>

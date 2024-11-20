@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6044cae3be304de4ebb84cbd19f8b174, type: 3}
   m_Name: TiredIcon
   m_EditorClassIdentifier: 
-  _bestIcon: test
-  _goodIcon: test
-  _normalIcon: test
-  _badIcon: test
-  _worstIcon: test
+  _bestIcon: 10
+  _goodIcon: 11
+  _normalIcon: 12
+  _badIcon: 13
+  _worstIcon: 14

@@ -15,6 +15,6 @@ public class StatUI
     public void ChangeStatUI(int value)
     {
         _element.Value = value;
-        _element.IconName = _statIcon.GetIcon(value);
+        _element.IconIndex = _statIcon.GetIcon(value);
     }
 }
