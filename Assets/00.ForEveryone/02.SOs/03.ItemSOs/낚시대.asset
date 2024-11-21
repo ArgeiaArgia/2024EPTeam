@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12277ccfcc48b8a469a4d8bd467dbf4d, type: 3}
+  m_Name: "\uB09A\uC2DC\uB300"
+  m_EditorClassIdentifier: 
+  itemName: "\uB09A\uC2DC\uB300"
+  itemIcon: {fileID: 1858289361, guid: a8d109b49de5d9c4892d8d388f42760b, type: 3}
+  itemSprite: {fileID: 0}
+  itemType: 3
+  percentageOfCatch: 0
+  weight: 0
+  toolType: 1
+  holdableWeight: 0
+  materialKey: []
+  materialValue: 
+  StatEffectKey: 
+  StatEffectValue: 
+  foodType: 0
+  description: "\uB09A\uC2DC\uB97C \uD560 \uC218 \uC788\uB294 \uB09A\uC2DC\uB300\uC774\uB2E4,
+    \uC774\uAC78\uB85C \uBC25\uC744 \uCC3E\uC744 \uC218 \uC788\uC744\uAC83 \uAC19\uB2E4."
