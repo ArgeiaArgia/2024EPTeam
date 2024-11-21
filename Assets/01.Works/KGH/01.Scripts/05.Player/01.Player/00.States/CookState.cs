@@ -8,5 +8,16 @@ public class CookState : PlayerState
     public override void Enter()
     {
         Player.OnMiniGameStartEvent?.Invoke();
+        Player.InGameUI.ShowCookUI();
+    }
+    public void FishSelected(ItemSO item)
+    {
+        Player.InGameUI.HideCookUI();
+        Player.FishStartEvent?.Invoke();
+    }
+    public override void Exit()
+    {
+        Player.OnMiniGameEndEvent?.Invoke();
+        Player.InGameUI.HideCookUI();
     }
 }

@@ -5,7 +5,12 @@ using UnityEngine;
 public class PlayerStateMachine
 {
     public PlayerState CurrentState { get; private set; }
-    public PlayerState TargetState { get; private set; }
+    private PlayerState _targetState;
+    public PlayerState TargetState
+    {
+        get => _targetState??StateDictionary[typeof(IdleState)];
+        private set => _targetState = value;
+    }
     private Dictionary<Type, PlayerState> StateDictionary = new Dictionary<Type, PlayerState>();
     
     private Player _player;
@@ -28,7 +33,6 @@ public class PlayerStateMachine
     }
     public void ChangeToTargetState()
     {
-        if(TargetState == null) TargetState = StateDictionary[typeof(IdleState)];
         CurrentState.Exit();
         CurrentState = TargetState;
         CurrentState.Enter();

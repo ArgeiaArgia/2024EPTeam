@@ -26,13 +26,19 @@ public class InGameUI : ToolkitParents
 
     #endregion
 
+    private CookUI _cookUI;
+    
+    private VisualElement _container;
+
     private Dictionary<StatType, StatUI> _statUIs;
     private Dictionary<AbilityType, AbilityUI> _abilityUIs;
 
     public UnityEvent<AbilityType, int> OnChangeAbilityValue;
+    public UnityEvent<ItemSO> OnFoodSelected;
     public event Action<bool> OnInteracting;
 
     private bool _isInteracting;
+    private bool _isEnabled;
 
     protected override void Awake()
     {
@@ -48,6 +54,9 @@ public class InGameUI : ToolkitParents
     protected override void OnEnable()
     {
         base.OnEnable();
+        
+        _container = root.Q<VisualElement>("Container");
+        
         _statUIs.Clear();
         var statElements = root.Q<VisualElement>("StatList").Query<StatElement>().ToList();
         for (var i = 0; i < statElements.Count; i++)
@@ -66,7 +75,7 @@ public class InGameUI : ToolkitParents
             var abilityUI = new AbilityUI(abilityElement);
             _abilityUIs.Add(abilityType, abilityUI);
 
-            abilityUI.OnChangeStatValue += value => OnChangeAbilityValue?.Invoke(abilityType, value);
+            abilityUI.OnChangeStatValue += value => HandleAbilityChange(abilityType, value);
         }
 
         var inventory = new Inventory(root, inventoryManager, itemListTemplate, craftListTemplate, this);
@@ -75,6 +84,9 @@ public class InGameUI : ToolkitParents
         _itemInteractions.RegisterCallback<MouseOverEvent>(_ => _isMouseOverInteract = true);
         _itemInteractions.RegisterCallback<MouseOutEvent>(_ => _isMouseOverInteract = false);
         _itemInteractContainer = _itemInteractions.Q<VisualElement>("Container");
+        
+        _cookUI = new CookUI(root, this, inventoryManager);
+        _cookUI.InitializeCookUI(FoodType.FirstLevelFood);
     }
 
     private void ChangeStatValue(StatType statType, int value) => _statUIs[statType].ChangeStatUI(value);
@@ -82,6 +94,7 @@ public class InGameUI : ToolkitParents
 
     public void ShowInteractions(List<InteractEvent> events)
     {
+        if(_isEnabled) return;
         if (events == null)
         {
             OnInteracting?.Invoke(false);
@@ -114,6 +127,7 @@ public class InGameUI : ToolkitParents
 
     public void ShowInteractions(List<InteractEvent> events, Vector2 pos)
     {
+        if(_isEnabled) return;
         if (events == null)
         {
             OnInteracting?.Invoke(false);
@@ -147,6 +161,28 @@ public class InGameUI : ToolkitParents
     {
         if (_isMouseOverInteract || !_isInteracting) return;
         ShowInteractions(null);
+    }
+    
+    public void InitializeCookUI(FoodType foodType) => _cookUI.InitializeCookUI(foodType);
+
+    public void SetUIEnable(bool enable)
+    {
+        _isEnabled = enable;
+        if (enable)
+            _container.RemoveFromClassList("hide");
+        else
+            _container.AddToClassList("hide");
+    }
+    
+    public void ShowCookUI() => _cookUI.ShowCookUI();
+    public void HideCookUI() => _cookUI.HideCookUI();
+
+    public void HandleAbilityChange(AbilityType abilityType, int value)
+    {
+        if (abilityType == AbilityType.Cooking)
+        {
+            _cookUI.InitializeCookUI((FoodType)value);
+        }
     }
 
     public void CoroutineHelper(IEnumerator coroutine) => StartCoroutine(coroutine);

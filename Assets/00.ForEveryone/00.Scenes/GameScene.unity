@@ -697,6 +697,9 @@ MonoBehaviour:
   OnChangeAbilityValue:
     m_PersistentCalls:
       m_Calls: []
+  OnFoodSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &418641561
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,7 +883,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 3
-    m_Time: 2
+    m_Time: 1
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -1033,7 +1036,23 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  insideInteracts: []
+  insideInteracts:
+  - EventName: "\uC694\uB9AC\uD558\uAE30"
+    OnInteract:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1253206784}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: SetTargetStateToCookState
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &471450775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1667,7 +1686,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 5
+  m_Priority: 1
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 1253206781}
@@ -2203,7 +2222,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 523485545
   m_SortingLayer: 2
-  m_SortingOrder: 5
+  m_SortingOrder: 10
   m_Sprite: {fileID: 2092391402, guid: 6774f0be5d2853f4f82471182ab68aac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2228,6 +2247,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boatSize: {x: 4.375, y: 1.73}
+  <DoorPos>k__BackingField: {x: -4.5, y: -0.75}
+  <KitchenPos>k__BackingField: {x: -1.5, y: -0.48}
   boatCenter: {x: -0.35, y: -0.5}
   playerSpeed: 2.5
   shipTransform: {fileID: 471450773}
@@ -2238,6 +2259,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: PlayerCameraController, Assembly-CSharp
         m_MethodName: SetActionCamera
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 318389662}
+        m_TargetAssemblyTypeName: InGameUI, Assembly-CSharp
+        m_MethodName: SetUIEnable
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2261,7 +2294,26 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 318389662}
+        m_TargetAssemblyTypeName: InGameUI, Assembly-CSharp
+        m_MethodName: SetUIEnable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  FishStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  CookStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
   <InputReader>k__BackingField: {fileID: 11400000, guid: 3d98378fbe214b748a2d14c534822162, type: 2}
+  <InGameUI>k__BackingField: {fileID: 318389662}
 --- !u!50 &1253206785
 Rigidbody2D:
   serializedVersion: 4
@@ -2671,7 +2723,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 523485545
   m_SortingLayer: 2
-  m_SortingOrder: 10
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: ca1e97cca0fbe004f901d4abc6e280c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2755,7 +2807,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 523485545
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 3e042411ba1ea4548b35acb7b35185bd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

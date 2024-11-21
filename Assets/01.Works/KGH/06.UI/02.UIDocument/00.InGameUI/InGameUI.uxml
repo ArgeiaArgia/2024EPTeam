@@ -2,8 +2,9 @@
     <ui:Template name="StatListUI" src="project://database/Assets/01.Works/KGH/06.UI/02.UIDocument/00.InGameUI/00.Stat/StatListUI.uxml?fileID=9197481963319205126&amp;guid=c649c98c99e761d47b4488a6a77ac76e&amp;type=3#StatListUI" />
     <ui:Template name="ItemWindow" src="project://database/Assets/01.Works/KGH/06.UI/02.UIDocument/00.InGameUI/02.Item/ItemWindow.uxml?fileID=9197481963319205126&amp;guid=05fd2a3eba28e3d4386fb968224abf2e&amp;type=3#ItemWindow" />
     <ui:Template name="ItemInteractions" src="project://database/Assets/01.Works/KGH/06.UI/02.UIDocument/00.InGameUI/02.Item/ItemInteractions.uxml?fileID=9197481963319205126&amp;guid=c238af97c6545dd4f8c8e231ed615e32&amp;type=3#ItemInteractions" />
+    <ui:Template name="CookUI" src="project://database/Assets/01.Works/KGH/06.UI/02.UIDocument/00.InGameUI/03.Cook/CookUI.uxml?fileID=9197481963319205126&amp;guid=735a6f7f38068b74a813a22fe177f6f7&amp;type=3#CookUI" />
     <Style src="project://database/Assets/01.Works/KGH/06.UI/03.StyleSheet/InGameUI.uss?fileID=7433441132597879392&amp;guid=363f84408d5a00f4f99f86aee5aee722&amp;type=3#InGameUI" />
-    <ui:VisualElement name="Container" picking-mode="Ignore" class="container" style="flex-grow: 1;">
+    <ui:VisualElement name="Container" picking-mode="Ignore" class="container">
         <ui:VisualElement name="UpperSide" picking-mode="Ignore" style="flex-grow: 1; flex-direction: row; justify-content: space-between; flex-shrink: 1; flex-basis: 50%;">
             <ui:Instance template="StatListUI" name="StatListUI" style="padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; width: 390px; height: 530px;" />
             <ui:Instance template="ItemWindow" name="ItemWindow" style="width: 30%; height: 100%; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;" />
@@ -11,4 +12,5 @@
         <ui:VisualElement name="LowerSider" picking-mode="Ignore" style="flex-grow: 1; flex-shrink: 1; flex-basis: 50%;" />
     </ui:VisualElement>
     <ui:Instance template="ItemInteractions" name="ItemInteractions" style="position: absolute; display: none;" />
+    <ui:Instance template="CookUI" name="CookUI" class="cook-ui hide" />
 </ui:UXML>
