@@ -6,6 +6,7 @@ public class MoveState : PlayerState
 
     public MoveState(Player player, PlayerStateMachine stateMachine) : base(player, stateMachine)
     {
+        defaultAnimationHash = Animator.StringToHash("Walk");
     }
 
     public override void Enter()

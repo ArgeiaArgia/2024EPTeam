@@ -7,6 +7,7 @@ public class CookState : PlayerState
     public CookState(Player player, PlayerStateMachine stateMachine) : base(player, stateMachine) { }
     public override void Enter()
     {
+        base.Enter();
         Player.OnMiniGameStartEvent?.Invoke();
         Player.InGameUI.ShowCookUI();
     }
@@ -17,6 +18,7 @@ public class CookState : PlayerState
     }
     public override void Exit()
     {
+        base.Exit();
         Player.OnMiniGameEndEvent?.Invoke();
         Player.InGameUI.HideCookUI();
     }

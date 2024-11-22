@@ -7,6 +7,8 @@ public abstract class PlayerState
     protected Player Player;
     protected PlayerStateMachine StateMachine;
 
+    protected int defaultAnimationHash;
+    
     protected PlayerState(Player player, PlayerStateMachine stateMachine)
     {
         Player = player;
@@ -15,10 +17,12 @@ public abstract class PlayerState
 
     public virtual void Enter()
     {
+        Player.AnimatorComponent.SetBool(defaultAnimationHash, true);
     }
 
     public virtual void Exit()
     {
+        Player.AnimatorComponent.SetBool(defaultAnimationHash, false);
     }
 
     public virtual void Update()

@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class FishState : PlayerState
 {
-    public FishState(Player player, PlayerStateMachine stateMachine) : base(player, stateMachine) { }
+    public FishState(Player player, PlayerStateMachine stateMachine) : base(player, stateMachine)
+    {
+        defaultAnimationHash = Animator.StringToHash("Fishing");
+    }
     public override void Enter()
     {
         base.Enter();
