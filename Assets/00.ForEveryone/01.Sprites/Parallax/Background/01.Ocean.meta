@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/PYW/00.Scene.meta
+guid: fd10781dc2e05e44690fb557de650348
+========
 guid: a1c74b859a1145a47b282e410494f788
+>>>>>>>> main:Assets/00.ForEveryone/01.Sprites/Parallax/Background/01.Ocean.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
