@@ -14,6 +14,8 @@ public class InputReader : ScriptableObject, IPlayerActionActions
     public Action<Vector2> OnMoveUpEvent;
 
     public Action<Vector2> OnMouseInteractEvent;
+    
+    public Action OnEscapeEvent;
 
     private void OnEnable()
     {
@@ -52,5 +54,10 @@ public class InputReader : ScriptableObject, IPlayerActionActions
             var value = Mouse.current.position.ReadValue();
             OnMouseInteractEvent?.Invoke(value);
         }
+    }
+
+    public void OnEscape(InputAction.CallbackContext context)
+    {
+        OnEscapeEvent?.Invoke();
     }
 }

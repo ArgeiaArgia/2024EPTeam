@@ -13,6 +13,7 @@ public class MoveState : PlayerState
     {
         base.Enter();
         Player.OnMouseDownEvent += HandleMouseDownEvent;
+        Player.InputReader.OnEscapeEvent += StateMachine.ResetToIdleState;
     }
 
 
@@ -26,6 +27,7 @@ public class MoveState : PlayerState
     {
         base.Exit();
         Player.OnMouseDownEvent -= HandleMouseDownEvent;
+        Player.InputReader.OnEscapeEvent -= StateMachine.ResetToIdleState;
     }
 
     private void HandleMouseDownEvent(Vector2 obj)

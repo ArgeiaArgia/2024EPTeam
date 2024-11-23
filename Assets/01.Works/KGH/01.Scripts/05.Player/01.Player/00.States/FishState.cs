@@ -13,5 +13,7 @@ public class FishState : PlayerState
         base.Enter();
         Player.OnMiniGameStartEvent?.Invoke();
         Debug.Log("I AM JUST A FISH");
+        Player.InputReader.OnEscapeEvent += StateMachine.ResetToIdleState;
+
     }
 }

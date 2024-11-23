@@ -47,7 +47,8 @@ public class PlayerStateMachine
     public void SetTargetState<T>() where T : PlayerState
     {
         TargetState = StateDictionary[typeof(T)];
-        if (CurrentState.GetType() == typeof(IdleState) && TargetState.GetType() != typeof(IdleState))
+        if (CurrentState.GetType() == typeof(IdleState) && TargetState.GetType() != typeof(IdleState) && TargetState
+            .GetType() == typeof(CraftState))
         {
             ChangeState<T>();
         }

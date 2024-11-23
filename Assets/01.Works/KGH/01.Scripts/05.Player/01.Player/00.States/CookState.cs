@@ -7,9 +7,10 @@ public class CookState : PlayerState
     public CookState(Player player, PlayerStateMachine stateMachine) : base(player, stateMachine) { }
     public override void Enter()
     {
-        base.Enter();
+        // base.Enter();
         Player.OnMiniGameStartEvent?.Invoke();
         Player.InGameUI.ShowCookUI();
+        Player.InputReader.OnEscapeEvent += StateMachine.ResetToIdleState;
     }
     public void FishSelected(ItemSO item)
     {
@@ -18,7 +19,8 @@ public class CookState : PlayerState
     }
     public override void Exit()
     {
-        base.Exit();
+        // base.Exit();
+        Player.InputReader.OnEscapeEvent -= StateMachine.ResetToIdleState;
         Player.OnMiniGameEndEvent?.Invoke();
         Player.InGameUI.HideCookUI();
     }

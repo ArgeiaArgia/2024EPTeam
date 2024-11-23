@@ -2278,10 +2278,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2adcfdab4f5fad544b72624887dd9c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boatSize: {x: 4.375, y: 1.73}
+  boatSize: {x: 4.375, y: 0.6}
   <DoorPos>k__BackingField: {x: -4.5, y: -0.75}
   <KitchenPos>k__BackingField: {x: -1.5, y: -0.48}
-  boatCenter: {x: -0.35, y: -0.5}
+  boatCenter: {x: -0.35, y: -1.25}
   playerSpeed: 2.5
   shipTransform: {fileID: 471450773}
   OnMiniGameStartEvent:

@@ -70,7 +70,9 @@ public class InGameUI : ToolkitParents
         statManager.OnStatChanged += ChangeStatValue;
         
         mainCam = Camera.main;
+        inputReader.OnEscapeEvent += HandleEscapeEvent;
     }
+
 
 
     protected override void OnEnable()
@@ -117,6 +119,12 @@ public class InGameUI : ToolkitParents
         
         _loadingBar.HighValue = _loadingTime;
         
+    }
+    private void HandleEscapeEvent()
+    {
+        ShowInteractions(null);
+        StopCoroutine(LoadingWaiting());
+        _loadingUI.style.display = DisplayStyle.None;
     }
 
     private void ChangeStatValue(StatType statType, int value) => _statUIs[statType].ChangeStatUI(value);
