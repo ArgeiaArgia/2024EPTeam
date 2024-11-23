@@ -21,7 +21,7 @@ public class IdleState : PlayerState
         base.Exit();
         Player.OnMouseDownEvent -= HandleMousseDownEvent;
     }
-
+    
     private void HandleMousseDownEvent(Vector2 targetPos)
     {
         Player.TargetPosition = targetPos;

@@ -4,10 +4,10 @@ using UnityEngine.UIElements;
 
 public class CraftTab
 {
-    private List<ItemSO> _craftItems;
+    private readonly List<ItemSO> _craftItems;
 
-    private ScrollView _craftScrollView;
-    private InventoryManager _inventoryManager;
+    private readonly ScrollView _craftScrollView;
+    private readonly InventoryManager _inventoryManager;
 
     public CraftTab(List<ItemSO> craftItems, ScrollView craftScrollView, InventoryManager inventoryManager)
     {
@@ -44,7 +44,7 @@ public class CraftTab
                 element.Q<Button>("CraftButton").pickingMode = PickingMode.Ignore;
             }
 
-            element.OnCreateItem += _inventoryManager.CraftItem;
+            element.OnCreateItem += _inventoryManager.TryCraftItem;
             _craftScrollView.Add(element);
         }
     }

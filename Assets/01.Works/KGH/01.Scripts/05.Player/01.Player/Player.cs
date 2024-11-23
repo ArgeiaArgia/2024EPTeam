@@ -6,8 +6,9 @@ public class Player : MonoBehaviour
 {
     [Header("Boat Setting")] [SerializeField]
     private Vector2 boatSize;
-    [field: SerializeField] public Vector2 DoorPos { get;set; }
-    [field: SerializeField] public Vector2 KitchenPos { get;set; }
+
+    [field: SerializeField] public Vector2 DoorPos { get; set; }
+    [field: SerializeField] public Vector2 KitchenPos { get; set; }
 
     [SerializeField] private Vector2 boatCenter;
     [Header("Player Setting")] public float playerSpeed;
@@ -36,6 +37,7 @@ public class Player : MonoBehaviour
             {
                 return KitchenPos + boatCenter + (Vector2)shipTransform.position;
             }
+
             return _targetPosition;
         }
         set
@@ -54,7 +56,7 @@ public class Player : MonoBehaviour
         RigidbodyComponent = GetComponent<Rigidbody2D>();
         AnimatorComponent = GetComponent<Animator>();
         SpriteRendererComponent = GetComponent<SpriteRenderer>();
-        
+
         _mainCamera = Camera.main;
 
         _stateMachine = new PlayerStateMachine();
@@ -63,14 +65,16 @@ public class Player : MonoBehaviour
         _stateMachine.AddState(new MoveState(this, _stateMachine));
         _stateMachine.AddState(new FishState(this, _stateMachine));
         _stateMachine.AddState(new CookState(this, _stateMachine));
+        _stateMachine.AddState(new CraftState(this, _stateMachine));
 
         _stateMachine.Initialize(typeof(IdleState), this);
 
         InputReader.OnMoveDownEvent += (pos) =>
         {
             var worldPos = _mainCamera.ScreenToWorldPoint(pos);
-            if (worldPos.x < -boatSize.x + boatCenter.x - 1 || worldPos.x > boatSize.x + boatCenter.x + 1 ||
-                worldPos.y < -boatSize.y + boatCenter.y - 1 || worldPos.y > boatSize.y + boatCenter.y + 1) return;
+            if (worldPos.x < -boatSize.x + boatCenter.x + shipTransform.position.x || worldPos.x > boatSize
+                    .x + boatCenter.x + shipTransform.position.x || worldPos.y < -boatSize.y + boatCenter.y - 1 ||
+                worldPos.y > boatSize.y + boatCenter.y + 1) return;
             OnMouseDownEvent?.Invoke(worldPos);
         };
     }
@@ -99,15 +103,20 @@ public class Player : MonoBehaviour
         _stateMachine.SetTargetState<CookState>();
     }
 
+    public void SetTargetStateToCraftState()
+    {
+        _stateMachine.SetTargetState<CraftState>();
+    }
+
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(boatCenter + (Vector2)shipTransform.position, boatSize * 2);
-        Gizmos.color = Color.blue;  
-        Gizmos.DrawWireSphere(new Vector3(DoorPos.x + + boatCenter.x + shipTransform.position.x, DoorPos.y) , 0.5f);
-        Gizmos.color = Color.cyan;  
-        Gizmos.DrawWireSphere(new Vector3(KitchenPos.x + + boatCenter.x + shipTransform.position.x, KitchenPos.y) , 0.5f);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(new Vector3(DoorPos.x + +boatCenter.x + shipTransform.position.x, DoorPos.y), 0.5f);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(new Vector3(KitchenPos.x + +boatCenter.x + shipTransform.position.x, KitchenPos.y), 0.5f);
     }
 #endif
 }

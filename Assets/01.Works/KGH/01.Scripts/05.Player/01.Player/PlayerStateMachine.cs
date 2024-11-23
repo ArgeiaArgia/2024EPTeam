@@ -37,8 +37,19 @@ public class PlayerStateMachine
         CurrentState = TargetState;
         CurrentState.Enter();
     }
+    public void ResetToIdleState()
+    {
+        CurrentState.Exit();
+        CurrentState = StateDictionary[typeof(IdleState)];
+        SetTargetState<IdleState>();
+        CurrentState.Enter();
+    }
     public void SetTargetState<T>() where T : PlayerState
     {
         TargetState = StateDictionary[typeof(T)];
+        if (CurrentState.GetType() == typeof(IdleState) && TargetState.GetType() != typeof(IdleState))
+        {
+            ChangeState<T>();
+        }
     }
 }

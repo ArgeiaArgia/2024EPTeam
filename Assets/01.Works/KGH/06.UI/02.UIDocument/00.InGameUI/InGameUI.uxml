@@ -3,6 +3,7 @@
     <ui:Template name="ItemWindow" src="project://database/Assets/01.Works/KGH/06.UI/02.UIDocument/00.InGameUI/02.Item/ItemWindow.uxml?fileID=9197481963319205126&amp;guid=05fd2a3eba28e3d4386fb968224abf2e&amp;type=3#ItemWindow" />
     <ui:Template name="ItemInteractions" src="project://database/Assets/01.Works/KGH/06.UI/02.UIDocument/00.InGameUI/02.Item/ItemInteractions.uxml?fileID=9197481963319205126&amp;guid=c238af97c6545dd4f8c8e231ed615e32&amp;type=3#ItemInteractions" />
     <ui:Template name="CookUI" src="project://database/Assets/01.Works/KGH/06.UI/02.UIDocument/00.InGameUI/03.Cook/CookUI.uxml?fileID=9197481963319205126&amp;guid=735a6f7f38068b74a813a22fe177f6f7&amp;type=3#CookUI" />
+    <ui:Template name="LoadingUI" src="project://database/Assets/01.Works/KGH/06.UI/02.UIDocument/00.InGameUI/LoadingUI.uxml?fileID=9197481963319205126&amp;guid=deca776c349852c4d8b24f16ffc3fb22&amp;type=3#LoadingUI" />
     <Style src="project://database/Assets/01.Works/KGH/06.UI/03.StyleSheet/InGameUI.uss?fileID=7433441132597879392&amp;guid=363f84408d5a00f4f99f86aee5aee722&amp;type=3#InGameUI" />
     <ui:VisualElement name="Container" picking-mode="Ignore" class="container">
         <ui:VisualElement name="UpperSide" picking-mode="Ignore" style="flex-grow: 1; flex-direction: row; justify-content: space-between; flex-shrink: 1; flex-basis: 50%;">
@@ -13,4 +14,5 @@
     </ui:VisualElement>
     <ui:Instance template="ItemInteractions" name="ItemInteractions" style="position: absolute; display: none;" />
     <ui:Instance template="CookUI" name="CookUI" class="cook-ui hide" />
+    <ui:Instance template="LoadingUI" name="LoadingUI" usage-hints="DynamicTransform" style="position: absolute; width: 250px; display: none; height: 25px;" />
 </ui:UXML>

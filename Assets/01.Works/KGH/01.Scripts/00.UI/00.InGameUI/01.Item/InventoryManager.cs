@@ -15,9 +15,13 @@ public class InventoryManager : SerializedMonoBehaviour
     [field: SerializeField] public List<string> Inventories { get; private set; }
     [field: SerializeField] public ItemListSO ItemListSO { get; private set; }
 
+    private ItemSO _targetItem;
+
+    private bool _isCrafting;
+    public UnityEvent OnItemCraft;
     public event Action<string> OnInventoryChanged;
     public event Action<List<DefaultItemInventory>> OnInventoryInitialized;
-
+    
     private void Start()
     {
         OnInventoryInitialized?.Invoke(DefaultItemInventories);
@@ -134,10 +138,17 @@ public class InventoryManager : SerializedMonoBehaviour
         return lackItems.Count <= 0;
     }
 
-    public void CraftItem(ItemSO item)
+    public void TryCraftItem(ItemSO item)
     {
-        if (!CheckIfMakeable(item, out var lackItems)) return;
-        foreach (var craftItem in item.materialList)
+        if (!CheckIfMakeable(item, out var lackItems) || _isCrafting) return;
+        _targetItem = item;
+        _isCrafting = true;
+        OnItemCraft?.Invoke();
+    }
+    
+    public void CraftItem()
+    {
+        foreach (var craftItem in _targetItem.materialList)
         {
             var inventoryItem = InventoryItems.Find(x => x.item == craftItem.Key && x.count >= craftItem.Value);
             inventoryItem.count -= craftItem.Value;
@@ -146,7 +157,8 @@ public class InventoryManager : SerializedMonoBehaviour
                 RemoveItem(inventoryItem);
             }
         }
-        AddItem(item, 1, "갑판");
+        AddItem(_targetItem, 1, "갑판");
+        _isCrafting = false;
     }
     #endregion
 

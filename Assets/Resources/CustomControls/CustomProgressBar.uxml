@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/CustomControls/CustomProgressBar.uss?fileID=7433441132597879392&amp;guid=ba50809f5f67afc4f8a21066fe5077f0&amp;type=3#CustomProgressBar" />
+    <ui:ProgressBar value="22" />
+</ui:UXML>

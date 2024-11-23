@@ -689,11 +689,28 @@ MonoBehaviour:
     - Name: _abilityIcons
       Entry: 6
       Data: 
+  _loadingTime: 30
+  _reducedTime: 5
   inputReader: {fileID: 11400000, guid: 3d98378fbe214b748a2d14c534822162, type: 2}
   inventoryManager: {fileID: 591149508}
   statManager: {fileID: 591149509}
   itemListTemplate: {fileID: 9197481963319205126, guid: e0d32bd80e71c5747bdaa44aa6d0e12e, type: 3}
   craftListTemplate: {fileID: 9197481963319205126, guid: 403b5317f09a31347aaaf58d57ff7399, type: 3}
+  OnLoadingEnded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 591149508}
+        m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
+        m_MethodName: CraftItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnChangeAbilityValue:
     m_PersistentCalls:
       m_Calls: []
@@ -1133,7 +1150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryManager: {fileID: 591149508}
-  item: {fileID: 11400000, guid: e979b221e85906d4f85fccc8ab712049, type: 2}
+  item: {fileID: 11400000, guid: 07fccfd0daf3eaa408baf55ebc067416, type: 2}
 --- !u!114 &591149508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1362,6 +1379,21 @@ MonoBehaviour:
     _holdableWeight: 30
   <Inventories>k__BackingField: []
   <ItemListSO>k__BackingField: {fileID: 11400000, guid: 75844a52dd7b7694c803e66d8a8a0926, type: 2}
+  OnItemCraft:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1253206784}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: SetTargetStateToCraftState
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &591149509
 MonoBehaviour:
   m_ObjectHideFlags: 0
