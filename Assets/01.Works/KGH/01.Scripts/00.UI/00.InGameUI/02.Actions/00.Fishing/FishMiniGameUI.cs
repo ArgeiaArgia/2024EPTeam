@@ -84,7 +84,7 @@ public class FishMiniGameUI : ToolkitParents
     {
         base.EnableUI();
         _tileContainer.RemoveFromClassList("hide");
-        inputReader.OnFishEvent += CatchFish;
+        inputReader.OnTriggerEvent += CatchFish;
 
         _percentage[FishTileType.FishTile] = 1;
         _percentage[FishTileType.TrashTile] = 1;
@@ -113,7 +113,7 @@ public class FishMiniGameUI : ToolkitParents
         _trashTiles.Clear();
         _tiles.Clear();
 
-        inputReader.OnFishEvent -= CatchFish;
+        inputReader.OnTriggerEvent -= CatchFish;
         _tileContainer.AddToClassList("hide");
     }
 

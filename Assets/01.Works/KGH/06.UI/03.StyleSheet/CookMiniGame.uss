@@ -33,6 +33,8 @@
     align-self: center;
     left: -10%;
     position: absolute;
+    transition-timing-function: ease-out-back;
+    transition-duration: 0.5s;
 }
 
 .note.up {
@@ -41,4 +43,10 @@
 
 .note.down {
     background-image: url("project://database/Assets/01.Works/KGH/02.Sprites/arrow-down.png?fileID=21300000&guid=554347bfc13f057428ece6cef6b48605&type=3#arrow-down");
+}
+
+.note.hide {
+    -unity-background-image-tint-color: rgb(0, 0, 0);
+    width: 10%;
+    opacity: 0;
 }
