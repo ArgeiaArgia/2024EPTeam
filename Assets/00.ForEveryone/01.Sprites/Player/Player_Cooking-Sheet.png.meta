@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 45fbb5f1e96911546ba4d91c0764b7d0
+guid: 1d0796cbdb3788f4ba1313f0789bf34d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,106 +97,148 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bite_0
+      name: Player_Cooking-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.28, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e39ddb344f525541bb22b5c4e950026
-      internalID: -1215419728
+      spriteID: fb1f5d0072136714c9ceac2b435ce245
+      internalID: -965350516
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bite_1
+      name: Player_Cooking-Sheet_1
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.28, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bfe99b3a10f086749a40a7ac9e5d174a
-      internalID: -2014414806
+      spriteID: c2a4c17f101ff5944818acf99a90f693
+      internalID: -1913127600
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bite_2
+      name: Player_Cooking-Sheet_2
       rect:
         serializedVersion: 2
         x: 128
         y: 0
         width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.28, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 201338bf5484e88409fac1477d5df8a8
-      internalID: 1673029552
+      spriteID: 1e81f58484561ee4584b85a6562a8900
+      internalID: 1536401777
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bite_3
+      name: Player_Cooking-Sheet_3
       rect:
         serializedVersion: 2
         x: 192
         y: 0
         width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.28, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89e6c063503b5e740ad150c1eacc8245
-      internalID: 1217848395
+      spriteID: 0acee23309fc8e540938bf96e7328fb3
+      internalID: 929174430
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bite_4
+      name: Player_Cooking-Sheet_4
       rect:
         serializedVersion: 2
         x: 256
         y: 0
         width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.28, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81c8b4181a339604eb7b81563880840d
-      internalID: -530084420
+      spriteID: 26207ca3862d58b4b887f0b80f67c2c1
+      internalID: 322293533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Cooking-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56b69a3690290ed439959615d36bea6f
+      internalID: 1131204578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Cooking-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5a9672cdd875f2489fc52724441d01b
+      internalID: -1822143598
       vertices: []
       indices: 
       edges: []
@@ -212,11 +254,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bite_0: -1215419728
-      Bite_1: -2014414806
-      Bite_2: 1673029552
-      Bite_3: 1217848395
-      Bite_4: -530084420
+      Player_Cooking-Sheet_0: -965350516
+      Player_Cooking-Sheet_1: -1913127600
+      Player_Cooking-Sheet_2: 1536401777
+      Player_Cooking-Sheet_3: 929174430
+      Player_Cooking-Sheet_4: 322293533
+      Player_Cooking-Sheet_5: 1131204578
+      Player_Cooking-Sheet_6: -1822143598
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

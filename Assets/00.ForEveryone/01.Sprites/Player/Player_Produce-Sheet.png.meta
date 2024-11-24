@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 45fbb5f1e96911546ba4d91c0764b7d0
+guid: e1de94c72084d60419ae0972251d2af5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,106 +97,148 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bite_0
+      name: Player_Produce-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.28, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e39ddb344f525541bb22b5c4e950026
-      internalID: -1215419728
+      spriteID: 6f541186a89430d48bf82fe8b9dde019
+      internalID: -1613182281
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bite_1
+      name: Player_Produce-Sheet_1
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.28, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bfe99b3a10f086749a40a7ac9e5d174a
-      internalID: -2014414806
+      spriteID: 7e5732849457af949a2cdff19908417f
+      internalID: 553197854
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bite_2
+      name: Player_Produce-Sheet_2
       rect:
         serializedVersion: 2
         x: 128
         y: 0
         width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.28, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 201338bf5484e88409fac1477d5df8a8
-      internalID: 1673029552
+      spriteID: 055e8dca090f4bb4cab49b296d488af1
+      internalID: -149586710
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bite_3
+      name: Player_Produce-Sheet_3
       rect:
         serializedVersion: 2
         x: 192
         y: 0
         width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.28, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89e6c063503b5e740ad150c1eacc8245
-      internalID: 1217848395
+      spriteID: 3977133e105fed9489d7c5307ba740a6
+      internalID: -1030198503
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bite_4
+      name: Player_Produce-Sheet_4
       rect:
         serializedVersion: 2
         x: 256
         y: 0
         width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.28, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81c8b4181a339604eb7b81563880840d
-      internalID: -530084420
+      spriteID: 798a65e5e183b9a43a7b230d4fc8e75c
+      internalID: -1457773154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Produce-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa5d3b95beccb024e91f9bc56579c093
+      internalID: 1363558056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Produce-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bce5cc1a2b0e15e44acd68d5146d6ddc
+      internalID: -101987176
       vertices: []
       indices: 
       edges: []
@@ -212,11 +254,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bite_0: -1215419728
-      Bite_1: -2014414806
-      Bite_2: 1673029552
-      Bite_3: 1217848395
-      Bite_4: -530084420
+      Player_Produce-Sheet_0: -1613182281
+      Player_Produce-Sheet_1: 553197854
+      Player_Produce-Sheet_2: -149586710
+      Player_Produce-Sheet_3: -1030198503
+      Player_Produce-Sheet_4: -1457773154
+      Player_Produce-Sheet_5: 1363558056
+      Player_Produce-Sheet_6: -101987176
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
