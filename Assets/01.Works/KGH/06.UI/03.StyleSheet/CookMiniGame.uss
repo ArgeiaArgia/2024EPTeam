@@ -39,5 +39,6 @@
     background-image: url("project://database/Assets/01.Works/KGH/02.Sprites/arrow-up.png?fileID=21300000&guid=4735af44b20f96b4dae50379cd7c2469&type=3#arrow-up");
 }
 
-.note.right {
+.note.down {
+    background-image: url("project://database/Assets/01.Works/KGH/02.Sprites/arrow-down.png?fileID=21300000&guid=554347bfc13f057428ece6cef6b48605&type=3#arrow-down");
 }
