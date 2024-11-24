@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,12 +14,15 @@ public class Player : MonoBehaviour
     [SerializeField] private Vector2 boatCenter;
     [Header("Player Setting")] public float playerSpeed;
     [SerializeField] private Transform shipTransform;
+    [field: SerializeField] public float CatchPercentage { get; set; }
+    [field: SerializeField] public float FishWaitingTime {get; set;}
     public UnityEvent OnMiniGameStartEvent;
     public UnityEvent OnMiniGameEndEvent;
     public UnityEvent FishStartEvent;
     public UnityEvent<ItemSO> CookStartEvent;
     [field: SerializeField] public InputReader InputReader { get; private set; }
     [field: SerializeField] public InGameUI InGameUI { get; set; }
+    [field: SerializeField] public FishMiniGameUI FishMiniGameUI { get; set; }
     private Camera _mainCamera;
 
     public Rigidbody2D RigidbodyComponent { get; private set; }
@@ -106,6 +110,20 @@ public class Player : MonoBehaviour
     public void SetTargetStateToCraftState()
     {
         _stateMachine.SetTargetState<CraftState>();
+    }
+    
+    public void CoroutineStarter(IEnumerator coroutine)
+    {
+        StartCoroutine(coroutine);
+    }
+    public void CoroutineStopper(IEnumerator coroutine)
+    {
+        StopCoroutine(coroutine);
+    }
+    public void EndFishingState()
+    {
+        if(_stateMachine.CurrentState.GetType() == typeof(FishState))
+            _stateMachine.ResetToIdleState();
     }
 
 #if UNITY_EDITOR

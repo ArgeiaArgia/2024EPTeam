@@ -15,4 +15,5 @@
     <ui:Instance template="ItemInteractions" name="ItemInteractions" style="position: absolute; display: none;" />
     <ui:Instance template="CookUI" name="CookUI" class="cook-ui hide" />
     <ui:Instance template="LoadingUI" name="LoadingUI" usage-hints="DynamicTransform" style="position: absolute; width: 250px; display: none; height: 25px;" />
+    <ui:Label tabindex="-1" text="스페이스바로 당기기!" parse-escape-sequences="true" display-tooltip-when-elided="true" name="FishLabel" class="fish-label hide" />
 </ui:UXML>

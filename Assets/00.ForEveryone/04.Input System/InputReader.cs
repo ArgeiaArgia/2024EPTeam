@@ -14,8 +14,10 @@ public class InputReader : ScriptableObject, IPlayerActionActions
     public Action<Vector2> OnMoveUpEvent;
 
     public Action<Vector2> OnMouseInteractEvent;
-    
+
     public Action OnEscapeEvent;
+
+    public Action OnFishEvent;
 
     private void OnEnable()
     {
@@ -58,6 +60,17 @@ public class InputReader : ScriptableObject, IPlayerActionActions
 
     public void OnEscape(InputAction.CallbackContext context)
     {
-        OnEscapeEvent?.Invoke();
+        if (context.performed)
+        {
+            OnEscapeEvent?.Invoke();
+        }
+    }
+
+    public void OnFish(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            OnFishEvent?.Invoke();
+        }
     }
 }

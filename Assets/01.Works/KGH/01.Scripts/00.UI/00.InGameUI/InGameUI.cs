@@ -51,6 +51,8 @@ public class InGameUI : ToolkitParents
     private VisualElement _loadingUI;
     private CustomProgressBar _loadingBar;
 
+    private Label _fishLabel;
+
     public UnityEvent OnLoadingEnded;
     public UnityEvent<AbilityType, int> OnChangeAbilityValue;
     public UnityEvent<ItemSO> OnFoodSelected;
@@ -58,7 +60,7 @@ public class InGameUI : ToolkitParents
 
     private bool _isInteracting;
     private bool _isEnabled;
-
+    private bool _isMaking;
     Camera mainCam;
     protected override void Awake()
     {
@@ -78,6 +80,7 @@ public class InGameUI : ToolkitParents
     protected override void OnEnable()
     {
         base.OnEnable();
+        _isEnabled = true;
 
         _container = root.Q<VisualElement>("Container");
 
@@ -119,11 +122,13 @@ public class InGameUI : ToolkitParents
         
         _loadingBar.HighValue = _loadingTime;
         
+        _fishLabel = root.Q<Label>("FishLabel");
     }
     private void HandleEscapeEvent()
     {
         ShowInteractions(null);
         StopCoroutine(LoadingWaiting());
+        _isMaking = false;
         _loadingUI.style.display = DisplayStyle.None;
     }
 
@@ -132,7 +137,7 @@ public class InGameUI : ToolkitParents
 
     public void ShowInteractions(List<InteractEvent> events)
     {
-        if (_isEnabled) return;
+        if (!_isEnabled) return;
         if (events == null)
         {
             OnInteracting?.Invoke(false);
@@ -165,7 +170,7 @@ public class InGameUI : ToolkitParents
 
     public void ShowInteractions(List<InteractEvent> events, Vector2 pos)
     {
-        if (_isEnabled) return;
+        if (!_isEnabled) return;
         if (events == null)
         {
             OnInteracting?.Invoke(false);
@@ -217,6 +222,7 @@ public class InGameUI : ToolkitParents
 
     public void ShowLoadingUI(Vector2 pos)
     {
+        _isMaking = true;
         var worldPos = mainCam.WorldToScreenPoint(pos);
         var localPos = root.WorldToLocal(new Vector2(worldPos.x, Screen.height - worldPos.y));
         _loadingUI.style.left = localPos.x - 125;
@@ -234,6 +240,7 @@ public class InGameUI : ToolkitParents
             _loadingBar.Value += 1;
             yield return new WaitForSeconds(1);
         }
+        if(!_isMaking) yield break;
         OnLoadingEnded?.Invoke();
         _loadingUI.style.display = DisplayStyle.None;
         _tabElement.TabButtonClick(_tabElement.TabButtons[0]);
@@ -252,6 +259,9 @@ public class InGameUI : ToolkitParents
                 break;
         }
     }
+    
+    public void ShowFishLabel() => _fishLabel.RemoveFromClassList("hide");
+    public void HideFishLabel() => _fishLabel.AddToClassList("hide");
 
     public void CoroutineHelper(IEnumerator coroutine) => StartCoroutine(coroutine);
 }

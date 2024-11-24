@@ -22,12 +22,10 @@ public class CookUI
 
     public void InitializeCookUI(FoodType foodType)
     {
-        Debug.Log($"InitializeCookUI : {foodType}");
         _foodScrollView.Clear();
         for (var i = 0; i <= (int)foodType; i++)
         {
             var foods = _foodList.FindAll(x => x.foodType == (FoodType)i);
-            Debug.Log(foods.Count);
             foreach (var food in foods)
             {
                 var foodElement = new CraftElement()

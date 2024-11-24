@@ -21,13 +21,35 @@ public class InventoryManager : SerializedMonoBehaviour
     public UnityEvent OnItemCraft;
     public event Action<string> OnInventoryChanged;
     public event Action<List<DefaultItemInventory>> OnInventoryInitialized;
-    
+
     private void Start()
     {
         OnInventoryInitialized?.Invoke(DefaultItemInventories);
     }
 
     #region item
+
+    public void AddItem(ItemSO item, int count)
+    {
+        if (item == null) return;
+        AddItem(item, count, "갑판");
+    }
+
+    public void AddItem(InventoryItem item)
+    {
+        var itemCount = InventoryItems.FindAll(x => x.item.itemName == item.item.itemName).Count;
+
+        if (itemCount > 0)
+        {
+            item.name = $"{item.item.name} {itemCount}";
+            foreach (var itemIn in item.itemsIn)
+            {
+                itemIn.loction = item.name;
+            }
+        }
+
+        AddItem(item, item.loction);
+    }
 
     public void AddItem(ItemSO item, int count, string location, bool isSeparated = false)
     {
@@ -145,7 +167,7 @@ public class InventoryManager : SerializedMonoBehaviour
         _isCrafting = true;
         OnItemCraft?.Invoke();
     }
-    
+
     public void CraftItem()
     {
         foreach (var craftItem in _targetItem.materialList)
@@ -157,11 +179,12 @@ public class InventoryManager : SerializedMonoBehaviour
                 RemoveItem(inventoryItem);
             }
         }
+
         AddItem(_targetItem, 1, "갑판");
         _isCrafting = false;
     }
-    #endregion
 
+    #endregion
 }
 
 [Serializable]

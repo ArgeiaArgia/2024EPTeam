@@ -713,7 +713,19 @@ MonoBehaviour:
         m_CallState: 2
   OnChangeAbilityValue:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 531174072}
+        m_TargetAssemblyTypeName: FishMiniGameUI, Assembly-CSharp
+        m_MethodName: HandleFishLevelUp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnFoodSelected:
     m_PersistentCalls:
       m_Calls: []
@@ -1084,6 +1096,117 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipSpeed: 0.25
   center: -0.01875
+--- !u!1 &531174070
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 531174071}
+  - component: {fileID: 531174073}
+  - component: {fileID: 531174072}
+  m_Layer: 0
+  m_Name: FishUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &531174071
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531174070}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.49, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &531174072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531174070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68dc26386145794459035be5463a5ea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  inputReader: {fileID: 11400000, guid: 3d98378fbe214b748a2d14c534822162, type: 2}
+  itemList: {fileID: 11400000, guid: 75844a52dd7b7694c803e66d8a8a0926, type: 2}
+  fishSprites:
+  - {fileID: 172615961, guid: ee42cc6c31999574995d6201d78578c3, type: 3}
+  - {fileID: -1345636730, guid: ee42cc6c31999574995d6201d78578c3, type: 3}
+  - {fileID: 380922690, guid: ee42cc6c31999574995d6201d78578c3, type: 3}
+  - {fileID: 374811546, guid: ee42cc6c31999574995d6201d78578c3, type: 3}
+  trashSprites:
+  - {fileID: 1531579226, guid: ee42cc6c31999574995d6201d78578c3, type: 3}
+  - {fileID: -1347335436, guid: ee42cc6c31999574995d6201d78578c3, type: 3}
+  - {fileID: -1343637063, guid: ee42cc6c31999574995d6201d78578c3, type: 3}
+  tileCount: 10
+  arrowSpeed: 20
+  arrowRepeat: 1
+  OnFishEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1253206784}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: EndFishingState
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 591149508}
+        m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
+        m_MethodName: AddItem
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &531174073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531174070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 1cea0851560724a499def40b070a22b1, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: fcb223065dfb5174c81ef26dbc3136bb, type: 3}
+  m_SortingOrder: 50
 --- !u!1 &566391484
 GameObject:
   m_ObjectHideFlags: 0
@@ -2284,6 +2407,8 @@ MonoBehaviour:
   boatCenter: {x: -0.35, y: -1.25}
   playerSpeed: 2.5
   shipTransform: {fileID: 471450773}
+  <CatchPercentage>k__BackingField: 50
+  <FishWaitingTime>k__BackingField: 1.5
   OnMiniGameStartEvent:
     m_PersistentCalls:
       m_Calls:
@@ -2346,6 +2471,7 @@ MonoBehaviour:
       m_Calls: []
   <InputReader>k__BackingField: {fileID: 11400000, guid: 3d98378fbe214b748a2d14c534822162, type: 2}
   <InGameUI>k__BackingField: {fileID: 318389662}
+  <FishMiniGameUI>k__BackingField: {fileID: 531174072}
 --- !u!50 &1253206785
 Rigidbody2D:
   serializedVersion: 4
@@ -2859,4 +2985,5 @@ SceneRoots:
   - {fileID: 753262433}
   - {fileID: 1418930348}
   - {fileID: 318389661}
+  - {fileID: 531174071}
   - {fileID: 591149510}

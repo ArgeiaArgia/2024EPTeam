@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/01.Works/KGH/06.UI/03.StyleSheet/FishIU.uss?fileID=7433441132597879392&amp;guid=8506f3c884466a5419ae59566c85a65d&amp;type=3#FishIU" />
+    <ui:VisualElement name="Container" picking-mode="Ignore" style="flex-grow: 1;">
+        <ui:VisualElement name="TileContainer" class="tile-container hide">
+            <ui:Label tabindex="-1" text="스페이스바로 잡기" parse-escape-sequences="true" display-tooltip-when-elided="true" style="position: absolute; align-self: center; font-size: 32px; -unity-font-definition: url(&quot;project://database/Assets/00.ForEveryone/03.Fonts/Sam3KRFont%20SDF.asset?fileID=11400000&amp;guid=0f08d7a2ed3a7c846ad35575c8c0973d&amp;type=2#Sam3KRFont SDF&quot;); color: rgb(194, 149, 91); bottom: 100%;" />
+            <ui:VisualElement name="Tiles" style="flex-direction: row; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; height: 100%; position: absolute; width: 100%;" />
+            <ui:VisualElement name="TileOutLine" style="position: absolute; width: 100%; height: 100%; background-image: url(&quot;project://database/Assets/00.ForEveryone/01.Sprites/fishingboxOutLine.png?fileID=21300000&amp;guid=32f6e0656d5518e41a372a0fad621147&amp;type=3#fishingboxOutLine&quot;);" />
+            <ui:VisualElement name="Arrow" style="width: 100px; height: 100px; background-image: url(&quot;project://database/Assets/00.ForEveryone/01.Sprites/icon.png?fileID=-1203530847&amp;guid=ee42cc6c31999574995d6201d78578c3&amp;type=3#icon_7&quot;); -unity-background-scale-mode: scale-to-fit; top: 75%; align-self: center;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
