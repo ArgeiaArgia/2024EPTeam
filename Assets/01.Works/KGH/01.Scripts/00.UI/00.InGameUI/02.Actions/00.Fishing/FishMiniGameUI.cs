@@ -53,7 +53,7 @@ public class FishMiniGameUI : ToolkitParents
     };
 
     [FormerlySerializedAs("OnFishEnd")] public UnityEvent<ItemSO, int> OnItemFishEnd;
-    public UnityEvent<InventoryItem, int> OnInventoryFishEnd;
+    public UnityEvent<InventoryItem> OnInventoryFishEnd;
 
     protected override void Awake()
     {
@@ -177,22 +177,29 @@ public class FishMiniGameUI : ToolkitParents
 
         if (_arrowMoveCount < arrowRepeat) return;
         var item = GetRandomItem();
-        if (item.itemType == ItemType.Tool && item.toolType == ToolType.Inventory)
+        if (item != null)
         {
-            var inventoryItem = new InventoryItem(item, 1, "갑판");
-            foreach (var itemIn in _inventoryItems)
+            if (item.itemType == ItemType.Tool && item.toolType == ToolType.Inventory)
             {
-                var randomValue = Random.Range(0, itemIn.Value);
-                if (randomValue > 0)
+                var inventoryItem = new InventoryItem(item, 1, "갑판");
+                foreach (var itemIn in _inventoryItems)
                 {
-                    var itemInInventory = new InventoryItem(itemIn.Key, randomValue, inventoryItem.name);
-                    inventoryItem.itemsIn.Add(itemInInventory);
+                    var randomValue = Random.Range(0, itemIn.Value);
+                    if (randomValue > 0)
+                    {
+                        var itemInInventory = new InventoryItem(itemIn.Key, randomValue, inventoryItem.name);
+                        inventoryItem.itemsIn.Add(itemInInventory);
+                    }
                 }
+
+                OnInventoryFishEnd?.Invoke(inventoryItem);
             }
-            OnInventoryFishEnd?.Invoke(inventoryItem, 1);
+            else
+                OnItemFishEnd?.Invoke(item, Random.Range(1, 3));
         }
-        else
-            OnItemFishEnd?.Invoke(item, Random.Range(1, 3));
+        
+        OnItemFishEnd?.Invoke(null, 0);
+        
         _isEnabled = false;
         DisableUI();
     }
