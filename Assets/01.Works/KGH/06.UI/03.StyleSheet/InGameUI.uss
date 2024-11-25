@@ -81,7 +81,6 @@
 .system-messages {
     width: 25%;
     height: 45%;
-    top: 55%;
     background-image: url("project://database/Assets/01.Works/KGH/02.Sprites/01.RoundBoxes/RoundBoxFull3.png?fileID=21300000&guid=a4d84679bf90ba7499599b817fd1fcaa&type=3#RoundBoxFull3");
     padding-top: 25px;
     padding-right: 25px;

@@ -76,7 +76,7 @@
 }
 
 .required-icon {
-    background-image: url("project://database/Assets/00.ForEveryone/01.Sprites/ability.png?fileID=-814435918&guid=84414fdc76f2d974f91e42cc4e31acad&type=3#ability_2");
+    background-image: url("project://database/Assets/00.ForEveryone/01.Sprites/Item/ability.png?fileID=-814435918&guid=84414fdc76f2d974f91e42cc4e31acad&type=3#ability_2");
     -unity-background-scale-mode: scale-to-fit;
     height: 35px;
     width: 40px;
@@ -88,7 +88,6 @@
 }
 
 .required-icon.lack {
-    background-image: url("project://database/Assets/00.ForEveryone/01.Sprites/ability.png?fileID=-814435918&guid=84414fdc76f2d974f91e42cc4e31acad&type=3#ability_2");
     -unity-background-scale-mode: scale-to-fit;
     height: 35px;
     width: 40px;

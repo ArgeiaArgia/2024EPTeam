@@ -1,3 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="ShipContainer" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/00.ForEveryone/01.Sprites/minMap%201.png?fileID=21300000&amp;guid=e19d349472d0fd847abcbad3858eb2e5&amp;type=3#minMap 1&quot;);" />
+    <ui:VisualElement name="ShipContainer" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/00.ForEveryone/01.Sprites/minMap%201.png?fileID=21300000&amp;guid=e19d349472d0fd847abcbad3858eb2e5&amp;type=3#minMap 1&quot;);">
+        <ui:VisualElement name="ShipImage" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/00.ForEveryone/01.Sprites/minShip.png?fileID=21300000&amp;guid=434696da5a64094408e4aac91204b460&amp;type=3#minShip&quot;); -unity-background-scale-mode: scale-to-fit; -unity-background-image-tint-color: rgb(55, 62, 66);" />
+    </ui:VisualElement>
 </ui:UXML>
