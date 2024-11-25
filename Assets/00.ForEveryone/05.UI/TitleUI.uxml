@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/00.ForEveryone/05.UI/TitleUI.uss?fileID=7433441132597879392&amp;guid=ef8c1c39b86fefc4eb18b76470b43acd&amp;type=3#TitleUI" />
+    <ui:VisualElement name="Container" class="container">
+        <ui:VisualElement name="VisualElement" style="flex-grow: 3; background-image: url(&quot;project://database/Assets/00.ForEveryone/01.Sprites/Title.png?fileID=21300000&amp;guid=43c15ecd3298f5c4385082f93c18f58f&amp;type=3#Title&quot;); -unity-background-scale-mode: scale-to-fit; width: 100%; margin-top: -30px; margin-right: -30px; margin-bottom: -30px; margin-left: -30px;" />
+        <ui:VisualElement name="Buttons" style="flex-grow: 0; flex-shrink: 1; width: 600px; align-items: center; flex-basis: 50%;">
+            <ui:Button text="시작" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StartButton" class="startButton button" />
+            <ui:Button text="설정" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SettingButton" class="settingButton startButton button" />
+            <ui:Button text="나가기" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ExitButton" class="exitButton startButton button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

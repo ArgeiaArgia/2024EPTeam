@@ -1,0 +1,76 @@
+.gameTitle {
+    font-size: 128px;
+    color: rgb(255, 255, 255);
+    -unity-text-align: middle-center;
+    -unity-font-definition: initial;
+}
+
+.button {
+    -unity-font-definition: initial;
+    width: 500px;
+    font-size: 64px;
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out-back;
+    flex-grow: 1;
+    margin-top: 1%;
+    margin-right: 1%;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    padding-top: 1%;
+    padding-right: 1%;
+    padding-bottom: 1%;
+    padding-left: 1%;
+    -unity-text-align: middle-center;
+    opacity: 0.75;
+    background-image: url("project://database/Assets/00.ForEveryone/01.Sprites/Title_btn.png?fileID=359939393&guid=e674dbd0b3a0002428f27a91aa4e0ad4&type=3#Title_btn_0");
+}
+
+.button:hover {
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out-back;
+    font-size: 72px;
+    margin-top: 1.5%;
+    margin-right: 1.5%;
+    margin-bottom: 1.5%;
+    margin-left: 1.5%;
+    padding-top: 1.5%;
+    padding-right: 1.5%;
+    padding-bottom: 1.5%;
+    padding-left: 1.5%;
+    -unity-text-align: middle-center;
+    opacity: 1;
+    text-shadow: 0 0 100px rgb(86, 50, 38);
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: rgb(86, 50, 38);
+}
+
+.container {
+    justify-content: space-around;
+    align-self: center;
+    align-items: center;
+    width: 40%;
+    height: 100%;
+    padding-top: 200px;
+    padding-bottom: 200px;
+    transition-timing-function: ease-out-back;
+    transition-duration: 0.5s;
+    opacity: 1;
+    -unity-background-scale-mode: stretch-to-fill;
+    -unity-background-image-tint-color: rgb(0, 0, 0);
+}
+
+.container.hide {
+    left: 0;
+    transition-timing-function: ease-out-back;
+    transition-duration: 0.5s;
+    opacity: 0;
+}
