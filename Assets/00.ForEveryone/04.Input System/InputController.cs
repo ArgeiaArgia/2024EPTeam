@@ -62,6 +62,15 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Notes"",
+                    ""type"": ""Value"",
+                    ""id"": ""bd69df69-a146-4d08-a8f3-8477c3daedcc"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -119,6 +128,116 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                     ""action"": ""Fish"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""82a7ec8e-5fee-4636-9762-de943c1fd1e2"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Notes"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""5ba18720-cae3-437b-b722-992f4c685bb6"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Notes"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""3dc4ca02-1ea1-44d2-acd6-046df45dfe1e"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Notes"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""4ba792b4-92ae-43e3-b84d-06c5669ce1b3"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Notes"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""3d9eabcb-b4e8-4b0a-bf92-2ca63ace0b7c"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Notes"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""5555cb86-9a98-49ca-8991-6a6144bed889"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Notes"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""eca84252-401f-4fa9-93a4-f7efb8ff1dcd"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Notes"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""b4ad58ae-ebd3-4284-91a4-d105a40b94e7"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Notes"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""f078d93d-6d33-4938-8f54-cd34ca7f89e9"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Notes"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""eed4a327-d025-49ef-ba2b-3f87d3e6fa5e"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Notes"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -131,6 +250,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
         m_PlayerAction_MouseInteract = m_PlayerAction.FindAction("MouseInteract", throwIfNotFound: true);
         m_PlayerAction_Escape = m_PlayerAction.FindAction("Escape", throwIfNotFound: true);
         m_PlayerAction_Fish = m_PlayerAction.FindAction("Fish", throwIfNotFound: true);
+        m_PlayerAction_Notes = m_PlayerAction.FindAction("Notes", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -196,6 +316,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerAction_MouseInteract;
     private readonly InputAction m_PlayerAction_Escape;
     private readonly InputAction m_PlayerAction_Fish;
+    private readonly InputAction m_PlayerAction_Notes;
     public struct PlayerActionActions
     {
         private @InputController m_Wrapper;
@@ -204,6 +325,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
         public InputAction @MouseInteract => m_Wrapper.m_PlayerAction_MouseInteract;
         public InputAction @Escape => m_Wrapper.m_PlayerAction_Escape;
         public InputAction @Fish => m_Wrapper.m_PlayerAction_Fish;
+        public InputAction @Notes => m_Wrapper.m_PlayerAction_Notes;
         public InputActionMap Get() { return m_Wrapper.m_PlayerAction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -225,6 +347,9 @@ public partial class @InputController: IInputActionCollection2, IDisposable
             @Fish.started += instance.OnFish;
             @Fish.performed += instance.OnFish;
             @Fish.canceled += instance.OnFish;
+            @Notes.started += instance.OnNotes;
+            @Notes.performed += instance.OnNotes;
+            @Notes.canceled += instance.OnNotes;
         }
 
         private void UnregisterCallbacks(IPlayerActionActions instance)
@@ -241,6 +366,9 @@ public partial class @InputController: IInputActionCollection2, IDisposable
             @Fish.started -= instance.OnFish;
             @Fish.performed -= instance.OnFish;
             @Fish.canceled -= instance.OnFish;
+            @Notes.started -= instance.OnNotes;
+            @Notes.performed -= instance.OnNotes;
+            @Notes.canceled -= instance.OnNotes;
         }
 
         public void RemoveCallbacks(IPlayerActionActions instance)
@@ -264,5 +392,6 @@ public partial class @InputController: IInputActionCollection2, IDisposable
         void OnMouseInteract(InputAction.CallbackContext context);
         void OnEscape(InputAction.CallbackContext context);
         void OnFish(InputAction.CallbackContext context);
+        void OnNotes(InputAction.CallbackContext context);
     }
 }

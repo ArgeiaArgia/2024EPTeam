@@ -6,11 +6,12 @@ public class CraftState : PlayerState
 {
     public CraftState(Player player, PlayerStateMachine stateMachine) : base(player, stateMachine)
     {
+        defaultAnimationHash = Animator.StringToHash("Craft");
     }
 
     public override void Enter()
     {
-        Debug.Log("CraftState Enter");
+        base.Enter();
         Player.InGameUI.ShowLoadingUI(Player.transform.position + Vector3.down * Player.SpriteRendererComponent.bounds
             .size.y / 2);
         Player.InGameUI.OnLoadingEnded.AddListener(StateMachine.ResetToIdleState);
@@ -19,7 +20,7 @@ public class CraftState : PlayerState
 
     public override void Exit()
     {
-        Debug.Log("CraftState Exit");
+        base.Exit();
         Player.InputReader.OnEscapeEvent -= StateMachine.ResetToIdleState;
         Player.InGameUI.OnLoadingEnded.RemoveListener(StateMachine.ResetToIdleState);
     }

@@ -48,12 +48,12 @@ public class FishState : PlayerState
         Player.AnimatorComponent.SetBool(defaultAnimationHash, false);
         Player.AnimatorComponent.SetBool(biteHash, true);
         Player.InputReader.OnEscapeEvent -= StateMachine.ResetToIdleState;
-        Player.InputReader.OnFishEvent += FishCaught;
+        Player.InputReader.OnTriggerEvent += FishCaught;
         Player.InGameUI.ShowFishLabel();
         yield return new WaitForSeconds(Player.FishWaitingTime);
         if(_isPulling) yield break;
         Player.InGameUI.HideFishLabel();
-        Player.InputReader.OnFishEvent -= FishCaught;
+        Player.InputReader.OnTriggerEvent -= FishCaught;
         Player.InputReader.OnEscapeEvent += StateMachine.ResetToIdleState;
         _isWaiting = true;
         Player.AnimatorComponent.SetBool(defaultAnimationHash, true);
@@ -71,7 +71,7 @@ public class FishState : PlayerState
         Player.AnimatorComponent.SetBool(defaultAnimationHash, false);
         Player.AnimatorComponent.SetBool(biteHash, false);
         Player.AnimatorComponent.SetBool(pullHash, true);
-        Player.InputReader.OnFishEvent -= FishCaught;
+        Player.InputReader.OnTriggerEvent -= FishCaught;
         Player.FishMiniGameUI.EnableUI();
     }
 
@@ -82,7 +82,7 @@ public class FishState : PlayerState
         Player.AnimatorComponent.SetBool(pullHash, false);
         Player.OnMiniGameEndEvent?.Invoke();
         Player.InputReader.OnEscapeEvent -= StateMachine.ResetToIdleState;
-        Player.InputReader.OnFishEvent -= FishCaught;
+        Player.InputReader.OnTriggerEvent -= FishCaught;
         Player.InGameUI.HideFishLabel();
         Player.CoroutineStopper(Waiting());
         Player.CoroutineStopper(FishHit());

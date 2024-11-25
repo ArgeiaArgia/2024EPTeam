@@ -19,6 +19,7 @@ public class InventoryManager : SerializedMonoBehaviour
 
     private bool _isCrafting;
     public UnityEvent OnItemCraft;
+    public UnityEvent<ItemSO> OnItemAdded; 
     public event Action<string> OnInventoryChanged;
     public event Action<List<DefaultItemInventory>> OnInventoryInitialized;
 
@@ -31,7 +32,11 @@ public class InventoryManager : SerializedMonoBehaviour
 
     public void AddItem(ItemSO item, int count)
     {
-        if (item == null) return;
+        if (item == null)
+        {
+            OnItemAdded?.Invoke(null);
+            return;
+        }
         AddItem(item, count, "갑판");
     }
 
@@ -91,9 +96,10 @@ public class InventoryManager : SerializedMonoBehaviour
         }
 
         OnInventoryChanged?.Invoke(location);
+        OnItemAdded?.Invoke(item);
     }
 
-    private void AddItem(InventoryItem item, string location, bool isSeparated = false)
+    private void AddItem(InventoryItem item, string location, bool isSeparated = false, bool isMoving = false)
     {
         var inventoryItems = InventoryItems.FindAll(x => x.item == item.item);
         var parentItem = InventoryItems.Find(x => x.name == location) ??
@@ -117,8 +123,10 @@ public class InventoryManager : SerializedMonoBehaviour
                 Inventories.Add(item.name);
             }
         }
-
+        
         OnInventoryChanged?.Invoke(location);
+        if(isMoving) return;
+        OnItemAdded?.Invoke(item.item);
     }
 
     private void RemoveItem(InventoryItem inventoryItem, bool isMoving = false)
@@ -181,6 +189,30 @@ public class InventoryManager : SerializedMonoBehaviour
         }
 
         AddItem(_targetItem, 1, "갑판");
+        _isCrafting = false;
+    }
+    
+    public void CraftItem(ItemSO item)
+    {
+        if (item == null)
+        {
+            OnItemAdded?.Invoke(null);
+            _isCrafting = false;
+            return;
+        }
+        if (!CheckIfMakeable(item, out var lackItems) || _isCrafting) return;
+        
+        foreach (var craftItem in item.materialList)
+        {
+            var inventoryItem = InventoryItems.Find(x => x.item == craftItem.Key && x.count >= craftItem.Value);
+            inventoryItem.count -= craftItem.Value;
+            if (inventoryItem.count <= 0)
+            {
+                RemoveItem(inventoryItem);
+            }
+        }
+
+        AddItem(item, 1, "갑판");
         _isCrafting = false;
     }
 

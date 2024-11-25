@@ -58,9 +58,54 @@
     -unity-font-style: italic;
     transition-timing-function: ease-out-bounce;
     transition-duration: 0.5s;
+    padding-top: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    padding-left: 25px;
+    background-image: url("project://database/Assets/01.Works/KGH/02.Sprites/01.RoundBoxes/RoundBoxFill3.png?fileID=21300000&guid=070565248dcba064e9e254d8c8131926&type=3#RoundBoxFill3");
+    -unity-background-image-tint-color: rgb(94, 117, 130);
 }
 
 .fish-label.hide {
     font-size: 1px;
     opacity: 0;
+}
+
+.system-message {
+    -unity-font-definition: url("project://database/Assets/00.ForEveryone/03.Fonts/Sam3KRFont%20SDF.asset?fileID=11400000&guid=0f08d7a2ed3a7c846ad35575c8c0973d&type=2#Sam3KRFont SDF");
+    font-size: 24px;
+    color: rgb(255, 255, 255);
+    white-space: normal;
+}
+
+.system-messages {
+    width: 25%;
+    height: 45%;
+    top: 55%;
+    background-image: url("project://database/Assets/01.Works/KGH/02.Sprites/01.RoundBoxes/RoundBoxFull3.png?fileID=21300000&guid=a4d84679bf90ba7499599b817fd1fcaa&type=3#RoundBoxFull3");
+    padding-top: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    padding-left: 25px;
+    -unity-background-image-tint-color: rgba(55, 62, 66, 0.5);
+}
+
+.system-messages #unity-drag-container {
+    height: 164px;
+}
+
+.system-messages .unity-scroller__low-button {
+    background-color: rgb(255, 255, 255);
+}
+
+.system-messages .unity-scroller__high-button {
+    background-color: rgb(255, 255, 255);
+}
+
+.system-messages #unity-tracker {
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+}
+
+.system-messages #unity-dragger {
+    -unity-background-image-tint-color: rgb(255, 255, 255);
 }

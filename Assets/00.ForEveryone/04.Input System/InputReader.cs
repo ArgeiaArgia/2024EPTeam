@@ -17,7 +17,9 @@ public class InputReader : ScriptableObject, IPlayerActionActions
 
     public Action OnEscapeEvent;
 
-    public Action OnFishEvent;
+    public Action OnTriggerEvent;
+
+    public Action<Vector2Int> OnNotesEvent;
 
     private void OnEnable()
     {
@@ -70,7 +72,22 @@ public class InputReader : ScriptableObject, IPlayerActionActions
     {
         if (context.performed)
         {
-            OnFishEvent?.Invoke();
+            OnTriggerEvent?.Invoke();
         }
+    }
+
+    public void OnNotes(InputAction.CallbackContext context)
+    {
+        if (!context.started) return;
+        
+        var value = context.ReadValue<Vector2>();
+        if (value == Vector2.zero) return;
+            
+        if (Mathf.Approximately(value.x, value.y))
+        {
+            value = new Vector2(value.x, 0);
+        }
+
+        OnNotesEvent?.Invoke(new Vector2Int(Mathf.RoundToInt(value.x), Mathf.RoundToInt(value.y)));
     }
 }

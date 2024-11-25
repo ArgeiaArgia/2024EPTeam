@@ -215,6 +215,91 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1040257464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1040257467}
+  - component: {fileID: 1040257466}
+  - component: {fileID: 1040257465}
+  m_Layer: 0
+  m_Name: CookMiniGameUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1040257465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040257464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f167948ccda87cc4ca4130b6505e0a59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  inputReader: {fileID: 11400000, guid: 3d98378fbe214b748a2d14c534822162, type: 2}
+  noteDistance: 25
+  noteClassNames:
+  - up
+  - down
+  - right
+  - left
+  noteSpeeds:
+  - 20
+  - 30
+  - 40
+  OnCookingEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  testItem: {fileID: 11400000, guid: 9df4e67315270774fb1fe26529a504a5, type: 2}
+--- !u!114 &1040257466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040257464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 1cea0851560724a499def40b070a22b1, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: ffd50420981b84841b4a6468f2eaf18f, type: 3}
+  m_SortingOrder: 50
+--- !u!4 &1040257467
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040257464}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.49, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1548882812
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +317,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1548882813
 Transform:
   m_ObjectHideFlags: 0
@@ -284,7 +369,10 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
+    SerializationNodes:
+    - Name: _inventoryItems
+      Entry: 6
+      Data: 
   inputReader: {fileID: 11400000, guid: 3d98378fbe214b748a2d14c534822162, type: 2}
   itemList: {fileID: 11400000, guid: 75844a52dd7b7694c803e66d8a8a0926, type: 2}
   fishSprites:
@@ -299,7 +387,10 @@ MonoBehaviour:
   tileCount: 10
   arrowSpeed: 12
   arrowRepeat: 2
-  OnFishEnd:
+  OnItemFishEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInventoryFishEnd:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1660057539 &9223372036854775807
@@ -308,3 +399,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 790317361}
   - {fileID: 1548882813}
+  - {fileID: 1040257467}
