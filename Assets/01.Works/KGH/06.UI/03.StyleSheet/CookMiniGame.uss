@@ -7,7 +7,7 @@
     width: 75%;
     height: 20%;
     top: 70%;
-    background-image: url("project://database/Assets/00.ForEveryone/01.Sprites/fishingbox.png?fileID=21300000&guid=af6297a2f36319149b93ebe50498666d&type=3#fishingbox");
+    background-image: url("project://database/Assets/00.ForEveryone/01.Sprites/doma.png?fileID=1892952217&guid=0a82e703a7c394a438bcaf32abb6cfe4&type=3#doma_0");
     align-self: center;
     scale: 1 1;
     transition-timing-function: ease-out-back;

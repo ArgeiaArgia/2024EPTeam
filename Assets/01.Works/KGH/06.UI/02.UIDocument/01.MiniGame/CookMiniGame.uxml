@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/01.Works/KGH/06.UI/03.StyleSheet/CookMiniGame.uss?fileID=7433441132597879392&amp;guid=679ea40b2e187a04e8643332ef6df293&amp;type=3#CookMiniGame" />
     <ui:VisualElement name="Container" picking-mode="Ignore" class="container">
-        <ui:VisualElement name="NoteContainer" class="note-container hide" style="flex-direction: row;">
+        <ui:VisualElement name="NoteContainer" class="note-container" style="flex-direction: row;">
             <ui:VisualElement name="Notes" style="flex-grow: 1; flex-direction: row;" />
             <ui:VisualElement name="NoteBound" style="flex-grow: 1; position: absolute; right: 15%; width: 10%; height: 100%;">
                 <ui:VisualElement name="NoteLine" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/01.Works/KGH/02.Sprites/Line.png?fileID=21300000&amp;guid=3e9dc4b87a12a1d44a86765951818305&amp;type=3#Line&quot;); width: 50%; -unity-background-image-tint-color: rgb(23, 22, 20); -unity-background-scale-mode: stretch-to-fill; border-left-color: rgb(23, 22, 20); border-right-color: rgb(23, 22, 20); border-top-color: rgb(23, 22, 20); border-bottom-color: rgb(23, 22, 20); border-right-width: 5px;" />
