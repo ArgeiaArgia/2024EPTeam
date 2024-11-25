@@ -1,10 +1,16 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerStateMachine
 {
     public PlayerState CurrentState { get; private set; }
-    public PlayerState TargetState { get; private set; }
+    private PlayerState _targetState;
+    public PlayerState TargetState
+    {
+        get => _targetState??StateDictionary[typeof(IdleState)];
+        private set => _targetState = value;
+    }
     private Dictionary<Type, PlayerState> StateDictionary = new Dictionary<Type, PlayerState>();
     
     private Player _player;
@@ -27,13 +33,24 @@ public class PlayerStateMachine
     }
     public void ChangeToTargetState()
     {
-        if(TargetState == null) TargetState = StateDictionary[typeof(IdleState)];
         CurrentState.Exit();
         CurrentState = TargetState;
+        CurrentState.Enter();
+    }
+    public void ResetToIdleState()
+    {
+        CurrentState.Exit();
+        CurrentState = StateDictionary[typeof(IdleState)];
+        SetTargetState<IdleState>();
         CurrentState.Enter();
     }
     public void SetTargetState<T>() where T : PlayerState
     {
         TargetState = StateDictionary[typeof(T)];
+        if (CurrentState.GetType() == typeof(IdleState) && TargetState.GetType() != typeof(IdleState) && TargetState
+            .GetType() == typeof(CraftState))
+        {
+            ChangeState<T>();
+        }
     }
 }

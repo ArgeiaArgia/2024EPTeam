@@ -114,8 +114,6 @@ public class ItemTab
             _itemElementInteracts.Add(itemElement, new ItemElementInteract(itemElement, item, _root, _inGameUI,
                 this, _inventoryManager));
 
-            Debug.Log(
-                $"can be tab? : {item.item.toolType == ToolType.Inventory && _parentItem.GetType() == typeof(DefaultItemInventory)}");
             if (item.item.toolType == ToolType.Inventory && _parentItem.GetType() == typeof(DefaultItemInventory))
             {
                 _itemInventory.AddItemTab(item);

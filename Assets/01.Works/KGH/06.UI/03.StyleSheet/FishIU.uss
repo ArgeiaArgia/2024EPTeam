@@ -1,0 +1,54 @@
+.tile {
+    background-image: url("project://database/Assets/01.Works/KGH/02.Sprites/01.RoundBoxes/RoundBoxFull3.png?fileID=21300000&guid=a4d84679bf90ba7499599b817fd1fcaa&type=3#RoundBoxFull3");
+    flex-grow: 1;
+    margin-top: 1px;
+    margin-right: 1px;
+    margin-bottom: 1px;
+    margin-left: 1px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    -unity-background-image-tint-color: rgb(194, 149, 91);
+    justify-content: center;
+}
+
+.tile.empty {
+    -unity-background-image-tint-color: rgb(201, 198, 215);
+}
+
+.tile.fish {
+    -unity-background-image-tint-color: rgb(94, 117, 130);
+}
+
+.tile.trash {
+    flex-grow: 1;
+}
+
+.icon {
+    -unity-background-scale-mode: scale-to-fit;
+    height: 71%;
+    align-self: center;
+    width: 100%;
+}
+
+.tile-container {
+    flex-grow: 0;
+    width: 75%;
+    height: 20%;
+    top: 70%;
+    background-image: url("project://database/Assets/00.ForEveryone/01.Sprites/fishingbox.png?fileID=21300000&guid=af6297a2f36319149b93ebe50498666d&type=3#fishingbox");
+    align-self: center;
+    scale: 1 1;
+    transition-timing-function: ease-out-back;
+    transition-duration: 0.5s;
+    display: flex;
+}
+
+.tile-container.hide {
+    scale: 0 1;
+    display: none;
+}
+
+.container {
+}

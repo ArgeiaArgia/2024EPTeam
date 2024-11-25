@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class IdleState : PlayerState
 {
-    public IdleState(Player player, PlayerStateMachine stateMachine) : base(player, stateMachine) { }
+    public IdleState(Player player, PlayerStateMachine stateMachine) : base(player, stateMachine)
+    {
+        defaultAnimationHash = Animator.StringToHash("Idle");
+    }
 
     public override void Enter()
     {
@@ -18,7 +21,7 @@ public class IdleState : PlayerState
         base.Exit();
         Player.OnMouseDownEvent -= HandleMousseDownEvent;
     }
-
+    
     private void HandleMousseDownEvent(Vector2 targetPos)
     {
         Player.TargetPosition = targetPos;

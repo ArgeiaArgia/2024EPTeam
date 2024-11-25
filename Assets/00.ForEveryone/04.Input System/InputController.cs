@@ -44,6 +44,24 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Escape"",
+                    ""type"": ""Button"",
+                    ""id"": ""3b3dc063-015f-45e5-91f6-93715a11dfc9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fish"",
+                    ""type"": ""Button"",
+                    ""id"": ""eee5a3f7-1529-4dcb-aec1-fd5a15771ff6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -72,11 +90,33 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c0b40f04-e601-4e9b-a423-6b00c9ed6497"",
-                    ""path"": ""<Mouse>/press"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": ""MultiTap"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""MouseInteract"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ae9f409d-d102-44b3-b8fd-167927086aba"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ebd5431c-dbe0-4ecf-b538-183e7f580bbc"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fish"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -89,6 +129,8 @@ public partial class @InputController: IInputActionCollection2, IDisposable
         m_PlayerAction = asset.FindActionMap("PlayerAction", throwIfNotFound: true);
         m_PlayerAction_Mouse = m_PlayerAction.FindAction("Mouse", throwIfNotFound: true);
         m_PlayerAction_MouseInteract = m_PlayerAction.FindAction("MouseInteract", throwIfNotFound: true);
+        m_PlayerAction_Escape = m_PlayerAction.FindAction("Escape", throwIfNotFound: true);
+        m_PlayerAction_Fish = m_PlayerAction.FindAction("Fish", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -152,12 +194,16 @@ public partial class @InputController: IInputActionCollection2, IDisposable
     private List<IPlayerActionActions> m_PlayerActionActionsCallbackInterfaces = new List<IPlayerActionActions>();
     private readonly InputAction m_PlayerAction_Mouse;
     private readonly InputAction m_PlayerAction_MouseInteract;
+    private readonly InputAction m_PlayerAction_Escape;
+    private readonly InputAction m_PlayerAction_Fish;
     public struct PlayerActionActions
     {
         private @InputController m_Wrapper;
         public PlayerActionActions(@InputController wrapper) { m_Wrapper = wrapper; }
         public InputAction @Mouse => m_Wrapper.m_PlayerAction_Mouse;
         public InputAction @MouseInteract => m_Wrapper.m_PlayerAction_MouseInteract;
+        public InputAction @Escape => m_Wrapper.m_PlayerAction_Escape;
+        public InputAction @Fish => m_Wrapper.m_PlayerAction_Fish;
         public InputActionMap Get() { return m_Wrapper.m_PlayerAction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -173,6 +219,12 @@ public partial class @InputController: IInputActionCollection2, IDisposable
             @MouseInteract.started += instance.OnMouseInteract;
             @MouseInteract.performed += instance.OnMouseInteract;
             @MouseInteract.canceled += instance.OnMouseInteract;
+            @Escape.started += instance.OnEscape;
+            @Escape.performed += instance.OnEscape;
+            @Escape.canceled += instance.OnEscape;
+            @Fish.started += instance.OnFish;
+            @Fish.performed += instance.OnFish;
+            @Fish.canceled += instance.OnFish;
         }
 
         private void UnregisterCallbacks(IPlayerActionActions instance)
@@ -183,6 +235,12 @@ public partial class @InputController: IInputActionCollection2, IDisposable
             @MouseInteract.started -= instance.OnMouseInteract;
             @MouseInteract.performed -= instance.OnMouseInteract;
             @MouseInteract.canceled -= instance.OnMouseInteract;
+            @Escape.started -= instance.OnEscape;
+            @Escape.performed -= instance.OnEscape;
+            @Escape.canceled -= instance.OnEscape;
+            @Fish.started -= instance.OnFish;
+            @Fish.performed -= instance.OnFish;
+            @Fish.canceled -= instance.OnFish;
         }
 
         public void RemoveCallbacks(IPlayerActionActions instance)
@@ -204,5 +262,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
     {
         void OnMouse(InputAction.CallbackContext context);
         void OnMouseInteract(InputAction.CallbackContext context);
+        void OnEscape(InputAction.CallbackContext context);
+        void OnFish(InputAction.CallbackContext context);
     }
 }

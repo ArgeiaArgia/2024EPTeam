@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/01.Works/KGH/06.UI/03.StyleSheet/CookMiniGame.uss?fileID=7433441132597879392&amp;guid=679ea40b2e187a04e8643332ef6df293&amp;type=3#CookMiniGame" />
+    <ui:VisualElement name="Container" picking-mode="Ignore" class="container">
+        <ui:VisualElement name="NoteContainer" class="note-container">
+            <ui:VisualElement name="Notes" style="flex-grow: 1; flex-direction: row;">
+                <ui:VisualElement class="note up" />
+                <ui:VisualElement class="note right" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

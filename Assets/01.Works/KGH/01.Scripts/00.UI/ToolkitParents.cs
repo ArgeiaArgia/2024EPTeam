@@ -19,7 +19,7 @@ public abstract class ToolkitParents : SerializedMonoBehaviour
         root = UIDocument.rootVisualElement;
     }
 
-    protected virtual void EnableUI()
+    public virtual void EnableUI()
     {
         
     }

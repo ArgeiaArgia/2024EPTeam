@@ -1022,7 +1022,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Success: 0
-  key: 
+  key: ' '
 --- !u!4 &1091778310
 Transform:
   m_ObjectHideFlags: 0

@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/01.Works/KGH/06.UI/03.StyleSheet/LoadingUI.uss?fileID=7433441132597879392&amp;guid=9fd68f4120f73dc429d35d1f589586bb&amp;type=3#LoadingUI" />
+    <CustomProgressBar is-show-line="true" high-value="100" line-count="10" value="0" name="LoadingBar" class="loading-bar" />
+</ui:UXML>

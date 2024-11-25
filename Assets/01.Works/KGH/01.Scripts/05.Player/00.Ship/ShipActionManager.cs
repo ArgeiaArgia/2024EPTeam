@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class ShipActionManager : MonoBehaviour
 {
     [SerializeField] private InputReader inputReader;
-    [SerializeField] private UnityEvent<List<InteractEvent>, Vector2> onInteractEvent;
+    public UnityEvent<List<InteractEvent>, Vector2> onInteractEvent;
     
     [Header("Ship Rects")]
     [SerializeField] private Rect shipFront;

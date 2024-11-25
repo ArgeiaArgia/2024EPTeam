@@ -1,0 +1,33 @@
+.loading-bar {
+    flex-grow: 1;
+}
+
+.loading-bar > .unity-progress-bar {
+    flex-grow: 1;
+}
+
+.loading-bar .unity-progress-bar__container {
+    max-height: none;
+    min-height: auto;
+    flex-grow: 1;
+}
+
+.loading-bar .unity-progress-bar__background {
+    background-color: rgba(0, 0, 0, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    background-image: url("project://database/Assets/01.Works/KGH/02.Sprites/01.RoundBoxes/RoundBoxOutline3.png?fileID=21300000&guid=db46e242f94beb240ba63e602e074ff3&type=3#RoundBoxOutline3");
+    -unity-background-image-tint-color: rgb(55, 62, 66);
+}
+
+.loading-bar .progress-line {
+    -unity-background-image-tint-color: rgb(55, 62, 66);
+}
+
+.loading-bar .unity-progress-bar__progress {
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("project://database/Assets/01.Works/KGH/02.Sprites/01.RoundBoxes/RoundBoxFill3.png?fileID=21300000&guid=070565248dcba064e9e254d8c8131926&type=3#RoundBoxFill3");
+    -unity-background-image-tint-color: rgb(194, 149, 91);
+}

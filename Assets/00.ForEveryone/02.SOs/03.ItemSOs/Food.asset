@@ -18,11 +18,11 @@ MonoBehaviour:
   itemType: 1
   percentageOfCatch: 9
   weight: 0
-  materialList:
-  - {fileID: 11400000, guid: adbd3c73c77a07a47b0c18569b74045d, type: 2}
   toolType: 1
-  slotCount: 0
+  holdableWeight: 0
+  materialKey: []
+  materialValue: 
   StatEffectKey: 000000000100000002000000
   StatEffectValue: 0a0000000b00000000000000
-  foodType: 2
+  foodType: 0
   description: Pikmin soup
