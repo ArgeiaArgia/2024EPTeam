@@ -26,7 +26,7 @@ public class CookMiniGameUI : ToolkitParents
     private List<VisualElement> _notes = new List<VisualElement>();
 
     private float _notePosition;
-
+    private int _missedNoteCount;
     private bool _isCooking;
 
     private ItemSO _cookingItem;
@@ -41,11 +41,6 @@ public class CookMiniGameUI : ToolkitParents
         _container = root.Q<VisualElement>("NoteContainer");
         _noteContainer = _container.Q<VisualElement>("Notes");
         _noteBounds = _container.Q<VisualElement>("NoteBound");
-    }
-
-    private void Start()
-    {
-        EnableUI(testItem);
     }
 
     public void EnableUI(ItemSO item)
@@ -80,15 +75,27 @@ public class CookMiniGameUI : ToolkitParents
 
     private void CheckNote(Vector2Int direction)
     {
-        var note = _notes.Find(x => _noteBounds.worldBound.Overlaps(x.worldBound) && GetDirection(x) == direction);
+        var note = _notes.Find(x => _noteBounds.worldBound.Overlaps(x.worldBound) && !x.ClassListContains("hide"));
         if (note == null) return;
-        _correctNoteCount++;
+        var noteDir = GetDirection(note);
+        if (noteDir == Vector2Int.zero) return;
+        if (noteDir == direction)
+        {
+            _correctNoteCount++;
+            note.AddToClassList("correct");
+        }
+        else
+        {
+            _missedNoteCount++;
+            note.AddToClassList("incorrect");
+        }
+
         note.AddToClassList("hide");
     }
 
     private static Vector2Int GetDirection(VisualElement note)
     {
-        if(note.ClassListContains("hide")) return Vector2Int.zero;
+        if (note.ClassListContains("hide")) return Vector2Int.zero;
         if (note.ClassListContains("up")) return Vector2Int.up;
         if (note.ClassListContains("down")) return Vector2Int.down;
         if (note.ClassListContains("left")) return Vector2Int.left;
@@ -102,23 +109,43 @@ public class CookMiniGameUI : ToolkitParents
 
         _notePosition += _currentNoteSpeed * Time.deltaTime;
 
-        if (_notes.Count == 0)
-        {
-            _isCooking = false;
-            OnCookingEnd?.Invoke(_cookingItem);
-            DisableUI();
-            return;
-        }
-
         foreach (var note in _notes)
         {
-            note.style.left = new StyleLength(Length.Percent(_notePosition - noteDistance * _notes.IndexOf(note)));
+            if (note.ClassListContains("hide")) continue;
+            var length = _notePosition - noteDistance * _notes.IndexOf(note);
+            note.style.left = new StyleLength(Length.Percent(length));
+            if (!(length > 100)) continue;
+            note.AddToClassList("hide");
+            _missedNoteCount++;
         }
+
+        if (_notes.Count == _missedNoteCount + _correctNoteCount)
+        {
+            _isCooking = false;
+            var randomValue = Random.Range(0, _currentNoteCount);
+            if (randomValue > _missedNoteCount)
+            {
+                OnCookingEnd?.Invoke(_cookingItem);
+            }
+            else
+            {
+                OnCookingEnd?.Invoke(null);
+            }
+
+            StartCoroutine(WaitAndDisableUI());
+        }
+    }
+
+    private IEnumerator WaitAndDisableUI()
+    {
+        yield return new WaitForSeconds(1);
+        DisableUI();
     }
 
     private void InitializeNotes()
     {
         _correctNoteCount = 0;
+        _missedNoteCount = 0;
         for (int i = 0; i < _currentNoteCount; i++)
         {
             var note = new VisualElement();

@@ -79,7 +79,6 @@ public class InputReader : ScriptableObject, IPlayerActionActions
     public void OnNotes(InputAction.CallbackContext context)
     {
         if (!context.started) return;
-        Debug.Log("Notes");
         
         var value = context.ReadValue<Vector2>();
         if (value == Vector2.zero) return;

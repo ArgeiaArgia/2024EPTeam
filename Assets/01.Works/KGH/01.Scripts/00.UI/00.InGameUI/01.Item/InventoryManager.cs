@@ -183,6 +183,24 @@ public class InventoryManager : SerializedMonoBehaviour
         AddItem(_targetItem, 1, "갑판");
         _isCrafting = false;
     }
+    
+    public void CraftItem(ItemSO item)
+    {
+        if (!CheckIfMakeable(item, out var lackItems) || _isCrafting) return;
+        
+        foreach (var craftItem in item.materialList)
+        {
+            var inventoryItem = InventoryItems.Find(x => x.item == craftItem.Key && x.count >= craftItem.Value);
+            inventoryItem.count -= craftItem.Value;
+            if (inventoryItem.count <= 0)
+            {
+                RemoveItem(inventoryItem);
+            }
+        }
+
+        AddItem(item, 1, "갑판");
+        _isCrafting = false;
+    }
 
     #endregion
 }

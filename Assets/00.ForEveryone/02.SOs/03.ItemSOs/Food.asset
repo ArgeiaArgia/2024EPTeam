@@ -22,8 +22,8 @@ MonoBehaviour:
   holdableWeight: 0
   materialKey:
   - {fileID: 11400000, guid: adbd3c73c77a07a47b0c18569b74045d, type: 2}
-  materialValue: 0a000000
-  StatEffectKey: 000000000100000002000000
-  StatEffectValue: 0a0000000b00000000000000
+  materialValue: 05000000
+  StatEffectKey: 0000000001000000
+  StatEffectValue: 0a0000000b000000
   foodType: 0
   description: Pikmin soup

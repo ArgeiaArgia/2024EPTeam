@@ -120,10 +120,21 @@ public class Player : MonoBehaviour
     {
         StopCoroutine(coroutine);
     }
-    public void EndFishingState()
+    public void EndActionState()
     {
-        if(_stateMachine.CurrentState.GetType() == typeof(FishState))
+        if(_stateMachine.CurrentState.GetType() == typeof(FishState) || _stateMachine.CurrentState.GetType() == typeof(CookState))
             _stateMachine.ResetToIdleState();
+    }
+
+    public bool CheckIfPlayerNearPosition()
+    {
+        var mousePos = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        if (Vector2.Distance(mousePos, TargetPosition) < 0.5f)
+        {
+            TargetPosition = mousePos;
+            return true;
+        }
+        return false;
     }
 
 #if UNITY_EDITOR

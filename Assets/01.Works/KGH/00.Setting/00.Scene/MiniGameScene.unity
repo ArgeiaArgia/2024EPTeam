@@ -262,9 +262,9 @@ MonoBehaviour:
   - right
   - left
   noteSpeeds:
-  - 10
   - 20
   - 30
+  - 40
   OnCookingEnd:
     m_PersistentCalls:
       m_Calls: []
