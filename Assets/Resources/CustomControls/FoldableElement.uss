@@ -1,0 +1,12 @@
+.content {
+    flex-grow: 0;
+    transition-timing-function: ease-out-bounce;
+    transition-duration: 0.5s;
+    transform-origin: top;
+}
+
+.content.hide {
+    scale: 1 0;
+    opacity: 0;
+    overflow: hidden;
+}

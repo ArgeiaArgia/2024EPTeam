@@ -51,6 +51,9 @@ public class FoldableElement : VisualElement
     {
         var visualTree = Resources.Load<VisualTreeAsset>("CustomControls/FoldableElement");
         visualTree.CloneTree(this);
+        
+        var styleSheet = Resources.Load<StyleSheet>("CustomControls/FoldableElement");
+        styleSheets.Add(styleSheet);
     }
 
     public new class UxmlTraits : VisualElement.UxmlTraits
@@ -83,8 +86,7 @@ public class FoldableElement : VisualElement
     void FoldButtonClicked()
     {
         isFolded = !isFolded;
-        contentContainer.style.maxHeight = isFolded ? 0 : float.NaN;
-        contentContainer.style.opacity = isFolded ? 0 : 100;
+        contentContainer.ToggleInClassList("hide");
         
         OnFoldableButtonClicked?.Invoke(isFolded);
     }

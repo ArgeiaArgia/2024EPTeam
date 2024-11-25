@@ -331,7 +331,6 @@ public class FishMiniGameUI : ToolkitParents
 
         if (randomValue < _percentage[FishTileType.FishTile])
         {
-            Debug.Log("This is fish");
             var percentage = 0f;
             var randomPercentage = Random.Range(0, _fishItemPercentage);
             foreach (var fish in _fishItems)
@@ -347,7 +346,6 @@ public class FishMiniGameUI : ToolkitParents
         }
         else if (randomValue < _percentage[FishTileType.FishTile] + _percentage[FishTileType.TrashTile])
         {
-            Debug.Log("This is trash");
             var percentage = 0f;
             var randomPercentage = Random.Range(0, _trashItemPercentage);
             foreach (var trash in _trashItems)
@@ -355,7 +353,6 @@ public class FishMiniGameUI : ToolkitParents
                 percentage += trash.percentageOfCatch;
                 if (randomPercentage < percentage)
                 {
-                    Debug.Log(trash.itemName);
                     return trash;
                 }
             }
@@ -364,7 +361,6 @@ public class FishMiniGameUI : ToolkitParents
         }
         else
         {
-            Debug.Log("This is empty");
             return null;
         }
     }

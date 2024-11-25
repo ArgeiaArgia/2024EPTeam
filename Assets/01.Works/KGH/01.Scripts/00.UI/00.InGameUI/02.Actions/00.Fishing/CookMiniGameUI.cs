@@ -132,14 +132,8 @@ public class CookMiniGameUI : ToolkitParents
                 OnCookingEnd?.Invoke(null);
             }
 
-            StartCoroutine(WaitAndDisableUI());
+            DisableUI();
         }
-    }
-
-    private IEnumerator WaitAndDisableUI()
-    {
-        yield return new WaitForSeconds(1);
-        DisableUI();
     }
 
     private void InitializeNotes()

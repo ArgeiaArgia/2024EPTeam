@@ -133,8 +133,27 @@ public class InGameUI : ToolkitParents
         _cookUI.HideCookUI();
     }
 
-    private void ChangeStatValue(StatType statType, int value) => _statUIs[statType].ChangeStatUI(value);
-    public void AddAbilityValue(AbilityType abilityType, int value) => _abilityUIs[abilityType].AddAbility(value);
+    private void ChangeStatValue(StatType statType, int value)
+    {
+        _statUIs[statType].ChangeStatUI(value);
+    }
+
+    public void AddAbilityValue(AbilityType abilityType, int value)
+    {
+        _abilityUIs[abilityType].AddAbility(value);
+    }
+    public void AddFishAbilityCount(int count)
+    {
+        _abilityUIs[AbilityType.Fishing].AddAbility(count);
+    }
+    public void AddCookAbilityCount(int count)
+    {
+        _abilityUIs[AbilityType.Cooking].AddAbility(count);
+    }
+    public void AddRepairAbilityCount(int count)
+    {
+        _abilityUIs[AbilityType.Repairing].AddAbility(count);
+    }
 
     public void ShowInteractions(List<InteractEvent> events)
     {

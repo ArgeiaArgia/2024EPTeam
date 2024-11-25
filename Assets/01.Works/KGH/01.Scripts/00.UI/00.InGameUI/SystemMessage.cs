@@ -13,7 +13,7 @@ public class SystemMessage : ToolkitParents
         base.OnEnable();
         _systemMessageContainer = root.Q<ScrollView>("SystemMessageContainer");
         _systemMessageLabel = root.Q<Label>("SystemMessage");
-        _systemMessageLabel.text = "좌클릭으로 이동, 우클릭 혹은 더블클릭으로 행동합니다\n";
+        _systemMessageLabel.text = "좌클릭으로 이동, \n우클릭 혹은 더블클릭으로 행동, \n행동 중 ESC키로 취소합니다.\nEsc를 꾹 누르면 게임이 꺼집니다.......\n";
     }
 
     public void OnItemAdded(ItemSO item)
@@ -24,5 +24,6 @@ public class SystemMessage : ToolkitParents
             return;
         }
         _systemMessageLabel.text += $"{item.itemName}을/를 획득하였습니다.\n";;
+        _systemMessageContainer.scrollOffset = _systemMessageContainer.contentContainer.layout.max - _systemMessageContainer.contentViewport.layout.size;
     }
 }
