@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "\uB3CC\uB9F9\uC774"
   m_EditorClassIdentifier: 
   itemName: "\uB3CC\uB9F9\uC774"
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 1399945879, guid: a8d109b49de5d9c4892d8d388f42760b, type: 3}
   itemSprite: {fileID: 0}
   itemType: 2
   percentageOfCatch: 0
