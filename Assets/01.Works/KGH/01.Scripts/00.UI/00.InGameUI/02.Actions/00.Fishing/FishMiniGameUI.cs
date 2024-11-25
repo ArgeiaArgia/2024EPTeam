@@ -124,17 +124,14 @@ public class FishMiniGameUI : ToolkitParents
         {
             if (tile.ClassListContains("fish"))
             {
-                Debug.Log("I caught fish");
                 _percentage[FishTileType.FishTile] += _fishTiles[tile] * 5;
             }
             else if (tile.ClassListContains("trash"))
             {
-                Debug.Log("I caught trash");
                 _percentage[FishTileType.TrashTile] += _trashTiles[tile] * 5;
             }
             else if (tile.ClassListContains("empty"))
             {
-                Debug.Log("I caught empty");
                 _percentage[FishTileType.EmptyTile] += tileCount * 5 / 2;
             }
 
@@ -197,9 +194,11 @@ public class FishMiniGameUI : ToolkitParents
             else
                 OnItemFishEnd?.Invoke(item, Random.Range(1, 3));
         }
-        
-        OnItemFishEnd?.Invoke(null, 0);
-        
+        else
+        {
+            OnItemFishEnd?.Invoke(null, 0);
+        }
+
         _isEnabled = false;
         DisableUI();
     }
@@ -329,9 +328,6 @@ public class FishMiniGameUI : ToolkitParents
                             _percentage[FishTileType.EmptyTile];
         var randomValue = Random.Range(0, allPercentage);
 
-        Debug.Log(
-            $"Fish : {_percentage[FishTileType.FishTile]} Trash : {_percentage[FishTileType.TrashTile]} Empty : {_percentage[FishTileType.EmptyTile]}" +
-            $"All : {allPercentage} Random : {randomValue}");
 
         if (randomValue < _percentage[FishTileType.FishTile])
         {

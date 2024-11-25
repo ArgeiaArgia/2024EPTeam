@@ -536,6 +536,7 @@ GameObject:
   - component: {fileID: 318389661}
   - component: {fileID: 318389660}
   - component: {fileID: 318389662}
+  - component: {fileID: 318389663}
   m_Layer: 5
   m_Name: InGameUI
   m_TagString: Untagged
@@ -741,6 +742,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &318389663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318389659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36639baf2718f56469f81b785a2b47de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
 --- !u!1 &418641561
 GameObject:
   m_ObjectHideFlags: 0
@@ -1177,8 +1199,8 @@ MonoBehaviour:
   - {fileID: -1347335436, guid: ee42cc6c31999574995d6201d78578c3, type: 3}
   - {fileID: -1343637063, guid: ee42cc6c31999574995d6201d78578c3, type: 3}
   tileCount: 10
-  arrowSpeed: 20
-  arrowRepeat: 1
+  arrowSpeed: 50
+  arrowRepeat: 3
   OnItemFishEnd:
     m_PersistentCalls:
       m_Calls:
@@ -1551,6 +1573,21 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: SetTargetStateToCraftState
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnItemAdded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 318389663}
+        m_TargetAssemblyTypeName: SystemMessage, Assembly-CSharp
+        m_MethodName: OnItemAdded
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -10,7 +10,6 @@ public class CookState : PlayerState
     }
     public override void Enter()
     {
-        base.Enter();
         Player.OnMiniGameStartEvent?.Invoke();
         Player.InGameUI.ShowCookUI();
         Player.InputReader.OnEscapeEvent += StateMachine.ResetToIdleState;
@@ -19,6 +18,7 @@ public class CookState : PlayerState
     {
         Player.InGameUI.HideCookUI();
         Player.FishStartEvent?.Invoke();
+        Player.AnimatorComponent.SetBool(defaultAnimationHash, true);
     }
     public override void Exit()
     {
