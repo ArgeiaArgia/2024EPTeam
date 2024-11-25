@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12277ccfcc48b8a469a4d8bd467dbf4d, type: 3}
-  m_Name: 631054e2975330749a8b8e66b0187f48
+  m_Name: "\uCD08\uBC25"
   m_EditorClassIdentifier: 
-  itemName: Fish
-  itemIcon: {fileID: -1479557138, guid: a8d109b49de5d9c4892d8d388f42760b, type: 3}
+  itemName: "\uCD08\uBC25"
+  itemIcon: {fileID: -2116920264, guid: c51ef3ae5c4fa3a47b71bf246cf81363, type: 3}
   itemSprite: {fileID: 0}
-  itemType: 0
+  itemType: 1
   percentageOfCatch: 0
   weight: 0
   toolType: 1
@@ -25,4 +25,4 @@ MonoBehaviour:
   StatEffectKey: 
   StatEffectValue: 
   foodType: 0
-  description: Fish
+  description: "\uCD08\uBC25\uC774\uB2E4, \uC5ED\uC2DC \uC640\uC0AC\uBE44\uB294 \uC5C6\uB2E4."
