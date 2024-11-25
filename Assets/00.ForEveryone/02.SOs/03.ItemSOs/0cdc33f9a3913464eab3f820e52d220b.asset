@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12277ccfcc48b8a469a4d8bd467dbf4d, type: 3}
-  m_Name: "\uC11D\uC81C"
+  m_Name: " \uBD89\uC740 \uB3C4\uBBF8"
   m_EditorClassIdentifier: 
-  itemName: "\uC11D\uC81C"
-  itemIcon: {fileID: 1923921885, guid: a8d109b49de5d9c4892d8d388f42760b, type: 3}
+  itemName: " \uBD89\uC740 \uB3C4\uBBF8"
+  itemIcon: {fileID: 1363952216, guid: a8d109b49de5d9c4892d8d388f42760b, type: 3}
   itemSprite: {fileID: 0}
-  itemType: 3
+  itemType: 0
   percentageOfCatch: 0
   weight: 0
   toolType: 1
@@ -25,4 +25,4 @@ MonoBehaviour:
   StatEffectKey: 
   StatEffectValue: 
   foodType: 0
-  description: "\uB3CC\uB9F9\uC774\uB85C \uB9CC\uB4E0 \uC11D\uC81C\uC774\uB2E4."
+  description: " \uBD89\uC740 \uB3C4\uBBF8"

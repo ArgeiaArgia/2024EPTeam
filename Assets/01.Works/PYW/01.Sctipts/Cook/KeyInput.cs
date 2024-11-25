@@ -29,8 +29,10 @@ public class KeyInput : MonoBehaviour
             VARIABLE.gameObject.SetActive(false);
         }
         int ran = Random.Range(0, keyTiles.Count);
-        keyTiles[ran].gameObject.SetActive(true);
-        keyText = keyTiles[ran].GetComponentInChildren<TextMeshProUGUI>();
+        PlayerPrefs.SetInt("ran", ran);
+        keyTiles[PlayerPrefs.GetInt("ran")].gameObject.SetActive(true);
+        keyText = keyTiles[PlayerPrefs.GetInt("ran")].GetComponentInChildren<TextMeshProUGUI>();
         CookManager.instance.key = keyText.text;
+        PlayerPrefs.DeleteKey("ran");
     }
 }
