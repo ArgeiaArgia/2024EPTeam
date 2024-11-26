@@ -17,12 +17,14 @@ MonoBehaviour:
   itemSprite: {fileID: 0}
   itemType: 1
   percentageOfCatch: 0
-  weight: 0
+  weight: 0.5
   toolType: 1
   holdableWeight: 0
-  materialKey: []
-  materialValue: 
-  StatEffectKey: 
-  StatEffectValue: 
-  foodType: 0
+  materialKey:
+  - {fileID: 11400000, guid: ba80c004be673014c98296542f3da0f3, type: 2}
+  - {fileID: 11400000, guid: 40f47734601a46a4e95dab86eafdc20c, type: 2}
+  materialValue: 0100000001000000
+  StatEffectKey: 00000000
+  StatEffectValue: 05000000
+  foodType: 1
   description: "\uCD08\uBC25\uC774\uB2E4, \uC5ED\uC2DC \uC640\uC0AC\uBE44\uB294 \uC5C6\uB2E4."

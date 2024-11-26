@@ -10,19 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12277ccfcc48b8a469a4d8bd467dbf4d, type: 3}
-  m_Name: "\uC4F0\uB808\uAE30"
+  m_Name: "\uD53C\uD06C\uBBFC \uC218\uD504"
   m_EditorClassIdentifier: 
-  itemName: "\uC4F0\uB808\uAE30"
+  itemName: "\uD53C\uD06C\uBBFC \uC218\uD504"
   itemIcon: {fileID: -2070277186, guid: c51ef3ae5c4fa3a47b71bf246cf81363, type: 3}
   itemSprite: {fileID: 0}
   itemType: 1
   percentageOfCatch: 0
-  weight: 0
+  weight: 0.5
   toolType: 1
   holdableWeight: 0
-  materialKey: []
-  materialValue: 
-  StatEffectKey: 
-  StatEffectValue: 
-  foodType: 0
-  description: "\uBA39\uC744 \uC218 \uC788\uC744\uB07C?"
+  materialKey:
+  - {fileID: 11400000, guid: adbd3c73c77a07a47b0c18569b74045d, type: 2}
+  materialValue: 09000000
+  StatEffectKey: 000000000100000004000000
+  StatEffectValue: 0a00000005000000ceffffff
+  foodType: 2
+  description: "\uD770\uC0C9\uC740 \uC548 \uC11E\uC5EC\uC788\uACA0\uC9C0? "

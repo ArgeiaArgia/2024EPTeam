@@ -144,6 +144,21 @@ public class EditorDictionary : VisualElement
 
         OnDictionaryChanged?.Invoke(GetDictionary());
     }
+    private void ResetDictionaryWithoutNotify()
+    {
+        _countField.SetValueWithoutNotify(0);
+        _keys.Clear();
+        _values.Clear();
+        for (var i = 0; i < _itemElements.Count; i++)
+        {
+            var item = _itemElements[i];
+            _itemElements.Remove(item);
+            item.RemoveFromHierarchy();
+        }
+
+        _keys = (IList)Activator.CreateInstance(typeof(List<>).MakeGenericType(_keyType));
+        _values = (IList)Activator.CreateInstance(typeof(List<>).MakeGenericType(_valueType));
+    }
 
     private void UpdateDictionaryCount(ChangeEvent<int> evt)
     {
@@ -187,6 +202,20 @@ public class EditorDictionary : VisualElement
         }
 
         OnDictionaryChanged?.Invoke(GetDictionary());
+    }
+    private void RemoveElementWithoutNotify(int i)
+    {
+        _countField.SetValueWithoutNotify(_countField.value - 1);
+        var item = _itemElements[i];
+        _itemElements.Remove(item);
+        item.RemoveFromHierarchy();
+        _keys.RemoveAt(i);
+        _values.RemoveAt(i);
+
+        for (var j = i; j < _itemElements.Count; j++)
+        {
+            _itemElements[j].Q<Label>().text = j.ToString();
+        }
     }
 
     private void AddElement()
@@ -355,8 +384,10 @@ public class EditorDictionary : VisualElement
     {
         var returnDictionary =
             Activator.CreateInstance(typeof(Dictionary<,>).MakeGenericType(_keyType, _valueType)) as IDictionary;
+        Debug.Log($"_keys.Count : {_keys.Count}");
         for (var i = 0; i < _keys.Count; i++)
         {
+            Debug.Log($"_keys[i] : {_keys[i]}");
             var key = Convert.ChangeType(_keys[i], _keyType);
             var value = Convert.ChangeType(_values[i], _valueType);
             if (key == null || value == null) continue;
@@ -422,6 +453,16 @@ public class EditorDictionary : VisualElement
         for (int i = _itemElements.Count - 1; i > -1; i--)
         {
             RemoveElement(i);
+        }
+
+        _keys.Clear();
+        _values.Clear();
+    }
+    public void ClearDictionaryWithoutNotify()
+    {
+        for (int i = _itemElements.Count - 1; i > -1; i--)
+        {
+            RemoveElementWithoutNotify(i);
         }
 
         _keys.Clear();

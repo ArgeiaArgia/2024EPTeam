@@ -156,9 +156,10 @@ public class ItemInspector
 
     private void HandleMaterialListChanged(IDictionary obj)
     {
-        if (_currentItem == null || (_currentItem.itemType != ItemType.Food && _currentItem.itemType != ItemType.Tool))
-            return;
-        _currentItem.materialList = obj as Dictionary<ItemSO, int>;
+        if (_currentItem == null || !(_currentItem.itemType is ItemType.Food or ItemType.Tool)||
+            obj is not Dictionary<ItemSO, int> dictionary) return;
+        Debug.Log("asdaskfsndfnsdjfnkosdnffljsjngl 좆ㅈ가ㅏㄲ까ㅏ까까 ");
+        _currentItem.materialList = dictionary;
     }
 
     private void HandleChangeToolType(Enum evtNewValue)
@@ -215,8 +216,10 @@ public class ItemInspector
         ShowItemType(item.itemType);
         ShowToolType(item.toolType);
         
-        _materialList.ClearDictionary();
-        _effectList.ClearDictionary();
+        _materialList.ClearDictionaryWithoutNotify();
+        _effectList.ClearDictionaryWithoutNotify();
+        Debug.Log("자살!");
+        
         foreach (var mat in item.materialList)
         {
             _materialList.AddDictionaryItem(mat.Key, mat.Value);

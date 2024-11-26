@@ -17,11 +17,12 @@ MonoBehaviour:
   itemSprite: {fileID: 0}
   itemType: 3
   percentageOfCatch: 0
-  weight: 0
-  toolType: 1
+  weight: 10
+  toolType: 0
   holdableWeight: 0
-  materialKey: []
-  materialValue: 
+  materialKey:
+  - {fileID: 11400000, guid: 68c4bf3504d5ba64cb31f69b16ea87d0, type: 2}
+  materialValue: 0a000000
   StatEffectKey: 
   StatEffectValue: 
   foodType: 0

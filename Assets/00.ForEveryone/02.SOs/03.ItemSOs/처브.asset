@@ -16,13 +16,13 @@ MonoBehaviour:
   itemIcon: {fileID: -1304279183, guid: a8d109b49de5d9c4892d8d388f42760b, type: 3}
   itemSprite: {fileID: 0}
   itemType: 0
-  percentageOfCatch: 0
-  weight: 0
+  percentageOfCatch: 0.551
+  weight: 4.3
   toolType: 1
   holdableWeight: 0
   materialKey: []
   materialValue: 
-  StatEffectKey: 
-  StatEffectValue: 
+  StatEffectKey: 0000000004000000
+  StatEffectValue: 08000000fbffffff
   foodType: 0
-  description: "\uCC98\uBE0C"
+  description: "\uCC98\uC74C \uB4E4\uC5B4\uBCF4\uB294 \uBB3C\uACE0\uAE30\uB2E4. "

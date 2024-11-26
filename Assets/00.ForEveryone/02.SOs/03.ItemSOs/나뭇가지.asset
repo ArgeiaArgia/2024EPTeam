@@ -16,8 +16,8 @@ MonoBehaviour:
   itemIcon: {fileID: 1512912147, guid: a8d109b49de5d9c4892d8d388f42760b, type: 3}
   itemSprite: {fileID: 0}
   itemType: 2
-  percentageOfCatch: 0
-  weight: 0
+  percentageOfCatch: 0.25
+  weight: 0.025
   toolType: 0
   holdableWeight: 0
   materialKey: []

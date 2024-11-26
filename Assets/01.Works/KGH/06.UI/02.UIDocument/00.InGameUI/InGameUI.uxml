@@ -15,7 +15,6 @@
             <ui:ScrollView horizontal-scroller-visibility="Hidden" name="SystemMessageContainer" class="system-messages">
                 <ui:Label tabindex="-1" text="wrterterterterrteterterrtertertertertertergdfgfgdfghwrterterterterrteterterrtertertertertertergdfgfgdfghwrterterterterrteterterrtertertertertertergdfgfgdfghwrterterterterrteterterrtertertertertertergdfgfgdfghwrterterterterrteterterrtertertertertertergdfgfgdfghwrterterterterrteterterrtertertertertertergdfgfgdfghwrterterterterrteterterrtertertertertertergdfgfgdfgh" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SystemMessage" class="system-message" />
             </ui:ScrollView>
-            <ui:ProgressBar value="22" title="my-progress" name="QuitProgress" class="quit-progress" />
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:Instance template="ItemInteractions" name="ItemInteractions" style="position: absolute; display: none;" />

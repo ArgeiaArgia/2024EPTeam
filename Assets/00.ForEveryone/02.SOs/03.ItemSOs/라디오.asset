@@ -22,7 +22,8 @@ MonoBehaviour:
   holdableWeight: 0
   materialKey:
   - {fileID: 11400000, guid: 07fccfd0daf3eaa408baf55ebc067416, type: 2}
-  materialValue: 0a000000
+  - {fileID: 11400000, guid: b7adf8c7777454844b30d26a22c9fba2, type: 2}
+  materialValue: 0300000005000000
   StatEffectKey: 
   StatEffectValue: 
   foodType: 0

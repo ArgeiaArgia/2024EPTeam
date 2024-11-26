@@ -29,15 +29,16 @@ public class ItemSO : ScriptableObject
         }
         set
         {
+            if (value == null) return;
             materialKey.Clear();
             materialValue.Clear();
 
-            if (value == null) return;
-            foreach (var statEffect in value)
+            foreach (var materialList in value)
             {
-                if (statEffect.Key == null) return;
-                materialKey.Add(statEffect.Key);
-                materialValue.Add(statEffect.Value);
+                Debug.Log("materialList.Key : " + materialList.Key);
+                if (materialList.Key == null) return;
+                materialKey.Add(materialList.Key);
+                materialValue.Add(materialList.Value);
             }
 
         }
@@ -60,11 +61,13 @@ public class ItemSO : ScriptableObject
         }
         set
         {
+            if (value == null) return;
             StatEffectKey.Clear();
             StatEffectValue.Clear();
 
             foreach (var statEffect in value)
             {
+                Debug.Log("statEffect.Key : " + statEffect.Key);
                 StatEffectKey.Add(statEffect.Key);
                 StatEffectValue.Add(statEffect.Value);
             }
