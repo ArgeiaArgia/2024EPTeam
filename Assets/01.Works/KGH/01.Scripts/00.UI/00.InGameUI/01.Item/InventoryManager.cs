@@ -8,7 +8,7 @@ using UnityEngine.Events;
 
 public class InventoryManager : SerializedMonoBehaviour
 {
-    [OdinSerialize] public Dictionary<ItemSO, List<InteractEvent>> ItemEvents;
+    [OdinSerialize] public Dictionary<ItemSO, List<ItemInteractEvent>> ItemEvents;
     [OdinSerialize] public Dictionary<ToolType, string> ToolNames;
     [field: SerializeField] public List<DefaultItemInventory> DefaultItemInventories { get; private set; }
     private List<InventoryItem> InventoryItems { get; set; } = new List<InventoryItem>();
@@ -129,7 +129,7 @@ public class InventoryManager : SerializedMonoBehaviour
         OnItemAdded?.Invoke(item.item);
     }
 
-    private void RemoveItem(InventoryItem inventoryItem, bool isMoving = false)
+    public void RemoveItem(InventoryItem inventoryItem, bool isMoving = false)
     {
         InventoryItems.Remove(inventoryItem);
         var parentItem = InventoryItems.Find(x => x.name == inventoryItem.loction) ??
@@ -138,6 +138,16 @@ public class InventoryManager : SerializedMonoBehaviour
         if (inventoryItem.item.toolType == ToolType.Inventory && !isMoving)
         {
             Inventories.Remove(inventoryItem.name);
+        }
+    }
+    public void RemoveItem(ItemSO inventoryItem)
+    {
+        var item = InventoryItems.Find(x => x.item == inventoryItem);
+        if (item == null) return;
+        item.count--;
+        if (item.count <= 0)
+        {
+            RemoveItem(item);
         }
     }
 
@@ -217,6 +227,8 @@ public class InventoryManager : SerializedMonoBehaviour
     }
 
     #endregion
+
+
 }
 
 [Serializable]
@@ -224,4 +236,9 @@ public class InteractEvent
 {
     public string EventName;
     public UnityEvent OnInteract;
+}
+public class ItemInteractEvent
+{
+    public string EventName;
+    public UnityEvent<ItemSO> OnInteract;
 }

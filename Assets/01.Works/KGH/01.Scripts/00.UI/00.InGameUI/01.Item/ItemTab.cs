@@ -224,7 +224,7 @@ public class ItemTab
 
     public void ShowInteractions(ItemSO item)
     {
-        _inGameUI.ShowInteractions(_inventoryManager.ItemEvents[item]);
+        _inGameUI.ShowInteractions(_inventoryManager.ItemEvents[item], item);
         ItemHover(null);
     }
 

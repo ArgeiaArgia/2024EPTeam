@@ -28,7 +28,7 @@ public class FishState : PlayerState
     private IEnumerator Waiting()
     {
         if (!_isWaiting || _isPulling || StateMachine.CurrentState != this) yield break;
-        var percentage = Random.Range(0, 100);
+        var percentage = Random.Range(0, 1000);
         yield return new WaitForSeconds(1f);
         if (percentage >= Player.CatchPercentage)
         {

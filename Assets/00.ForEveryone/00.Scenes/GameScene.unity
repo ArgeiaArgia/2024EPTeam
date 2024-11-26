@@ -1409,6 +1409,7 @@ GameObject:
   m_Component:
   - component: {fileID: 591149510}
   - component: {fileID: 591149509}
+  - component: {fileID: 591149511}
   - component: {fileID: 591149508}
   - component: {fileID: 591149507}
   m_Layer: 0
@@ -1447,143 +1448,22 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: adbd3c73c77a07a47b0c18569b74045d, type: 2}
-    - {fileID: 591149507}
-    - {fileID: 0}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
     - Name: ItemEvents
-      Entry: 7
-      Data: 0|UnityEngine.Rendering.SerializedDictionary`2[[ItemSO, Assembly-CSharp],[System.Collections.Generic.List`1[[InteractEvent,
-        Assembly-CSharp]], mscorlib]], Unity.RenderPipelines.Core.Runtime
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[ItemSO, Assembly-CSharp]],
-        mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 10
-      Data: 0
-    - Name: $v
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[InteractEvent, Assembly-CSharp]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 3|InteractEvent, Assembly-CSharp
-    - Name: EventName
-      Entry: 1
-      Data: "\uBA39\uAE30"
-    - Name: OnInteract
-      Entry: 7
-      Data: 4|UnityEngine.Events.UnityEvent, UnityEngine.CoreModule
-    - Name: m_PersistentCalls
-      Entry: 7
-      Data: 5|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
-    - Name: m_Calls
-      Entry: 7
-      Data: 6|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 7|UnityEngine.Events.PersistentCall, UnityEngine.CoreModule
-    - Name: m_Target
-      Entry: 10
-      Data: 1
-    - Name: m_TargetAssemblyTypeName
-      Entry: 1
-      Data: NewBehaviourScript, Assembly-CSharp
-    - Name: m_MethodName
-      Entry: 1
-      Data: Eat
-    - Name: m_Mode
-      Entry: 3
-      Data: 1
-    - Name: m_Arguments
-      Entry: 7
-      Data: 8|UnityEngine.Events.ArgumentCache, UnityEngine.CoreModule
-    - Name: m_ObjectArgument
-      Entry: 10
-      Data: 2
-    - Name: m_ObjectArgumentAssemblyTypeName
-      Entry: 1
-      Data: UnityEngine.Object, UnityEngine
-    - Name: m_IntArgument
-      Entry: 3
-      Data: 0
-    - Name: m_FloatArgument
-      Entry: 4
-      Data: 0
-    - Name: m_StringArgument
-      Entry: 1
-      Data: 
-    - Name: m_BoolArgument
-      Entry: 5
-      Data: false
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: m_CallState
-      Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
+      Entry: 6
       Data: 
     - Name: ToolNames
       Entry: 7
-      Data: 9|Unity.VisualScripting.FlexibleDictionary`2[[ToolType, Assembly-CSharp],[System.String,
+      Data: 0|Unity.VisualScripting.FlexibleDictionary`2[[ToolType, Assembly-CSharp],[System.String,
         mscorlib]], Unity.VisualScripting.Core
     - Name: comparer
       Entry: 7
-      Data: 10|System.Collections.Generic.EnumEqualityComparer`1[[ToolType, Assembly-CSharp]],
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[ToolType, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
@@ -1809,12 +1689,12 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: StatValues
-      Entry: 6
-      Data: 
     - Name: OnStatChanged
       Entry: 6
       Data: 
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &591149510
 Transform:
   m_ObjectHideFlags: 0
@@ -1830,6 +1710,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &591149511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591149506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2532c6422ac95e24696386f45001b907, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 0}
 --- !u!1 &593405800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2187,7 +2080,7 @@ Transform:
   m_GameObject: {fileID: 865025470}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.2204, y: -3.23, z: 0}
+  m_LocalPosition: {x: 0.16, y: -3.23, z: 0}
   m_LocalScale: {x: 17.066328, y: 4.484257, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2593,7 +2486,7 @@ MonoBehaviour:
   boatCenter: {x: -0.35, y: -1.25}
   playerSpeed: 2.5
   shipTransform: {fileID: 471450773}
-  <CatchPercentage>k__BackingField: 50
+  <CatchPercentage>k__BackingField: 900
   <FishWaitingTime>k__BackingField: 1.5
   OnMiniGameStartEvent:
     m_PersistentCalls:

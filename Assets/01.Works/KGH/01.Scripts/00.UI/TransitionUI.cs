@@ -13,22 +13,36 @@ public class TransitionUI : ToolkitParents
         base.OnEnable();
         _boxes = root.Query<VisualElement>("Box").ToList();
     }
-
-    public override void EnableUI()
+    
+    public void EnableUI(Action action = null)
     {
-        base.EnableUI();
+        StartCoroutine(ShowBoxes(action));
     }
 
-    public void EnableUI(Action action)
-    {
-        
-    }
-    IEnumerator ShowBoxes()
+    IEnumerator ShowBoxes(Action action = null)
     {
         foreach (var box in _boxes)
         {
-            box.AddToClassList("Show");
+            box.RemoveFromClassList("hide");
         }
-            yield return new WaitForSeconds(0.1f);
+
+        yield return new WaitForSeconds(0.5f);
+        action?.Invoke();
+    }
+
+    public void DisableUI(Action action = null)
+    {
+        StartCoroutine(HideBoxes(action));
+    }
+
+    private IEnumerator HideBoxes(Action action = null)
+    {
+        foreach (var box in _boxes)
+        {
+            box.AddToClassList("hide");
+        }
+
+        yield return new WaitForSeconds(0.5f);
+        action?.Invoke();
     }
 }

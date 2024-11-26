@@ -23,7 +23,17 @@ public class SystemMessage : ToolkitParents
             _systemMessageLabel.text += "이런! 아무것도 못 얻었습니다";
             return;
         }
-        _systemMessageLabel.text += $"{item.itemName}을/를 획득하였습니다.\n";;
-        _systemMessageContainer.scrollOffset = _systemMessageContainer.contentContainer.layout.max - _systemMessageContainer.contentViewport.layout.size;
+
+        _systemMessageLabel.text += $"{item.itemName}을/를 획득하였습니다.\n";
+        ;
+        _systemMessageContainer.scrollOffset =
+            _systemMessageLabel.layout.max - _systemMessageContainer.contentViewport.layout.size;
+    }
+
+    public void ShowMessage(string text)
+    {
+        _systemMessageLabel.text += text + "\n";
+        _systemMessageContainer.scrollOffset =
+            _systemMessageLabel.layout.max - _systemMessageContainer.contentViewport.layout.size;
     }
 }

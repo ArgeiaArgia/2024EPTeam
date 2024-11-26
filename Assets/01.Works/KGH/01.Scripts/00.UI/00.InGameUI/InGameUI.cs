@@ -61,7 +61,7 @@ public class InGameUI : ToolkitParents
     private bool _isInteracting;
     private bool _isEnabled;
     private bool _isMaking;
-    Camera mainCam;
+    private Camera mainCam;
     protected override void Awake()
     {
         base.Awake();
@@ -177,7 +177,40 @@ public class InGameUI : ToolkitParents
             interactButton.clicked += () =>
             {
                 interactEvent.OnInteract.Invoke();
-                ShowInteractions(null);
+                ShowInteractions((List<InteractEvent>)null);
+            };
+            _itemInteractContainer.Add(interactButton);
+        }
+
+        var mousePos = Mouse.current.position.ReadValue();
+        var localMousePos = root.WorldToLocal(new Vector2(mousePos.x, Screen.height - mousePos.y));
+        _itemInteractions.style.left = localMousePos.x + 25;
+        _itemInteractions.style.top = localMousePos.y + 25;
+    }
+
+    public void ShowInteractions(List<ItemInteractEvent> events, ItemSO itemSo)
+    {
+        if (!_isEnabled) return;
+        if (events == null)
+        {
+            OnInteracting?.Invoke(false);
+            _itemInteractions.style.display = DisplayStyle.None;
+            return;
+        }
+        
+        _isInteracting = true;
+        OnInteracting?.Invoke(true);
+        _itemInteractions.style.display = DisplayStyle.Flex;
+
+        _itemInteractContainer.Clear();
+        foreach (var interactEvent in events)
+        {
+            var interactButton = new Button { text = interactEvent.EventName };
+            interactButton.AddToClassList("interact-button");
+            interactButton.clicked += () =>
+            {
+                interactEvent.OnInteract.Invoke(itemSo);
+                ShowInteractions((List<InteractEvent>)null);
             };
             _itemInteractContainer.Add(interactButton);
         }
@@ -278,6 +311,8 @@ public class InGameUI : ToolkitParents
                 _loadingBar.Value = 0;
                 break;
         }
+        
+        OnChangeAbilityValue?.Invoke(abilityType, value);
     }
     
     public void ShowFishLabel() => _fishLabel.RemoveFromClassList("hide");
