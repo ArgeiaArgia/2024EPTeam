@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a74510282eb6ddd4ba0435811e0234ab
+guid: dacb30d805caa164da557704c5404b09
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Scene9-Sheet_0
+      name: Title-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,14 +111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 778d3a30f1004b5418ea77b36ea693f7
-      internalID: 1744022567
+      spriteID: 1acc200e1e49c4548b906ab710d2b664
+      internalID: 345786133
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scene9-Sheet_1
+      name: Title-Sheet_1
       rect:
         serializedVersion: 2
         x: 576
@@ -132,14 +132,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9772fdc88803d6b458b8b8105049f7ae
-      internalID: 730151385
+      spriteID: 6ac7187bd5e023c46b7a1a7a94cd7491
+      internalID: 1505037028
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scene9-Sheet_2
+      name: Title-Sheet_2
       rect:
         serializedVersion: 2
         x: 1152
@@ -153,14 +153,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c16cd6fbaac2d040a8537bc7276cfdf
-      internalID: -357698325
+      spriteID: db0338553dcbb88478675ee0db4193c6
+      internalID: 61316412
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scene9-Sheet_3
+      name: Title-Sheet_3
       rect:
         serializedVersion: 2
         x: 1728
@@ -174,14 +174,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 500527445d19a5940b88cb9350b2a0da
-      internalID: 66229025
+      spriteID: 695dd8658fb5b8749b8e75f6059c9147
+      internalID: -1111272581
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scene9-Sheet_4
+      name: Title-Sheet_4
       rect:
         serializedVersion: 2
         x: 2304
@@ -195,14 +195,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bfc7eb4dfb3d86a4ca5a78a28cfcba0e
-      internalID: -1592554764
+      spriteID: 4a52176cd12bc5d4eb80fce5e7268e63
+      internalID: 1367163889
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scene9-Sheet_5
+      name: Title-Sheet_5
       rect:
         serializedVersion: 2
         x: 2880
@@ -216,14 +216,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9517feeb2a33c1a409df5e5e4e2be475
-      internalID: -46418421
+      spriteID: c39e3d6b0acf2704d90315dd1665fa7a
+      internalID: -1928006324
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scene9-Sheet_6
+      name: Title-Sheet_6
       rect:
         serializedVersion: 2
         x: 3456
@@ -237,14 +237,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1bcf3af8cb0dfa489ff670d1d499514
-      internalID: -15809424
+      spriteID: 89806b4368640f444a577e645b0da3bd
+      internalID: 811576623
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scene9-Sheet_7
+      name: Title-Sheet_7
       rect:
         serializedVersion: 2
         x: 4032
@@ -258,8 +258,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13f8b486cf07fa54ab105c0fe4579b62
-      internalID: 1894774277
+      spriteID: 5f27c1bd6546fec449b362efe9ea9d9d
+      internalID: 2052267709
       vertices: []
       indices: 
       edges: []
@@ -275,14 +275,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Scene9-Sheet_0: 1744022567
-      Scene9-Sheet_1: 730151385
-      Scene9-Sheet_2: -357698325
-      Scene9-Sheet_3: 66229025
-      Scene9-Sheet_4: -1592554764
-      Scene9-Sheet_5: -46418421
-      Scene9-Sheet_6: -15809424
-      Scene9-Sheet_7: 1894774277
+      Title-Sheet_0: 345786133
+      Title-Sheet_1: 1505037028
+      Title-Sheet_2: 61316412
+      Title-Sheet_3: -1111272581
+      Title-Sheet_4: 1367163889
+      Title-Sheet_5: -1928006324
+      Title-Sheet_6: 811576623
+      Title-Sheet_7: 2052267709
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
