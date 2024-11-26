@@ -8,6 +8,18 @@ public class TransitionUI : ToolkitParents
 {
     private List<VisualElement> _boxes;
 
+    private void Start()
+    {
+        StartCoroutine(ShowBoxes());
+        StartCoroutine(ShowBoxesOnStart());
+    }
+
+    IEnumerator ShowBoxesOnStart()
+    {
+        yield return new WaitForSeconds(0.1f);
+        StartCoroutine(HideBoxes());
+    }
+
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -26,7 +38,7 @@ public class TransitionUI : ToolkitParents
             box.RemoveFromClassList("hide");
         }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.5f);
         action?.Invoke();
     }
 
@@ -42,7 +54,12 @@ public class TransitionUI : ToolkitParents
             box.AddToClassList("hide");
         }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.5f);
         action?.Invoke();
+    }
+
+    public void ChangeScene(int index)
+    {
+        EnableUI(() => UnityEngine.SceneManagement.SceneManager.LoadScene(index));
     }
 }
