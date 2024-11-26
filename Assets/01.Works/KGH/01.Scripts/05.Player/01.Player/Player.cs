@@ -16,12 +16,16 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform shipTransform;
     [field: SerializeField] public float CatchPercentage { get; set; }
     [field: SerializeField] public float FishWaitingTime {get; set;}
+    [field: SerializeField] public float SleepTerm {get; set;}
+    [field: SerializeField] public int SleepGetOver {get; set;}
+    
     public UnityEvent OnMiniGameStartEvent;
     public UnityEvent OnMiniGameEndEvent;
     public UnityEvent FishStartEvent;
     public UnityEvent<ItemSO> CookStartEvent;
     [field: SerializeField] public InputReader InputReader { get; private set; }
     [field: SerializeField] public InGameUI InGameUI { get; set; }
+    [field: SerializeField] public StatManager StatManager { get; set; }
     [field: SerializeField] public FishMiniGameUI FishMiniGameUI { get; set; }
     private Camera _mainCamera;
 
@@ -70,6 +74,7 @@ public class Player : MonoBehaviour
         _stateMachine.AddState(new FishState(this, _stateMachine));
         _stateMachine.AddState(new CookState(this, _stateMachine));
         _stateMachine.AddState(new CraftState(this, _stateMachine));
+        _stateMachine.AddState(new SleepState(this, _stateMachine));
 
         _stateMachine.Initialize(typeof(IdleState), this);
 
@@ -110,6 +115,11 @@ public class Player : MonoBehaviour
     public void SetTargetStateToCraftState()
     {
         _stateMachine.SetTargetState<CraftState>();
+    }
+    
+    public void SetTargetStateToSleepState()
+    {
+        _stateMachine.SetTargetState<SleepState>();
     }
     
     public void CoroutineStarter(IEnumerator coroutine)

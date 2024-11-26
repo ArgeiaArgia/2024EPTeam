@@ -8,6 +8,7 @@ using UnityEngine.Events;
 
 public class InventoryManager : SerializedMonoBehaviour
 {
+    [OdinSerialize] public Dictionary<ItemType, List<ItemInteractEvent>> ItemTypeEvents;
     [OdinSerialize] public Dictionary<ItemSO, List<ItemInteractEvent>> ItemEvents;
     [OdinSerialize] public Dictionary<ToolType, string> ToolNames;
     [field: SerializeField] public List<DefaultItemInventory> DefaultItemInventories { get; private set; }
@@ -22,6 +23,21 @@ public class InventoryManager : SerializedMonoBehaviour
     public UnityEvent<ItemSO> OnItemAdded; 
     public event Action<string> OnInventoryChanged;
     public event Action<List<DefaultItemInventory>> OnInventoryInitialized;
+
+    private void Awake()
+    {
+        foreach (var item in ItemListSO.ItemList)
+        {
+            if (ItemEvents.ContainsKey(item))
+            {
+                ItemEvents[item].InsertRange(0, ItemTypeEvents[item.itemType]);
+            }
+            else
+            {
+                ItemEvents.Add(item, ItemTypeEvents[item.itemType]);
+            }
+        }
+    }
 
     private void Start()
     {

@@ -37,8 +37,8 @@ public class MoveState : PlayerState
 
     private void Move()
     {
-        var isTargetTypeCook = StateMachine.TargetState.GetType() == typeof(CookState);
-        if (isTargetTypeCook && !_isInside || !isTargetTypeCook && _isInside)
+        var isTargetTypeInside = StateMachine.TargetState.GetType() == typeof(CookState) || StateMachine.TargetState.GetType() == typeof(SleepState);
+        if (isTargetTypeInside && !_isInside || !isTargetTypeInside && _isInside)
         {
             if (Mathf.Abs(Player.DoorPos.x - Player.transform.position.x) < 0.25f)
             {

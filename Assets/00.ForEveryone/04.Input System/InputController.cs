@@ -71,6 +71,15 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Quit"",
+                    ""type"": ""Button"",
+                    ""id"": ""8adf4065-8eb4-41c8-a4f6-93f736ff863c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -100,7 +109,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""c0b40f04-e601-4e9b-a423-6b00c9ed6497"",
                     ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": ""MultiTap"",
+                    ""interactions"": ""MultiTap(tapDelay=0.5)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""MouseInteract"",
@@ -238,6 +247,17 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                     ""action"": ""Notes"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""16e585bb-9bcf-490b-a028-af9509051e61"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Quit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -251,6 +271,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
         m_PlayerAction_Escape = m_PlayerAction.FindAction("Escape", throwIfNotFound: true);
         m_PlayerAction_Fish = m_PlayerAction.FindAction("Fish", throwIfNotFound: true);
         m_PlayerAction_Notes = m_PlayerAction.FindAction("Notes", throwIfNotFound: true);
+        m_PlayerAction_Quit = m_PlayerAction.FindAction("Quit", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -317,6 +338,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerAction_Escape;
     private readonly InputAction m_PlayerAction_Fish;
     private readonly InputAction m_PlayerAction_Notes;
+    private readonly InputAction m_PlayerAction_Quit;
     public struct PlayerActionActions
     {
         private @InputController m_Wrapper;
@@ -326,6 +348,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
         public InputAction @Escape => m_Wrapper.m_PlayerAction_Escape;
         public InputAction @Fish => m_Wrapper.m_PlayerAction_Fish;
         public InputAction @Notes => m_Wrapper.m_PlayerAction_Notes;
+        public InputAction @Quit => m_Wrapper.m_PlayerAction_Quit;
         public InputActionMap Get() { return m_Wrapper.m_PlayerAction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -350,6 +373,9 @@ public partial class @InputController: IInputActionCollection2, IDisposable
             @Notes.started += instance.OnNotes;
             @Notes.performed += instance.OnNotes;
             @Notes.canceled += instance.OnNotes;
+            @Quit.started += instance.OnQuit;
+            @Quit.performed += instance.OnQuit;
+            @Quit.canceled += instance.OnQuit;
         }
 
         private void UnregisterCallbacks(IPlayerActionActions instance)
@@ -369,6 +395,9 @@ public partial class @InputController: IInputActionCollection2, IDisposable
             @Notes.started -= instance.OnNotes;
             @Notes.performed -= instance.OnNotes;
             @Notes.canceled -= instance.OnNotes;
+            @Quit.started -= instance.OnQuit;
+            @Quit.performed -= instance.OnQuit;
+            @Quit.canceled -= instance.OnQuit;
         }
 
         public void RemoveCallbacks(IPlayerActionActions instance)
@@ -393,5 +422,6 @@ public partial class @InputController: IInputActionCollection2, IDisposable
         void OnEscape(InputAction.CallbackContext context);
         void OnFish(InputAction.CallbackContext context);
         void OnNotes(InputAction.CallbackContext context);
+        void OnQuit(InputAction.CallbackContext context);
     }
 }

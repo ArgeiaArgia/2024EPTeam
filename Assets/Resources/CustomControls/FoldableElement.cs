@@ -87,6 +87,7 @@ public class FoldableElement : VisualElement
     {
         isFolded = !isFolded;
         contentContainer.ToggleInClassList("hide");
+        foldableButton.ToggleInClassList("hide");
         
         OnFoldableButtonClicked?.Invoke(isFolded);
     }

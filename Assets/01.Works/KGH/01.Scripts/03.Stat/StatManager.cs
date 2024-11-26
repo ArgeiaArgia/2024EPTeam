@@ -11,31 +11,18 @@ public class StatManager : SerializedMonoBehaviour
 {
     [OdinSerialize] private Dictionary<StatType, float> _delay;
 
-    private Dictionary<StatType, int> _statValues;
-    [HideInInspector]
-    public Dictionary<StatType, int> StatValues
-    {
-        get => _statValues;
-        set
-        {
-            foreach (var statValue in _statValues.Where(statValue => statValue.Value != value[statValue.Key]))
-            {
-                OnStatChanged?.Invoke(statValue.Key, value[statValue.Key]);
-            }
-
-            _statValues = value;
-        }
-    }
+    [HideInInspector] public Dictionary<StatType, int> StatValues;
 
     [HideInInspector] public Action<StatType, int> OnStatChanged;
     
     public UnityEvent<StatType> OnDeath;
     private void Start()
     {
-        _statValues = new Dictionary<StatType, int>();
+        StatValues = new Dictionary<StatType, int>();
         foreach (StatType type in Enum.GetValues(typeof(StatType)))
         {
             StatValues.Add(type, 100);
+            OnStatChanged?.Invoke(type, StatValues[type]);
         }
         foreach (var d in _delay)
         {
@@ -47,6 +34,7 @@ public class StatManager : SerializedMonoBehaviour
     {
         yield return new WaitForSeconds(time);
         StatValues[type] -= 1;
+        OnStatChanged?.Invoke(type, StatValues[type]);
         StartCoroutine(ReduceAsTime(type, time));
         
         CheckDeath(type);

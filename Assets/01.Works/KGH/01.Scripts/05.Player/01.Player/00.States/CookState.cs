@@ -10,6 +10,7 @@ public class CookState : PlayerState
     }
     public override void Enter()
     {
+        base.Enter();
         Player.OnMiniGameStartEvent?.Invoke();
         Player.InGameUI.ShowCookUI();
         Player.InputReader.OnEscapeEvent += StateMachine.ResetToIdleState;

@@ -36,4 +36,22 @@ public class SystemMessage : ToolkitParents
         _systemMessageContainer.scrollOffset =
             _systemMessageLabel.layout.max - _systemMessageContainer.contentViewport.layout.size;
     }
+
+    public void ShowMessages(string[] texts)
+    {
+        StopAllCoroutines();
+        if (texts == null) return;
+        StartCoroutine(ShowMessageWithTerm(texts));
+    }
+
+    IEnumerator ShowMessageWithTerm(string[] texts)
+    {
+        foreach (var text in texts)
+        {
+            _systemMessageLabel.text += text + "\n";
+            _systemMessageContainer.scrollOffset =
+                _systemMessageLabel.layout.max - _systemMessageContainer.contentViewport.layout.size;
+            yield return new WaitForSeconds(1f);
+        }
+    }
 }

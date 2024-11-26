@@ -90,4 +90,12 @@ public class InputReader : ScriptableObject, IPlayerActionActions
 
         OnNotesEvent?.Invoke(new Vector2Int(Mathf.RoundToInt(value.x), Mathf.RoundToInt(value.y)));
     }
+
+    public void OnQuit(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Application.Quit();
+        }
+    }
 }

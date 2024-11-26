@@ -3,7 +3,7 @@
     <ui:VisualElement name="Container" style="flex-grow: 1;">
         <ui:VisualElement name="FoldingTab" style="flex-shrink: 0; flex-basis: 30px; background-color: rgb(0, 0, 0); flex-direction: row; justify-content: space-between; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; align-items: center; font-size: 20px;">
             <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Name" style="color: rgb(255, 255, 255); -unity-text-align: middle-left;" />
-            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="FoldButton" style="border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="FoldButton" class="fold-button" />
         </ui:VisualElement>
         <ui:VisualElement name="Contents" class="content" />
     </ui:VisualElement>

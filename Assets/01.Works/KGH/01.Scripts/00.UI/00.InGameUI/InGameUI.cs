@@ -52,6 +52,7 @@ public class InGameUI : ToolkitParents
     private CustomProgressBar _loadingBar;
 
     private Label _fishLabel;
+    private Label _sleepLabel;
 
     public UnityEvent OnLoadingEnded;
     public UnityEvent<AbilityType, int> OnChangeAbilityValue;
@@ -62,6 +63,7 @@ public class InGameUI : ToolkitParents
     private bool _isEnabled;
     private bool _isMaking;
     private Camera mainCam;
+
     protected override void Awake()
     {
         base.Awake();
@@ -70,11 +72,10 @@ public class InGameUI : ToolkitParents
 
         inputReader.OnMovePressEvent += OnMovePress;
         statManager.OnStatChanged += ChangeStatValue;
-        
+
         mainCam = Camera.main;
         inputReader.OnEscapeEvent += HandleEscapeEvent;
     }
-
 
 
     protected override void OnEnable()
@@ -116,14 +117,16 @@ public class InGameUI : ToolkitParents
         _cookUI.InitializeCookUI(FoodType.FirstLevelFood);
 
         _tabElement = root.Q<TabElement>("TabElement");
-            
+
         _loadingUI = root.Q<VisualElement>("LoadingUI");
         _loadingBar = _loadingUI.Q<CustomProgressBar>();
-        
+
         _loadingBar.HighValue = _loadingTime;
-        
+
         _fishLabel = root.Q<Label>("FishLabel");
+        _sleepLabel = root.Q<Label>("SleepLabel");
     }
+
     private void HandleEscapeEvent()
     {
         ShowInteractions(null);
@@ -142,14 +145,17 @@ public class InGameUI : ToolkitParents
     {
         _abilityUIs[abilityType].AddAbility(value);
     }
+
     public void AddFishAbilityCount(int count)
     {
         _abilityUIs[AbilityType.Fishing].AddAbility(count);
     }
+
     public void AddCookAbilityCount(int count)
     {
         _abilityUIs[AbilityType.Cooking].AddAbility(count);
     }
+
     public void AddRepairAbilityCount(int count)
     {
         _abilityUIs[AbilityType.Repairing].AddAbility(count);
@@ -197,7 +203,7 @@ public class InGameUI : ToolkitParents
             _itemInteractions.style.display = DisplayStyle.None;
             return;
         }
-        
+
         _isInteracting = true;
         OnInteracting?.Invoke(true);
         _itemInteractions.style.display = DisplayStyle.Flex;
@@ -280,7 +286,7 @@ public class InGameUI : ToolkitParents
         var localPos = root.WorldToLocal(new Vector2(worldPos.x, Screen.height - worldPos.y));
         _loadingUI.style.left = localPos.x - 125;
         _loadingUI.style.top = localPos.y - 25;
-        
+
         _loadingUI.style.display = DisplayStyle.Flex;
         _loadingBar.Value = 0;
         StartCoroutine(LoadingWaiting());
@@ -293,7 +299,8 @@ public class InGameUI : ToolkitParents
             _loadingBar.Value += 1;
             yield return new WaitForSeconds(1);
         }
-        if(!_isMaking) yield break;
+
+        if (!_isMaking) yield break;
         OnLoadingEnded?.Invoke();
         _loadingUI.style.display = DisplayStyle.None;
         _tabElement.TabButtonClick(_tabElement.TabButtons[0]);
@@ -311,12 +318,14 @@ public class InGameUI : ToolkitParents
                 _loadingBar.Value = 0;
                 break;
         }
-        
+
         OnChangeAbilityValue?.Invoke(abilityType, value);
     }
-    
+
     public void ShowFishLabel() => _fishLabel.RemoveFromClassList("hide");
     public void HideFishLabel() => _fishLabel.AddToClassList("hide");
+    public void ShowSleepLabel() => _sleepLabel.RemoveFromClassList("hide");
+    public void HideSleepLabel() => _sleepLabel.AddToClassList("hide");
 
     public void CoroutineHelper(IEnumerator coroutine) => StartCoroutine(coroutine);
 }

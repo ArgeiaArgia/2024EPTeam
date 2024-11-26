@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 public class ItemActionManager : MonoBehaviour
 {
+    [SerializeField] private ScriptSO _scriptSO;
     [SerializeField] private Player _player;
     [SerializeField] private SystemMessage _systemMessage;
     private StatManager _statManager;
@@ -24,6 +25,7 @@ public class ItemActionManager : MonoBehaviour
         if (_radioChangePerSecond > 0)
         {
             _statManager.StatValues[StatType.Bored] += _radioChangePerSecond;
+            _statManager.OnStatChanged?.Invoke(StatType.Bored, _statManager.StatValues[StatType.Bored]);
         }
     }
 
@@ -48,14 +50,23 @@ public class ItemActionManager : MonoBehaviour
 
     public void ListenToRadio(int changePerSecond)
     {
-        _radioChangePerSecond = changePerSecond > 0 ? changePerSecond : 0;
+        if (_radioChangePerSecond > 0)
+        {
+            _radioChangePerSecond = 0;
+            _systemMessage.ShowMessages((string[])null);
+        }
+        else
+        {
+            _radioChangePerSecond = changePerSecond;
+            _systemMessage.ShowMessages(_scriptSO.GetRandomRadio());
+        }
     }
     public void ChangeFishRod(int change)
     {
         _player.CatchPercentage = change;
     }
-    public void ExploreItem(string text)
+    public void ExploreItem(ItemSO item)
     {
-        _systemMessage.ShowMessage(text);
+        _systemMessage.ShowMessage(_scriptSO._itemExplore[item]);
     }
 }

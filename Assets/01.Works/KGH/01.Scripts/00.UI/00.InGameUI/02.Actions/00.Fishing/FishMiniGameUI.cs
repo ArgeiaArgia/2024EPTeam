@@ -369,7 +369,7 @@ public class FishMiniGameUI : ToolkitParents
     {
         if (abilityType != AbilityType.Fishing) return;
         arrowSpeed += 10;
-        arrowRepeat = value / 2 + 1;
+        arrowRepeat = value / 2 + 3;
     }
 }
 
