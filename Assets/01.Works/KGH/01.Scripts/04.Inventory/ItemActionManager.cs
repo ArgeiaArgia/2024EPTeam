@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 public class ItemActionManager : MonoBehaviour
 {
+    [SerializeField] private ItemSO water;
     [SerializeField] private ScriptSO _scriptSO;
     [SerializeField] private Player _player;
     [SerializeField] private SystemMessage _systemMessage;
@@ -68,5 +69,10 @@ public class ItemActionManager : MonoBehaviour
     public void ExploreItem(ItemSO item)
     {
         _systemMessage.ShowMessage(_scriptSO._itemExplore[item]);
+    }
+
+    public void CleanWater()
+    {
+        _inventoryManager.TryCraftItem(water);
     }
 }

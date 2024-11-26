@@ -158,7 +158,6 @@ public class ItemInspector
     {
         if (_currentItem == null || !(_currentItem.itemType is ItemType.Food or ItemType.Tool)||
             obj is not Dictionary<ItemSO, int> dictionary) return;
-        Debug.Log("asdaskfsndfnsdjfnkosdnffljsjngl 좆ㅈ가ㅏㄲ까ㅏ까까 ");
         _currentItem.materialList = dictionary;
     }
 
@@ -218,7 +217,6 @@ public class ItemInspector
         
         _materialList.ClearDictionaryWithoutNotify();
         _effectList.ClearDictionaryWithoutNotify();
-        Debug.Log("자살!");
         
         foreach (var mat in item.materialList)
         {
