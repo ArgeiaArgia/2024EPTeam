@@ -26,7 +26,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 411578bb86e5afd40a20c9d0b8d624ed, type: 2}
   - {fileID: 11400000, guid: 38c21837c2e9a15409f71e8e304e8140, type: 2}
   - {fileID: 11400000, guid: 859d09aba1fdfd24bbb033738f1a964a, type: 2}
-  materialValue: 0100000001000000010000000100000001000000
+  - {fileID: 11400000, guid: 140164cf00cf60a4ea3b2af7c214ff27, type: 2}
+  materialValue: 010000000100000001000000010000000100000001000000
   StatEffectKey: 00000000
   StatEffectValue: 0a000000
   foodType: 2
