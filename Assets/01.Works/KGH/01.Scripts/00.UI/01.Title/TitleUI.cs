@@ -23,6 +23,12 @@ public class TitleUI : ToolkitParents
         _quitButton.clicked += OnQuitButtonClicked;
     }
 
+    private void OnDisable()
+    {
+        _startButton.clicked -= OnStartButtonClicked;
+        _quitButton.clicked -= OnQuitButtonClicked;
+    }
+
     private void OnQuitButtonClicked()
     {
         transitionUI.EnableUI(Application.Quit);

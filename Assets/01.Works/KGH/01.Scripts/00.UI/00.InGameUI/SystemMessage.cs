@@ -5,6 +5,8 @@ using UnityEngine.UIElements;
 
 public class SystemMessage : ToolkitParents
 {
+    [SerializeField] private ScriptSO _scriptSO;
+    
     private ScrollView _systemMessageContainer;
     private Label _systemMessageLabel;
 

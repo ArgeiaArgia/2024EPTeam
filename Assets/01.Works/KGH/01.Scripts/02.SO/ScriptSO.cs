@@ -6,7 +6,7 @@ using UnityEngine;
 public class ScriptSO : SerializedScriptableObject
 {
     public Dictionary<ItemSO, string> _itemExplore = new Dictionary<ItemSO, string>();
-    public Dictionary<int, string> _radioListen = new Dictionary<int, string>();
+    public List<string> _radioListen = new List<string>();
 
     public string[] GetRandomRadio()
     {

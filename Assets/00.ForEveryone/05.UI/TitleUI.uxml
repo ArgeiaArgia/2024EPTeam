@@ -4,7 +4,7 @@
         <ui:VisualElement name="VisualElement" style="flex-grow: 3; background-image: url(&quot;project://database/Assets/00.ForEveryone/01.Sprites/TitleText.png?fileID=-870681352&amp;guid=91134c7fef8e51441b920d112d179b11&amp;type=3#TitleText_0&quot;); -unity-background-scale-mode: scale-to-fit; width: 1800px; margin-top: 10px; margin-right: 10px; margin-bottom: 20px; margin-left: 10px; display: flex; opacity: 1; overflow: visible; height: 350px; padding-top: 35px; padding-right: 35px; padding-bottom: 35px; padding-left: 35px;" />
         <ui:VisualElement name="Buttons" style="flex-grow: 0; flex-shrink: 1; width: 600px; align-items: center; flex-basis: 50%; margin-top: 25px; padding-top: 0;">
             <ui:Button text="시작" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StartButton" class="startButton button" />
-            <ui:Button text="나가기" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ExitButton" class="exitButton startButton button" style="background-image: url(&quot;project://database/Assets/00.ForEveryone/01.Sprites/Title_btn.png?fileID=1436676617&amp;guid=e674dbd0b3a0002428f27a91aa4e0ad4&amp;type=3#Title_btn_1&quot;);" />
+            <ui:Button text="나가기" parse-escape-sequences="true" display-tooltip-when-elided="true" name="QuitButton" class="exitButton startButton button" style="background-image: url(&quot;project://database/Assets/00.ForEveryone/01.Sprites/Title_btn.png?fileID=1436676617&amp;guid=e674dbd0b3a0002428f27a91aa4e0ad4&amp;type=3#Title_btn_1&quot;);" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

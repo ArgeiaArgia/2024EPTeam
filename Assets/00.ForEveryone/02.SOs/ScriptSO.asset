@@ -15,7 +15,47 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 38c21837c2e9a15409f71e8e304e8140, type: 2}
+    - {fileID: 11400000, guid: e979b221e85906d4f85fccc8ab712049, type: 2}
+    - {fileID: 11400000, guid: 39d99bab9aeeaa04a9d94311c9b187fb, type: 2}
+    - {fileID: 11400000, guid: 9582c750a7d56c9429fa8c81b7589e7d, type: 2}
+    - {fileID: 11400000, guid: ab5eac026fd4fa542be0257aaa9709c6, type: 2}
+    - {fileID: 11400000, guid: 14375fc205b3cf24cae039706688ce67, type: 2}
+    - {fileID: 11400000, guid: 07fccfd0daf3eaa408baf55ebc067416, type: 2}
+    - {fileID: 11400000, guid: 47cd255f47563584487d99a8bf716ab8, type: 2}
+    - {fileID: 11400000, guid: e7c9aad399b5dee4b9db7a01b639f9d8, type: 2}
+    - {fileID: 11400000, guid: 96cf2be653bb2d04d877d8fb40ab0432, type: 2}
+    - {fileID: 11400000, guid: 4405f7eb7e4c9134eae21a8543af61f0, type: 2}
+    - {fileID: 11400000, guid: 411578bb86e5afd40a20c9d0b8d624ed, type: 2}
+    - {fileID: 11400000, guid: 68c4bf3504d5ba64cb31f69b16ea87d0, type: 2}
+    - {fileID: 11400000, guid: 52ed0188a03ae964ea2dca6f5d50735f, type: 2}
+    - {fileID: 11400000, guid: a3747cb4f5516b042aba18d61f3b1165, type: 2}
+    - {fileID: 11400000, guid: 859d09aba1fdfd24bbb033738f1a964a, type: 2}
+    - {fileID: 11400000, guid: e74fdca685c8d7a4db8e52c30d209aa0, type: 2}
+    - {fileID: 11400000, guid: 140164cf00cf60a4ea3b2af7c214ff27, type: 2}
+    - {fileID: 11400000, guid: 1803843609959c4468981ae5fe9bf15d, type: 2}
+    - {fileID: 11400000, guid: dce7a0f11fc79754cbf3aeb2783edb2f, type: 2}
+    - {fileID: 11400000, guid: 40f47734601a46a4e95dab86eafdc20c, type: 2}
+    - {fileID: 11400000, guid: 82b6c43c94d638b4389f5c41f4c32088, type: 2}
+    - {fileID: 11400000, guid: 96dbbe3cbc82c4e45b825568b9b7b274, type: 2}
+    - {fileID: 11400000, guid: b7adf8c7777454844b30d26a22c9fba2, type: 2}
+    - {fileID: 11400000, guid: b13dfa21d53a60b4ab9fab93e14817ce, type: 2}
+    - {fileID: 11400000, guid: b8bafead661f26540a8ee4485532ca02, type: 2}
+    - {fileID: 11400000, guid: ba80c004be673014c98296542f3da0f3, type: 2}
+    - {fileID: 11400000, guid: b28f9d850a1e5e34996b71c80b10cbb0, type: 2}
+    - {fileID: 11400000, guid: b0c02a30d08117f469d58318574faef8, type: 2}
+    - {fileID: 11400000, guid: 19bb32646c39a1a4d91a610cb3d4888a, type: 2}
+    - {fileID: 11400000, guid: 8909f43678508814eb277a1ccfef9f13, type: 2}
+    - {fileID: 11400000, guid: 8cf43699b8c92094a8862ee4fae82325, type: 2}
+    - {fileID: 11400000, guid: 2d4d64bf98cfee541a983cde01ddf6bd, type: 2}
+    - {fileID: 11400000, guid: 1fc43ce4525acca46a57ef519d9d14c8, type: 2}
+    - {fileID: 11400000, guid: c8af953e4f52c0042a719f3ed846aac0, type: 2}
+    - {fileID: 11400000, guid: adbd3c73c77a07a47b0c18569b74045d, type: 2}
+    - {fileID: 11400000, guid: 9df4e67315270774fb1fe26529a504a5, type: 2}
+    - {fileID: 11400000, guid: f7b45408e5c6d4042bbd5b410bdf1aa0, type: 2}
+    - {fileID: 11400000, guid: 86a591b72d5fb7d4f944157a8f73eed5, type: 2}
+    - {fileID: 11400000, guid: aa08efbdc2021c84aa90d11b91fa7499, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -34,30 +74,565 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
+      Data: 40
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
       Data: 0
+    - Name: $v
+      Entry: 1
+      Data: "\"\uC218\uB2EC\uC774 \uC9C4\uC9DC \uC88B\uC544\uD560\uAE4C..?\""
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 1
+    - Name: $v
+      Entry: 1
+      Data: "\"\uB0B4\uAC00 \uAC00\uC9C4 \uAC00\uBC29 \uC911\uC5D0 \uAC00\uC7A5 \uC88B\uB2E4\""
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 2
+    - Name: $v
+      Entry: 1
+      Data: "\"\uC774\uB7F0 \uC74C\uC2DD\uC744 \uACC4\uC18D \uBA39\uC744 \uC218 \uC788\uB2E4\uBA74
+        \uB178\uC219\uB3C4 \uAD1C\uCC2E\uC740 \uAC83 \uAC19\uB2E4.\" "
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 3
+    - Name: $v
+      Entry: 1
+      Data: "\"\uC0DD\uAC01\uD574\uBCF4\uBA74 \uC77C\uC0C1\uC5D0\uC11C \uAC00\uC8FD\uC744
+        \uB9CE\uC774 \uBABB \uBCF8 \uAC83 \uAC19\uB2E4.\""
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 4
+    - Name: $v
+      Entry: 1
+      Data: "\"\uB09C \uC5EC\uD0DC \uB9E8\uBC1C\uB85C \uB2E4\uB154\uB294\uB370...\""
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 5
+    - Name: $v
+      Entry: 1
+      Data: "\"\uD754\uD55C \uBB3C\uACE0\uAE30. \uBB3C\uACE0\uAE30 \uC911 \uAC00\uC7A5
+        \uB9CE\uC774 \uBA39\uC5B4\uBCF8 \uC885\uB958\uB2E4.'"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 6
+    - Name: $v
+      Entry: 1
+      Data: "\"\uC774\uB7F0\uAC78 \uB098\uB974\uB358 \uC2DC\uC808\uB3C4 \uC788\uC5C8\uB294\uB370...\""
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 7
+    - Name: $v
+      Entry: 1
+      Data: "\"\uC9C0\uB801\uC774 \uAC19\uB2E4\" "
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 8
+    - Name: $v
+      Entry: 1
+      Data: "\"\uB9DB\uC5C6\uB2E4.\""
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 9
+    - Name: $v
+      Entry: 1
+      Data: "\"\uC758\uC9C0\uAC00 \uAC00\uB4DD\uD588\uB358 \uC2DC\uC808\uC5D4 \uC774\uB7F0
+        \uAC83\uB3C4 \uB4E4\uACE0\uB2E4\uB154\uB294\uB370...\""
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 10
+    - Name: $v
+      Entry: 1
+      Data: "\"\uAC70\uC758 \uCC98\uC74C \uB9CC\uC838\uBCF4\uB294 \uB09A\uC2DC\uB300\uB2E4.\" "
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 11
+    - Name: $v
+      Entry: 1
+      Data: "\"\uB119\uB5A0\uAE30\" "
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 12
+    - Name: $v
+      Entry: 1
+      Data: "\"\uC61B\uB0A0\uC5D0 \uBC18\uB824 \uB3CC\uC774 \uC788\uC5C8\uB294\uB370
+        \uBB34\uC9C0\uAC1C\uB2E4\uB9B4 \uAC74\uB108\uBC84\uB838\uB2E4.\" "
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 13
+    - Name: $v
+      Entry: 1
+      Data: "\"\uC9C0\uB8E8\uD55C \uC18C\uB9AC\uB9CC \uC794\uB729 \uD558\uB294 \uAE30\uACC4\""
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 14
+    - Name: $v
+      Entry: 1
+      Data: "\"\uC61B\uB0A0\uC5D0 \uB0B4 \uBCC4\uBA85\uC774\uC5C8\uB294\uB370\""
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 15
+    - Name: $v
+      Entry: 1
+      Data: "\"\uC2EC\uC7A5 4\uAC1C\uB97C \uBCF4\uC790\uB2C8 \uC61B\uB0A0\uC5D0 \uC5B4\uB290
+        \uB178\uC219\uC790 \uCE5C\uAD6C\uAC00 \uD558\uD2B8\uB97C \uD558\uB098\uC5D0\uC11C
+        \uC5EC\uB7EC\uAC1C\uB85C \uB9CC\uB4DC\uB294 \uB9C8\uC220\uC744 \uBCF4\uC5EC\uC900\uAC8C
+        \uC0DD\uAC01\uB09C\uB2E4. \uC544\uC9C1\uB3C4 \uC6D0\uB9AC \uBAA8\uB974\uACA0\uB2E4.\""
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 16
+    - Name: $v
+      Entry: 1
+      Data: "\"\uC774\uB7F0\uAC78 \uD30C\uB294 \uAE38\uAC70\uB9AC \uC74C\uC2DD\uC810\uC744
+        \uBD24\uB294\uB370 \uB3C8\uC774 \uC5C6\uC5B4\uC11C \uBABB \uC0AC\uBA39\uC5C8\uB2E4....\""
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 17
+    - Name: $v
+      Entry: 1
+      Data: "\"\uB2F5\uC744 \uC54C\uACE0 \uC788\uB2E4.\" "
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 18
+    - Name: $v
+      Entry: 1
+      Data: "\"\uAE09\uC2DD\uC5D0 \uB098\uC62C\uB54C\uB9C8\uB2E4 \uB0A8\uACBC\uB358
+        \uAC74\uB370 \uC774\uC820 \uB0B4\uAC00 \uC9C1\uC811 \uB9CC\uB4E4\uC5B4 \uBA39\uC5B4\uC57C\uD55C\uB2E4\uB2C8...\" "
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 19
+    - Name: $v
+      Entry: 1
+      Data: "\uCD5C\uADFC\uAE4C\uC9C0 \uBD89\uC740  \uB3C4\uB9CC\uC904 \uC54C\uC558\uB2E4...\" "
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 20
+    - Name: $v
+      Entry: 1
+      Data: "\"\uC6B0\uB9B0 \uC65C \uBC8C\uB808\uB294 \uC2EB\uC5B4\uD558\uBA74\uC11C
+        \uBC14\uB2E4 \uBC8C\uB808\uB294 \uBA39\uB294\uAC78\uAE4C?\""
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 21
+    - Name: $v
+      Entry: 1
+      Data: "\"\uC61B\uB0A0\uC5D0 \uCC38 \uC88B\uC544\uD588\uB358 \uC74C\uC2DD\uC774\uB2E4\""
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 22
+    - Name: $v
+      Entry: 1
+      Data: "\"\uAF2C\uCE58\uBA74 \uC880 \uB354 \uB9DB\uC788\uC5B4\uBCF4\uC778\uB2E4.
+        \uB098\uBB34 \uB9DB \uB098\uC11C \uADF8\uB7F0\uAC00?\""
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 23
+    - Name: $v
+      Entry: 1
+      Data: "\"\uC61B\uB0A0\uC5D0 \uCC38 \uB9CE\uC774 \uC62E\uACBC\uC5C8\uB358 \uBB3C\uAC74\" "
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 24
+    - Name: $v
+      Entry: 1
+      Data: "\"\uD55C\uC785\uAC70\uB9AC\" "
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 25
+    - Name: $v
+      Entry: 1
+      Data: "\"\uC785\uC774 \uCC38 \uADC0\uC5FD\uB2E4 :3\" "
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 26
+    - Name: $v
+      Entry: 1
+      Data: "\"\uC300\uC300\" "
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 27
+    - Name: $v
+      Entry: 1
+      Data: "\"\uD070 \uBC14\uB2E4 \uBC8C\uB808\" "
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 28
+    - Name: $v
+      Entry: 1
+      Data: "\"\uC61B\uB0A0\uC5D0 \uBD80\uBAA8\uB2D8\uD55C\uD14C \uC774\uAC78\uB85C
+        \uB9DE\uC744\uBED4\uD588\uB2E4\" "
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 29
+    - Name: $v
+      Entry: 1
+      Data: "\"\uC789\uC5B4\uAC00 \uBA3C\uC808\uAE4C \uC789\uC5B4\uBE75\uC774 \uBA3C\uC808\uAE4C?\""
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 30
+    - Name: $v
+      Entry: 1
+      Data: "\"\uC61B\uB0A0\uC5D0 \uC774\uB7F0\uAC78 \uB9CC\uB4DC\uB294 \uD68C\uC0AC\uC5D0\uC11C
+        \uC77C\uD588\uB294\uB370, \uC548\uC5D0 \uC544\uC774\uC2A4\uD2F0\uB97C \uB123\uC5B4\uC11C
+        \uD574\uACE0\uB2F9\uD588\uB2E4\""
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 31
+    - Name: $v
+      Entry: 1
+      Data: "\"\uC774\uB7F0 \uBB3C\uACE0\uAE30\uAC00 \uC788\uC5C8\uB098?\""
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 32
+    - Name: $v
+      Entry: 1
+      Data: "\"\uC61B\uB0A0\uC5D0 \uAE38\uAC70\uB9AC\uC5D0\uC11C \uD6D4\uCCD0\uBA39\uC5B4\uBD24\uB2E4\""
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 33
+    - Name: $v
+      Entry: 1
+      Data: "\"\uB0B4\uAC00 \uD560 \uC218 \uC788\uB294 \uC720\uC77C\uD55C \uC601\uC5B4\uB2E4.\" "
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 34
+    - Name: $v
+      Entry: 1
+      Data: "\"\uB208\uC774 \uBB34\uC12D\uB2E4\" "
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 35
+    - Name: $v
+      Entry: 1
+      Data: "\"\uB09C \uAC1C\uC778\uC801\uC73C\uB85C \uD53C\uD06C\uBBFC \uC911\uC5D0
+        \uC785\uCC28\uBE44\uAC00 \uAC00\uC7A5 \uC88B\uB2E4\" \uB098\uB3C4 \uC6B0\uB9AC
+        \uAC19\uC774 \uD53C\uD06C\uBBFC\uC744 \uD50C\uB808\uC774\uD558\uC790! \uC78E\uCC28\uBE44\uAC00
+        \uB098\uC624\uB294 \uD53C\uD06C\uBBFC 2, \uB2E4\uC591\uD55C \uC0DD\uD0DC\uACC4\uC640
+        \uC124\uC815\uC744 \uBCFC \uC218 \uC774\uC2FF\uACE0? \uC774\uC5D0 \uB354\uD574
+        \uB9E4\uB825\uC801\uC778 \uCE90\uB9AD\uD130\uAE4C\uC9C0;;;\uACFC\uD558\uB2E4
+        \uB2F9\uC7A5 \uD50C\uB808\uC774\uD574\uC57C\uACA0\uB294\uAC78~ \uD53C\uD06C\uBBFC
+        \uC804 \uC2DC\uB9AC\uC988 \uBAA8\uB450 \uB2CC\uD150\uB3C4 \uC2A4\uC704\uCE58\uC5D0\uC11C
+        \uD50C\uB808\uC774 \uAC00\uB2A5\uD558\uB2C8 \uCC38\uACE0\uD558\uC2DC\uAE38 "
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 36
+    - Name: $v
+      Entry: 1
+      Data: "\"\uD53C\uD06C\uBBFC \uBA39\uB294 \uC0AC\uB78C\uC740 \uB0B4\uAC00 \uCC98\uC74C
+        \uC77C \uAC83\uC774\uB2E4.\" "
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 37
+    - Name: $v
+      Entry: 1
+      Data: "\"\uC544\uBB34 \uD574\uBB3C\uD0D5\uC9D1\uC774\uB098 \uAC00\uB3C4 \uB0B4\uAC00
+        \uB2E8\uACE8\uC778\uC904 \uC54C\uACE0 \uBB34\uB8CC\uB85C \uC11C\uBE44\uC2A4
+        \uC92C\uB2E4.\" "
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 38
+    - Name: $v
+      Entry: 1
+      Data: "\"\uBB34\uC12D\uAC8C \uC0DD\uACBC\uB2E4\" "
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 39
+    - Name: $v
+      Entry: 1
+      Data: "'\uD68C \uBA39\uC73C\uBA74 \uBC30\uAC00 \uC548 \uC88B\uC9C0\uB9CC \uADF8\uB798\uB3C4
+        \uB9DB\uC740 \uC788\uB2E4.\" "
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 
     - Name: 
       Entry: 8
       Data: 
-    - Name: _radioListen
-      Entry: 7
-      Data: 2|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String,
-        mscorlib]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 3|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+  _radioListen:
+  - '"We''re no strangers to love\nYou know the rules and so do I\nA full commitment''s
+    what I''m thinkin'' of\nYou wouldn''t get this from any other guy\nI just wanna
+    tell you how I''m feeling\nGotta make you understand\nNever gonna give you up\nNever
+    gonna let you down\nNever gonna run around and desert you\nNever gonna make you
+    cry\nNever gonna say goodbye\nNever gonna tell a lie and hurt you\nWe''ve known
+    each other for so long\nYour heart''s been aching, but you''re too shy to say
+    it\nInside, we both know what''s been going on\nWe know the game and we''re gonna
+    play it\nAnd if you ask me how I''m feeling\nDon''t tell me you''re too blind
+    to see\nNever gonna give you up\nNever gonna let you down\nNever gonna run around
+    and desert you\nNever gonna make you cry\nNever gonna say goodbye\nNever gonna
+    tell a lie and hurt you\nNever gonna give you up\nNever gonna let you down\nNever
+    gonna run around and desert you\nNever gonna make you cry\nNever gonna say goodbye\nNever
+    gonna tell a lie and hurt you\nWe''ve known each other for so long\nYour heart''s
+    been aching, but you''re too shy to say it\nInside, we both know what''s been
+    going on\nWe know the game and we''re gonna play it\nI just wanna tell you how
+    I''m feeling\nGotta make you understand\nNever gonna give you up\nNever gonna
+    let you down\nNever gonna run around and desert you\nNever gonna make you cry\nNever
+    gonna say goodbye\nNever gonna tell a lie and hurt you\nNever gonna give you
+    up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna
+    make you cry\nNever gonna say goodbye\nNever gonna tell a lie and hurt you\nNever
+    gonna give you up\nNever gonna let you down\nNever gonna run around and desert
+    you\nNever gonna make you cry\nNever gonna say goodbye\nNever gonna tell a lie
+    and hurt you"'
+  - '"I don''t want a lot for Christmas\nThere is just one thing I need\nI don''t
+    care about the presents underneath the Christmas tree\nI just want you for my
+    own\nMore than you could ever know\nMake my wish come true\nAll I want for Christmas
+    is you\nYeah\nI don''t want a lot for Christmas\nThere is just one thing I need
+    (and I)\nDon''t care about the presents underneath the Christmas tree\nI don''t
+    need to hang my stocking there upon the fireplace\nSanta Claus won''t make me
+    happy with a toy on Christmas Day\nI just want you for my own\nMore than you
+    could ever know\nMake my wish come true\nAll I want for Christmas is you\nYou,
+    baby\nOh, I won''t ask for much this Christmas\nI won''t even wish for snow (and
+    I)\nI''m just gonna keep on waiting underneath the mistletoe\nI won''t make a
+    list and send it to the North Pole for Saint Nick\nI won''t even stay awake to
+    hear those magic reindeer click\n''Cause I just want you here tonight\nHolding
+    on to me so tight\nWhat more can I do?\nOh, baby, all I want for Christmas is
+    you\nYou, baby\nOh-oh, all the lights are shining so brightly everywhere (so
+    brightly, baby)\nAnd the sound of children''s laughter fills the air (oh, oh,
+    yeah)\nAnd everyone is singing (oh, yeah)\nI hear those sleigh bells ringing\nSanta,
+    won''t you bring me the one I really need? (Yeah, oh)\nWon''t you please bring
+    my baby to me?\nOh, I don''t want a lot for Christmas\nThis is all I''m asking
+    for\nI just wanna see my baby standing right outside my door\nOh, I just want
+    you for my own\nMore than you could ever know\nMake my wish come true\nOh, baby,
+    all I want for Christmas is you\nYou, baby\nAll I want for Christmas is you,
+    baby\nAll I want for Christmas is you, baby\nAll I want for Christmas is you,
+    baby\nAll I want for Christmas (all I really want) is you, baby\nAll I want (I
+    want) for Christmas (all I really want) is you, baby"'
