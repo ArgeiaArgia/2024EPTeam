@@ -62,16 +62,31 @@
     height: 100%;
     padding-top: 150px;
     padding-bottom: 150px;
-    transition-timing-function: ease-out-back;
-    transition-duration: 0.5s;
     opacity: 1;
     -unity-background-scale-mode: stretch-to-fill;
     -unity-background-image-tint-color: rgb(0, 0, 0);
+    transition-timing-function: ease-out-cubic;
+    transition-duration: 2s;
 }
 
 .container.hide {
     left: 0;
+    opacity: 0;
+}
+
+.button-container {
+    flex-grow: 0;
+    flex-shrink: 1;
+    width: 600px;
+    align-items: center;
+    flex-basis: 50%;
+    margin-top: 25px;
+    padding-top: 0;
+    transition-duration: 1s;
     transition-timing-function: ease-out-back;
-    transition-duration: 0.5s;
+}
+
+.button-container.hide {
+    flex-basis: 0;
     opacity: 0;
 }

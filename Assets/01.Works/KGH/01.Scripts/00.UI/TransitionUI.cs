@@ -6,12 +6,20 @@ using UnityEngine.UIElements;
 
 public class TransitionUI : ToolkitParents
 {
+    [SerializeField] private bool isFadeInStart = true;
     private List<VisualElement> _boxes;
 
     private void Start()
     {
-        StartCoroutine(ShowBoxes());
-        StartCoroutine(ShowBoxesOnStart());
+        if (!isFadeInStart)
+        {
+            StartCoroutine(HideBoxes());
+        }
+        else
+        {
+            StartCoroutine(ShowBoxes());
+            StartCoroutine(ShowBoxesOnStart());
+        }
     }
 
     IEnumerator ShowBoxesOnStart()
@@ -25,7 +33,7 @@ public class TransitionUI : ToolkitParents
         base.OnEnable();
         _boxes = root.Query<VisualElement>("Box").ToList();
     }
-    
+
     public void EnableUI(Action action = null)
     {
         StartCoroutine(ShowBoxes(action));
