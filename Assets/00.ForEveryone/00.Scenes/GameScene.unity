@@ -4117,8 +4117,8 @@ MonoBehaviour:
   shipTransform: {fileID: 471450773}
   <CatchPercentage>k__BackingField: 750
   <FishWaitingTime>k__BackingField: 1.5
-  <SleepTerm>k__BackingField: 0
-  <SleepGetOver>k__BackingField: 0
+  <SleepTerm>k__BackingField: 2
+  <SleepGetOver>k__BackingField: 1
   OnMiniGameStartEvent:
     m_PersistentCalls:
       m_Calls:

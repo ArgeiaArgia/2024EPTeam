@@ -40,13 +40,14 @@ public class ItemActionManager : MonoBehaviour
                 if (randomValue < 5)
                 {
                     _statManager.StatValues[effect.Key] += effect.Value;
-                    return;
+                    break;
                 }
             }
             _statManager.StatValues[effect.Key] += effect.Value;
         }
 
         _inventoryManager.RemoveItem(item);
+        _systemMessage.ShowMessage($"{item.itemName}을/를 섭취하였습니다.");
     }
 
     public void ListenToRadio(int changePerSecond)

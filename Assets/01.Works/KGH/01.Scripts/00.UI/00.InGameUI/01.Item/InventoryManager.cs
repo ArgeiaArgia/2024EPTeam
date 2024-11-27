@@ -165,6 +165,7 @@ public class InventoryManager : SerializedMonoBehaviour
         {
             RemoveItem(item);
         }
+        OnInventoryChanged?.Invoke(item.loction);
     }
 
     public void MoveItem(InventoryItem inventoryItem, string location)

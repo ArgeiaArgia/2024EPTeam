@@ -37,8 +37,8 @@ public class CraftTab
                 element.Q<Button>("CraftItem").AddToClassList("lack");
                 foreach (var itemSo in lackItems)
                 {
-                    element.Q<VisualElement>(className:"required-icon").AddToClassList("lack");
-                    element.Q<Label>(className:"required-text").AddToClassList("lack");
+                    element.IngredientItems[itemSo].Q<VisualElement>(className:"required-icon").AddToClassList("lack");
+                    element.IngredientItems[itemSo].Q<Label>(className:"required-text").AddToClassList("lack");
                 }
 
                 element.Q<Button>("CraftButton").pickingMode = PickingMode.Ignore;
