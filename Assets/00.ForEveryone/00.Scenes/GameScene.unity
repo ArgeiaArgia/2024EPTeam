@@ -662,6 +662,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  isFadeInStart: 1
 --- !u!114 &307390537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -996,7 +997,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.21875
+  orthographic size: 7.109375
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2580,9 +2581,7 @@ MonoBehaviour:
     - Name: OnStatChanged
       Entry: 6
       Data: 
-  OnDeath:
-    m_PersistentCalls:
-      m_Calls: []
+  _transitionUI: {fileID: 307390536}
 --- !u!4 &591149510
 Transform:
   m_ObjectHideFlags: 0
@@ -2626,6 +2625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 295eeea3788d4aa4fb6eeb7c4a60cdb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transitionUI: {fileID: 307390536}
   backgrounds:
   - spriteRenderers:
     - {fileID: 1387792201}

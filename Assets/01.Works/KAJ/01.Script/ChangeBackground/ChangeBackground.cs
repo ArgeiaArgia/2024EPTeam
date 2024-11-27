@@ -5,34 +5,44 @@ using UnityEngine;
 
 public class ChangeBackground : MonoBehaviour
 {
+    [SerializeField] private TransitionUI transitionUI;
     [System.Serializable]
     public class Background
     {
-        public SpriteRenderer[] spriteRenderers; // ÇÏ³ªÀÇ ¹è°æÀ» ±¸¼ºÇÏ´Â SpriteRendererµé
-        public float fadeDuration = 1f; // Åõ¸íµµ ÀüÈ¯ ½Ã°£
+        public SpriteRenderer[] spriteRenderers; // ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ SpriteRendererï¿½ï¿½
+        public float fadeDuration = 1f; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ ï¿½Ã°ï¿½
     }
 
-    public Background[] backgrounds; // ¹è°æ ¹è¿­
-    public float changeInterval = 10f; // ¹è°æ º¯°æ °£°Ý (ÃÊ ´ÜÀ§)
+    public Background[] backgrounds; // ï¿½ï¿½ï¿½ ï¿½è¿­
+    public float changeInterval = 10f; // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
 
-    private int currentBackgroundIndex = 0; // ÇöÀç È°¼ºÈ­µÈ ¹è°æ ÀÎµ¦½º
+    private int currentBackgroundIndex = 0; // ï¿½ï¿½ï¿½ï¿½ È°ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½
     private Coroutine transitionCoroutine;
 
     void Start()
     {
         InitializeBackgrounds();
         StartCoroutine(ChangeBackgroundRoutine());
+        StartCoroutine(WaitForTheEnd());
+    }
+
+    private IEnumerator WaitForTheEnd()
+    {
+        yield return new WaitForSeconds(changeInterval * backgrounds.Length * 30);
+        
+        PlayerPrefs.SetInt("DiedType", -1);
+        transitionUI.EnableUI(() => UnityEngine.SceneManagement.SceneManager.LoadScene(3));
     }
 
     private void InitializeBackgrounds()
     {
-        // ¸ðµç ¹è°æÀ» Åõ¸íÇÏ°Ô ÃÊ±âÈ­
+        // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Ê±ï¿½È­
         for (int i = 0; i < backgrounds.Length; i++)
         {
             foreach (var spriteRenderer in backgrounds[i].spriteRenderers)
             {
                 Color color = spriteRenderer.color;
-                color.a = i == 0 ? 1f : 0f; // Ã¹ ¹øÂ° ¹è°æÀº ºÒÅõ¸í, ³ª¸ÓÁö´Â Åõ¸í
+                color.a = i == 0 ? 1f : 0f; // Ã¹ ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 spriteRenderer.color = color;
             }
         }
@@ -45,7 +55,7 @@ public class ChangeBackground : MonoBehaviour
             yield return new WaitForSeconds(changeInterval);
             int nextIndex = (currentBackgroundIndex + 1) % backgrounds.Length;
 
-            // ÇöÀç ¹è°æ ÆäÀÌµå ¾Æ¿ô, ´ÙÀ½ ¹è°æ ÆäÀÌµå ÀÎ
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½Æ¿ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½
             if (transitionCoroutine != null)
             {
                 StopCoroutine(transitionCoroutine);
@@ -67,7 +77,7 @@ public class ChangeBackground : MonoBehaviour
             timer += Time.deltaTime;
             float t = timer / currentBackground.fadeDuration;
 
-            // ÇöÀç ¹è°æ ÆäÀÌµå ¾Æ¿ô
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½Æ¿ï¿½
             foreach (var spriteRenderer in currentBackground.spriteRenderers)
             {
                 Color color = spriteRenderer.color;
@@ -75,7 +85,7 @@ public class ChangeBackground : MonoBehaviour
                 spriteRenderer.color = color;
             }
 
-            // ´ÙÀ½ ¹è°æ ÆäÀÌµå ÀÎ
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½
             foreach (var spriteRenderer in nextBackground.spriteRenderers)
             {
                 Color color = spriteRenderer.color;
@@ -86,7 +96,7 @@ public class ChangeBackground : MonoBehaviour
             yield return null;
         }
 
-        // ¸¶Áö¸· °ª º¸Á¤
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         foreach (var spriteRenderer in currentBackground.spriteRenderers)
         {
             Color color = spriteRenderer.color;

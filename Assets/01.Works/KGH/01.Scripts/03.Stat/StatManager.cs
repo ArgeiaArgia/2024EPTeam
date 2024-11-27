@@ -9,13 +9,13 @@ using UnityEngine.Events;
 
 public class StatManager : SerializedMonoBehaviour
 {
+    [SerializeField] private TransitionUI _transitionUI;
     [OdinSerialize] private Dictionary<StatType, float> _delay;
 
     [HideInInspector] public Dictionary<StatType, int> StatValues;
 
     [HideInInspector] public Action<StatType, int> OnStatChanged;
     
-    public UnityEvent<StatType> OnDeath;
     private void Start()
     {
         StatValues = new Dictionary<StatType, int>();
@@ -43,7 +43,8 @@ public class StatManager : SerializedMonoBehaviour
     {
         if (StatValues[statType] <= 0)
         {
-            OnDeath?.Invoke(statType);
+            PlayerPrefs.SetInt("DiedType", (int)statType);
+            _transitionUI.EnableUI(() => UnityEngine.SceneManagement.SceneManager.LoadScene(3));
         }
     }
 }
