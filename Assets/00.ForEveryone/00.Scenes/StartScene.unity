@@ -515,7 +515,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 0.88
+  orthographic size: 1.40625
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -816,6 +816,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1593051214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1593051216}
+  - component: {fileID: 1593051217}
+  m_Layer: 0
+  m_Name: sournd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1593051216
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593051214}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.3645437, y: -0.18160267, z: 0.001290183}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1593051217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593051214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 098bf59f46fc5cc44b2617e33cdbb80e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backGroundSOund: {fileID: 8300000, guid: ded3a95c2dc026e419c6aaafe8e94ce5, type: 3}
 --- !u!1 &1751139513
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,3 +1052,4 @@ SceneRoots:
   - {fileID: 891629104}
   - {fileID: 849050978}
   - {fileID: 1751139515}
+  - {fileID: 1593051216}
