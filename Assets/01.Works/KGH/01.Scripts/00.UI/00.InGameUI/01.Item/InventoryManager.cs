@@ -249,7 +249,8 @@ public class InventoryManager : SerializedMonoBehaviour
 
     public bool CheckIfInventoryFull()
     {
-        return DefaultItemInventories[0].holdableWeight <= InventoryItems.Sum(x => x.item.weight * x.count);
+        var items = InventoryItems.FindAll(x => x.loction == "갑판");
+        return DefaultItemInventories[0].holdableWeight <= items.Sum(x => x.item.weight * x.count);
     }
 }
 
