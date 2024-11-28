@@ -25,7 +25,8 @@ public class ItemActionManager : MonoBehaviour
     {
         if (_radioChangePerSecond > 0)
         {
-            _statManager.StatValues[StatType.Bored] += _radioChangePerSecond;
+            
+            _statManager.StatValues[StatType.Bored] = Mathf.Clamp(_statManager.StatValues[StatType.Bored] + _radioChangePerSecond, 0, 100);
             _statManager.OnStatChanged?.Invoke(StatType.Bored, _statManager.StatValues[StatType.Bored]);
         }
     }
@@ -39,11 +40,11 @@ public class ItemActionManager : MonoBehaviour
                 var randomValue = Random.Range(0, 10);
                 if (randomValue < 5)
                 {
-                    _statManager.StatValues[effect.Key] += effect.Value;
+                    _statManager.StatValues[effect.Key] = Mathf.Clamp(_statManager.StatValues[effect.Key]+  effect.Value, 0, 100);
                     break;
                 }
             }
-            _statManager.StatValues[effect.Key] += effect.Value;
+            _statManager.StatValues[effect.Key] = Mathf.Clamp(_statManager.StatValues[effect.Key] + effect.Value, 0, 100);
         }
 
         _inventoryManager.RemoveItem(item);
