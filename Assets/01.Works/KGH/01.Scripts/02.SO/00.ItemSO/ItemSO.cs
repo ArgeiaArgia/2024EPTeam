@@ -94,7 +94,8 @@ public enum ToolType
     Material,
     FishingRod,
     Radio,
-    Inventory
+    Inventory,
+    Others
 }
 
 public enum FoodType

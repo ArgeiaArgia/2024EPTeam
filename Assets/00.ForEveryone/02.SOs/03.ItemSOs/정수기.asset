@@ -18,7 +18,7 @@ MonoBehaviour:
   itemType: 3
   percentageOfCatch: 0
   weight: 3.1
-  toolType: 1
+  toolType: 4
   holdableWeight: 0
   materialKey:
   - {fileID: 11400000, guid: 1fc43ce4525acca46a57ef519d9d14c8, type: 2}

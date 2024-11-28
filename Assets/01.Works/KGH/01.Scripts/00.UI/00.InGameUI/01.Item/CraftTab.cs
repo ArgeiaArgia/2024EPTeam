@@ -43,6 +43,10 @@ public class CraftTab
 
                 element.Q<Button>("CraftButton").pickingMode = PickingMode.Ignore;
             }
+            else
+            {
+                Debug.Log(item);
+            }
 
             element.OnCreateItem += _inventoryManager.TryCraftItem;
             _craftScrollView.Add(element);

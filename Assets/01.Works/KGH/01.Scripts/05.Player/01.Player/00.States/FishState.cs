@@ -73,6 +73,7 @@ public class FishState : PlayerState
         Player.AnimatorComponent.SetBool(pullHash, true);
         Player.InputReader.OnTriggerEvent -= FishCaught;
         Player.FishMiniGameUI.EnableUI();
+        Player.StatManager.StatValues[StatType.Bored] += 5;
     }
 
     public override void Exit()
