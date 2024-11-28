@@ -20,6 +20,7 @@ public class CookState : PlayerState
         Player.InGameUI.HideCookUI();
         Player.FishStartEvent?.Invoke();
         Player.AnimatorComponent.SetBool(defaultAnimationHash, true);
+        Player.StatManager.StatValues[StatType.Bored] += 5;
     }
     public override void Exit()
     {

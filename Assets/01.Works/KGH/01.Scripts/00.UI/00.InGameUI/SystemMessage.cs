@@ -22,7 +22,7 @@ public class SystemMessage : ToolkitParents
     {
         if (item == null)
         {
-            _systemMessageLabel.text += "이런! 아무것도 못 얻었습니다";
+            _systemMessageLabel.text += "이런! 아무것도 못 얻었습니다\n";
             return;
         }
 

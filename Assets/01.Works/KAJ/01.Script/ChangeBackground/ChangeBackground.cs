@@ -2,14 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.Serialization;
 
 public class ChangeBackground : MonoBehaviour
 {
     [SerializeField] private TransitionUI transitionUI;
+    [SerializeField] private Light2D playerLight;
+
     [System.Serializable]
     public class Background
     {
         public SpriteRenderer[] spriteRenderers; // �ϳ��� ����� �����ϴ� SpriteRenderer��
+        [FormerlySerializedAs("_playerColor")] public Color playerColor;
         public float fadeDuration = 1f; // ���� ��ȯ �ð�
     }
 
@@ -29,7 +34,7 @@ public class ChangeBackground : MonoBehaviour
     private IEnumerator WaitForTheEnd()
     {
         yield return new WaitForSeconds(changeInterval * backgrounds.Length * 30);
-        
+
         PlayerPrefs.SetInt("DiedType", -1);
         transitionUI.EnableUI(() => UnityEngine.SceneManagement.SceneManager.LoadScene(3));
     }
@@ -60,6 +65,7 @@ public class ChangeBackground : MonoBehaviour
             {
                 StopCoroutine(transitionCoroutine);
             }
+
             transitionCoroutine = StartCoroutine(TransitionBackground(currentBackgroundIndex, nextIndex));
 
             currentBackgroundIndex = nextIndex;
@@ -92,6 +98,11 @@ public class ChangeBackground : MonoBehaviour
                 color.a = Mathf.Lerp(0f, 1f, t);
                 spriteRenderer.color = color;
             }
+
+            var r = Mathf.Lerp(currentBackground.playerColor.r, nextBackground.playerColor.r, t);
+            var g = Mathf.Lerp(currentBackground.playerColor.g, nextBackground.playerColor.g, t);
+            var b = Mathf.Lerp(currentBackground.playerColor.b, nextBackground.playerColor.b, t);
+            playerLight.color = new Color(r, g, b);
 
             yield return null;
         }
