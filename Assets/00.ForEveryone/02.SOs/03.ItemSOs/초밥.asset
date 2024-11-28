@@ -25,6 +25,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 40f47734601a46a4e95dab86eafdc20c, type: 2}
   materialValue: 0100000001000000
   StatEffectKey: 00000000
-  StatEffectValue: 05000000
+  StatEffectValue: 0e000000
   foodType: 1
   description: "\uCD08\uBC25\uC774\uB2E4, \uC5ED\uC2DC \uC640\uC0AC\uBE44\uB294 \uC5C6\uB2E4."

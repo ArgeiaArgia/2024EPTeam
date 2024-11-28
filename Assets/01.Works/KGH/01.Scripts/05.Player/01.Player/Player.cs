@@ -26,6 +26,8 @@ public class Player : MonoBehaviour
     [field: SerializeField] public InputReader InputReader { get; private set; }
     [field: SerializeField] public InGameUI InGameUI { get; set; }
     [field: SerializeField] public StatManager StatManager { get; set; }
+    [field: SerializeField] public InventoryManager InventoryManager { get; set; }
+    [field: SerializeField] public SystemMessage SystemMessage { get; set; }
     [field: SerializeField] public FishMiniGameUI FishMiniGameUI { get; set; }
     private Camera _mainCamera;
 
@@ -104,6 +106,11 @@ public class Player : MonoBehaviour
 
     public void SetTargetStateToFishState()
     {
+        if (InventoryManager.CheckIfInventoryFull())
+        {
+            SystemMessage.ShowMessage("갑판에 자리가 없습니다.");
+            return;
+        }
         _stateMachine.SetTargetState<FishState>();
     }
 

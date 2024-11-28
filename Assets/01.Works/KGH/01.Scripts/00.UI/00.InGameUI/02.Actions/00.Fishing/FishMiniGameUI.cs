@@ -124,11 +124,11 @@ public class FishMiniGameUI : ToolkitParents
         {
             if (tile.ClassListContains("fish"))
             {
-                _percentage[FishTileType.FishTile] += _fishTiles[tile] * 5;
+                _percentage[FishTileType.FishTile] += (tileCount - _fishTiles[tile]) * 5;
             }
             else if (tile.ClassListContains("trash"))
             {
-                _percentage[FishTileType.TrashTile] += _trashTiles[tile] * 5;
+                _percentage[FishTileType.TrashTile] += (tileCount - _trashTiles[tile]) * 5;
             }
             else if (tile.ClassListContains("empty"))
             {

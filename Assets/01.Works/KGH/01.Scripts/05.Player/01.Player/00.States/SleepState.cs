@@ -5,6 +5,7 @@ using UnityEngine;
 public class SleepState : PlayerState
 {
     private float _sleepTime = 0;
+
     public SleepState(Player player, PlayerStateMachine stateMachine) : base(player, stateMachine)
     {
         defaultAnimationHash = Animator.StringToHash("Sleep");
@@ -16,7 +17,7 @@ public class SleepState : PlayerState
         Player.OnMiniGameStartEvent?.Invoke();
         Player.InputReader.OnEscapeEvent += StateMachine.ResetToIdleState;
         Player.InGameUI.ShowSleepLabel();
-        
+
         _sleepTime = 0;
     }
 
@@ -26,10 +27,11 @@ public class SleepState : PlayerState
         _sleepTime += Time.deltaTime;
         if (_sleepTime >= Player.SleepTerm)
         {
-            Player.StatManager.StatValues[StatType.Tired] += Player.SleepGetOver;
+            Player.StatManager.StatValues[StatType.Tired] =
+                Mathf.Clamp(Player.StatManager.StatValues[StatType.Tired] + Player.SleepGetOver, 0, 100);
         }
     }
-    
+
     public override void Exit()
     {
         base.Exit();

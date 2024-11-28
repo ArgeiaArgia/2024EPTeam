@@ -8,6 +8,7 @@ public class CookState : PlayerState
     {
         defaultAnimationHash = Animator.StringToHash("Cook");
     }
+
     public override void Enter()
     {
         base.Enter();
@@ -15,13 +16,18 @@ public class CookState : PlayerState
         Player.InGameUI.ShowCookUI();
         Player.InputReader.OnEscapeEvent += StateMachine.ResetToIdleState;
     }
+
     public void FishSelected(ItemSO item)
     {
         Player.InGameUI.HideCookUI();
         Player.FishStartEvent?.Invoke();
         Player.AnimatorComponent.SetBool(defaultAnimationHash, true);
-        Player.StatManager.StatValues[StatType.Bored] += 5;
+        Player.StatManager.StatValues[StatType.Bored] =
+            Mathf.Clamp(Player.StatManager.StatValues[StatType.Bored] + 1, 0, 100);
+        Player.StatManager.StatValues[StatType.Tired] =
+            Mathf.Clamp(Player.StatManager.StatValues[StatType.Tired] - 1, 0, 100);
     }
+
     public override void Exit()
     {
         base.Exit();

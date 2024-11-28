@@ -311,6 +311,7 @@ public class InGameUI : ToolkitParents
         switch (abilityType)
         {
             case AbilityType.Cooking:
+                Debug.Log("Cooking");
                 _cookUI.InitializeCookUI((FoodType)value);
                 break;
             case AbilityType.Repairing:

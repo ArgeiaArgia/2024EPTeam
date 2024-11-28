@@ -44,14 +44,14 @@ public class FishState : PlayerState
 
     private IEnumerator FishHit()
     {
-        if(StateMachine.CurrentState != this) yield break;
+        if (StateMachine.CurrentState != this) yield break;
         Player.AnimatorComponent.SetBool(defaultAnimationHash, false);
         Player.AnimatorComponent.SetBool(biteHash, true);
         Player.InputReader.OnEscapeEvent -= StateMachine.ResetToIdleState;
         Player.InputReader.OnTriggerEvent += FishCaught;
         Player.InGameUI.ShowFishLabel();
         yield return new WaitForSeconds(Player.FishWaitingTime);
-        if(_isPulling) yield break;
+        if (_isPulling) yield break;
         Player.InGameUI.HideFishLabel();
         Player.InputReader.OnTriggerEvent -= FishCaught;
         Player.InputReader.OnEscapeEvent += StateMachine.ResetToIdleState;
@@ -63,7 +63,7 @@ public class FishState : PlayerState
 
     private void FishCaught()
     {
-        if(StateMachine.CurrentState != this) return;
+        if (StateMachine.CurrentState != this) return;
         _isPulling = true;
         Player.InGameUI.HideFishLabel();
         Player.CoroutineStopper(FishHit());
@@ -73,7 +73,10 @@ public class FishState : PlayerState
         Player.AnimatorComponent.SetBool(pullHash, true);
         Player.InputReader.OnTriggerEvent -= FishCaught;
         Player.FishMiniGameUI.EnableUI();
-        Player.StatManager.StatValues[StatType.Bored] += 5;
+        Player.StatManager.StatValues[StatType.Bored] =
+            Mathf.Clamp(Player.StatManager.StatValues[StatType.Bored] + 1, 0, 100);
+        Player.StatManager.StatValues[StatType.Tired] =
+            Mathf.Clamp(Player.StatManager.StatValues[StatType.Tired] - 1, 0, 100);
     }
 
     public override void Exit()

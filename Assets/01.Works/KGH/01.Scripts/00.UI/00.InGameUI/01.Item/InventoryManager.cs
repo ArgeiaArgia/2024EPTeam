@@ -247,6 +247,10 @@ public class InventoryManager : SerializedMonoBehaviour
     #endregion
 
 
+    public bool CheckIfInventoryFull()
+    {
+        return DefaultItemInventories[0].holdableWeight <= InventoryItems.Sum(x => x.item.weight * x.count);
+    }
 }
 
 [Serializable]

@@ -15,9 +15,9 @@ public class AbilityUI
     }
     public void AddAbility(int value)
     {
-        var prevGauge = _element.Value / (_element.LineCount+1);
+        var prevGauge = _element.Value/ (_element.MaxValue / (_element.LineCount+1));
         _element.Value += value;
-        var currentGauge = _element.Value/ (_element.LineCount+1);
+        var currentGauge = _element.Value/ (_element.MaxValue / (_element.LineCount+1));
         if (prevGauge != currentGauge)
         {
             Level = currentGauge;
