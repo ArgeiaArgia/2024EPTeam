@@ -56,6 +56,10 @@ MonoBehaviour:
     - {fileID: 11400000, guid: f7b45408e5c6d4042bbd5b410bdf1aa0, type: 2}
     - {fileID: 11400000, guid: 86a591b72d5fb7d4f944157a8f73eed5, type: 2}
     - {fileID: 11400000, guid: aa08efbdc2021c84aa90d11b91fa7499, type: 2}
+    - {fileID: 11400000, guid: 2db11ba60554fde45a6ad2cda6a5d940, type: 2}
+    - {fileID: 11400000, guid: 8dd00cb65cb5f6e45a5a35aa7b4c3538, type: 2}
+    - {fileID: 11400000, guid: bda1599792478b54f8ad907a26b1f28e, type: 2}
+    - {fileID: 11400000, guid: 4e7a0816e80b02542ab0dcbb462f63f3, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -74,7 +78,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 40
+      Data: 44
     - Name: 
       Entry: 7
       Data: 
@@ -579,6 +583,56 @@ MonoBehaviour:
       Entry: 1
       Data: "'\uD68C \uBA39\uC73C\uBA74 \uBC30\uAC00 \uC548 \uC88B\uC9C0\uB9CC \uADF8\uB798\uB3C4
         \uB9DB\uC740 \uC788\uB2E4.\" "
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 40
+    - Name: $v
+      Entry: 1
+      Data: "\"\uBA39\uC73C\uBA74 \uD2B8\uB77C\uC6B0\uB9C8 \uAC78\uB9B4 \uB4EF\" "
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 41
+    - Name: $v
+      Entry: 1
+      Data: "\"\uB098\uB97C \uC6D0\uB9DD\uD558\uB294 \uAC83 \uCC98\uB7FC \uBC14\uB77C\uBCF8\uB2E4.\" "
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 42
+    - Name: $v
+      Entry: 1
+      Data: "\"\uC544\uC9C1\uB3C4 \uB119\uB300\uB300 \uD55C\uAC8C \uC5B4\uB514\uC120\uAC00
+        \uBCF8 \uAC83 \uAC19\uB2E4\""
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 43
+    - Name: $v
+      Entry: 1
+      Data: "\"\uC774\uB807\uAC8C \uB119\uB300\uB300\uD55C\uB370 \uC5B4\uB5BB\uAC8C
+        \uAF2C\uCE58\uC5D0\uC11C \uBC84\uD2F0\uACE0 \uC788\uC9C0?\" "
     - Name: 
       Entry: 8
       Data: 

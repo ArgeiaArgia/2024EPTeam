@@ -1364,14 +1364,70 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 68c4bf3504d5ba64cb31f69b16ea87d0, type: 2}
+    - {fileID: 11400000, guid: ba80c004be673014c98296542f3da0f3, type: 2}
+    - {fileID: 11400000, guid: 07fccfd0daf3eaa408baf55ebc067416, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
     - Name: _inventoryItems
-      Entry: 6
+      Entry: 7
+      Data: 0|UnityEngine.Rendering.SerializedDictionary`2[[ItemSO, Assembly-CSharp],[System.Int32,
+        mscorlib]], Unity.RenderPipelines.Core.Runtime
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[ItemSO, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 0
+    - Name: $v
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 1
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 2
+    - Name: $v
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
   inputReader: {fileID: 11400000, guid: 3d98378fbe214b748a2d14c534822162, type: 2}
   itemList: {fileID: 11400000, guid: 75844a52dd7b7694c803e66d8a8a0926, type: 2}
@@ -2541,7 +2597,7 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 4
-      Data: 6
+      Data: 8
     - Name: 
       Entry: 8
       Data: 
@@ -2565,7 +2621,7 @@ MonoBehaviour:
       Data: 3
     - Name: $v
       Entry: 4
-      Data: 3
+      Data: 6
     - Name: 
       Entry: 8
       Data: 
@@ -2577,7 +2633,7 @@ MonoBehaviour:
       Data: 4
     - Name: $v
       Entry: 4
-      Data: 100
+      Data: 300
     - Name: 
       Entry: 8
       Data: 
