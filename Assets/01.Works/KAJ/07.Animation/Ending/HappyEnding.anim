@@ -154,6 +154,8 @@ AnimationClip:
       value: {fileID: -2131164902, guid: b2851f7e4013d9546953d1fed28bd3c5, type: 3}
     - time: 17.4
       value: {fileID: -1521220803, guid: 756de0ccb6efa544682bd11dcd5b92da, type: 3}
+    - time: 20.2
+      value: {fileID: -1521220803, guid: 756de0ccb6efa544682bd11dcd5b92da, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -243,12 +245,13 @@ AnimationClip:
     - {fileID: 573702785, guid: b2851f7e4013d9546953d1fed28bd3c5, type: 3}
     - {fileID: -2131164902, guid: b2851f7e4013d9546953d1fed28bd3c5, type: 3}
     - {fileID: -1521220803, guid: 756de0ccb6efa544682bd11dcd5b92da, type: 3}
+    - {fileID: -1521220803, guid: 756de0ccb6efa544682bd11dcd5b92da, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 17.6
+    m_StopTime: 20.400002
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -268,8 +271,15 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 16.6
-    functionName: 
+  - time: 18.4
+    functionName: ddd
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 19
+    functionName: cre
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
