@@ -117,12 +117,14 @@ public class CookMiniGameUI : ToolkitParents
             if (!(length > 100)) continue;
             note.AddToClassList("hide");
             _missedNoteCount++;
+            Debug.Log("this is missed :D;;;");
         }
 
         if (_notes.Count == _missedNoteCount + _correctNoteCount)
         {
             _isCooking = false;
-            var randomValue = Random.Range(0, _currentNoteCount);
+            var randomValue = Random.Range(0, _currentNoteCount+1);
+            Debug.Log($"Random Value: {randomValue} of {_currentNoteCount}\nmissed notes : {_missedNoteCount}");
             if (randomValue > _missedNoteCount)
             {
                 OnCookingEnd?.Invoke(_cookingItem);

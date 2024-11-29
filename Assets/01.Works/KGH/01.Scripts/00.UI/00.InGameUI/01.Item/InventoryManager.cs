@@ -203,6 +203,14 @@ public class InventoryManager : SerializedMonoBehaviour
         _isCrafting = true;
         OnItemCraft?.Invoke();
     }
+    public bool TryCraftItemBool(ItemSO item)
+    {
+        if (!CheckIfMakeable(item, out var lackItems) || _isCrafting) return false;
+        _targetItem = item;
+        _isCrafting = true;
+        OnItemCraft?.Invoke();
+        return true;
+    }
 
     public void CraftItem()
     {

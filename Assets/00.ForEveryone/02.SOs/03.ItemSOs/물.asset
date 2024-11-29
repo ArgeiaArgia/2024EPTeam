@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12277ccfcc48b8a469a4d8bd467dbf4d, type: 3}
   m_Name: "\uBB3C"
   m_EditorClassIdentifier: 
-  itemName: 4e6eff13934dc2c41a3ab38bc1744f6f
-  itemIcon: {fileID: 0}
+  itemName: "\uBB3C"
+  itemIcon: {fileID: 300905063, guid: d086bfd8ac209e44094c80f7cc1cd9d6, type: 3}
   itemSprite: {fileID: 0}
-  itemType: 2
+  itemType: 0
   percentageOfCatch: 0
-  weight: 0
+  weight: 1
   toolType: 0
   holdableWeight: 0
-  materialKey: []
-  materialValue: 
-  StatEffectKey: 
-  StatEffectValue: 
+  materialKey:
+  - {fileID: 11400000, guid: b0c02a30d08117f469d58318574faef8, type: 2}
+  materialValue: 01000000
+  StatEffectKey: 01000000
+  StatEffectValue: 19000000
   foodType: 0
   description: 
