@@ -41,12 +41,10 @@ public class ItemActionManager : MonoBehaviour
                 if (randomValue < 5)
                 {
                     _statManager.StatValues[effect.Key] = Mathf.Clamp(_statManager.StatValues[effect.Key]+  effect.Value, 0, 100);
-                    _statManager.OnStatChanged?.Invoke(effect.Key, _statManager.StatValues[effect.Key]);
-                    continue;
+                    break;
                 }
             }
             _statManager.StatValues[effect.Key] = Mathf.Clamp(_statManager.StatValues[effect.Key] + effect.Value, 0, 100);
-            _statManager.OnStatChanged?.Invoke(effect.Key, _statManager.StatValues[effect.Key]);
         }
 
         _inventoryManager.RemoveItem(item);
@@ -77,9 +75,6 @@ public class ItemActionManager : MonoBehaviour
 
     public void CleanWater()
     {
-        if (!_inventoryManager.TryCraftItemBool(water))
-        {
-            _systemMessage.ShowMessage("병이 필요합니다.");
-        }
+        _inventoryManager.TryCraftItem(water);
     }
 }
